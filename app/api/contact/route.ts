@@ -16,7 +16,7 @@ const { name, email, company, project, budget, message, newsletter } = await req
 
 const mailOptions = {
   from: `"${name}" <${email}>`,
-  to: "nzizaprince7@gmail.com",
+  to: process.env.TARGET_EMAIL,
   subject: `New Contact from ${name} (${project})`,
   html: `
     <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px;">
