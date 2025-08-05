@@ -25,11 +25,12 @@ export default function TeamMember({ name, role, bio, skills, image, social, exp
     <div className="glass-effect rounded-xl overflow-hidden card-hover">
       <div className="p-6">
         {/* Avatar */}
-        <div className="w-24 h-24 bg-gradient-to-br from-primary to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-4 mx-auto">
-          {name
-            .split(" ")
-            .map((n) => n[0])
-            .join("")}
+        <div className="w-24 h-24 rounded-full overflow-hidden mb-4 mx-auto ring-4 ring-primary/20">
+          <img
+            src={image || "/placeholder.svg?height=96&width=96"}
+            alt={`${name} - ${role}`}
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* Basic Info */}

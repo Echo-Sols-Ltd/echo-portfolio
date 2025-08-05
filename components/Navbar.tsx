@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useTheme } from "next-themes"
 import { usePathname } from "next/navigation"
 import { Menu, X, Sun, Moon, Code2 } from "lucide-react"
+import Image from "next/image"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,10 +39,10 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="bg-gradient-to-r from-primary to-blue-500 p-2 rounded-lg group-hover:scale-110 transition-transform duration-300">
-              <Code2 className="h-6 w-6 text-white" />
+            <div className="rounded-lg bg-white p-1 group-hover:scale-110 transition-transform duration-300">
+              <Image src="/Lex.svg" className="bg-contain" height={20} width={20} alt="Logo"/>
             </div>
-            <span className="text-2xl font-bold font-space-grotesk gradient-text">Lex Tech</span>
+            <span className="text-2xl font-bold font-space-grotesk">Lex Tech</span>
           </Link>
 
           {/* Desktop Navigation */}
