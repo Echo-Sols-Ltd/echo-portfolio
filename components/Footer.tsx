@@ -1,0 +1,107 @@
+import Link from "next/link"
+import { Code2, Github, Twitter, Linkedin, Mail } from "lucide-react"
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <footer className="bg-card border-t border-border">
+      <div className="container-custom section-padding">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="bg-gradient-to-r from-primary to-blue-500 p-2 rounded-lg">
+                <Code2 className="h-6 w-6 text-white" />
+              </div>
+              <span className="text-2xl font-bold font-space-grotesk gradient-text">Lex Tech</span>
+            </Link>
+            <p className="text-muted-foreground leading-relaxed">
+              Building innovative technology solutions with a focus on AI, security, and social impact.
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="https://github.com/lextech"
+                className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                aria-label="GitHub"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href="https://twitter.com/lextech"
+                className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a
+                href="https://linkedin.com/company/lextech"
+                className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <ul className="space-y-2">
+              {[
+                { href: "/about", label: "About Us" },
+                { href: "/team", label: "Team" },
+                { href: "/projects", label: "Projects" },
+                { href: "/contact", label: "Contact" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <ul className="space-y-2">
+              {["Web Development", "AI/ML Solutions", "Cybersecurity", "UI/UX Design"].map((service) => (
+                <li key={service}>
+                  <span className="text-muted-foreground">{service}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Get In Touch</h3>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <Mail className="h-4 w-4 text-primary" />
+                <a
+                  href="mailto:hello@lextech.dev"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  hello@lextech.dev
+                </a>
+              </div>
+              <p className="text-muted-foreground text-sm">Ready to build something amazing together? Let's talk.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-border mt-12 pt-8 text-center">
+          <p className="text-muted-foreground">
+            © {currentYear} Lex Tech. All rights reserved. Built with ❤️ by our team.
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}
