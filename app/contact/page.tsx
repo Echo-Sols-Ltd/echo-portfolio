@@ -18,31 +18,43 @@ export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsLoading(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
 
-    console.log("Form submitted:", formData)
-    setIsSubmitted(true)
-    setIsLoading(false)
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        project: "",
-        budget: "",
-        message: "",
-        newsletter: false,
-      })
-    }, 3000)
+    if (res.ok) {
+      setIsSubmitted(true)
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          project: "",
+          budget: "",
+          message: "",
+          newsletter: false,
+        })
+      }, 3000)
+    } else {
+      console.error("Failed to send message")
+    }
+  } catch (err) {
+    console.error("Error submitting form", err)
   }
+
+  setIsLoading(false)
+}
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -77,8 +89,8 @@ export default function ContactPage() {
               </div>
               <h3 className="text-xl font-bold mb-4">Email Us</h3>
               <p className="text-muted-foreground mb-4">Drop us a line anytime</p>
-              <a href="mailto:hello@lextech.dev" className="text-primary hover:text-primary/80 font-medium">
-                hello@lextech.dev
+              <a href="mailto:iamshemaleandre@gmail.com" className="text-primary hover:text-primary/80 font-medium">
+                  iamshemaleandre@gmail.com
               </a>
             </div>
 
@@ -88,8 +100,8 @@ export default function ContactPage() {
               </div>
               <h3 className="text-xl font-bold mb-4">Call Us</h3>
               <p className="text-muted-foreground mb-4">Mon-Fri 9AM-6PM PST</p>
-              <a href="tel:+15551234567" className="text-primary hover:text-primary/80 font-medium">
-                +1 (555) 123-4567
+              <a href="tel:+250780837136" className="text-primary hover:text-primary/80 font-medium">
+                +250 (780) 837-136
               </a>
             </div>
 
@@ -100,9 +112,9 @@ export default function ContactPage() {
               <h3 className="text-xl font-bold mb-4">Visit Us</h3>
               <p className="text-muted-foreground mb-4">Our workspace</p>
               <address className="text-primary not-italic">
-                123 Tech Street
+                Ku gasoko 
                 <br />
-                San Francisco, CA 94105
+                Nyabihu, Rwanda
               </address>
             </div>
           </div>
@@ -342,26 +354,26 @@ export default function ContactPage() {
               </p>
               <div className="flex space-x-6">
                 <a
-                  href="https://github.com/lextech"
+                  href="https://github.com/Lex-Tech-company"
                   className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                   aria-label="GitHub"
                 >
                   <Github className="h-6 w-6" />
                 </a>
-                <a
+                {/* <a
                   href="https://twitter.com/lextech"
                   className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                   aria-label="Twitter"
                 >
                   <Twitter className="h-6 w-6" />
-                </a>
+                </a> 
                 <a
                   href="https://linkedin.com/company/lextech"
                   className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-6 w-6" />
-                </a>
+                </a> */}
               </div>
             </div>
 
