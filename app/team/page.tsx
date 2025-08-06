@@ -68,7 +68,7 @@ const teamMembers = [
     name: "Hirwa Jovin",
     role: "Backend Engineer",
     bio: "Builds robust APIs and database architectures that power our applications at scale.",
-    skills: ["Python", "Django", "PostgreSQL", "Redis", "Microservices", "API Design"],
+    skills: ["Springboot/Java","Python", "Django", "PostgreSQL", "Redis", "Microservices", "API Design"],
     image: "/jvn.jpeg",
     social: {
       github: "https://github.com/AbayoHJovin",
@@ -97,7 +97,7 @@ const teamMembers = [
     name: "Iradukunda Joyuese",
     role: "Backend Engineer",
     bio: "Builds robust APIs and database architectures that power our applications at scale.",
-    skills: ["Python", "Django", "PostgreSQL", "Redis", "Microservices", "API Design"],
+    skills: ["Springboot/Java","Python", "Django", "PostgreSQL", "Redis", "Microservices", "API Design"],
     image: "/placeholder.svg?height=400&width=400",
     social: {
       github: "https://github.com/Uhirwe",
@@ -125,7 +125,7 @@ const teamMembers = [
     name: "Nziza Prince",
     role: "Fullstack Engineer",
     bio: "Builds robust Applications and system architectures that power our applications at scale.",
-    skills: ["React", "Next js", "Tanstack Query", "PostgreSQL", "Redis", "Nest js", "Microservices with nest", "API Design"],
+    skills: ["Vue","React", "Next js", "Springboot","Java","Tanstack Query", "PostgreSQL", "Redis", "Nest js", "Microservices with nest", "API Design"],
     image: "/nziza.png",
     social: {
       github: "https://github.com/Nziza-Prince",

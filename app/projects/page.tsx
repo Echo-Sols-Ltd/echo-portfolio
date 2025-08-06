@@ -115,9 +115,65 @@ const projects = [
     icon: Code,
     color: "from-indigo-500 to-purple-500",
   },
+  {
+  id: 7,
+  title: "VueShop",
+  description:
+    "A sleek e-commerce platform built with Vue.js, offering a seamless user experience and powerful admin tools.",
+  longDescription:
+    "VueShop is a modern online store built using Vue.js and Firebase. It includes features such as product filtering, shopping cart, user authentication, and real-time inventory management.",
+  image: "/placeholder.svg?height=300&width=500",
+  category: "Web",
+  technologies: ["Vue.js", "Firebase", "Tailwind CSS", "Pinia"],
+  status: "In Development",
+  teamSize: 3,
+  duration: "4 months",
+  timeline: "Q3 2025",
+  featured: true,
+  icon: require("lucide-react").ShoppingBag,
+  color: "from-green-500 to-teal-500",
+},
+{
+  id: 8,
+  title: "CampusConnect Java",
+  description:
+    "A student portal for university management systems developed using Java and Spring Boot.",
+  longDescription:
+    "Built with Java and Spring Boot, this system manages course registration, student records, grading, and internal communication. The goal is to streamline administrative tasks and improve student engagement.",
+  image: "/placeholder.svg?height=300&width=500",
+  category: "Education",
+  technologies: ["Java", "Spring Boot", "MySQL", "Thymeleaf"],
+  status: "Planning",
+  teamSize: 4,
+  duration: "6 months",
+  timeline: "Q4 2025",
+  featured: true,
+  icon: require("lucide-react").GraduationCap,
+  color: "from-yellow-500 to-orange-500",
+},
+{
+  id: 9,
+  title: "AgroSensor",
+  description:
+    "An embedded system for monitoring soil moisture and temperature to optimize agricultural productivity.",
+  longDescription:
+    "AgroSensor uses microcontrollers and sensors to gather real-time data from the field. It features wireless data transmission, power-efficient operation, and integration with a mobile dashboard for farmers.",
+  image: "/placeholder.svg?height=300&width=500",
+  category: "Embedded",
+  technologies: ["C++", "Arduino", "LoRa", "Sensors", "IoT"],
+  status: "Concept",
+  teamSize: 2,
+  duration: "5 months",
+  timeline: "2026",
+  featured: true,
+  icon: require("lucide-react").Cpu,
+  color: "from-lime-500 to-green-600",
+},
+
+
 ]
 
-const categories = ["All", "Social Impact", "AI/ML", "Security", "Mobile", "Design", "DevOps"]
+const categories = ["All", "Social Impact", "AI/ML", "Security", "Mobile", "Design", "DevOps", "Web", "Education", "Embedded"]
 
 const ProjectsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All")
