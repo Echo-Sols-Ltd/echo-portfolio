@@ -181,7 +181,7 @@ const ProjectsPage = () => {
                 { end: 6, label: "Projects Planned", delay: 400 },
                 { end: 6, label: "Categories", delay: 600 },
                 { end: 0, label: "Users (Coming Soon!)", delay: 800 },
-                { end: 25, suffix: "+", label: "Technologies Used", delay: 1000 },
+                { end: 25, suffix: "+", label: "Technologies Used", delay: 900 },
               ].map((stat, index) => (
                 <ScrollAnimation key={index} animation="scale-up" delay={stat.delay}>
                   <div className="p-6 glass-effect rounded-xl card-hover">

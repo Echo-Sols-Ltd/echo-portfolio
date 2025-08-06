@@ -76,11 +76,11 @@ export default function AboutPage() {
               </div>
             </ScrollAnimation>
 
-            <ScrollAnimation animation="fade-left" delay={400}>
+            <ScrollAnimation animation="fade-left" delay={300}>
               <div className="glass-effect p-8 rounded-2xl animate-pulse-glow">
                 <h3 className="text-2xl font-bold mb-6">Our Journey</h3>
                 <div className="space-y-4">
-                  <ScrollAnimation animation="scale-up" delay={600}>
+                  <ScrollAnimation animation="scale-up" delay={500}>
                     <div className="flex items-start space-x-4">
                       <div className="bg-primary/20 p-2 rounded-lg">
                         <Lightbulb className="h-5 w-5 text-primary" />
@@ -93,7 +93,7 @@ export default function AboutPage() {
                       </div>
                     </div>
                   </ScrollAnimation>
-                  <ScrollAnimation animation="scale-up" delay={800}>
+                  <ScrollAnimation animation="scale-up" delay={700}>
                     <div className="flex items-start space-x-4">
                       <div className="bg-blue-500/20 p-2 rounded-lg">
                         <Code className="h-5 w-5 text-blue-500" />
@@ -104,7 +104,7 @@ export default function AboutPage() {
                       </div>
                     </div>
                   </ScrollAnimation>
-                  <ScrollAnimation animation="scale-up" delay={1000}>
+                  <ScrollAnimation animation="scale-up" delay={800}>
                     <div className="flex items-start space-x-4">
                       <div className="bg-emerald-500/20 p-2 rounded-lg">
                         <Rocket className="h-5 w-5 text-emerald-500" />
@@ -117,7 +117,7 @@ export default function AboutPage() {
                       </div>
                     </div>
                   </ScrollAnimation>
-                  <ScrollAnimation animation="scale-up" delay={1200}>
+                  <ScrollAnimation animation="scale-up" delay={1000}>
                     <div className="flex items-start space-x-4">
                       <div className="bg-purple-500/20 p-2 rounded-lg">
                         <Globe className="h-5 w-5 text-purple-500" />
@@ -235,7 +235,7 @@ export default function AboutPage() {
                 title: "Excellence",
                 desc: "We strive for excellence in every project, from the smallest feature to the largest system architecture.",
                 color: "purple-500",
-                delay: 1000,
+                delay: 900,
               },
             ].map((value, index) => (
               <ScrollAnimation key={index} animation="fade-up" delay={value.delay}>

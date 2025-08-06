@@ -188,7 +188,7 @@ export default function TeamPage() {
                 { end: 8, label: "Team Members", icon: Users, color: "primary", delay: 400 },
                 { end: 5, label: "Specializations", icon: Target, color: "blue-500", delay: 600 },
                 { end: 50, suffix: "+", label: "Technologies", icon: Code, color: "emerald-500", delay: 800 },
-                { end: 100, suffix: "%", label: "Passion Driven", icon: Heart, color: "purple-500", delay: 1000 },
+                { end: 100, suffix: "%", label: "Passion Driven", icon: Heart, color: "purple-500", delay: 900 },
               ].map((stat, index) => (
                 <ScrollAnimation key={index} animation="scale-up" delay={stat.delay}>
                   <div className="p-6 glass-effect rounded-xl card-hover">
@@ -232,7 +232,7 @@ export default function TeamPage() {
               { icon: Database, label: "Backend", color: "emerald-500", delay: 700 },
               { icon: Globe, label: "Frontend", color: "orange-500", delay: 800 },
               { icon: Smartphone, label: "Mobile", color: "pink-500", delay: 900 },
-              { icon: Users, label: "DevOps", color: "cyan-500", delay: 1000 },
+              { icon: Users, label: "DevOps", color: "cyan-500", delay: 900 },
             ].map((spec, index) => (
               <ScrollAnimation key={index} animation="scale-up" delay={spec.delay}>
                 <div className="text-center p-4 card-hover">
