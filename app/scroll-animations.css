@@ -1,0 +1,178 @@
+/* Scroll Animation Base Styles */
+.scroll-animation {
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fade Up Animation */
+.scroll-animation-fade-up {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.scroll-animation-fade-up.scroll-animation-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Down Animation */
+.scroll-animation-fade-down {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+
+.scroll-animation-fade-down.scroll-animation-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Left Animation */
+.scroll-animation-fade-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+.scroll-animation-fade-left.scroll-animation-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade Right Animation */
+.scroll-animation-fade-right {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+.scroll-animation-fade-right.scroll-animation-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale Up Animation */
+.scroll-animation-scale-up {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.scroll-animation-scale-up.scroll-animation-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Rotate In Animation */
+.scroll-animation-rotate-in {
+  opacity: 0;
+  transform: rotate(-10deg) scale(0.9);
+}
+
+.scroll-animation-rotate-in.scroll-animation-visible {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Slide Up Stagger Animation */
+.scroll-animation-slide-up-stagger {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.scroll-animation-slide-up-stagger.scroll-animation-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse Glow Animation */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Gradient Shift Animation */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Bounce In Animation */
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Typewriter Animation */
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid;
+  white-space: nowrap;
+  animation: typewriter 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}

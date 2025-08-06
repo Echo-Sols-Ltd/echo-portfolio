@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./scroll-animations.css";
 
 :root {
   --background: oklch(1 0 0);
@@ -229,4 +230,18 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary/80;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Performance optimizations */
+* {
+  will-change: auto;
+}
+
+.scroll-animation {
+  will-change: transform, opacity;
 }

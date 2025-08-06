@@ -128,13 +128,14 @@ export default function Hero() {
               <span>View Our Work</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link
-              href="/team"
-              className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold py-3 px-6 rounded-lg transition-all duration-300 backdrop-blur-sm bg-white/10 flex items-center space-x-2"
-            >
-              <Play className="h-4 w-4" />
-              <span>Meet the Team</span>
-            </Link>
+<Link
+  href="/team"
+  className="border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 backdrop-blur-sm bg-white/10 flex items-center space-x-2"
+>
+  <Play className="h-4 w-4" />
+  <span>Meet the Team</span>
+</Link>
+
           </div>
 
           {/* Slide Indicators - Positioned better for shorter section */}

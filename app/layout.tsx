@@ -17,11 +17,13 @@ export const metadata: Metadata = {
   title: "Lex Tech - We Build, Design, Secure, and Optimize Tech for Impact",
   description:
     "A dynamic team of 8 young tech enthusiasts specializing in AI/ML, cybersecurity, full-stack development, and social impact technology solutions.",
-    icons: {
-    icon: "/Lex.svg", // or "/favicon.png" or "/favicon.svg"
-  },
   keywords: "tech startup, AI, machine learning, cybersecurity, web development, social impact, technology consulting",
   authors: [{ name: "Lex Tech Team" }],
+  icons: {
+    icon: "/Lex.svg",
+    shortcut: "/Lex.svg",
+    apple: "/Lex.svg",
+  },
   openGraph: {
     title: "Lex Tech - Tech for Impact",
     description: "Building innovative technology solutions with a focus on AI, security, and social impact.",
