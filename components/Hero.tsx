@@ -102,7 +102,7 @@ export default function Hero() {
           {/* Stats - More compact */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 my-8 animate-slide-up">
             <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">8</div>
+              <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">13</div>
               <div className="text-white/80 font-medium text-sm">Team Members</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
@@ -110,7 +110,7 @@ export default function Hero() {
               <div className="text-white/80 font-medium text-sm">Projects Built</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">5</div>
+              <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">8</div>
               <div className="text-white/80 font-medium text-sm">Tech Stacks</div>
             </div>
             <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">

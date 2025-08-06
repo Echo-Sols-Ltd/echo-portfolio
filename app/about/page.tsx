@@ -88,7 +88,7 @@ export default function AboutPage() {
                       <div>
                         <h4 className="font-semibold">2023 - The Idea</h4>
                         <p className="text-sm text-muted-foreground">
-                          8 friends decide to change the world through code
+                          13 friends decide to change the world through code
                         </p>
                       </div>
                     </div>
@@ -336,7 +336,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { end: 8, suffix: "", label: "Team Members", icon: Users, color: "primary", delay: 400 },
+              { end: 13, suffix: "", label: "Team Members", icon: Users, color: "primary", delay: 400 },
               { end: 50, suffix: "+", label: "Projects Planned", icon: Code, color: "blue-500", delay: 600 },
               { end: 25, suffix: "+", label: "Technologies", icon: Globe, color: "emerald-500", delay: 800 },
               { end: 100, suffix: "%", label: "Passion Driven", icon: Heart, color: "purple-500", delay: 1000 },

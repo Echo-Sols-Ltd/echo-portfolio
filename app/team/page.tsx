@@ -231,7 +231,7 @@ export default function TeamPage() {
           </ScrollAnimation>
           <ScrollAnimation animation="fade-up" delay={400}>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              8 passionate individuals with diverse skills and a shared vision for technology that makes a difference.
+              13 passionate individuals with diverse skills and a shared vision for technology that makes a difference.
             </p>
           </ScrollAnimation>
         </div>
@@ -243,8 +243,8 @@ export default function TeamPage() {
           <div className="container-custom">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { end: 8, label: "Team Members", icon: Users, color: "primary", delay: 400 },
-                { end: 5, label: "Specializations", icon: Target, color: "blue-500", delay: 600 },
+                { end: 13  , label: "Team Members", icon: Users, color: "primary", delay: 400 },
+                { end: 8, label: "Specializations", icon: Target, color: "blue-500", delay: 600 },
                 { end: 50, suffix: "+", label: "Technologies", icon: Code, color: "emerald-500", delay: 800 },
                 { end: 100, suffix: "%", label: "Passion Driven", icon: Heart, color: "purple-500", delay: 900 },
               ].map((stat, index) => (

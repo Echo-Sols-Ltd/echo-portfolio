@@ -136,7 +136,7 @@ export default function Home() {
                   <div className="bg-primary/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Users className="h-8 w-8 text-primary" />
                   </div>
-                  <CounterAnimation end={8} className="text-4xl font-bold gradient-text mb-2" />
+                  <CounterAnimation end={13} className="text-4xl font-bold gradient-text mb-2" />
                   <div className="text-muted-foreground">Team Members</div>
                 </div>
               </ScrollAnimation>
