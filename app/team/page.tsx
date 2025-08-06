@@ -27,12 +27,26 @@ const teamMembers = [
     skills: ["Python", "TensorFlow", "PyTorch", "Computer Vision", "NLP", "MLOps"],
     image: "/placeholder.svg?height=400&width=400",
     social: {
-      github: "https://github.com/Joy-Euse",
+      // github: "https://github.com/Joy-Euse",
       // linkedin: "https://linkedin.com/in/maya-patel-ai",
       // email: "maya@lextech.dev",
     },
     expandedBio:
       "Prosper published research papers on computer vision and has experience building production ML systems. She's passionate about making AI accessible and ethical.",
+  },
+    {
+    name: "Amani Patrick",
+    role: "AI/ML Engineer",
+    bio: "Specializes in machine learning algorithms and building intelligent systems that solve real-world problems.",
+    skills: ["Python", "TensorFlow", "PyTorch", "Computer Vision", "NLP", "MLOps"],
+    image: "/placeholder.svg?height=400&width=400",
+    social: {
+      // github: "https://github.com/Joy-Euse",
+      // linkedin: "https://linkedin.com/in/maya-patel-ai",
+      // email: "maya@lextech.dev",
+    },
+    expandedBio:
+      "Patrick published research papers on computer vision and has experience building production ML systems. She's passionate about making AI accessible and ethical.",
   },
   {
     name: "Niyitanga Honore",
@@ -48,6 +62,21 @@ const teamMembers = [
     },
     expandedBio:
       "Niyitanga is a certified ethical hacker with experience in both offensive and defensive security. They've helped numerous startups implement security best practices and have spoken at several cybersecurity conferences.",
+  },
+    {
+    name: "Niyubahwe Annick",
+    role: "Cybersecurity Expert",
+    bio: "Focuses on application security, penetration testing, and building secure systems from the ground up.",
+    skills: ["Penetration Testing", "OWASP", "Cryptography", "Security Auditing", "Incident Response", "Compliance"],
+    image: "/placeholder.svg?height=400&width=400",
+    social: {
+      github: "https://github.com/annick975",
+      linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/",
+      // twitter: "https://twitter.com/jordansec",
+      email: "niyubahwe.annick975@gmail.com",
+    },
+    expandedBio:
+      "Niyubahwe is a certified ethical hacker with experience in both offensive and defensive security. They've helped numerous startups implement security best practices and have spoken at several cybersecurity conferences.",
   },
   {
     name: "Irakoze Dianah",
@@ -135,6 +164,35 @@ const teamMembers = [
     expandedBio:
       "Nziza specializes in building high-performance fullstack systems and has experience with distributed architectures. They're passionate about database optimization and have contributed to several open-source projects.",
   },
+      {
+    name: "Manene Junior",
+    role: "Devops & Mobile",
+    bio: "Builds robust Mobile Applications and system architectures that power our applications at scale.",
+    skills: ["React native","Docker","Flutter","Kubernetes","Cloud Computing"],
+    image: "/manene.jpeg",
+    social: {
+      github: "https://github.com/sm-junior0",
+      linkedin: "https://www.linkedin.com/in/manenejunior/",
+      email: "juniormanene@gmail.com",
+    },
+    expandedBio:
+      "Juior specializes in building high-performance Mobile Applications and has experience with distributed architectures. They're passionate about database optimization and have contributed to several open-source projects over a long time.",
+  },
+  {
+    name: "Chance Regine",
+    role: "UI/UX Designer",
+    bio: "Creates beautiful, intuitive user experiences that bridge the gap between design and functionality.",
+    skills: ["Figma", "Adobe Creative Suite", "User Research", "Prototyping", "Design Systems", "Accessibility"],
+    image: "/hope.jpeg",
+    social: {
+      // linkedin: "https://linkedin.com/in/sam-rodriguez-design",
+      // twitter: "https://www.instagram.com/h._esther_/",
+      // email: "sam@lextech.dev",
+    },
+    expandedBio:
+      "Regine has a background in graphic design and human-computer interaction. They're passionate about creating inclusive designs and have worked with nonprofits to improve digital accessibility for underserved communities.",
+  },
+
 ]
 
 export default function TeamPage() {
