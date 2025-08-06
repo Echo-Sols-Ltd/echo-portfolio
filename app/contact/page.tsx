@@ -152,9 +152,9 @@ const handleSubmit = async (e: React.FormEvent) => {
               <h3 className="text-xl font-bold mb-4">Visit Us</h3>
               <p className="text-muted-foreground mb-4">Our workspace</p>
               <address className="text-primary not-italic">
-                Ku gasoko 
+                Kigali-Rwanda
                 <br />
-                Nyabihu, Rwanda
+                Kicukiro, Rwanda
               </address>
             </div>
 </ScrollAnimation>
