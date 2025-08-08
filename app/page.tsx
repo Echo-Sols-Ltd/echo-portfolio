@@ -336,21 +336,21 @@ export default function Home() {
                 delay:400
               },
               {
-                name: "Irakoze Dianah",
-                role: "UI/UX Designer/Frontend",
-                avatar: "dianah.jpeg",
+                name: "Nyumbayire Laurent",
+                role: "Co-Founder",
+                avatar: "laurent.jpeg",
                 delay:600
               },
               {
-                name: "Hirwa Jovin",
-                role: "Backend/Embedded expert",
-                avatar: "/jvn.jpeg",
+                name: "Manene Junior",
+                role: "Chief Of Operations",
+                avatar: "/manene.jpeg",
                 delay:700
               },
               {
-                name: "Ishimwe Liana",
-                role: "Frontend Developer",
-                avatar: "/liana.jpeg",
+                name: "Uhirwe Esther Hope",
+                role: "Chief Marketing Officer",
+                avatar: "/hope.jpeg",
                 delay:800
               },
             ].map((member, index) => (
