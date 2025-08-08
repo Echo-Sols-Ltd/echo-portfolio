@@ -336,7 +336,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { end: 13, suffix: "", label: "Team Members", icon: Users, color: "primary", delay: 400 },
+              { end: 10, suffix: "+", label: "Team Members", icon: Users, color: "primary", delay: 400 },
               { end: 50, suffix: "+", label: "Projects Planned", icon: Code, color: "blue-500", delay: 600 },
               { end: 25, suffix: "+", label: "Technologies", icon: Globe, color: "emerald-500", delay: 800 },
               { end: 100, suffix: "%", label: "Passion Driven", icon: Heart, color: "purple-500", delay: 1000 },
