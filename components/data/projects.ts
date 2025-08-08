@@ -1,0 +1,167 @@
+import { Heart, Brain, Shield, Zap, Palette, Code, ShoppingBag, GraduationCap, Cpu } from "lucide-react";
+
+export const categories = ["All", "Social Impact", "AI/ML", "Security", "Mobile", "Design", "DevOps", "Web", "Education", "Embedded"];
+
+export const projects = [
+  {
+    id: 1,
+    title: "Charity Connect",
+    description:
+      "A transparent donation platform connecting donors with verified charities using blockchain technology for complete transparency and impact tracking.",
+    longDescription:
+      "Built with React, Node.js, and Ethereum smart contracts, this platform will revolutionize charitable giving by providing real-time tracking of donations and their impact. Features will include donor profiles, charity verification, impact reporting, and automated fund distribution.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "Social Impact",
+    technologies: ["React", "Node.js", "Blockchain", "Ethereum", "MongoDB", "Express"],
+    status: "In Development",
+    teamSize: 4,
+    duration: "6 months",
+    timeline: "Q2 2024",
+    featured: true,
+    icon: Heart,
+    color: "from-emerald-500 to-blue-500",
+  },
+  {
+    id: 2,
+    title: "SmartAnalytics",
+    description:
+      "Machine learning platform for predictive analytics and automated business insights with real-time data processing capabilities.",
+    longDescription:
+      "An enterprise-grade analytics platform that will use advanced ML algorithms to provide predictive insights. Features will include automated data pipeline, custom model training, real-time dashboards, and API integration for seamless business intelligence.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "AI/ML",
+    technologies: ["Python", "TensorFlow", "FastAPI", "PostgreSQL", "Redis", "Docker"],
+    status: "Planning",
+    teamSize: 3,
+    duration: "8 months",
+    timeline: "Q3 2024",
+    featured: true,
+    icon: Brain,
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    id: 3,
+    title: "SecureVault",
+    description:
+      "Enterprise-grade password manager with zero-knowledge encryption and biometric authentication for maximum security.",
+    longDescription:
+      "A comprehensive security solution featuring end-to-end encryption, biometric authentication, secure sharing, and enterprise-grade compliance. Will be built with Rust for maximum performance and security, with cross-platform support.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "Security",
+    technologies: ["Rust", "WebAssembly", "React", "Tauri", "SQLite", "Cryptography"],
+    status: "Concept",
+    teamSize: 2,
+    duration: "10 months",
+    timeline: "Q4 2024",
+    featured: true,
+    icon: Shield,
+    color: "from-red-500 to-orange-500",
+  },
+  {
+    id: 4,
+    title: "EcoTracker",
+    description:
+      "Mobile app for tracking personal carbon footprint with gamification elements and community challenges.",
+    longDescription:
+      "A React Native application that will help users track their environmental impact through daily activities. Features will include carbon footprint calculation, eco-friendly suggestions, community challenges, and progress visualization.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "Mobile",
+    technologies: ["React Native", "Node.js", "MongoDB", "Firebase", "Maps API"],
+    status: "Concept",
+    teamSize: 3,
+    duration: "4 months",
+    timeline: "2025",
+    featured: false,
+    icon: Zap,
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    id: 5,
+    title: "DesignSystem Pro",
+    description:
+      "Comprehensive design system and component library for rapid prototyping and consistent UI development.",
+    longDescription:
+      "A complete design system built with React and TypeScript, featuring customizable components, design tokens, accessibility guidelines, and comprehensive documentation. Will include Figma integration and automated testing.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "Design",
+    technologies: ["React", "TypeScript", "Storybook", "Figma API", "CSS-in-JS"],
+    status: "Planning",
+    teamSize: 2,
+    duration: "5 months",
+    timeline: "2025",
+    featured: false,
+    icon: Palette,
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    id: 6,
+    title: "CloudOps Dashboard",
+    description: "Real-time infrastructure monitoring and management platform with automated scaling and alerting.",
+    longDescription:
+      "A comprehensive DevOps platform for monitoring cloud infrastructure, managing deployments, and automating scaling decisions. Features will include real-time metrics, custom alerting, cost optimization, and multi-cloud support.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "DevOps",
+    technologies: ["Go", "Kubernetes", "Prometheus", "Grafana", "AWS", "Terraform"],
+    status: "Concept",
+    teamSize: 2,
+    duration: "7 months",
+    timeline: "2025",
+    featured: false,
+    icon: Code,
+    color: "from-indigo-500 to-purple-500",
+  },
+  {
+    id: 7,
+    title: "VueShop",
+    description:
+      "A sleek e-commerce platform built with Vue.js, offering a seamless user experience and powerful admin tools.",
+    longDescription:
+      "VueShop is a modern online store built using Vue.js and Firebase. It includes features such as product filtering, shopping cart, user authentication, and real-time inventory management.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "Web",
+    technologies: ["Vue.js", "Firebase", "Tailwind CSS", "Pinia"],
+    status: "In Development",
+    teamSize: 3,
+    duration: "4 months",
+    timeline: "Q3 2025",
+    featured: true,
+    icon: ShoppingBag,
+    color: "from-green-500 to-teal-500",
+  },
+  {
+    id: 8,
+    title: "CampusConnect Java",
+    description:
+      "A student portal for university management systems developed using Java and Spring Boot.",
+    longDescription:
+      "Built with Java and Spring Boot, this system manages course registration, student records, grading, and internal communication. The goal is to streamline administrative tasks and improve student engagement.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "Education",
+    technologies: ["Java", "Spring Boot", "MySQL", "Thymeleaf"],
+    status: "Planning",
+    teamSize: 4,
+    duration: "6 months",
+    timeline: "Q4 2025",
+    featured: true,
+    icon: GraduationCap,
+    color: "from-yellow-500 to-orange-500",
+  },
+  {
+    id: 9,
+    title: "AgroSensor",
+    description:
+      "An embedded system for monitoring soil moisture and temperature to optimize agricultural productivity.",
+    longDescription:
+      "AgroSensor uses microcontrollers and sensors to gather real-time data from the field. It features wireless data transmission, power-efficient operation, and integration with a mobile dashboard for farmers.",
+    image: "/placeholder.svg?height=300&width=500",
+    category: "Embedded",
+    technologies: ["C++", "Arduino", "LoRa", "Sensors", "IoT"],
+    status: "Concept",
+    teamSize: 2,
+    duration: "5 months",
+    timeline: "2026",
+    featured: true,
+    icon: Cpu,
+    color: "from-lime-500 to-green-600",
+  },
+];

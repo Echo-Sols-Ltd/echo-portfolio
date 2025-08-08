@@ -23,26 +23,26 @@ export default function TeamPage() {
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div
           className="absolute top-24 left-12 w-18 h-18 bg-primary/10 rounded-full animate-float"
-          style={{ animationDelay: "0s" }}
+          style={{ animationDelay: "0.1s" }}
         ></div>
         <div
           className="absolute top-48 right-16 w-14 h-14 bg-blue-500/10 rounded-full animate-float"
-          style={{ animationDelay: "2.5s" }}
+          style={{ animationDelay: "0.15s" }}
         ></div>
         <div
           className="absolute bottom-32 left-24 w-22 h-22 bg-emerald-500/10 rounded-full animate-float"
-          style={{ animationDelay: "4s" }}
+          style={{ animationDelay: "0.12s" }}
         ></div>
         <div
           className="absolute bottom-64 right-32 w-16 h-16 bg-purple-500/10 rounded-full animate-float"
-          style={{ animationDelay: "1s" }}
+          style={{ animationDelay: "0.18s" }}
         ></div>
       </div>
 
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-primary/5 via-blue-500/5 to-emerald-500/5 relative z-10">
         <div className="container-custom text-center py-20">
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-6">
               Meet Our{" "}
               <span className="gradient-text animate-gradient-shift bg-gradient-to-r from-primary via-blue-500 to-emerald-500 bg-clip-text text-transparent">
@@ -50,7 +50,7 @@ export default function TeamPage() {
               </span>
             </h1>
           </ScrollAnimation>
-          <ScrollAnimation animation="fade-up" delay={400}>
+          <ScrollAnimation animation="fade-up" delay={150}>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               10+ passionate individuals with diverse skills and a shared vision
               for technology that makes a difference.
@@ -71,14 +71,14 @@ export default function TeamPage() {
                   label: "Team Members",
                   icon: Users,
                   color: "primary",
-                  delay: 400,
+                  delay: 120,
                 },
                 {
                   end: 8,
                   label: "Specializations",
                   icon: Target,
                   color: "blue-500",
-                  delay: 600,
+                  delay: 140,
                 },
                 {
                   end: 50,
@@ -86,7 +86,7 @@ export default function TeamPage() {
                   label: "Technologies",
                   icon: Code,
                   color: "emerald-500",
-                  delay: 800,
+                  delay: 160,
                 },
                 {
                   end: 100,
@@ -94,7 +94,7 @@ export default function TeamPage() {
                   label: "Passion Driven",
                   icon: Heart,
                   color: "purple-500",
-                  delay: 900,
+                  delay: 180,
                 },
               ].map((stat, index) => (
                 <ScrollAnimation
@@ -125,7 +125,7 @@ export default function TeamPage() {
       {/* Team Specializations */}
       <section className="section-padding relative z-10">
         <div className="container-custom">
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
                 Our Expertise
@@ -139,29 +139,29 @@ export default function TeamPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-16">
             {[
-              { icon: Code, label: "Full-Stack", color: "primary", delay: 300 },
-              { icon: Brain, label: "AI/ML", color: "purple-500", delay: 400 },
-              { icon: Shield, label: "Security", color: "red-500", delay: 500 },
-              { icon: Palette, label: "Design", color: "blue-500", delay: 600 },
+              { icon: Code, label: "Full-Stack", color: "primary", delay: 120 },
+              { icon: Brain, label: "AI/ML", color: "purple-500", delay: 140 },
+              { icon: Shield, label: "Security", color: "red-500", delay: 160 },
+              { icon: Palette, label: "Design", color: "blue-500", delay: 180 },
               {
                 icon: Database,
                 label: "Backend",
                 color: "emerald-500",
-                delay: 700,
+                delay: 120,
               },
               {
                 icon: Globe,
                 label: "Frontend",
                 color: "orange-500",
-                delay: 800,
+                delay: 140,
               },
               {
                 icon: Smartphone,
                 label: "Mobile",
                 color: "pink-500",
-                delay: 900,
+                delay: 160,
               },
-              { icon: Users, label: "DevOps", color: "cyan-500", delay: 900 },
+              { icon: Users, label: "DevOps", color: "cyan-500", delay: 180 },
             ].map((spec, index) => (
               <ScrollAnimation
                 key={index}
@@ -185,7 +185,7 @@ export default function TeamPage() {
       {/* Executive Team */}
       <section className="section-padding bg-card/50 relative z-10">
         <div className="container-custom">
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
                 Our Team
@@ -198,7 +198,7 @@ export default function TeamPage() {
           </ScrollAnimation>
 
           {/* Core Members */}
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold font-space-grotesk mb-2">
                 Core Team
@@ -214,7 +214,7 @@ export default function TeamPage() {
               <ScrollAnimation
                 key={member.name}
                 animation="fade-up"
-                delay={300 + index * 100}
+                delay={120 + index * 50}
               >
                 <TeamMember {...member} />
               </ScrollAnimation>
@@ -222,7 +222,7 @@ export default function TeamPage() {
           </div>
 
           {/* Dev Team */}
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold font-space-grotesk mb-2">
                 Development Team
@@ -238,7 +238,7 @@ export default function TeamPage() {
               <ScrollAnimation
                 key={member.name}
                 animation="fade-up"
-                delay={300 + index * 100}
+                delay={120 + index * 50}
               >
                 <TeamMember {...member} />
               </ScrollAnimation>
@@ -251,7 +251,7 @@ export default function TeamPage() {
       <ParallaxSection speed={0.2}>
         <section className="section-padding">
           <div className="container-custom">
-            <ScrollAnimation animation="fade-up" delay={200}>
+            <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
                   Our Culture
@@ -270,21 +270,21 @@ export default function TeamPage() {
                   title: "Collaborative",
                   desc: "We believe the best solutions come from diverse perspectives working together. Every voice matters and every idea is valued.",
                   color: "primary",
-                  delay: 400,
+                  delay: 120,
                 },
                 {
                   icon: Brain,
                   title: "Learning-Focused",
                   desc: "Technology evolves rapidly, and so do we. We encourage continuous learning and provide resources for professional growth.",
                   color: "blue-500",
-                  delay: 600,
+                  delay: 140,
                 },
                 {
                   icon: Globe,
                   title: "Impact-Driven",
                   desc: "We're not just building software; we're creating solutions that make a real difference in people's lives.",
                   color: "emerald-500",
-                  delay: 800,
+                  delay: 160,
                 },
               ].map((culture, index) => (
                 <ScrollAnimation
@@ -311,19 +311,19 @@ export default function TeamPage() {
       </ParallaxSection>
 
       {/* Join Us CTA */}
-      <ScrollAnimation animation="fade-up" delay={200}>
+      <ScrollAnimation animation="fade-up" delay={100}>
         <section className="section-padding bg-gradient-to-r from-primary/10 via-blue-500/10 to-emerald-500/10 relative z-10">
           <div className="container-custom text-center py-10">
             <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6 ">
               Want to Join Our Team?
             </h2>
-            <ScrollAnimation animation="fade-up" delay={400}>
+            <ScrollAnimation animation="fade-up" delay={120}>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 We're always looking for passionate individuals who share our
                 vision for technology that makes a difference.
               </p>
             </ScrollAnimation>
-            <ScrollAnimation animation="scale-up" delay={600}>
+            <ScrollAnimation animation="scale-up" delay={140}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="mailto:careers@lextech.dev"

@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Mail, Phone, MapPin, Send, CheckCircle, Github, Twitter, Linkedin } from "lucide-react"
 import ScrollAnimation from "@/components/ScrollAnimation"
@@ -21,44 +20,43 @@ export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
-  setIsLoading(true)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
 
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
 
-    if (res.ok) {
-      setIsSubmitted(true)
-      setTimeout(() => {
-        setIsSubmitted(false)
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          project: "",
-          budget: "",
-          message: "",
-          newsletter: false,
-        })
-      }, 3000)
-    } else {
-      console.error("Failed to send message")
-            setError("Failed to send message. Please try again or email us directly.")
+      if (res.ok) {
+        setIsSubmitted(true)
+        setTimeout(() => {
+          setIsSubmitted(false)
+          setFormData({
+            name: "",
+            email: "",
+            company: "",
+            project: "",
+            budget: "",
+            message: "",
+            newsletter: false,
+          })
+        }, 3000)
+      } else {
+        console.error("Failed to send message")
+        setError("Failed to send message. Please try again or email us directly.")
+      }
+    } catch (err) {
+      console.error("Error submitting form", err)
     }
-  } catch (err) {
-    console.error("Error submitting form", err)
+
+    setIsLoading(false)
   }
-
-  setIsLoading(false)
-}
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -69,32 +67,31 @@ const handleSubmit = async (e: React.FormEvent) => {
   }
 
   return (
-
     <div className="pt-20">
       {/* Floating Elements Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div
           className="absolute top-32 left-20 w-18 h-18 bg-primary/10 rounded-full animate-float"
-          style={{ animationDelay: "0s" }}
+          style={{ animationDelay: "0.1s" }}
         ></div>
         <div
           className="absolute top-64 right-16 w-14 h-14 bg-blue-500/10 rounded-full animate-float"
-          style={{ animationDelay: "3s" }}
+          style={{ animationDelay: "0.15s" }}
         ></div>
         <div
           className="absolute bottom-48 left-24 w-20 h-20 bg-emerald-500/10 rounded-full animate-float"
-          style={{ animationDelay: "1.5s" }}
+          style={{ animationDelay: "0.12s" }}
         ></div>
         <div
           className="absolute bottom-24 right-32 w-16 h-16 bg-purple-500/10 rounded-full animate-float"
-          style={{ animationDelay: "4.5s" }}
+          style={{ animationDelay: "0.18s" }}
         ></div>
       </div>
 
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-primary/5 via-blue-500/5 to-emerald-500/5 relative z-10">
         <div className="container-custom text-center py-20">
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-6">
               Let's{" "}
               <span className="gradient-text animate-gradient-shift bg-gradient-to-r from-primary via-blue-500 to-emerald-500 bg-clip-text text-transparent">
@@ -102,7 +99,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               </span>
             </h1>
           </ScrollAnimation>
-          <ScrollAnimation animation="fade-up" delay={400}>
+          <ScrollAnimation animation="fade-up" delay={150}>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               Ready to build something amazing together? We'd love to hear about your project and discuss how we can
               help bring your vision to life.
@@ -113,62 +110,59 @@ const handleSubmit = async (e: React.FormEvent) => {
 
       {/* Contact Methods */}
       <ParallaxSection speed={0.3}>
+        <section className="section-padding bg-card/50">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <ScrollAnimation animation="scale-up" delay={120}>
+                <div className="glass-effect p-8 rounded-xl text-center card-hover">
+                  <div className="bg-primary/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <Mail className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">Email Us</h3>
+                  <p className="text-muted-foreground mb-4">Drop us a line anytime</p>
+                  <a href="mailto:iamshemaleandre@gmail.com" className="text-primary hover:text-primary/80 font-medium">
+                    iamshemaleandre@gmail.com
+                  </a>
+                </div>
+              </ScrollAnimation>
 
-      <section className="section-padding bg-card/50">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <ScrollAnimation animation="scale-up" delay={400}>
-            <div className="glass-effect p-8 rounded-xl text-center card-hover">
-              <div className="bg-primary/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                <Mail className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Email Us</h3>
-              <p className="text-muted-foreground mb-4">Drop us a line anytime</p>
-              <a href="mailto:iamshemaleandre@gmail.com" className="text-primary hover:text-primary/80 font-medium">
-                  iamshemaleandre@gmail.com
-              </a>
+              <ScrollAnimation animation="scale-up" delay={140}>
+                <div className="glass-effect p-8 rounded-xl text-center card-hover">
+                  <div className="bg-blue-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <Phone className="h-8 w-8 text-blue-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">Call Us</h3>
+                  <p className="text-muted-foreground mb-4">Mon-Fri 9AM-6PM PST</p>
+                  <a href="tel:+250780837136" className="text-primary hover:text-primary/80 font-medium">
+                    +250 (780) 837-136
+                  </a>
+                </div>
+              </ScrollAnimation>
+
+              <ScrollAnimation animation="scale-up" delay={160}>
+                <div className="glass-effect p-8 rounded-xl text-center card-hover">
+                  <div className="bg-emerald-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <MapPin className="h-8 w-8 text-emerald-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">Visit Us</h3>
+                  <p className="text-muted-foreground mb-4">Our workspace</p>
+                  <address className="text-primary not-italic">
+                    Kigali-Rwanda
+                    <br />
+                    Kicukiro, Rwanda
+                  </address>
+                </div>
+              </ScrollAnimation>
             </div>
-            </ScrollAnimation>
-
-<ScrollAnimation animation="scale-up" delay={600}>
-            <div className="glass-effect p-8 rounded-xl text-center card-hover">
-              <div className="bg-blue-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                <Phone className="h-8 w-8 text-blue-500" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Call Us</h3>
-              <p className="text-muted-foreground mb-4">Mon-Fri 9AM-6PM PST</p>
-              <a href="tel:+250780837136" className="text-primary hover:text-primary/80 font-medium">
-                +250 (780) 837-136
-              </a>
-            </div>
-            </ScrollAnimation>
-
-<ScrollAnimation animation="scale-up" delay={800}>
-
-            <div className="glass-effect p-8 rounded-xl text-center card-hover">
-              <div className="bg-emerald-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                <MapPin className="h-8 w-8 text-emerald-500" />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Visit Us</h3>
-              <p className="text-muted-foreground mb-4">Our workspace</p>
-              <address className="text-primary not-italic">
-                Kigali-Rwanda
-                <br />
-                Kicukiro, Rwanda
-              </address>
-            </div>
-</ScrollAnimation>
-
           </div>
-        </div>
-      </section>
+        </section>
       </ParallaxSection>
 
-           {/* Contact Form */}
+      {/* Contact Form */}
       <section className="section-padding relative z-10">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <ScrollAnimation animation="fade-right" delay={200}>
+            <ScrollAnimation animation="fade-right" delay={100}>
               <div>
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Start Your Project</h2>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
@@ -177,7 +171,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </p>
 
                 <div className="space-y-6">
-                  <ScrollAnimation animation="fade-up" delay={400}>
+                  <ScrollAnimation animation="fade-up" delay={120}>
                     <div>
                       <h3 className="text-xl font-semibold mb-3">What We Can Help With</h3>
                       <ul className="space-y-2 text-muted-foreground">
@@ -191,7 +185,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     </div>
                   </ScrollAnimation>
 
-                  <ScrollAnimation animation="fade-up" delay={600}>
+                  <ScrollAnimation animation="fade-up" delay={140}>
                     <div>
                       <h3 className="text-xl font-semibold mb-3">Our Process</h3>
                       <div className="space-y-3">
@@ -233,10 +227,10 @@ const handleSubmit = async (e: React.FormEvent) => {
               </div>
             </ScrollAnimation>
 
-            <ScrollAnimation animation="fade-left" delay={400}>
+            <ScrollAnimation animation="fade-left" delay={120}>
               <div className="glass-effect p-8 rounded-2xl animate-pulse-glow">
                 {isSubmitted ? (
-                  <ScrollAnimation animation="scale-up" delay={200}>
+                  <ScrollAnimation animation="scale-up" delay={100}>
                     <div className="text-center py-12">
                       <div className="bg-emerald-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center animate-bounce-in">
                         <CheckCircle className="h-8 w-8 text-emerald-500" />
@@ -250,7 +244,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {error && (
-                      <ScrollAnimation animation="fade-up" delay={200}>
+                      <ScrollAnimation animation="fade-up" delay={100}>
                         <div className="bg-red-500/20 border border-red-500/30 text-red-600 dark:text-red-400 p-4 rounded-lg">
                           {error}
                         </div>
@@ -258,7 +252,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     )}
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <ScrollAnimation animation="fade-up" delay={200}>
+                      <ScrollAnimation animation="fade-up" delay={120}>
                         <div>
                           <label htmlFor="name" className="block text-sm font-medium mb-2">
                             Full Name *
@@ -276,7 +270,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         </div>
                       </ScrollAnimation>
 
-                      <ScrollAnimation animation="fade-up" delay={300}>
+                      <ScrollAnimation animation="fade-up" delay={140}>
                         <div>
                           <label htmlFor="email" className="block text-sm font-medium mb-2">
                             Email Address *
@@ -296,7 +290,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <ScrollAnimation animation="fade-up" delay={400}>
+                      <ScrollAnimation animation="fade-up" delay={160}>
                         <div>
                           <label htmlFor="company" className="block text-sm font-medium mb-2">
                             Company
@@ -313,7 +307,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                         </div>
                       </ScrollAnimation>
 
-                      <ScrollAnimation animation="fade-up" delay={500}>
+                      <ScrollAnimation animation="fade-up" delay={180}>
                         <div>
                           <label htmlFor="budget" className="block text-sm font-medium mb-2">
                             Budget Range
@@ -336,7 +330,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       </ScrollAnimation>
                     </div>
 
-                    <ScrollAnimation animation="fade-up" delay={600}>
+                    <ScrollAnimation animation="fade-up" delay={120}>
                       <div>
                         <label htmlFor="project" className="block text-sm font-medium mb-2">
                           Project Type *
@@ -361,7 +355,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       </div>
                     </ScrollAnimation>
 
-                    <ScrollAnimation animation="fade-up" delay={700}>
+                    <ScrollAnimation animation="fade-up" delay={140}>
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium mb-2">
                           Project Details *
@@ -379,7 +373,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       </div>
                     </ScrollAnimation>
 
-                    <ScrollAnimation animation="fade-up" delay={800}>
+                    <ScrollAnimation animation="fade-up" delay={160}>
                       <div className="flex items-start space-x-3">
                         <input
                           type="checkbox"
@@ -395,7 +389,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                       </div>
                     </ScrollAnimation>
 
-                    <ScrollAnimation animation="scale-up" delay={900}>
+                    <ScrollAnimation animation="scale-up" delay={180}>
                       <button
                         type="submit"
                         disabled={isLoading}
@@ -422,64 +416,48 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
       </section>
 
-
       {/* Social Links & Newsletter */}
       <ParallaxSection speed={0.2}>
-      <section className="section-padding bg-card/50">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <ScrollAnimation animation="fade-right" delay={200}>
+        <section className="section-padding bg-card/50">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <ScrollAnimation animation="fade-right" delay={100}>
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-6">Follow Our Journey</h2>
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Stay updated with our latest projects, tech insights, and behind-the-scenes content.
+                  </p>
+                  <div className="flex space-x-6">
+                    <a
+                      href="https://github.com/Lex-Tech-company"
+                      className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                      aria-label="GitHub"
+                    >
+                      <Github className="h-6 w-6" />
+                    </a>
+                  </div>
+                </div>
+              </ScrollAnimation>
 
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold font-space-grotesk mb-6">Follow Our Journey</h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Stay updated with our latest projects, tech insights, and behind-the-scenes content.
-              </p>
-              <div className="flex space-x-6">
-                <a
-                  href="https://github.com/Lex-Tech-company"
-                  className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-6 w-6" />
-                </a>
-                {/* <a
-                  href="https://twitter.com/lextech"
-                  className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-6 w-6" />
-                </a> 
-                <a
-                  href="https://linkedin.com/company/lextech"
-                  className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-6 w-6" />
-                </a> */}
-              </div>
+              <ScrollAnimation animation="fade-left" delay={120}>
+                <div className="glass-effect p-8 rounded-xl">
+                  <h3 className="text-2xl font-bold mb-4">Tech Newsletter</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Get monthly insights on the latest tech trends, project updates, and development tips from our team.
+                  </p>
+                  <div className="flex gap-3">
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="flex-1 p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                    />
+                    <button className="btn-primary px-6">Subscribe</button>
+                  </div>
+                </div>
+              </ScrollAnimation>
             </div>
-            </ScrollAnimation>
-<ScrollAnimation animation="fade-left" delay={400}>
-
-            <div className="glass-effect p-8 rounded-xl">
-              <h3 className="text-2xl font-bold mb-4">Tech Newsletter</h3>
-              <p className="text-muted-foreground mb-6">
-                Get monthly insights on the latest tech trends, project updates, and development tips from our team.
-              </p>
-              <div className="flex gap-3">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-                />
-                <button className="btn-primary px-6">Subscribe</button>
-              </div>
-            </div>
-</ScrollAnimation>
           </div>
-        </div>
-      </section>
+        </section>
       </ParallaxSection>
     </div>
   )

@@ -1,179 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Calendar, Users, Code, Brain, Shield, Palette, Heart, Zap } from "lucide-react"
+import { Calendar, Users } from "lucide-react"
 import Link from "next/link"
 import ScrollAnimation from "@/components/ScrollAnimation"
 import ParallaxSection from "@/components/ParallaxSection"
 import CounterAnimation from "@/components/CounterAnimation"
-
-const projects = [
-  {
-    id: 1,
-    title: "Charity Connect",
-    description:
-      "A transparent donation platform connecting donors with verified charities using blockchain technology for complete transparency and impact tracking.",
-    longDescription:
-      "Built with React, Node.js, and Ethereum smart contracts, this platform will revolutionize charitable giving by providing real-time tracking of donations and their impact. Features will include donor profiles, charity verification, impact reporting, and automated fund distribution.",
-    image: "/placeholder.svg?height=300&width=500",
-    category: "Social Impact",
-    technologies: ["React", "Node.js", "Blockchain", "Ethereum", "MongoDB", "Express"],
-    status: "In Development",
-    teamSize: 4,
-    duration: "6 months",
-    timeline: "Q2 2024",
-    featured: true,
-    icon: Heart,
-    color: "from-emerald-500 to-blue-500",
-  },
-  {
-    id: 2,
-    title: "SmartAnalytics",
-    description:
-      "Machine learning platform for predictive analytics and automated business insights with real-time data processing capabilities.",
-    longDescription:
-      "An enterprise-grade analytics platform that will use advanced ML algorithms to provide predictive insights. Features will include automated data pipeline, custom model training, real-time dashboards, and API integration for seamless business intelligence.",
-    image: "/placeholder.svg?height=300&width=500",
-    category: "AI/ML",
-    technologies: ["Python", "TensorFlow", "FastAPI", "PostgreSQL", "Redis", "Docker"],
-    status: "Planning",
-    teamSize: 3,
-    duration: "8 months",
-    timeline: "Q3 2024",
-    featured: true,
-    icon: Brain,
-    color: "from-purple-500 to-pink-500",
-  },
-  {
-    id: 3,
-    title: "SecureVault",
-    description:
-      "Enterprise-grade password manager with zero-knowledge encryption and biometric authentication for maximum security.",
-    longDescription:
-      "A comprehensive security solution featuring end-to-end encryption, biometric authentication, secure sharing, and enterprise-grade compliance. Will be built with Rust for maximum performance and security, with cross-platform support.",
-    image: "/placeholder.svg?height=300&width=500",
-    category: "Security",
-    technologies: ["Rust", "WebAssembly", "React", "Tauri", "SQLite", "Cryptography"],
-    status: "Concept",
-    teamSize: 2,
-    duration: "10 months",
-    timeline: "Q4 2024",
-    featured: true,
-    icon: Shield,
-    color: "from-red-500 to-orange-500",
-  },
-  {
-    id: 4,
-    title: "EcoTracker",
-    description:
-      "Mobile app for tracking personal carbon footprint with gamification elements and community challenges.",
-    longDescription:
-      "A React Native application that will help users track their environmental impact through daily activities. Features will include carbon footprint calculation, eco-friendly suggestions, community challenges, and progress visualization.",
-    image: "/placeholder.svg?height=300&width=500",
-    category: "Mobile",
-    technologies: ["React Native", "Node.js", "MongoDB", "Firebase", "Maps API"],
-    status: "Concept",
-    teamSize: 3,
-    duration: "4 months",
-    timeline: "2025",
-    featured: false,
-    icon: Zap,
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    id: 5,
-    title: "DesignSystem Pro",
-    description:
-      "Comprehensive design system and component library for rapid prototyping and consistent UI development.",
-    longDescription:
-      "A complete design system built with React and TypeScript, featuring customizable components, design tokens, accessibility guidelines, and comprehensive documentation. Will include Figma integration and automated testing.",
-    image: "/placeholder.svg?height=300&width=500",
-    category: "Design",
-    technologies: ["React", "TypeScript", "Storybook", "Figma API", "CSS-in-JS"],
-    status: "Planning",
-    teamSize: 2,
-    duration: "5 months",
-    timeline: "2025",
-    featured: false,
-    icon: Palette,
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    id: 6,
-    title: "CloudOps Dashboard",
-    description: "Real-time infrastructure monitoring and management platform with automated scaling and alerting.",
-    longDescription:
-      "A comprehensive DevOps platform for monitoring cloud infrastructure, managing deployments, and automating scaling decisions. Features will include real-time metrics, custom alerting, cost optimization, and multi-cloud support.",
-    image: "/placeholder.svg?height=300&width=500",
-    category: "DevOps",
-    technologies: ["Go", "Kubernetes", "Prometheus", "Grafana", "AWS", "Terraform"],
-    status: "Concept",
-    teamSize: 2,
-    duration: "7 months",
-    timeline: "2025",
-    featured: false,
-    icon: Code,
-    color: "from-indigo-500 to-purple-500",
-  },
-  {
-  id: 7,
-  title: "VueShop",
-  description:
-    "A sleek e-commerce platform built with Vue.js, offering a seamless user experience and powerful admin tools.",
-  longDescription:
-    "VueShop is a modern online store built using Vue.js and Firebase. It includes features such as product filtering, shopping cart, user authentication, and real-time inventory management.",
-  image: "/placeholder.svg?height=300&width=500",
-  category: "Web",
-  technologies: ["Vue.js", "Firebase", "Tailwind CSS", "Pinia"],
-  status: "In Development",
-  teamSize: 3,
-  duration: "4 months",
-  timeline: "Q3 2025",
-  featured: true,
-  icon: require("lucide-react").ShoppingBag,
-  color: "from-green-500 to-teal-500",
-},
-{
-  id: 8,
-  title: "CampusConnect Java",
-  description:
-    "A student portal for university management systems developed using Java and Spring Boot.",
-  longDescription:
-    "Built with Java and Spring Boot, this system manages course registration, student records, grading, and internal communication. The goal is to streamline administrative tasks and improve student engagement.",
-  image: "/placeholder.svg?height=300&width=500",
-  category: "Education",
-  technologies: ["Java", "Spring Boot", "MySQL", "Thymeleaf"],
-  status: "Planning",
-  teamSize: 4,
-  duration: "6 months",
-  timeline: "Q4 2025",
-  featured: true,
-  icon: require("lucide-react").GraduationCap,
-  color: "from-yellow-500 to-orange-500",
-},
-{
-  id: 9,
-  title: "AgroSensor",
-  description:
-    "An embedded system for monitoring soil moisture and temperature to optimize agricultural productivity.",
-  longDescription:
-    "AgroSensor uses microcontrollers and sensors to gather real-time data from the field. It features wireless data transmission, power-efficient operation, and integration with a mobile dashboard for farmers.",
-  image: "/placeholder.svg?height=300&width=500",
-  category: "Embedded",
-  technologies: ["C++", "Arduino", "LoRa", "Sensors", "IoT"],
-  status: "Concept",
-  teamSize: 2,
-  duration: "5 months",
-  timeline: "2026",
-  featured: true,
-  icon: require("lucide-react").Cpu,
-  color: "from-lime-500 to-green-600",
-},
-
-
-]
-
-const categories = ["All", "Social Impact", "AI/ML", "Security", "Mobile", "Design", "DevOps", "Web", "Education", "Embedded"]
+import { projects, categories } from "@/components/data/projects"
 
 const ProjectsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All")
@@ -193,26 +26,26 @@ const ProjectsPage = () => {
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div
           className="absolute top-28 left-8 w-20 h-20 bg-primary/10 rounded-full animate-float"
-          style={{ animationDelay: "0s" }}
+          style={{ animationDelay: "0.1s" }}
         ></div>
         <div
           className="absolute top-52 right-12 w-16 h-16 bg-blue-500/10 rounded-full animate-float"
-          style={{ animationDelay: "2s" }}
+          style={{ animationDelay: "0.15s" }}
         ></div>
         <div
           className="absolute bottom-36 left-16 w-24 h-24 bg-emerald-500/10 rounded-full animate-float"
-          style={{ animationDelay: "4s" }}
+          style={{ animationDelay: "0.12s" }}
         ></div>
         <div
           className="absolute bottom-16 right-8 w-12 h-12 bg-purple-500/10 rounded-full animate-float"
-          style={{ animationDelay: "1s" }}
+          style={{ animationDelay: "0.18s" }}
         ></div>
       </div>
 
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-primary/5 via-blue-500/5 to-emerald-500/5 relative z-10">
         <div className="container-custom text-center py-20 mb-10">
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-6">
               Our{" "}
               <span className="gradient-text animate-gradient-shift bg-gradient-to-r from-primary via-blue-500 to-emerald-500 bg-clip-text text-transparent">
@@ -220,7 +53,7 @@ const ProjectsPage = () => {
               </span>
             </h1>
           </ScrollAnimation>
-          <ScrollAnimation animation="fade-up" delay={400}>
+          <ScrollAnimation animation="fade-up" delay={150}>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
               Exciting projects in development spanning AI, security, social impact, and cutting-edge web experiences.
             </p>
@@ -234,10 +67,10 @@ const ProjectsPage = () => {
           <div className="container-custom">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
-                { end: 6, label: "Projects Planned", delay: 400 },
-                { end: 6, label: "Categories", delay: 600 },
-                { end: 0, label: "Users (Coming Soon!)", delay: 800 },
-                { end: 25, suffix: "+", label: "Technologies Used", delay: 900 },
+                { end: projects.length, label: "Projects Planned", delay: 120 },
+                { end: categories.length - 1, label: "Categories", delay: 140 },
+                { end: 0, label: "Users (Coming Soon!)", delay: 160 },
+                { end: 25, suffix: "+", label: "Technologies Used", delay: 180 },
               ].map((stat, index) => (
                 <ScrollAnimation key={index} animation="scale-up" delay={stat.delay}>
                   <div className="p-6 glass-effect rounded-xl card-hover">
@@ -258,7 +91,7 @@ const ProjectsPage = () => {
       {/* Featured Projects */}
       <section className="section-padding relative z-10">
         <div className="container-custom">
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Projects in Development</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -271,7 +104,7 @@ const ProjectsPage = () => {
             {projects
               .filter((project) => project.featured)
               .map((project, index) => (
-                <ScrollAnimation key={project.id} animation="scale-up" delay={400 + index * 200}>
+                <ScrollAnimation key={project.id} animation="scale-up" delay={120 + index * 100}>
                   <div className="glass-effect rounded-xl overflow-hidden card-hover group">
                     <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -316,7 +149,7 @@ const ProjectsPage = () => {
                           <span
                             key={techIndex}
                             className="text-xs bg-muted px-2 py-1 rounded animate-bounce-in"
-                            style={{ animationDelay: `${techIndex * 100}ms` }}
+                            style={{ animationDelay: `${techIndex * 50}ms` }}
                           >
                             {tech}
                           </span>
@@ -353,7 +186,7 @@ const ProjectsPage = () => {
       <ParallaxSection speed={0.2}>
         <section className="section-padding bg-card/50">
           <div className="container-custom">
-            <ScrollAnimation animation="fade-up" delay={200}>
+            <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Our Roadmap</h2>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -363,7 +196,7 @@ const ProjectsPage = () => {
             </ScrollAnimation>
 
             {/* Category Filter */}
-            <ScrollAnimation animation="fade-up" delay={400}>
+            <ScrollAnimation animation="fade-up" delay={120}>
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 {categories.map((category, index) => (
                   <button
@@ -374,7 +207,7 @@ const ProjectsPage = () => {
                         ? "bg-primary text-primary-foreground shadow-lg"
                         : "bg-muted hover:bg-primary hover:text-primary-foreground"
                     }`}
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     {category}
                   </button>
@@ -384,7 +217,7 @@ const ProjectsPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
-                <ScrollAnimation key={project.id} animation="fade-up" delay={200 + index * 100}>
+                <ScrollAnimation key={project.id} animation="fade-up" delay={120 + index * 50}>
                   <div className="glass-effect rounded-xl overflow-hidden card-hover group">
                     <div className={`h-40 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -452,7 +285,7 @@ const ProjectsPage = () => {
             </div>
 
             {filteredProjects.length === 0 && (
-              <ScrollAnimation animation="fade-up" delay={400}>
+              <ScrollAnimation animation="fade-up" delay={120}>
                 <div className="text-center py-12">
                   <p className="text-muted-foreground text-lg">No projects found in this category.</p>
                   <button
@@ -469,18 +302,18 @@ const ProjectsPage = () => {
       </ParallaxSection>
 
       {/* CTA Section */}
-      <ScrollAnimation animation="fade-up" delay={200}>
+      <ScrollAnimation animation="fade-up" delay={100}>
         <section className="section-padding bg-gradient-to-r from-primary/10 via-blue-500/10 to-emerald-500/10 relative z-10">
           <div className="container-custom text-center py-6">
             <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
               Have a Project in Mind?
             </h2>
-            <ScrollAnimation animation="fade-up" delay={400}>
+            <ScrollAnimation animation="fade-up" delay={120}>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 We'd love to hear about your ideas and discuss how we can bring them to life with our expertise.
               </p>
             </ScrollAnimation>
-            <ScrollAnimation animation="scale-up" delay={600}>
+            <ScrollAnimation animation="scale-up" delay={140}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="btn-primary text-lg animate-bounce-in">
                   Start a Project

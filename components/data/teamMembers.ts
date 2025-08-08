@@ -23,15 +23,13 @@ export const coreMembers = [
 
   },
       {
-    name: "Manene Junior",
+    name: "Ntwali Viera",
     role: "Chief Of Operations",
 
-    image: "/manene.jpeg",
+    image: "/viera.jpeg",
     social: {
-      github: "https://github.com/sm-junior0",
-      linkedin: "https://www.linkedin.com/in/manenejunior/",
-
-      email: "juniormanene@gmail.com",
+      github: "https://github.com/vieira-klgwn/",
+      linkedin: "https://www.linkedin.com/in/ntwali-isimbi-vieira-2b1213302/",
     },
 
   },
@@ -43,6 +41,19 @@ export const coreMembers = [
     social: {
       github: "https://github.com/Uhirwe",
       ig: "https://www.instagram.com/esther_hope_/",
+
+    },
+  },
+        {
+    name: "Muneza Jean Dios",
+    role: "Chief Product Officer",
+
+    image: "/dios.jpeg",
+    social: {
+      github: "https://github.com/Uhirwe",
+      ig: "https://www.instagram.com/m_di.os/",
+      twitter:"https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
+      linkedin:"https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?"
 
     },
   },
@@ -80,7 +91,7 @@ export const devTeam = [
       "Rodin is the backbone of our applications, ensuring that data flows smoothly and securely. His expertise in backend technologies allows us to build scalable and efficient systems.",
   },
   {
-    name:"Nshimiyimane Ihirwe Patrick",
+    name:"Nshimiyimana Ihirwe Patrick",
     role:"UI/UX Designer",
     bio:"A UI/UX designer focused on creating user-friendly interfaces and enhancing user experiences.",
     skills: ["Figma", "Adobe XD", "Sketch", "User Research", "Prototyping"],
@@ -158,11 +169,12 @@ email:"nipcts3@gmail.com",
     role:"Cyber Security Specialist",
     bio:"A cyber security specialist focused on protecting our applications and data from threats.",
     skills: ["Network Security", "Penetration Testing", "Vulnerability Assessment", "Incident Response"],
-    image: "/irere.jpeg",
+    image: "/annick.jpeg",
     social:{
-        email:"irere2050@gmail.com",
-        github:"https://github.com/irere123",
-        linkedin:"https://linkedin.com/in/irere-emmanuel"
+        email:"niyubahwe.annick975@gmail.com",
+        github:"https://github.com/annick975",
+        ig:"https://www.instagram.com/@n_tannick975/",
+        linkedin:"linkedin.com/in/annick-niyubahwe-04898932a/"
     },
     extendedBio:
       "Anicke is dedicated to ensuring the security of our applications and data. Her expertise in cyber security helps us protect against threats and vulnerabilities, keeping our systems safe and secure."

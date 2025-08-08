@@ -14,19 +14,19 @@ export default function Home() {
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div
           className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full animate-float"
-          style={{ animationDelay: "0s" }}
+          style={{ animationDelay: "0.1s" }}
         ></div>
         <div
           className="absolute top-40 right-20 w-16 h-16 bg-blue-500/10 rounded-full animate-float"
-          style={{ animationDelay: "2s" }}
+          style={{ animationDelay: "0.15s" }}
         ></div>
         <div
           className="absolute bottom-40 left-20 w-24 h-24 bg-emerald-500/10 rounded-full animate-float"
-          style={{ animationDelay: "4s" }}
+          style={{ animationDelay: "0.12s" }}
         ></div>
         <div
           className="absolute bottom-20 right-10 w-12 h-12 bg-purple-500/10 rounded-full animate-float"
-          style={{ animationDelay: "1s" }}
+          style={{ animationDelay: "0.18s" }}
         ></div>
       </div>
 
@@ -34,7 +34,7 @@ export default function Home() {
       <section className="section-padding bg-card/50 relative z-10">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <ScrollAnimation animation="fade-right" delay={200}>
+            <ScrollAnimation animation="fade-right" delay={100}>
               <div>
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Who We Are</h2>
                 <p className="text-xl text-muted-foreground leading-relaxed mb-8">
@@ -43,7 +43,7 @@ export default function Home() {
                   matters.
                 </p>
                 <div className="space-y-4 mb-8">
-                  <ScrollAnimation animation="fade-up" delay={400}>
+                  <ScrollAnimation animation="fade-up" delay={120}>
                     <div className="flex items-center space-x-3">
                       <div className="bg-primary/20 p-2 rounded-lg animate-pulse-glow">
                         <Rocket className="h-5 w-5 text-primary" />
@@ -51,7 +51,7 @@ export default function Home() {
                       <span className="text-foreground">Innovation-first approach</span>
                     </div>
                   </ScrollAnimation>
-                  <ScrollAnimation animation="fade-up" delay={600}>
+                  <ScrollAnimation animation="fade-up" delay={140}>
                     <div className="flex items-center space-x-3">
                       <div className="bg-blue-500/20 p-2 rounded-lg">
                         <Users className="h-5 w-5 text-blue-500" />
@@ -59,7 +59,7 @@ export default function Home() {
                       <span className="text-foreground">Collaborative team culture</span>
                     </div>
                   </ScrollAnimation>
-                  <ScrollAnimation animation="fade-up" delay={700}>
+                  <ScrollAnimation animation="fade-up" delay={160}>
                     <div className="flex items-center space-x-3">
                       <div className="bg-emerald-500/20 p-2 rounded-lg">
                         <Heart className="h-5 w-5 text-emerald-500" />
@@ -68,7 +68,7 @@ export default function Home() {
                     </div>
                   </ScrollAnimation>
                 </div>
-                <ScrollAnimation animation="scale-up" delay={800}>
+                <ScrollAnimation animation="scale-up" delay={140}>
                   <Link href="/about" className="btn-primary inline-flex items-center space-x-2">
                     <span>Learn More</span>
                     <ArrowRight className="h-5 w-5" />
@@ -77,17 +77,17 @@ export default function Home() {
               </div>
             </ScrollAnimation>
 
-            <ScrollAnimation animation="fade-left" delay={400}>
+            <ScrollAnimation animation="fade-left" delay={120}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <ScrollAnimation animation="scale-up" delay={400}>
+                  <ScrollAnimation animation="scale-up" delay={140}>
                     <div className="glass-effect p-6 rounded-xl card-hover group">
-                      <Code className="h-8 w-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-300" />
+                      <Code className="h-8 w-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-200" />
                       <h3 className="font-semibold mb-2">Development</h3>
                       <p className="text-sm text-muted-foreground">Full-stack web & mobile applications</p>
                     </div>
                   </ScrollAnimation>
-                  <ScrollAnimation animation="scale-up" delay={600}>
+                  <ScrollAnimation animation="scale-up" delay={160}>
                     <div className="glass-effect p-6 rounded-xl card-hover group">
                       <Brain className="h-8 w-8 text-blue-500 mb-3 group-hover:scale-110 transition-transform duration-300" />
                       <h3 className="font-semibold mb-2">AI/ML</h3>
@@ -96,14 +96,14 @@ export default function Home() {
                   </ScrollAnimation>
                 </div>
                 <div className="space-y-4 mt-8">
-                  <ScrollAnimation animation="scale-up" delay={600}>
+                  <ScrollAnimation animation="scale-up" delay={140}>
                     <div className="glass-effect p-6 rounded-xl card-hover group">
                       <Palette className="h-8 w-8 text-emerald-500 mb-3 group-hover:scale-110 transition-transform duration-300" />
                       <h3 className="font-semibold mb-2">Design</h3>
                       <p className="text-sm text-muted-foreground">UI/UX & brand experiences</p>
                     </div>
                   </ScrollAnimation>
-                  <ScrollAnimation animation="scale-up" delay={800}>
+                  <ScrollAnimation animation="scale-up" delay={160}>
                     <div className="glass-effect p-6 rounded-xl card-hover group">
                       <Shield className="h-8 w-8 text-red-500 mb-3 group-hover:scale-110 transition-transform duration-300" />
                       <h3 className="font-semibold mb-2">Security</h3>
@@ -121,7 +121,7 @@ export default function Home() {
       <ParallaxSection speed={0.3}>
         <section className="section-padding bg-gradient-to-r from-primary/10 via-blue-500/10 to-emerald-500/10">
           <div className="container-custom">
-            <ScrollAnimation animation="fade-up" delay={200}>
+            <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Our Impact in Numbers</h2>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -131,7 +131,7 @@ export default function Home() {
             </ScrollAnimation>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <ScrollAnimation animation="scale-up" delay={400}>
+              <ScrollAnimation animation="scale-up" delay={120}>
                 <div className="text-center p-6 glass-effect rounded-xl card-hover">
                   <div className="bg-primary/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Users className="h-8 w-8 text-primary" />
@@ -141,7 +141,7 @@ export default function Home() {
                 </div>
               </ScrollAnimation>
 
-              <ScrollAnimation animation="scale-up" delay={600}>
+              <ScrollAnimation animation="scale-up" delay={140}>
                 <div className="text-center p-6 glass-effect rounded-xl card-hover">
                   <div className="bg-blue-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Code className="h-8 w-8 text-blue-500" />
@@ -151,7 +151,7 @@ export default function Home() {
                 </div>
               </ScrollAnimation>
 
-              <ScrollAnimation animation="scale-up" delay={700}>
+              <ScrollAnimation animation="scale-up" delay={160}>
                 <div className="text-center p-6 glass-effect rounded-xl card-hover">
                   <div className="bg-emerald-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Globe className="h-8 w-8 text-emerald-500" />
@@ -161,7 +161,7 @@ export default function Home() {
                 </div>
               </ScrollAnimation>
 
-              <ScrollAnimation animation="scale-up" delay={800}>
+              <ScrollAnimation animation="scale-up" delay={180}>
                 <div className="text-center p-6 glass-effect rounded-xl card-hover">
                   <div className="bg-purple-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                     <Star className="h-8 w-8 text-purple-500" />
@@ -178,7 +178,7 @@ export default function Home() {
       {/* Featured Projects Section */}
       <section className="section-padding relative z-10">
         <div className="container-custom">
-          <ScrollAnimation animation="fade-up" delay={200}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Projects Coming Soon</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -190,7 +190,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Charity Platform */}
-            <ScrollAnimation animation="fade-up" delay={400}>
+            <ScrollAnimation animation="fade-up" delay={120}>
               <div className="glass-effect rounded-xl overflow-hidden card-hover group">
                 <div className="h-48 bg-gradient-to-br from-emerald-500 to-blue-500 relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -227,7 +227,7 @@ export default function Home() {
             </ScrollAnimation>
 
             {/* AI Project */}
-            <ScrollAnimation animation="fade-up" delay={600}>
+            <ScrollAnimation animation="fade-up" delay={140}>
               <div className="glass-effect rounded-xl overflow-hidden card-hover group">
                 <div className="h-48 bg-gradient-to-br from-purple-500 to-pink-500 relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -261,7 +261,7 @@ export default function Home() {
             </ScrollAnimation>
 
             {/* Security Project */}
-            <ScrollAnimation animation="fade-up" delay={800}>
+            <ScrollAnimation animation="fade-up" delay={160}>
               <div className="glass-effect rounded-xl overflow-hidden card-hover group">
                 <div className="h-48 bg-gradient-to-br from-red-500 to-orange-500 relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -295,7 +295,7 @@ export default function Home() {
             </ScrollAnimation>
           </div>
 
-          <ScrollAnimation animation="scale-up" delay={700}>
+          <ScrollAnimation animation="scale-up" delay={100}>
             <div className="text-center mt-12">
               <div className="glass-effect p-8 rounded-xl max-w-2xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">Want to Work With Us?</h3>
@@ -317,7 +317,7 @@ export default function Home() {
       <ParallaxSection speed={0.2}>
         <section className="section-padding bg-card/50">
           <div className="container-custom">
-            <ScrollAnimation animation="fade-up" delay={200}>
+            <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Meet Our Team</h2>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -329,31 +329,31 @@ export default function Home() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-              {
-                name: "Shema Leandre",
-                role: "CEO and Founder",
-                avatar: "/flicky.jpeg",
-                delay:400
-              },
-              {
-                name: "Nyumbayire Laurent",
-                role: "Co-Founder",
-                avatar: "laurent.jpeg",
-                delay:600
-              },
-              {
-                name: "Manene Junior",
-                role: "Chief Of Operations",
-                avatar: "/manene.jpeg",
-                delay:700
-              },
-              {
-                name: "Uhirwe Esther Hope",
-                role: "Chief Marketing Officer",
-                avatar: "/hope.jpeg",
-                delay:800
-              },
-            ].map((member, index) => (
+                {
+                  name: "Shema Leandre",
+                  role: "CEO and Founder",
+                  avatar: "/flicky.jpeg",
+                  delay: 120
+                },
+                {
+                  name: "Nyumbayire Laurent",
+                  role: "Co-Founder",
+                  avatar: "laurent.jpeg",
+                  delay: 140
+                },
+                {
+                  name: "Ntwali Viera",
+                  role: "Chief Of Operations",
+                  avatar: "/viera.jpeg",
+                  delay: 160
+                },
+                {
+                  name: "Uhirwe Esther Hope",
+                  role: "Chief Marketing Officer",
+                  avatar: "/hope.jpeg",
+                  delay: 180
+                },
+              ].map((member, index) => (
                 <ScrollAnimation key={index} animation="scale-up" delay={member.delay}>
                   <div className="text-center group">
                     <div className="w-20 h-20 rounded-full overflow-hidden mb-4 mx-auto group-hover:scale-110 transition-transform duration-300 ring-4 ring-primary/20 animate-pulse-glow">
@@ -370,7 +370,7 @@ export default function Home() {
               ))}
             </div>
 
-            <ScrollAnimation animation="fade-up" delay={1200}>
+            <ScrollAnimation animation="fade-up" delay={120}>
               <div className="text-center mt-12">
                 <Link href="/team" className="btn-primary inline-flex items-center space-x-2">
                   <span>Meet Everyone</span>
@@ -383,18 +383,18 @@ export default function Home() {
       </ParallaxSection>
 
       {/* CTA Section */}
-      <ScrollAnimation animation="fade-up" delay={200}>
+      <ScrollAnimation animation="fade-up" delay={100}>
         <section className="section-padding bg-gradient-to-r from-primary/10 via-blue-500/10 to-emerald-500/10 relative z-10">
           <div className="container-custom text-center">
             <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6 py-10">
               Ready to Build Something Amazing?
             </h2>
-            <ScrollAnimation animation="fade-up" delay={400}>
+            <ScrollAnimation animation="fade-up" delay={120}>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Whether you have a project in mind or just want to chat about technology, we'd love to hear from you.
               </p>
             </ScrollAnimation>
-            <ScrollAnimation animation="scale-up" delay={600}>
+            <ScrollAnimation animation="scale-up" delay={140}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact" className="btn-primary text-lg animate-bounce-in">
                   Start a Project
