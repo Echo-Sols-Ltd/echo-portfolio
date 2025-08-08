@@ -9,6 +9,8 @@ import {
   ChevronDown,
   ChevronUp,
   Instagram,
+  Facebook,
+  Globe,
 } from "lucide-react";
 
 interface BaseTeamMember {
@@ -21,6 +23,8 @@ interface BaseTeamMember {
     twitter?: string;
     email?: string;
     ig?: string;
+    facebook?: string;
+    website?: string;
   };
 }
 
@@ -148,6 +152,26 @@ export default function TeamMember(props: TeamMemberProps) {
               className="text-muted-foreground hover:text-primary transition-colors duration-300"
             >
               <Instagram className="h-5 w-5" />
+            </a>
+          )}
+          {props.social.facebook && (
+            <a
+              href={props.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            >
+              <Facebook className="h-5 w-5" />
+            </a>
+          )}
+          {props.social.website && (
+            <a
+              href={props.social.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            >
+              <Globe className="h-5 w-5" />
             </a>
           )}
         </div>

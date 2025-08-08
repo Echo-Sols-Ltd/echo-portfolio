@@ -1,3 +1,5 @@
+"use client";
+
 import TeamMember from "@/components/TeamMember";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
@@ -13,10 +15,63 @@ import {
   Globe,
   Heart,
   Target,
+  Filter,
 } from "lucide-react";
 import { coreMembers, devTeam } from "../../components/data/teamMembers";
+import { useState, useMemo } from "react";
+
+// Role mapping function
+const categorizeTeamMember = (role: string) => {
+  const categories = [];
+  const roleUpper = role.toUpperCase();
+  
+  if (roleUpper.includes('3D')) categories.push('3D Modeling');
+  if (roleUpper.includes('UI/UX') || roleUpper.includes('DESIGNER')) categories.push('UI/UX Designer');
+  if (roleUpper.includes('FRONTEND')) categories.push('Frontend');
+  if (roleUpper.includes('BACKEND')) categories.push('Backend');
+  if (roleUpper.includes('FULL STACK') || roleUpper.includes('FULLSTACK')) categories.push('FullStack');
+  if (roleUpper.includes('CYBER') || roleUpper.includes('SECURITY')) categories.push('Cybersecurity');
+  if (roleUpper.includes('MOBILE')) categories.push('Mobile');
+  if (roleUpper.includes('AI') || roleUpper.includes('ML') || roleUpper.includes('MACHINE LEARNING')) categories.push('AI/ML Specialist');
+  if (roleUpper.includes('EMBEDDED')) categories.push('Embedded Systems');
+  
+  return categories;
+};
 
 export default function TeamPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>('3D Modeling');
+  
+  const categories = [
+    { name: '3D Modeling', icon: Palette, color: 'purple-500', bgColor: 'bg-purple-500' },
+    { name: 'UI/UX Designer', icon: Palette, color: 'blue-500', bgColor: 'bg-blue-500' },
+    { name: 'Frontend', icon: Globe, color: 'orange-500', bgColor: 'bg-orange-500' },
+    { name: 'Backend', icon: Database, color: 'emerald-500', bgColor: 'bg-emerald-500' },
+    { name: 'FullStack', icon: Code, color: 'indigo-500', bgColor: 'bg-indigo-500' },
+    { name: 'Cybersecurity', icon: Shield, color: 'red-500', bgColor: 'bg-red-500' },
+    { name: 'Mobile', icon: Smartphone, color: 'pink-500', bgColor: 'bg-pink-500' },
+    { name: 'AI/ML Specialist', icon: Brain, color: 'violet-500', bgColor: 'bg-violet-500' },
+    { name: 'Embedded Systems', icon: Database, color: 'cyan-500', bgColor: 'bg-cyan-500' },
+  ];
+
+  const filteredDevTeam = useMemo(() => {
+    if (!selectedCategory) {
+      return devTeam;
+    }
+    
+    return devTeam.filter(member => {
+      const memberCategories = categorizeTeamMember(member.role);
+      return memberCategories.includes(selectedCategory);
+    });
+  }, [selectedCategory]);
+
+  const selectCategory = (category: string) => {
+    setSelectedCategory(prev => prev === category ? '' : category);
+  };
+
+  const clearFilters = () => {
+    setSelectedCategory('');
+  };
+
   return (
     <div className="pt-20">
       {/* Floating Elements Background */}
@@ -137,7 +192,7 @@ export default function TeamPage() {
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-16 cursor-pointer">
             {[
               { icon: Code, label: "Full-Stack", color: "primary", delay: 120 },
               { icon: Brain, label: "AI/ML", color: "purple-500", delay: 140 },
@@ -191,7 +246,7 @@ export default function TeamPage() {
                 Our Team
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Meet the talented individuals who make Lex Tech's vision a
+                Meet the talented individuals who make Echo Solutions's vision a
                 reality.
               </p>
             </div>
@@ -221,6 +276,45 @@ export default function TeamPage() {
             ))}
           </div>
 
+          {/* Filter Section */}
+          <ScrollAnimation animation="fade-up" delay={100}>
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold font-space-grotesk mb-4">
+                Filter by Role
+              </h3>
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                {categories.map((category) => (
+                  <button
+                    key={category.name}
+                    onClick={() => selectCategory(category.name)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 ease-in-out flex items-center gap-2 transform hover:scale-105 ${
+                      selectedCategory === category.name
+                        ? `${category.bgColor} text-white shadow-lg shadow-${category.color}/25 scale-105 ring-2 ring-white/20`
+                        : 'bg-card/50 text-muted-foreground hover:bg-card/80 hover:text-foreground hover:shadow-md'
+                    }`}
+                  >
+                    <category.icon className="h-4 w-4" />
+                    {category.name}
+                  </button>
+                ))}
+              </div>
+              {selectedCategory && (
+                <div className="flex justify-center items-center gap-4">
+                  <span className="text-sm text-muted-foreground">
+                    Filtering by: <span className="font-semibold text-foreground">{selectedCategory}</span>
+                  </span>
+                  <button
+                    onClick={clearFilters}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300 flex items-center gap-2 hover:scale-105"
+                  >
+                    <Filter className="h-4 w-4" />
+                    Clear Filter
+                  </button>
+                </div>
+              )}
+            </div>
+          </ScrollAnimation>
+
           {/* Dev Team */}
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
@@ -229,20 +323,52 @@ export default function TeamPage() {
               </h3>
               <p className="text-muted-foreground">
                 Engineers turning ideas into reality.
+                {selectedCategory && (
+                  <span className="block text-sm mt-1 font-medium">
+                    Showing {filteredDevTeam.length} of {devTeam.length} members
+                  </span>
+                )}
               </p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {devTeam.map((member, index) => (
-              <ScrollAnimation
-                key={member.name}
-                animation="fade-up"
-                delay={120 + index * 50}
-              >
-                <TeamMember {...member} />
+          <div className="transition-all duration-700 ease-in-out">
+            {filteredDevTeam.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 transition-all duration-500">
+                {filteredDevTeam.map((member, index) => (
+                  <ScrollAnimation
+                    key={`${member.name}-${selectedCategory}`}
+                    animation="fade-up"
+                    delay={50 + index * 30}
+                  >
+                    <div className="transform transition-all duration-300 hover:scale-105">
+                      <TeamMember {...member} />
+                    </div>
+                  </ScrollAnimation>
+                ))}
+              </div>
+            ) : selectedCategory ? (
+              <ScrollAnimation animation="fade-up" delay={100}>
+                <div className="text-center py-20">
+                  <div className="animate-pulse mb-6">
+                    <Filter className="h-20 w-20 text-muted-foreground/30 mx-auto mb-4" />
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-3">No {selectedCategory} specialists found</h3>
+                  <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                    We don't currently have any team members specializing in {selectedCategory}. 
+                    Try exploring other categories or view all team members.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <button
+                      onClick={clearFilters}
+                      className="btn-primary"
+                    >
+                      View All Team Members
+                    </button>
+                  </div>
+                </div>
               </ScrollAnimation>
-            ))}
+            ) : null}
           </div>
         </div>
       </section>

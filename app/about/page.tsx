@@ -17,7 +17,7 @@ export default function AboutPage() {
         <div className="container-custom text-center py-20">
           <ScrollAnimation animation="fade-up" delay={150}>
             <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-6">
-              About <span className="gradient-text animate-gradient-shift bg-gradient-to-r from-primary via-blue-500 to-emerald-500 bg-clip-text text-transparent">Lex Tech</span>
+              About <span className="gradient-text animate-gradient-shift bg-gradient-to-r from-primary via-blue-500 to-emerald-500 bg-clip-text text-transparent">Echo Solutions</span>
             </h1>
           </ScrollAnimation>
           <ScrollAnimation animation="fade-up" delay={180}>
@@ -42,7 +42,7 @@ export default function AboutPage() {
                     <p>What began as late-night coding sessions...</p>
                   </ScrollAnimation>
                   <ScrollAnimation animation="fade-up" delay={140}>
-                    <p>Today, Lex Tech represents our commitment...</p>
+                    <p>Today, Echo Solutions represents our commitment...</p>
                   </ScrollAnimation>
                 </div>
               </div>

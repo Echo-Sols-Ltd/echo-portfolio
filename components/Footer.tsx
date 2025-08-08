@@ -15,33 +15,28 @@ export default function Footer() {
             <div className="rounded-lg bg-white p-1 group-hover:scale-110 transition-transform duration-300">
               <Image src="/Lex.svg" className="bg-contain" height={20} width={20} alt="Logo"/>
             </div>
-            <span className="text-2xl font-bold font-space-grotesk">Lex Tech</span>
+            <span className="text-2xl font-bold font-space-grotesk">Echo Solutions</span>
           </Link>
             <p className="text-muted-foreground leading-relaxed">
               Building innovative technology solutions with a focus on AI, security, and social impact.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/Lex-Tech-company"
+              target="bla"
+                href="https://github.com/VersaTech-Solutions"
                 className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
               </a>
               <a
-                href="https://x.com/shema_Leandre"
+              target="bla"
+                href="https://www.linkedin.com/company/echho-solutions"
                 className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              {/* <a
-                href="https://linkedin.com/company/lextech"
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                aria-label="LinkedIn"
+                aria-label="GitHub"
               >
                 <Linkedin className="h-5 w-5" />
-              </a> */}
+              </a>
             </div>
           </div>
 
@@ -86,10 +81,10 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary" />
                 <a
-                  href="mailto:iamshemaleandre@gmail.com"
+                  href="mailto:echhosolutions@yahho.com"
                   className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
-                   iamshemaleandre@gmail.com
+                   echhosolutions@yahho.com
                 </a>
               </div>
               <p className="text-muted-foreground text-sm">Ready to build something amazing together? Let's talk.</p>
@@ -99,7 +94,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-12 pt-8 text-center">
           <p className="text-muted-foreground">
-            © {currentYear} Lex Tech. All rights reserved.
+            © {currentYear} Echo Solutions. All rights reserved.
           </p>
         </div>
       </div>

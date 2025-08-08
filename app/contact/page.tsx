@@ -384,7 +384,7 @@ export default function ContactPage() {
                           className="mt-1 h-4 w-4 text-primary focus:ring-primary border-border rounded"
                         />
                         <label htmlFor="newsletter" className="text-sm text-muted-foreground">
-                          I'd like to receive updates about Lex Tech's latest projects and tech insights
+                          I'd like to receive updates about Echo Solutions's latest projects and tech insights
                         </label>
                       </div>
                     </ScrollAnimation>

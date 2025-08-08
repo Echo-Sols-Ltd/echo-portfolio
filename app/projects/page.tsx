@@ -104,7 +104,7 @@ const ProjectsPage = () => {
             {projects
               .filter((project) => project.featured)
               .map((project, index) => (
-                <ScrollAnimation key={project.id} animation="scale-up" delay={120 + index * 100}>
+                <ScrollAnimation key={project.id} animation="scale-up" delay={80 + index * 100}>
                   <div className="glass-effect rounded-xl overflow-hidden card-hover group">
                     <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -207,7 +207,7 @@ const ProjectsPage = () => {
                         ? "bg-primary text-primary-foreground shadow-lg"
                         : "bg-muted hover:bg-primary hover:text-primary-foreground"
                     }`}
-                    style={{ animationDelay: `${index * 50}ms` }}
+                    style={{ animationDelay: `${index * 30}ms` }}
                   >
                     {category}
                   </button>

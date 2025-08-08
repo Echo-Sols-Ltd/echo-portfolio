@@ -42,7 +42,7 @@ export default function Navbar() {
             <div className="rounded-lg bg-white p-1 group-hover:scale-110 transition-transform duration-300">
               <Image src="/Lex.svg" className="bg-contain" height={20} width={20} alt="Logo"/>
             </div>
-            <span className="text-2xl font-bold font-space-grotesk">Lex Tech</span>
+            <span className="text-2xl font-bold font-space-grotesk">Echo Solutions</span>
           </Link>
 
           {/* Desktop Navigation */}
