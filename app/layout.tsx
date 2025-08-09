@@ -5,6 +5,7 @@ import "./globals.css"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { ThemeProvider } from "@/components/ThemeProvider"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const spaceGrotesk = Space_Grotesk({
@@ -42,7 +43,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Navbar />
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen">{children}
+            <Analytics />
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
