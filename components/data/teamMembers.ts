@@ -169,8 +169,8 @@ email:"nipcts3@gmail.com",
   },
     {
     name:"Nziza Prince",
-    role:"Backend Developer, Full Stack Developer",
-    bio: "A full stack developer with expertise in both frontend and backend technologies, creating seamless web applications.",
+    role:"Backend Developer",
+    bio: "A backend developer with a focus on building secure and efficient server-side applications.",
     skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "GraphQL","SpringBoot","Microservices","React","Next.js"],
     image: "/nziza.png",
     social:{
