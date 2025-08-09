@@ -81,10 +81,10 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary" />
                 <a
-                  href="mailto:echosolutions@yahho.com"
+                  href="mailto:echosolutions@yahoo.com"
                   className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
-                   echosolutions@yahho.com
+                   echosolutions@yahoo.com
                 </a>
               </div>
               <p className="text-muted-foreground text-sm">Ready to build something amazing together? Let's talk.</p>
