@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Code2, Github, Twitter, Linkedin, Mail } from "lucide-react"
+import { Code2, Github, Twitter, Linkedin, Mail, Instagram } from "lucide-react"
 import Image from "next/image"
 
 export default function Footer() {
@@ -22,7 +22,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-              target="bla"
+              target="_blank"
                 href="https://github.com/VersaTech-Solutions"
                 className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 aria-label="GitHub"
@@ -30,12 +30,20 @@ export default function Footer() {
                 <Github className="h-5 w-5" />
               </a>
               <a
-              target="bla"
+              target="_blank"
                 href="https://www.linkedin.com/company/echho-solutions"
                 className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                aria-label="GitHub"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+              target="_blank"
+                href="https://www.instagram.com/echo_sols/"
+                className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -81,6 +89,7 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary" />
                 <a
+                target="_blank"
                   href="mailto:echosolutions@yahoo.com"
                   className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
