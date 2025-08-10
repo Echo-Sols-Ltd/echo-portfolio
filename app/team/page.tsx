@@ -40,6 +40,8 @@ const categorizeTeamMember = (role: string) => {
 
 export default function TeamPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('3D Modeling');
+  const [coreMembersShown, setCoreMembersShown] = useState<number>(8);
+  const [devTeamShown, setDevTeamShown] = useState<number>(8);
   
   const categories = [
     { name: '3D Modeling', icon: Palette, color: 'purple-500', bgColor: 'bg-purple-500' },
@@ -66,10 +68,29 @@ export default function TeamPage() {
 
   const selectCategory = (category: string) => {
     setSelectedCategory(prev => prev === category ? '' : category);
+    setDevTeamShown(8);
   };
 
   const clearFilters = () => {
     setSelectedCategory('');
+    setCoreMembersShown(8);
+    setDevTeamShown(8);
+  };
+
+  const showMoreCoreMembers = () => {
+    setCoreMembersShown(prev => Math.min(prev + 8, coreMembers.length));
+  };
+
+  const showLessCoreMembers = () => {
+    setCoreMembersShown(8);
+  };
+
+  const showMoreDevTeam = () => {
+    setDevTeamShown(prev => Math.min(prev + 8, filteredDevTeam.length));
+  };
+
+  const showLessDevTeam = () => {
+    setDevTeamShown(8);
   };
 
   return (
@@ -264,16 +285,41 @@ export default function TeamPage() {
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
-            {coreMembers.map((member, index) => (
-              <ScrollAnimation
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
+            {coreMembers.slice(0, coreMembersShown).map((member, index) => (
+              <div
                 key={member.name}
-                animation="fade-up"
-                delay={120 + index * 50}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <TeamMember {...member} />
-              </ScrollAnimation>
+              </div>
             ))}
+          </div>
+          
+          {/* Show More/Less Buttons for Core Members */}
+          <div className="text-center mb-16">
+            {coreMembers.length > coreMembersShown ? (
+              <button
+                onClick={showMoreCoreMembers}
+                className="btn-secondary inline-flex items-center gap-2"
+              >
+                Show {Math.min(8, coreMembers.length - coreMembersShown)} More
+                <span className="text-sm opacity-75">
+                  ({coreMembersShown} of {coreMembers.length})
+                </span>
+              </button>
+            ) : coreMembersShown > 8 ? (
+              <button
+                onClick={showLessCoreMembers}
+                className="btn-outline inline-flex items-center gap-2"
+              >
+                Show Less
+                <span className="text-sm opacity-75">
+                  (Showing all {coreMembers.length} members)
+                </span>
+              </button>
+            ) : null}
           </div>
 
           {/* Filter Section */}
@@ -334,19 +380,44 @@ export default function TeamPage() {
 
           <div className="transition-all duration-700 ease-in-out">
             {filteredDevTeam.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 transition-all duration-500">
-                {filteredDevTeam.map((member, index) => (
-                  <ScrollAnimation
-                    key={`${member.name}-${selectedCategory}`}
-                    animation="fade-up"
-                    delay={50 + index * 30}
-                  >
-                    <div className="transform transition-all duration-300 hover:scale-105">
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 transition-all duration-500">
+                  {filteredDevTeam.slice(0, devTeamShown).map((member, index) => (
+                    <div 
+                      key={`${member.name}-${selectedCategory}`}
+                      className="transform transition-all duration-300 hover:scale-105 animate-fade-in"
+                      style={{ animationDelay: `${index * 0.05}s` }}
+                    >
                       <TeamMember {...member} />
                     </div>
-                  </ScrollAnimation>
-                ))}
-              </div>
+                  ))}
+                </div>
+                
+                {/* Show More/Less Buttons for Development Team */}
+                <div className="text-center mt-8">
+                  {filteredDevTeam.length > devTeamShown ? (
+                    <button
+                      onClick={showMoreDevTeam}
+                      className="btn-secondary inline-flex items-center gap-2"
+                    >
+                      Show {Math.min(8, filteredDevTeam.length - devTeamShown)} More
+                      <span className="text-sm opacity-75">
+                        ({devTeamShown} of {filteredDevTeam.length})
+                      </span>
+                    </button>
+                  ) : devTeamShown > 8 ? (
+                    <button
+                      onClick={showLessDevTeam}
+                      className="btn-outline inline-flex items-center gap-2"
+                    >
+                      Show Less
+                      <span className="text-sm opacity-75">
+                        (Showing all {filteredDevTeam.length} members)
+                      </span>
+                    </button>
+                  ) : null}
+                </div>
+              </>
             ) : selectedCategory ? (
               <ScrollAnimation animation="fade-up" delay={100}>
                 <div className="text-center py-20">
