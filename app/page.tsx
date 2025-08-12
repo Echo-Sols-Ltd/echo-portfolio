@@ -1,189 +1,568 @@
-import Hero from "@/components/Hero"
-import ScrollAnimation from "@/components/ScrollAnimation"
-import ParallaxSection from "@/components/ParallaxSection"
-import CounterAnimation from "@/components/CounterAnimation"
-import Link from "next/link"
-import { ArrowRight, Code, Palette, Shield, Brain, Users, Rocket, Heart, Globe, Star } from "lucide-react"
-
+"use client";
+import Hero from "@/components/Hero";
+import ScrollAnimation from "@/components/ScrollAnimation";
+import ParallaxSection from "@/components/ParallaxSection";
+import CounterAnimation from "@/components/CounterAnimation";
+import Link from "next/link";
+import {
+  ArrowRight,
+  Code,
+  Palette,
+  Shield,
+  Brain,
+  Users,
+  Rocket,
+  Heart,
+  Globe,
+  Star,
+  Calendar,
+  ExternalLink,
+} from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import * as THREE from "three";
 export default function Home() {
+  // State and refs for Stats section star field
+  const statsStarRef = useRef<HTMLDivElement>(null);
+  const statsSceneRef = useRef<{
+    scene: THREE.Scene;
+    camera: THREE.PerspectiveCamera;
+    renderer: THREE.WebGLRenderer;
+    stars: THREE.Points;
+    brightStars: THREE.Points;
+    starGeometry: THREE.BufferGeometry;
+    brightStarGeometry: THREE.BufferGeometry;
+    starMaterial: THREE.PointsMaterial;
+    brightStarMaterial: THREE.PointsMaterial;
+  } | null>(null);
+  // State and refs for Team section star field
+  const teamStarRef = useRef<HTMLDivElement>(null);
+  const teamSceneRef = useRef<{
+    scene: THREE.Scene;
+    camera: THREE.PerspectiveCamera;
+    renderer: THREE.WebGLRenderer;
+    stars: THREE.Points;
+    brightStars: THREE.Points;
+    starGeometry: THREE.BufferGeometry;
+    brightStarGeometry: THREE.BufferGeometry;
+    starMaterial: THREE.PointsMaterial;
+    brightStarMaterial: THREE.PointsMaterial;
+  } | null>(null);
+  const animationIdRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(true);
+  // Create star texture for Three.js
+  const createStarTexture = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const context = canvas.getContext("2d");
+    if (!context) return null;
+    const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+    gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.5)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+    context.fillStyle = gradient;
+    context.beginPath();
+    context.arc(16, 16, 16, 0, Math.PI * 2);
+    context.fill();
+    return new THREE.CanvasTexture(canvas);
+  };
+  // Create star field function
+  const createStarField = (
+    mountRef: React.RefObject<HTMLDivElement | null>
+  ) => {
+    if (!mountRef.current) return null;
+    const container = mountRef.current;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      container.clientWidth / container.clientHeight,
+      0.1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance",
+    });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    if (renderer.domElement) {
+      try {
+        container.appendChild(renderer.domElement);
+      } catch (error) {
+        console.error("Failed to append Three.js canvas:", error);
+        return null;
+      }
+    }
+    // Regular stars
+    const starGeometry = new THREE.BufferGeometry();
+    const starCount = 1000;
+    const positions = new Float32Array(starCount * 3);
+    const colors = new Float32Array(starCount * 3);
+    const sizes = new Float32Array(starCount);
+    for (let i = 0; i < starCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 2000;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
+      const intensity = Math.random() * 0.5 + 0.5;
+      colors[i * 3] = intensity * (0.8 + Math.random() * 0.2);
+      colors[i * 3 + 1] = intensity * (0.9 + Math.random() * 0.1);
+      colors[i * 3 + 2] = intensity;
+      sizes[i] = Math.random() * 3;
+    }
+    starGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
+    starGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    starGeometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
+    const starTexture = createStarTexture();
+    const starMaterial = new THREE.PointsMaterial({
+      size: 5.25,
+      sizeAttenuation: true,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending,
+      map: starTexture,
+    });
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+    // Bright stars
+    const brightStarGeometry = new THREE.BufferGeometry();
+    const brightStarCount = 40;
+    const brightPositions = new Float32Array(brightStarCount * 3);
+    const brightColors = new Float32Array(brightStarCount * 3);
+    const brightSizes = new Float32Array(brightStarCount);
+    for (let i = 0; i < brightStarCount; i++) {
+      brightPositions[i * 3] = (Math.random() - 0.5) * 1500;
+      brightPositions[i * 3 + 1] = (Math.random() - 0.5) * 1500;
+      brightPositions[i * 3 + 2] = (Math.random() - 0.5) * 1500;
+      brightColors[i * 3] = 0.9 + Math.random() * 0.1;
+      brightColors[i * 3 + 1] = 0.95 + Math.random() * 0.05;
+      brightColors[i * 3 + 2] = 1.0;
+      brightSizes[i] = Math.random() * 4 + 2;
+    }
+    brightStarGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(brightPositions, 3)
+    );
+    brightStarGeometry.setAttribute(
+      "color",
+      new THREE.BufferAttribute(brightColors, 3)
+    );
+    brightStarGeometry.setAttribute(
+      "size",
+      new THREE.BufferAttribute(brightSizes, 1)
+    );
+    const brightStarTexture = createStarTexture();
+    const brightStarMaterial = new THREE.PointsMaterial({
+      size: 9.45,
+      sizeAttenuation: true,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending,
+      map: brightStarTexture,
+    });
+    const brightStars = new THREE.Points(
+      brightStarGeometry,
+      brightStarMaterial
+    );
+    scene.add(brightStars);
+    camera.position.z = 5;
+    return {
+      scene,
+      camera,
+      renderer,
+      stars,
+      brightStars,
+      starGeometry,
+      brightStarGeometry,
+      starMaterial,
+      brightStarMaterial,
+    };
+  };
+  // Handle window resize for Three.js renderer
+  const handleResize = useCallback(
+    (
+      sceneRef: React.RefObject<{
+        scene: THREE.Scene;
+        camera: THREE.PerspectiveCamera;
+        renderer: THREE.WebGLRenderer;
+        stars: THREE.Points;
+        brightStars: THREE.Points;
+        starGeometry: THREE.BufferGeometry;
+        brightStarGeometry: THREE.BufferGeometry;
+        starMaterial: THREE.PointsMaterial;
+        brightStarMaterial: THREE.PointsMaterial;
+      } | null>,
+      mountRef: React.RefObject<HTMLDivElement | null>
+    ) => {
+      if (!sceneRef.current || !mountRef.current) return;
+
+      const { camera, renderer } = sceneRef.current;
+      const container = mountRef.current;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    },
+    []
+  );
+  // Initialize Three.js scenes
+  useEffect(() => {
+    // Stats section star field
+    const statsScene = createStarField(statsStarRef);
+    if (statsScene) {
+      statsSceneRef.current = statsScene;
+      statsScene.renderer.render(statsScene.scene, statsScene.camera);
+    }
+    // Team section star field
+    const teamScene = createStarField(teamStarRef);
+    if (teamScene) {
+      teamSceneRef.current = teamScene;
+      teamScene.renderer.render(teamScene.scene, teamScene.camera);
+    }
+    const handleResizeStats = () => {
+      if (statsStarRef.current) {
+        handleResize(statsSceneRef, statsStarRef);
+        if (statsSceneRef.current) {
+          statsSceneRef.current.renderer.render(
+            statsSceneRef.current.scene,
+            statsSceneRef.current.camera
+          );
+        }
+      }
+    };
+    const handleResizeTeam = () => {
+      if (teamStarRef.current) {
+        handleResize(teamSceneRef, teamStarRef);
+        if (teamSceneRef.current) {
+          teamSceneRef.current.renderer.render(
+            teamSceneRef.current.scene,
+            teamSceneRef.current.camera
+          );
+        }
+      }
+    };
+    window.addEventListener("resize", handleResizeStats);
+    window.addEventListener("resize", handleResizeTeam);
+    return () => {
+      isVisibleRef.current = false;
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+        animationIdRef.current = null;
+      }
+      window.removeEventListener("resize", handleResizeStats);
+      window.removeEventListener("resize", handleResizeTeam);
+      // Cleanup stats scene
+      if (statsSceneRef.current && statsStarRef.current) {
+        const {
+          scene,
+          renderer,
+          starGeometry,
+          brightStarGeometry,
+          starMaterial,
+          brightStarMaterial,
+        } = statsSceneRef.current;
+        starGeometry.dispose();
+        brightStarGeometry.dispose();
+        starMaterial.dispose();
+        brightStarMaterial.dispose();
+        while (scene.children.length > 0) {
+          scene.remove(scene.children[0]);
+        }
+        if (
+          renderer.domElement &&
+          statsStarRef.current.contains(renderer.domElement)
+        ) {
+          try {
+            statsStarRef.current.removeChild(renderer.domElement);
+          } catch (error) {
+            console.warn("Canvas already removed:", error);
+          }
+        }
+        renderer.dispose();
+        statsSceneRef.current = null;
+      }
+      // Cleanup team scene
+      if (teamSceneRef.current && teamStarRef.current) {
+        const {
+          scene,
+          renderer,
+          starGeometry,
+          brightStarGeometry,
+          starMaterial,
+          brightStarMaterial,
+        } = teamSceneRef.current;
+        starGeometry.dispose();
+        brightStarGeometry.dispose();
+        starMaterial.dispose();
+        brightStarMaterial.dispose();
+        while (scene.children.length > 0) {
+          scene.remove(scene.children[0]);
+        }
+        if (
+          renderer.domElement &&
+          teamStarRef.current.contains(renderer.domElement)
+        ) {
+          try {
+            teamStarRef.current.removeChild(renderer.domElement);
+          } catch (error) {
+            console.warn("Canvas already removed:", error);
+          }
+        }
+        renderer.dispose();
+        teamSceneRef.current = null;
+      }
+    };
+  }, [handleResize]);
   return (
     <>
       <Hero />
 
-      {/* Floating Elements Background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div
-          className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full animate-float"
-          style={{ animationDelay: "0.1s" }}
-        ></div>
-        <div
-          className="absolute top-40 right-20 w-16 h-16 bg-blue-500/10 rounded-full animate-float"
-          style={{ animationDelay: "0.15s" }}
-        ></div>
-        <div
-          className="absolute bottom-40 left-20 w-24 h-24 bg-emerald-500/10 rounded-full animate-float"
-          style={{ animationDelay: "0.12s" }}
-        ></div>
-        <div
-          className="absolute bottom-20 right-10 w-12 h-12 bg-purple-500/10 rounded-full animate-float"
-          style={{ animationDelay: "0.18s" }}
-        ></div>
-      </div>
-
       {/* About Preview Section */}
-      <section className="section-padding bg-card/50 relative z-10">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <ScrollAnimation animation="fade-right" delay={100}>
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Who We Are</h2>
-                <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                  We're a collective of young, passionate technologists who believe in using our skills to create
-                  meaningful impact. From AI-powered solutions to secure web applications, we build technology that
-                  matters.
-                </p>
-                <div className="space-y-4 mb-8">
-                  <ScrollAnimation animation="fade-up" delay={120}>
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-primary/20 p-2 rounded-lg animate-pulse-glow">
-                        <Rocket className="h-5 w-5 text-primary" />
-                      </div>
-                      <span className="text-foreground">Innovation-first approach</span>
-                    </div>
-                  </ScrollAnimation>
-                  <ScrollAnimation animation="fade-up" delay={140}>
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-blue-500/20 p-2 rounded-lg">
-                        <Users className="h-5 w-5 text-blue-500" />
-                      </div>
-                      <span className="text-foreground">Collaborative team culture</span>
-                    </div>
-                  </ScrollAnimation>
-                  <ScrollAnimation animation="fade-up" delay={160}>
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-emerald-500/20 p-2 rounded-lg">
-                        <Heart className="h-5 w-5 text-emerald-500" />
-                      </div>
-                      <span className="text-foreground">Social impact focus</span>
-                    </div>
-                  </ScrollAnimation>
+      <section className="pt-16 pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Content Column */}
+            <ScrollAnimation animation="fade-up" delay={100}>
+              <div className="space-y-8">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-full">
+                    <span className="w-2 h-2 bg-black rounded-full mr-2"></span>
+                    WHO WE ARE
+                  </div>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    We're a collective of young, passionate technologists who
+                    believe in using our skills to create meaningful impact.
+                    From AI-powered solutions to secure web applications, we
+                    build technology that matters.
+                  </p>
                 </div>
-                <ScrollAnimation animation="scale-up" delay={140}>
-                  <Link href="/about" className="btn-primary inline-flex items-center space-x-2">
-                    <span>Learn More</span>
-                    <ArrowRight className="h-5 w-5" />
+
+                {/* Key Points */}
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                      <Rocket className="h-3 w-3 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-black mb-1">
+                        Innovation-Driven Solutions
+                      </h4>
+                      <p className="text-gray-600">
+                        Leveraging cutting-edge technology to solve complex
+                        business challenges
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                      <Users className="h-3 w-3 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-black mb-1">
+                        Collaborative Approach
+                      </h4>
+                      <p className="text-gray-600">
+                        Working closely with clients to understand and exceed
+                        expectations
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                      <Heart className="h-3 w-3 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-black mb-1">
+                        Results-Focused
+                      </h4>
+                      <p className="text-gray-600">
+                        Committed to delivering solutions that create tangible
+                        business value
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center px-6 py-3 bg-black hover:bg-black/90 text-white font-medium rounded-lg transition-colors duration-200"
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
-                </ScrollAnimation>
+                </div>
               </div>
             </ScrollAnimation>
 
-            <ScrollAnimation animation="fade-left" delay={120}>
+            {/* Services Grid */}
+            <ScrollAnimation animation="fade-up" delay={200}>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <ScrollAnimation animation="scale-up" delay={140}>
-                    <div className="glass-effect p-6 rounded-xl card-hover group">
-                      <Code className="h-8 w-8 text-primary mb-3 group-hover:scale-110 transition-transform duration-200" />
-                      <h3 className="font-semibold mb-2">Development</h3>
-                      <p className="text-sm text-muted-foreground">Full-stack web & mobile applications</p>
+                  {/* Development */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                      <Code className="h-5 w-5 text-black" />
                     </div>
-                  </ScrollAnimation>
-                  <ScrollAnimation animation="scale-up" delay={160}>
-                    <div className="glass-effect p-6 rounded-xl card-hover group">
-                      <Brain className="h-8 w-8 text-blue-500 mb-3 group-hover:scale-110 transition-transform duration-300" />
-                      <h3 className="font-semibold mb-2">AI/ML</h3>
-                      <p className="text-sm text-muted-foreground">Intelligent solutions & automation</p>
+                    <h3 className="font-semibold text-black mb-2">
+                      Development
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Full-stack web & mobile applications
+                    </p>
+                  </div>
+
+                  {/* AI/ML */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                      <Brain className="h-5 w-5 text-blue-600" />
                     </div>
-                  </ScrollAnimation>
+                    <h3 className="font-semibold text-black mb-2">AI/ML</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Intelligent solutions & automation
+                    </p>
+                  </div>
                 </div>
+
                 <div className="space-y-4 mt-8">
-                  <ScrollAnimation animation="scale-up" delay={140}>
-                    <div className="glass-effect p-6 rounded-xl card-hover group">
-                      <Palette className="h-8 w-8 text-emerald-500 mb-3 group-hover:scale-110 transition-transform duration-300" />
-                      <h3 className="font-semibold mb-2">Design</h3>
-                      <p className="text-sm text-muted-foreground">UI/UX & brand experiences</p>
+                  {/* Design */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                      <Palette className="h-5 w-5 text-green-600" />
                     </div>
-                  </ScrollAnimation>
-                  <ScrollAnimation animation="scale-up" delay={160}>
-                    <div className="glass-effect p-6 rounded-xl card-hover group">
-                      <Shield className="h-8 w-8 text-red-500 mb-3 group-hover:scale-110 transition-transform duration-300" />
-                      <h3 className="font-semibold mb-2">Security</h3>
-                      <p className="text-sm text-muted-foreground">Cybersecurity & data protection</p>
+                    <h3 className="font-semibold text-black mb-2">Design</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      UI/UX & brand experiences
+                    </p>
+                  </div>
+
+                  {/* Security */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                      <Shield className="h-5 w-5 text-red-600" />
                     </div>
-                  </ScrollAnimation>
+                    <h3 className="font-semibold text-black mb-2">Security</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Cybersecurity & data protection
+                    </p>
+                  </div>
                 </div>
               </div>
             </ScrollAnimation>
           </div>
         </div>
       </section>
-
-      {/* Stats Section with Counter Animations */}
+      {/* Stats Section with Star Field and Counter Animations */}
       <ParallaxSection speed={0.3}>
-        <section className="section-padding bg-gradient-to-r from-primary/10 via-blue-500/10 to-emerald-500/10">
-          <div className="container-custom">
+        <section className="py-20 bg-black relative overflow-hidden">
+          {/* Star Field Canvas */}
+          <div
+            ref={statsStarRef}
+            className="absolute inset-0 w-full h-full"
+            style={{ zIndex: 1 }}
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
+
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Our Impact in Numbers</h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Every project we build is designed to create meaningful change and lasting impact.
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Our <span className="font-sans font-light italic">Impact</span> in Numbers
+                </h2>
+                <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                  Every project we build is designed to create meaningful change
+                  and lasting impact.
                 </p>
               </div>
             </ScrollAnimation>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <ScrollAnimation animation="scale-up" delay={120}>
-                <div className="text-center p-6 glass-effect rounded-xl card-hover">
-                  <div className="bg-primary/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Users className="h-8 w-8 text-primary" />
+                <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
+                  <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <Users className="h-8 w-8 text-blue-400" />
                   </div>
-                  <CounterAnimation end={25} className="text-4xl font-bold gradient-text mb-2" />
-                  <div className="text-muted-foreground">Team Members</div>
+                  <CounterAnimation
+                    end={25}
+                    className="text-4xl font-bold text-white mb-2"
+                  />
+                  <div className="text-gray-300 font-medium">Team Members</div>
                 </div>
               </ScrollAnimation>
 
               <ScrollAnimation animation="scale-up" delay={140}>
-                <div className="text-center p-6 glass-effect rounded-xl card-hover">
-                  <div className="bg-blue-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Code className="h-8 w-8 text-blue-500" />
+                <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
+                  <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <Code className="h-8 w-8 text-blue-400" />
                   </div>
-                  <CounterAnimation end={50} suffix="+" className="text-4xl font-bold gradient-text mb-2" />
-                  <div className="text-muted-foreground">Projects Planned</div>
+                  <CounterAnimation
+                    end={50}
+                    suffix="+"
+                    className="text-4xl font-bold text-white mb-2"
+                  />
+                  <div className="text-gray-300 font-medium">
+                    Projects
+                  </div>
                 </div>
               </ScrollAnimation>
 
               <ScrollAnimation animation="scale-up" delay={160}>
-                <div className="text-center p-6 glass-effect rounded-xl card-hover">
-                  <div className="bg-emerald-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Globe className="h-8 w-8 text-emerald-500" />
+                <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
+                  <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <Globe className="h-8 w-8 text-blue-400" />
                   </div>
-                  <CounterAnimation end={25} suffix="+" className="text-4xl font-bold gradient-text mb-2" />
-                  <div className="text-muted-foreground">Technologies</div>
+                  <CounterAnimation
+                    end={25}
+                    suffix="+"
+                    className="text-4xl font-bold text-white mb-2"
+                  />
+                  <div className="text-gray-300 font-medium">Technologies</div>
                 </div>
               </ScrollAnimation>
 
               <ScrollAnimation animation="scale-up" delay={180}>
-                <div className="text-center p-6 glass-effect rounded-xl card-hover">
-                  <div className="bg-purple-500/20 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Star className="h-8 w-8 text-purple-500" />
+                <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
+                  <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                    <Star className="h-8 w-8 text-blue-400" />
                   </div>
-                  <CounterAnimation end={100} suffix="%" className="text-4xl font-bold gradient-text mb-2" />
-                  <div className="text-muted-foreground">Passion Driven</div>
+                  <CounterAnimation
+                    end={100}
+                    suffix="%"
+                    className="text-4xl font-bold text-white mb-2"
+                  />
+                  <div className="text-gray-300 font-medium">
+                    Passion Driven
+                  </div>
                 </div>
               </ScrollAnimation>
             </div>
           </div>
         </section>
       </ParallaxSection>
-
       {/* Featured Projects Section */}
-      <section className="section-padding relative z-10">
-        <div className="container-custom">
+      <section className="py-20 bg-white relative z-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Projects Coming Soon</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                We're working on exciting projects that will showcase our diverse capabilities across AI, security, and
-                social impact.
+            <div className="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-full mb-8">
+                    <span className="w-2 h-2 bg-black rounded-full mr-2"></span>
+                    PORTFOLIO SHOWCASE
+                  </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-10">
+                Featured <span className="font-light font-sans italic">Projects</span>
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                We're working on exciting projects that will showcase our
+                diverse capabilities across AI, security, and social impact.
               </p>
             </div>
           </ScrollAnimation>
@@ -191,7 +570,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Charity Platform */}
             <ScrollAnimation animation="fade-up" delay={120}>
-              <div className="glass-effect rounded-xl overflow-hidden card-hover group">
+              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
                 <div className="h-48 bg-gradient-to-br from-emerald-500 to-blue-500 relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Heart className="h-16 w-16 text-white/80 group-hover:scale-110 transition-transform duration-300" />
@@ -205,30 +584,37 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold">Charity Connect</h3>
+                    <h3 className="text-xl font-bold text-black">
+                      Charity Connect
+                    </h3>
                     <span className="text-xs bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded-full">
                       Social Impact
                     </span>
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    A transparent donation platform connecting donors with verified charities using blockchain
-                    technology.
+                  <p className="text-gray-600 mb-4">
+                    A transparent donation platform connecting donors with
+                    verified charities using blockchain technology.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-muted px-2 py-1 rounded">React</span>
-                    <span className="text-xs bg-muted px-2 py-1 rounded">Node.js</span>
-                    <span className="text-xs bg-muted px-2 py-1 rounded">Blockchain</span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      React
+                    </span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      Node.js
+                    </span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      Blockchain
+                    </span>
                   </div>
-                  <div className="text-muted-foreground text-sm">
-                    <span>🚀 Coming Q2 2024</span>
+                  <div className="text-gray-600 text-sm">
+                    <span>🚀 Coming Q2 2025</span>
                   </div>
                 </div>
               </div>
             </ScrollAnimation>
-
             {/* AI Project */}
             <ScrollAnimation animation="fade-up" delay={140}>
-              <div className="glass-effect rounded-xl overflow-hidden card-hover group">
+              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
                 <div className="h-48 bg-gradient-to-br from-purple-500 to-pink-500 relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Brain className="h-16 w-16 text-white/80 group-hover:scale-110 transition-transform duration-300" />
@@ -242,27 +628,37 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold">SmartAnalytics</h3>
-                    <span className="text-xs bg-purple-500/20 text-purple-500 px-2 py-1 rounded-full">AI/ML</span>
+                    <h3 className="text-xl font-bold text-black">
+                      SmartAnalytics
+                    </h3>
+                    <span className="text-xs bg-purple-500/20 text-purple-500 px-2 py-1 rounded-full">
+                      AI/ML
+                    </span>
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    Machine learning platform for predictive analytics and automated business insights.
+                  <p className="text-gray-600 mb-4">
+                    Machine learning platform for predictive analytics and
+                    automated business insights.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-muted px-2 py-1 rounded">Python</span>
-                    <span className="text-xs bg-muted px-2 py-1 rounded">TensorFlow</span>
-                    <span className="text-xs bg-muted px-2 py-1 rounded">FastAPI</span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      Python
+                    </span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      TensorFlow
+                    </span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      FastAPI
+                    </span>
                   </div>
-                  <div className="text-muted-foreground text-sm">
-                    <span>🔬 Coming Q3 2024</span>
+                  <div className="text-gray-600 text-sm">
+                    <span>🔬 Coming Q3 2025</span>
                   </div>
                 </div>
               </div>
             </ScrollAnimation>
-
             {/* Security Project */}
             <ScrollAnimation animation="fade-up" delay={160}>
-              <div className="glass-effect rounded-xl overflow-hidden card-hover group">
+              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
                 <div className="h-48 bg-gradient-to-br from-red-500 to-orange-500 relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Shield className="h-16 w-16 text-white/80 group-hover:scale-110 transition-transform duration-300" />
@@ -276,19 +672,30 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold">SecureVault</h3>
-                    <span className="text-xs bg-red-500/20 text-red-500 px-2 py-1 rounded-full">Security</span>
+                    <h3 className="text-xl font-bold text-black">
+                      SecureVault
+                    </h3>
+                    <span className="text-xs bg-red-500/20 text-red-500 px-2 py-1 rounded-full">
+                      Security
+                    </span>
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    Enterprise-grade password manager with zero-knowledge encryption and biometric authentication.
+                  <p className="text-gray-600 mb-4">
+                    Enterprise-grade password manager with zero-knowledge
+                    encryption and biometric authentication.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-muted px-2 py-1 rounded">Rust</span>
-                    <span className="text-xs bg-muted px-2 py-1 rounded">WebAssembly</span>
-                    <span className="text-xs bg-muted px-2 py-1 rounded">Encryption</span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      Rust
+                    </span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      WebAssembly
+                    </span>
+                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                      Encryption
+                    </span>
                   </div>
-                  <div className="text-muted-foreground text-sm">
-                    <span>💡 Coming Q4 2024</span>
+                  <div className="text-gray-600 text-sm">
+                    <span>💡 Coming Q4 2025</span>
                   </div>
                 </div>
               </div>
@@ -297,32 +704,47 @@ export default function Home() {
 
           <ScrollAnimation animation="scale-up" delay={100}>
             <div className="text-center mt-12">
-              <div className="glass-effect p-8 rounded-xl max-w-2xl mx-auto">
-                <h3 className="text-2xl font-bold mb-4">Want to Work With Us?</h3>
-                <p className="text-muted-foreground mb-6">
-                  While we're building our portfolio, we're ready to take on client projects and bring your ideas to
-                  life.
+              <div className="bg-gray-50 border border-gray-200 p-8 rounded-xl max-w-2xl mx-auto">
+                <h3 className="text-2xl font-bold text-black mb-4">
+                  Want to Work With Us?
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  While we're building our portfolio, we're ready to take on
+                  client projects and bring your ideas to life.
                 </p>
-                <Link href="/contact" className="btn-primary inline-flex items-center space-x-2">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center px-6 py-3 bg-black hover:bg-black/90 text-white font-medium rounded-lg transition-colors duration-200"
+                >
                   <span>Start Your Project</span>
-                  <ArrowRight className="h-5 w-5" />
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </div>
             </div>
           </ScrollAnimation>
         </div>
       </section>
-
-      {/* Team Preview Section */}
+      {/* Team Preview Section with Star Field */}
       <ParallaxSection speed={0.2}>
-        <section className="section-padding bg-card/50">
-          <div className="container-custom">
+        <section className="py-20 bg-black relative overflow-hidden">
+          {/* Star Field Canvas */}
+          <div
+            ref={teamStarRef}
+            className="absolute inset-0 w-full h-full"
+            style={{ zIndex: 1 }}
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
+
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">Meet Our Team</h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  8 passionate individuals with diverse skills and a shared vision for technology that makes a
-                  difference.
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Meet Our <span className="font-light font-sans italic">Team</span>
+                </h2>
+                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                  25+ passionate individuals with diverse skills and a shared
+                  vision for technology that makes a difference.
                 </p>
               </div>
             </ScrollAnimation>
@@ -330,41 +752,47 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 {
-                  name: "Shema Leandre",
-                  role: "CEO and Founder",
+                  name: "Izere Shema Leandre",
+                  role: "CEO & Founder",
                   avatar: "/flicky.jpeg",
-                  delay: 120
+                  delay: 120,
                 },
                 {
                   name: "Nyumbayire Laurent",
                   role: "Co-Founder",
-                  avatar: "laurent.jpeg",
-                  delay: 140
+                  avatar: "/laurent.jpeg",
+                  delay: 140,
                 },
                 {
-                  name: "Muneza Jean Dios",
-                  role: "Chief Product Officer",
+                  name: "Muneza Jean Dieudonne",
+                  role: "CPO",
                   avatar: "/dios.jpeg",
-                  delay: 160
+                  delay: 160,
                 },
                 {
                   name: "Uhirwe Esther Hope",
-                  role: "Chief Marketing Officer",
+                  role: "CMO",
                   avatar: "/hope.jpeg",
-                  delay: 180
+                  delay: 180,
                 },
               ].map((member, index) => (
-                <ScrollAnimation key={index} animation="scale-up" delay={member.delay}>
+                <ScrollAnimation
+                  key={index}
+                  animation="scale-up"
+                  delay={member.delay}
+                >
                   <div className="text-center group">
-                    <div className="w-20 h-20 rounded-full overflow-hidden mb-4 mx-auto group-hover:scale-110 transition-transform duration-300 ring-4 ring-primary/20 animate-pulse-glow">
+                    <div className="w-48 h-48 rounded-full overflow-hidden mb-4 mx-auto transition-transform duration-300 ring-4">
                       <img
                         src={member.avatar || "/placeholder.svg"}
                         alt={`${member.name} - ${member.role}`}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <h3 className="font-semibold">{member.name}</h3>
-                    <p className="text-sm text-muted-foreground">{member.role}</p>
+                    <h3 className="font-semibold text-white">{member.name}</h3>
+                    <p className="text-sm italic text-gray-400">
+                      {member.role}
+                    </p>
                   </div>
                 </ScrollAnimation>
               ))}
@@ -372,34 +800,46 @@ export default function Home() {
 
             <ScrollAnimation animation="fade-up" delay={120}>
               <div className="text-center mt-12">
-                <Link href="/team" className="btn-primary inline-flex items-center space-x-2">
+                <Link
+                  href="/team"
+                  className="inline-flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors duration-200 backdrop-blur-sm border border-white/20"
+                >
                   <span>Meet Everyone</span>
-                  <Users className="h-5 w-5" />
+                  <Users className="ml-2 h-4 w-4" />
                 </Link>
               </div>
             </ScrollAnimation>
           </div>
         </section>
       </ParallaxSection>
-
-      {/* CTA Section */}
+      {/* CTA Section - Ready to Build Something */}
       <ScrollAnimation animation="fade-up" delay={100}>
-        <section className="section-padding bg-gradient-to-r from-primary/10 via-blue-500/10 to-emerald-500/10 relative z-10">
-          <div className="container-custom text-center">
-            <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6 py-10">
-              Ready to Build Something Amazing?
+        <section className="py-20 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-white"></div>
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
+            <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
+              Ready to <span className="font-sans italic font-light">Build</span> Something{" "}
+              <span className="font-sans italic font-light">Amazing?</span>
             </h2>
             <ScrollAnimation animation="fade-up" delay={120}>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Whether you have a project in mind or just want to chat about technology, we'd love to hear from you.
+              <p className="text-lg text-black/90 mb-8 max-w-2xl mx-auto">
+                Whether you have a project in mind or just want to chat about
+                technology, we'd love to hear from you.
               </p>
             </ScrollAnimation>
             <ScrollAnimation animation="scale-up" delay={140}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact" className="btn-primary text-lg animate-bounce-in">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center px-8 py-4 bg-black text-white font-medium rounded-lg hover:bg-black/80 transition-colors duration-200 text-lg"
+                >
                   Start a Project
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-                <Link href="/about" className="btn-outline text-lg">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center px-8 py-4 border-1 border-black text-black bg-white hover:bg-white/80 font-medium rounded-lg transition-colors duration-200 text-lg"
+                >
                   Learn More
                 </Link>
               </div>
@@ -408,5 +848,5 @@ export default function Home() {
         </section>
       </ScrollAnimation>
     </>
-  )
+  );
 }
