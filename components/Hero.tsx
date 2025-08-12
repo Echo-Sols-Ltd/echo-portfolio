@@ -1,160 +1,347 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { ArrowRight, Play } from "lucide-react"
-import Image from "next/image"
+import { useState, useEffect, useRef, useCallback } from "react";
+import { ArrowRight, Rocket } from "lucide-react";
+import * as THREE from "three";
 
-export default function Hero() {
-  const [currentWord, setCurrentWord] = useState(0)
+const Hero = () => {
+  const [currentWord, setCurrentWord] = useState(0);
+  const mountRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<{
+    scene: THREE.Scene;
+    camera: THREE.PerspectiveCamera;
+    renderer: THREE.WebGLRenderer;
+    stars: THREE.Points;
+    brightStars: THREE.Points;
+    starGeometry: THREE.BufferGeometry;
+    brightStarGeometry: THREE.BufferGeometry;
+    starMaterial: THREE.PointsMaterial;
+    brightStarMaterial: THREE.PointsMaterial;
+  } | null>(null);
+  const animationIdRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(true);
+
   const slides = [
     {
       word: "Build",
-      title: "Innovative Solutions",
-      description: "Creating cutting-edge applications that solve real-world problems",
-      image: "/african-classroom-education.png",
-      color: "from-primary to-blue-500",
+      title: "Transformative Solutions",
+      description:
+        "Developing advanced, high-impact applications that address real-world challenges with precision and excellence.",
     },
     {
       word: "Design",
-      title: "Beautiful Experiences",
-      description: "Crafting intuitive interfaces that users love to interact with",
-      image: "/african-woman-entrepreneur-success.png",
-      color: "from-blue-500 to-emerald-500",
+      title: "Captivating Experiences",
+      description:
+        "Creating seamless, human-centered interfaces that delight users and inspire engagement every day.",
     },
     {
       word: "Secure",
-      title: "Protected Systems",
-      description: "Implementing robust security measures to keep data safe",
-      image: "/technology-helping-people.png",
-      color: "from-emerald-500 to-red-500",
+      title: "Fortified Systems",
+      description:
+        "Deploying State-of-the-art security protocols to safeguard data and ensure complete business protection.",
     },
     {
       word: "Optimize",
-      title: "Peak Performance",
-      description: "Fine-tuning systems for maximum efficiency and speed",
-      image: "/diverse-community-help.png",
-      color: "from-red-500 to-purple-500",
+      title: "Unmatched Performance",
+      description:
+        "Refining systems for exceptional efficiency, lightning speed, and a flawless user experience.",
     },
-  ]
+  ];
+
+  const createStarTexture = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const context = canvas.getContext("2d");
+
+    if (!context) return null;
+
+    const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+    gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.5)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+    context.fillStyle = gradient;
+    context.beginPath();
+    context.arc(16, 16, 16, 0, Math.PI * 2);
+    context.fill();
+
+    return new THREE.CanvasTexture(canvas);
+  };
+
+  const handleResize = useCallback(() => {
+    if (!sceneRef.current || !mountRef.current) return;
+
+    const { camera, renderer } = sceneRef.current;
+    const container = mountRef.current;
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+  }, []);
+
+  useEffect(() => {
+    if (!mountRef.current) return;
+
+    const container = mountRef.current;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      container.clientWidth / container.clientHeight,
+      0.1,
+      1000
+    );
+
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance",
+    });
+
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    if (renderer.domElement) {
+      try {
+        container.appendChild(renderer.domElement);
+      } catch (error) {
+        console.error("Failed to append Three.js canvas:", error);
+        return;
+      }
+    }
+
+    const starGeometry = new THREE.BufferGeometry();
+    const starCount = 1000;
+    const positions = new Float32Array(starCount * 3);
+    const colors = new Float32Array(starCount * 3);
+    const sizes = new Float32Array(starCount);
+
+    for (let i = 0; i < starCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 2000;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
+
+      const intensity = Math.random() * 0.5 + 0.5;
+      colors[i * 3] = intensity * (0.8 + Math.random() * 0.2);
+      colors[i * 3 + 1] = intensity * (0.9 + Math.random() * 0.1);
+      colors[i * 3 + 2] = intensity;
+
+      sizes[i] = Math.random() * 3;
+    }
+
+    starGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
+    starGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    starGeometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
+
+    const starTexture = createStarTexture();
+    const starMaterial = new THREE.PointsMaterial({
+      size: 5.25,
+      sizeAttenuation: true,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending,
+      map: starTexture,
+    });
+
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+
+    const brightStarGeometry = new THREE.BufferGeometry();
+    const brightStarCount = 40;
+    const brightPositions = new Float32Array(brightStarCount * 3);
+    const brightColors = new Float32Array(brightStarCount * 3);
+    const brightSizes = new Float32Array(brightStarCount);
+
+    for (let i = 0; i < brightStarCount; i++) {
+      brightPositions[i * 3] = (Math.random() - 0.5) * 1500;
+      brightPositions[i * 3 + 1] = (Math.random() - 0.5) * 1500;
+      brightPositions[i * 3 + 2] = (Math.random() - 0.5) * 1500;
+
+      brightColors[i * 3] = 0.9 + Math.random() * 0.1;
+      brightColors[i * 3 + 1] = 0.95 + Math.random() * 0.05;
+      brightColors[i * 3 + 2] = 1.0;
+
+      brightSizes[i] = Math.random() * 4 + 2;
+    }
+
+    brightStarGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(brightPositions, 3)
+    );
+    brightStarGeometry.setAttribute(
+      "color",
+      new THREE.BufferAttribute(brightColors, 3)
+    );
+    brightStarGeometry.setAttribute(
+      "size",
+      new THREE.BufferAttribute(brightSizes, 1)
+    );
+
+    const brightStarTexture = createStarTexture();
+    const brightStarMaterial = new THREE.PointsMaterial({
+      size: 9.45,
+      sizeAttenuation: true,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending,
+      map: brightStarTexture,
+    });
+
+    const brightStars = new THREE.Points(
+      brightStarGeometry,
+      brightStarMaterial
+    );
+    scene.add(brightStars);
+
+    camera.position.z = 5;
+
+    sceneRef.current = {
+      scene,
+      camera,
+      renderer,
+      stars,
+      brightStars,
+      starGeometry,
+      brightStarGeometry,
+      starMaterial,
+      brightStarMaterial,
+    };
+
+    const renderOnce = () => {
+      if (!sceneRef.current) return;
+
+      const { scene, camera, renderer } = sceneRef.current;
+      renderer.render(scene, camera);
+    };
+
+    renderOnce();
+
+    const handleResizeWithRender = () => {
+      handleResize();
+      renderOnce();
+    };
+
+    window.addEventListener("resize", handleResizeWithRender);
+
+    return () => {
+      isVisibleRef.current = false;
+
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+        animationIdRef.current = null;
+      }
+
+      window.removeEventListener("resize", handleResizeWithRender);
+
+      if (sceneRef.current && mountRef.current) {
+        const {
+          scene,
+          renderer,
+          starGeometry,
+          brightStarGeometry,
+          starMaterial,
+          brightStarMaterial,
+        } = sceneRef.current;
+
+        starGeometry.dispose();
+        brightStarGeometry.dispose();
+        starMaterial.dispose();
+        brightStarMaterial.dispose();
+
+        while (scene.children.length > 0) {
+          scene.remove(scene.children[0]);
+        }
+
+        if (
+          renderer.domElement &&
+          mountRef.current.contains(renderer.domElement)
+        ) {
+          try {
+            mountRef.current.removeChild(renderer.domElement);
+          } catch (UtilityClassNameError) {
+            console.warn("Canvas already removed:", Error);
+          }
+        }
+
+        renderer.dispose();
+        sceneRef.current = null;
+      }
+    };
+  }, [handleResize]);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % slides.length)
-    }, 4000)
-    return () => clearInterval(timer)
-  }, [slides.length])
+      setCurrentWord((prev) => (prev + 1) % slides.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [slides.length]);
 
   return (
-    <section className="h-screen max-h-[800px] flex items-center justify-center relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-blue-500/10 to-emerald-500/10"></div>
+    <div className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+      <div
+        ref={mountRef}
+        className="absolute inset-0 w-full h-full"
+        style={{ zIndex: 1 }}
+      />
 
-      {/* Image Carousel Background */}
-      <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentWord ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {/* Image container */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-full h-full max-w-3xl max-h-80 opacity-20">
-                <Image
-                  src={slide.image || "/placeholder.svg"}
-                  alt={slide.title}
-                  fill
-                  className="object-cover rounded-2xl"
-                  priority={index === 0}
-                />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
+
+      <div className="relative z-20 max-w-6xl mx-auto px-6 text-center text-white">
+        <div className="inline-flex items-center gap-3 px-6 py-3 mb-12 bg-transparent backdrop-blur-md border border-white/30 rounded-full shadow-lg">
+          <Rocket className="w-5 h-5 text-blue-400" />
+          <span className="text-sm font-semibold tracking-wide text-white">
+            Excellence in Digital Innovation
+          </span>
+        </div>
+
+        <div className="space-y-10">
+          <div className="space-y-6">
+            <div className="relative">
+              <div className="flex items-center justify-center">
+                <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
+                  We <span className="text-blue-400">{slides[currentWord].word}</span>
+                </h1>
               </div>
             </div>
-            {/* Strong overlay for better text contrast */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${slide.color} opacity-60`}></div>
-            {/* Additional dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black/40"></div>
-          </div>
-        ))}
-      </div>
 
-      <div className="container-custom text-center z-20 relative px-4">
-        <div className="max-w-4xl mx-auto space-y-6">
-          {/* Main Heading - Reduced size */}
-          <div className="space-y-3 animate-fade-in">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-space-grotesk leading-tight text-white drop-shadow-2xl">
-              We{" "}
-              <span className="inline-block min-w-[150px] md:min-w-[200px] text-left bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent drop-shadow-lg">
-                {slides[currentWord].word}
-              </span>
-            </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white drop-shadow-xl">
+            <h2 className="text-3xl md:text-4xl font-sans text-white leading-normal italic">
               {slides[currentWord].title}
             </h2>
           </div>
 
-          {/* Dynamic Subtitle - Reduced size */}
-          <p className="text-lg md:text-xl text-white/95 max-w-2xl mx-auto leading-relaxed animate-slide-up drop-shadow-lg font-medium">
+          <p className="text-lg md:text-[19px] text-blue-200/90 max-w-5xl mx-auto leading-relaxed font-light">
             {slides[currentWord].description}
           </p>
+        </div>
 
-          {/* Stats - More compact */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 my-8 animate-slide-up">
-            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">10+</div>
-              <div className="text-white/80 font-medium text-sm">Team Members</div>
-            </div>
-            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">50+</div>
-              <div className="text-white/80 font-medium text-sm">Projects Built</div>
-            </div>
-            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">8</div>
-              <div className="text-white/80 font-medium text-sm">Tech Stacks</div>
-            </div>
-            <div className="text-center bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20">
-              <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">100%</div>
-              <div className="text-white/80 font-medium text-sm">Passion Driven</div>
-            </div>
-          </div>
-
-          {/* CTA Buttons - More compact */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center animate-slide-up">
-            <Link
-              href="/projects"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-2"
-            >
-              <span>View Our Work</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-<Link
-  href="/team"
-  className="border-2 border-white text-white hover:bg-white hover:text-black font-semibold py-3 px-6 rounded-lg transition-all duration-300 backdrop-blur-sm bg-white/10 flex items-center space-x-2"
->
-  <Play className="h-4 w-4" />
-  <span>Meet the Team</span>
-</Link>
-
-          </div>
-
-          {/* Slide Indicators - Positioned better for shorter section */}
-          <div className="flex justify-center space-x-3 mt-6">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentWord(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 border-2 ${
-                  index === currentWord
-                    ? "bg-white border-white shadow-lg"
-                    : "bg-transparent border-white/50 hover:border-white/80"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+        <div className="flex justify-center space-x-4 mt-16">
+          {slides.map((slide, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentWord(index)}
+              className={`relative transition-all duration-700 rounded-full group focus:outline-none focus:ring-2 focus:ring-white/50 ${
+                index === currentWord
+                  ? "w-9 h-3 bg-white shadow-lg"
+                  : "w-3 h-3 bg-white/30"
+              }`}
+              role="tab"
+              aria-selected={index === currentWord}
+              aria-label={`Show ${slide.word} slide`}
+            />
+          ))}
         </div>
       </div>
-    </section>
-  )
-}
+    </div>
+  );
+};
+
+export default Hero;

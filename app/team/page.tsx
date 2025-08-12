@@ -1,5 +1,4 @@
 "use client";
-
 import TeamMember from "@/components/TeamMember";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
@@ -15,70 +14,200 @@ import {
   Globe,
   Heart,
   Target,
-  Filter,
 } from "lucide-react";
 import { coreMembers, devTeam } from "../../components/data/teamMembers";
-import { useState, useMemo } from "react";
-
-// Role mapping function
-const categorizeTeamMember = (role: string) => {
-  const categories = [];
-  const roleUpper = role.toUpperCase();
-  
-  if (roleUpper.includes('3D')) categories.push('3D Modeling');
-  if (roleUpper.includes('UI/UX') || roleUpper.includes('DESIGNER')) categories.push('UI/UX Designer');
-  if (roleUpper.includes('FRONTEND')) categories.push('Frontend');
-  if (roleUpper.includes('BACKEND')) categories.push('Backend');
-  if (roleUpper.includes('FULL STACK') || roleUpper.includes('FULLSTACK')) categories.push('FullStack');
-  if (roleUpper.includes('CYBER') || roleUpper.includes('SECURITY')) categories.push('Cybersecurity');
-  if (roleUpper.includes('MOBILE')) categories.push('Mobile');
-  if (roleUpper.includes('AI') || roleUpper.includes('ML') || roleUpper.includes('MACHINE LEARNING')) categories.push('AI/ML Specialist');
-  if (roleUpper.includes('EMBEDDED')) categories.push('Embedded Systems');
-  
-  return categories;
-};
+import { useState, useRef, useEffect } from "react";
+import * as THREE from "three";
 
 export default function TeamPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('3D Modeling');
-  const [coreMembersShown, setCoreMembersShown] = useState<number>(8);
-  const [devTeamShown, setDevTeamShown] = useState<number>(8);
+  const [coreMembersShown, setCoreMembersShown] = useState<number>(30);
+  const [devTeamShown, setDevTeamShown] = useState<number>(10);
   
-  const categories = [
-    { name: '3D Modeling', icon: Palette, color: 'purple-500', bgColor: 'bg-purple-500' },
-    { name: 'UI/UX Designer', icon: Palette, color: 'blue-500', bgColor: 'bg-blue-500' },
-    { name: 'Frontend', icon: Globe, color: 'orange-500', bgColor: 'bg-orange-500' },
-    { name: 'Backend', icon: Database, color: 'emerald-500', bgColor: 'bg-emerald-500' },
-    { name: 'FullStack', icon: Code, color: 'indigo-500', bgColor: 'bg-indigo-500' },
-    { name: 'Cybersecurity', icon: Shield, color: 'red-500', bgColor: 'bg-red-500' },
-    { name: 'Mobile', icon: Smartphone, color: 'pink-500', bgColor: 'bg-pink-500' },
-    { name: 'AI/ML Specialist', icon: Brain, color: 'violet-500', bgColor: 'bg-violet-500' },
-    { name: 'Embedded Systems', icon: Database, color: 'cyan-500', bgColor: 'bg-cyan-500' },
-  ];
+  // Star field refs
+  const firstStarRef = useRef<HTMLDivElement>(null);
+  const firstSceneRef = useRef<any>(null);
+  const animationIdRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(true);
 
-  const filteredDevTeam = useMemo(() => {
-    if (!selectedCategory) {
-      return devTeam;
-    }
-    
-    return devTeam.filter(member => {
-      const memberCategories = categorizeTeamMember(member.role);
-      return memberCategories.includes(selectedCategory);
+  // Create star texture for Three.js
+  const createStarTexture = () => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const context = canvas.getContext("2d");
+    if (!context) return null;
+    const gradient = context.createRadialGradient(16, 16, 0, 16, 16, 16);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+    gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.5)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+    context.fillStyle = gradient;
+    context.beginPath();
+    context.arc(16, 16, 16, 0, Math.PI * 2);
+    context.fill();
+    return new THREE.CanvasTexture(canvas);
+  };
+
+  // Create star field function
+  const createStarField = (
+    mountRef: React.RefObject<HTMLDivElement | null>
+  ) => {
+    if (!mountRef.current) return null;
+    const container = mountRef.current;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      container.clientWidth / container.clientHeight,
+      0.1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+      powerPreference: "high-performance",
     });
-  }, [selectedCategory]);
-
-  const selectCategory = (category: string) => {
-    setSelectedCategory(prev => prev === category ? '' : category);
-    setDevTeamShown(8);
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    if (renderer.domElement) {
+      try {
+        container.appendChild(renderer.domElement);
+      } catch (error) {
+        console.error("Failed to append Three.js canvas:", error);
+        return null;
+      }
+    }
+    // Regular stars
+    const starGeometry = new THREE.BufferGeometry();
+    const starCount = 1000;
+    const positions = new Float32Array(starCount * 3);
+    const colors = new Float32Array(starCount * 3);
+    const sizes = new Float32Array(starCount);
+    for (let i = 0; i < starCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 2000;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
+      const intensity = Math.random() * 0.5 + 0.5;
+      colors[i * 3] = intensity * (0.8 + Math.random() * 0.2);
+      colors[i * 3 + 1] = intensity * (0.9 + Math.random() * 0.1);
+      colors[i * 3 + 2] = intensity;
+      sizes[i] = Math.random() * 3;
+    }
+    starGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
+    starGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    starGeometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
+    const starTexture = createStarTexture();
+    const starMaterial = new THREE.PointsMaterial({
+      size: 5.25,
+      sizeAttenuation: true,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending,
+      map: starTexture,
+    });
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+    // Bright stars
+    const brightStarGeometry = new THREE.BufferGeometry();
+    const brightStarCount = 40;
+    const brightPositions = new Float32Array(brightStarCount * 3);
+    const brightColors = new Float32Array(brightStarCount * 3);
+    const brightSizes = new Float32Array(brightStarCount);
+    for (let i = 0; i < brightStarCount; i++) {
+      brightPositions[i * 3] = (Math.random() - 0.5) * 1500;
+      brightPositions[i * 3 + 1] = (Math.random() - 0.5) * 1500;
+      brightPositions[i * 3 + 2] = (Math.random() - 0.5) * 1500;
+      brightColors[i * 3] = 0.9 + Math.random() * 0.1;
+      brightColors[i * 3 + 1] = 0.95 + Math.random() * 0.05;
+      brightColors[i * 3 + 2] = 1.0;
+      brightSizes[i] = Math.random() * 4 + 2;
+    }
+    brightStarGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(brightPositions, 3)
+    );
+    brightStarGeometry.setAttribute(
+      "color",
+      new THREE.BufferAttribute(brightColors, 3)
+    );
+    brightStarGeometry.setAttribute(
+      "size",
+      new THREE.BufferAttribute(brightSizes, 1)
+    );
+    const brightStarTexture = createStarTexture();
+    const brightStarMaterial = new THREE.PointsMaterial({
+      size: 9.45,
+      sizeAttenuation: true,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending,
+      map: brightStarTexture,
+    });
+    const brightStars = new THREE.Points(
+      brightStarGeometry,
+      brightStarMaterial
+    );
+    scene.add(brightStars);
+    camera.position.z = 5;
+    return {
+      scene,
+      camera,
+      renderer,
+      stars,
+      brightStars,
+      starGeometry,
+      brightStarGeometry,
+      starMaterial,
+      brightStarMaterial,
+    };
   };
 
-  const clearFilters = () => {
-    setSelectedCategory('');
-    setCoreMembersShown(8);
-    setDevTeamShown(8);
-  };
+  // Initialize star field
+  useEffect(() => {
+    const firstScene = createStarField(firstStarRef);
+    if (firstScene) {
+      firstSceneRef.current = firstScene;
+      firstScene.renderer.render(firstScene.scene, firstScene.camera);
+    }
+    return () => {
+      if (firstSceneRef.current && firstStarRef.current) {
+        const {
+          scene,
+          renderer,
+          starGeometry,
+          brightStarGeometry,
+          starMaterial,
+          brightStarMaterial,
+        } = firstSceneRef.current;
+        starGeometry.dispose();
+        brightStarGeometry.dispose();
+        starMaterial.dispose();
+        brightStarMaterial.dispose();
+        while (scene.children.length > 0) {
+          scene.remove(scene.children[0]);
+        }
+        if (
+          renderer.domElement &&
+          firstStarRef.current.contains(renderer.domElement)
+        ) {
+          try {
+            firstStarRef.current.removeChild(renderer.domElement);
+          } catch (error) {
+            console.warn("Canvas already removed:", error);
+          }
+        }
+        renderer.dispose();
+        firstSceneRef.current = null;
+      }
+    };
+  }, []);
 
   const showMoreCoreMembers = () => {
-    setCoreMembersShown(prev => Math.min(prev + 8, coreMembers.length));
+    setCoreMembersShown((prev) => Math.min(prev + 8, coreMembers.length));
   };
 
   const showLessCoreMembers = () => {
@@ -86,7 +215,7 @@ export default function TeamPage() {
   };
 
   const showMoreDevTeam = () => {
-    setDevTeamShown(prev => Math.min(prev + 8, filteredDevTeam.length));
+    setDevTeamShown((prev) => Math.min(prev + 8, devTeam.length));
   };
 
   const showLessDevTeam = () => {
@@ -94,42 +223,36 @@ export default function TeamPage() {
   };
 
   return (
-    <div className="pt-20">
-      {/* Floating Elements Background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div className="pt-16">
+      {/* Hero Section - Black with Stars */}
+      <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
+        {/* Star Field Canvas */}
         <div
-          className="absolute top-24 left-12 w-18 h-18 bg-primary/10 rounded-full animate-float"
-          style={{ animationDelay: "0.1s" }}
-        ></div>
-        <div
-          className="absolute top-48 right-16 w-14 h-14 bg-blue-500/10 rounded-full animate-float"
-          style={{ animationDelay: "0.15s" }}
-        ></div>
-        <div
-          className="absolute bottom-32 left-24 w-22 h-22 bg-emerald-500/10 rounded-full animate-float"
-          style={{ animationDelay: "0.12s" }}
-        ></div>
-        <div
-          className="absolute bottom-64 right-32 w-16 h-16 bg-purple-500/10 rounded-full animate-float"
-          style={{ animationDelay: "0.18s" }}
-        ></div>
-      </div>
-
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-primary/5 via-blue-500/5 to-emerald-500/5 relative z-10">
-        <div className="container-custom text-center py-20">
-          <ScrollAnimation animation="fade-up" delay={100}>
-            <h1 className="text-5xl md:text-7xl font-bold font-space-grotesk mb-6">
-              Meet Our{" "}
-              <span className="gradient-text animate-gradient-shift bg-gradient-to-r from-primary via-blue-500 to-emerald-500 bg-clip-text text-transparent">
-                Team
-              </span>
-            </h1>
-          </ScrollAnimation>
+          ref={firstStarRef}
+          className="absolute inset-0 w-full h-full"
+          style={{ zIndex: 1 }}
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
+        <div className="relative z-20 max-w-6xl mx-auto px-6 text-center text-white space-y-15 mb-28">
+          {/* Badge positioned at the top center */}
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent backdrop-blur-md border border-white/30 rounded-full shadow-lg">
+            <Users className="w-5 h-5 text-blue-400" />
+            <span className="text-sm font-semibold tracking-wide text-white">
+              Meet Our Talented Team
+            </span>
+          </div>
           <ScrollAnimation animation="fade-up" delay={150}>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              10+ passionate individuals with diverse skills and a shared vision
-              for technology that makes a difference.
+            <div className="flex items-center justify-center mb-6">
+              <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
+                Our <span className="text-blue-400">Team</span>
+              </h1>
+            </div>
+          </ScrollAnimation>
+          <ScrollAnimation animation="fade-up" delay={180}>
+            <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
+              25+ passionate individuals with diverse skills and a shared vision
+              for technology that makes a meaningful difference in the world.
             </p>
           </ScrollAnimation>
         </div>
@@ -142,7 +265,7 @@ export default function TeamPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
                 {
-                  end: 10,
+                  end: 25,
                   suffix: "+",
                   label: "Team Members",
                   icon: Users,
@@ -204,7 +327,10 @@ export default function TeamPage() {
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                Our Expertise
+                Our{" "}
+                <span className="text-blue-400 font-sans italic">
+                  Expertise
+                </span>
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Each team member brings unique skills and perspectives to create
@@ -212,8 +338,7 @@ export default function TeamPage() {
               </p>
             </div>
           </ScrollAnimation>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-16 cursor-pointer">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-16">
             {[
               { icon: Code, label: "Full-Stack", color: "primary", delay: 120 },
               { icon: Brain, label: "AI/ML", color: "purple-500", delay: 140 },
@@ -258,33 +383,28 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Executive Team */}
+      {/* Team Sections */}
       <section className="section-padding bg-card/50 relative z-10">
         <div className="container-custom">
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                Our Team
+                Our <span className="text-blue-400 font-sans italic">Team</span>
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
                 Meet the talented individuals who make Echo Solutions's vision a
                 reality.
               </p>
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
+                <Users className="w-5 h-5 text-blue-400" />
+                <span className="text-sm font-semibold tracking-wide text-black">
+                  CORE TEAM
+                </span>
+              </div>
             </div>
           </ScrollAnimation>
 
-          {/* Core Members */}
-          <ScrollAnimation animation="fade-up" delay={100}>
-            <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold font-space-grotesk mb-2">
-                Core Team
-              </h3>
-              <p className="text-muted-foreground">
-                Visionaries and decision-makers at the helm.
-              </p>
-            </div>
-          </ScrollAnimation>
-
+          {/* Core Team */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
             {coreMembers.slice(0, coreMembersShown).map((member, index) => (
               <div
@@ -296,150 +416,38 @@ export default function TeamPage() {
               </div>
             ))}
           </div>
-          
-          {/* Show More/Less Buttons for Core Members */}
-          <div className="text-center mb-16">
-            {coreMembers.length > coreMembersShown ? (
-              <button
-                onClick={showMoreCoreMembers}
-                className="btn-secondary inline-flex items-center gap-2"
-              >
-                Show {Math.min(8, coreMembers.length - coreMembersShown)} More
-                <span className="text-sm opacity-75">
-                  ({coreMembersShown} of {coreMembers.length})
-                </span>
-              </button>
-            ) : coreMembersShown > 8 ? (
-              <button
-                onClick={showLessCoreMembers}
-                className="btn-outline inline-flex items-center gap-2"
-              >
-                Show Less
-                <span className="text-sm opacity-75">
-                  (Showing all {coreMembers.length} members)
-                </span>
-              </button>
-            ) : null}
-          </div>
 
-          {/* Filter Section */}
+
+          {/* Dev Team Section */}
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-space-grotesk mb-4">
-                Filter by Role
-              </h3>
-              <div className="flex flex-wrap justify-center gap-3 mb-6">
-                {categories.map((category) => (
-                  <button
-                    key={category.name}
-                    onClick={() => selectCategory(category.name)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 ease-in-out flex items-center gap-2 transform hover:scale-105 ${
-                      selectedCategory === category.name
-                        ? `${category.bgColor} text-white shadow-lg shadow-${category.color}/25 scale-105 ring-2 ring-white/20`
-                        : 'bg-card/50 text-muted-foreground hover:bg-card/80 hover:text-foreground hover:shadow-md'
-                    }`}
-                  >
-                    <category.icon className="h-4 w-4" />
-                    {category.name}
-                  </button>
-                ))}
+              <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
+                <Users className="w-5 h-5 text-blue-400" />
+                <span className="text-sm font-semibold tracking-wide text-black">
+                  DEV TEAM
+                </span>
               </div>
-              {selectedCategory && (
-                <div className="flex justify-center items-center gap-4">
-                  <span className="text-sm text-muted-foreground">
-                    Filtering by: <span className="font-semibold text-foreground">{selectedCategory}</span>
-                  </span>
-                  <button
-                    onClick={clearFilters}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300 flex items-center gap-2 hover:scale-105"
-                  >
-                    <Filter className="h-4 w-4" />
-                    Clear Filter
-                  </button>
-                </div>
-              )}
             </div>
           </ScrollAnimation>
 
-          {/* Dev Team */}
-          <ScrollAnimation animation="fade-up" delay={100}>
-            <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold font-space-grotesk mb-2">
-                Development Team
-              </h3>
-              <p className="text-muted-foreground">
-                Engineers turning ideas into reality.
-                {selectedCategory && (
-                  <span className="block text-sm mt-1 font-medium">
-                    Showing {filteredDevTeam.length} of {devTeam.length} members
-                  </span>
-                )}
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          <div className="transition-all duration-700 ease-in-out">
-            {filteredDevTeam.length > 0 ? (
-              <>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 transition-all duration-500">
-                  {filteredDevTeam.slice(0, devTeamShown).map((member, index) => (
-                    <div 
-                      key={`${member.name}-${selectedCategory}`}
-                      className="transform transition-all duration-300 hover:scale-105 animate-fade-in"
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-                      <TeamMember {...member} />
-                    </div>
-                  ))}
+          {/* Dev Team Grid - Same layout as core team */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
+            {devTeam.slice(0, devTeamShown).map((member, index) => {
+              // Create a version of the member without social links
+              const memberWithoutSocial = {
+                ...member,
+                social: {} // Empty social object
+              };
+              return (
+                <div
+                  key={member.name}
+                  className="animate-fade-in"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <TeamMember {...memberWithoutSocial} />
                 </div>
-                
-                {/* Show More/Less Buttons for Development Team */}
-                <div className="text-center mt-8">
-                  {filteredDevTeam.length > devTeamShown ? (
-                    <button
-                      onClick={showMoreDevTeam}
-                      className="btn-secondary inline-flex items-center gap-2"
-                    >
-                      Show {Math.min(8, filteredDevTeam.length - devTeamShown)} More
-                      <span className="text-sm opacity-75">
-                        ({devTeamShown} of {filteredDevTeam.length})
-                      </span>
-                    </button>
-                  ) : devTeamShown > 8 ? (
-                    <button
-                      onClick={showLessDevTeam}
-                      className="btn-outline inline-flex items-center gap-2"
-                    >
-                      Show Less
-                      <span className="text-sm opacity-75">
-                        (Showing all {filteredDevTeam.length} members)
-                      </span>
-                    </button>
-                  ) : null}
-                </div>
-              </>
-            ) : selectedCategory ? (
-              <ScrollAnimation animation="fade-up" delay={100}>
-                <div className="text-center py-20">
-                  <div className="animate-pulse mb-6">
-                    <Filter className="h-20 w-20 text-muted-foreground/30 mx-auto mb-4" />
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-3">No {selectedCategory} specialists found</h3>
-                  <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                    We don't currently have any team members specializing in {selectedCategory}. 
-                    Try exploring other categories or view all team members.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <button
-                      onClick={clearFilters}
-                      className="btn-primary"
-                    >
-                      View All Team Members
-                    </button>
-                  </div>
-                </div>
-              </ScrollAnimation>
-            ) : null}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -451,15 +459,17 @@ export default function TeamPage() {
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                  Our Culture
+                  Our{" "}
+                  <span className="text-blue-400 font-sans italic">
+                    Culture
+                  </span>
                 </h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-base text-muted-foreground max-w-2xl mx-auto">
                   We've built a culture that celebrates diversity, encourages
                   innovation, and supports continuous learning.
                 </p>
               </div>
             </ScrollAnimation>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
@@ -489,9 +499,9 @@ export default function TeamPage() {
                   animation="scale-up"
                   delay={culture.delay}
                 >
-                  <div className="glass-effect p-8 rounded-xl text-center card-hover">
+                  <div className="glass-effect p-8 rounded-xl text-center">
                     <div
-                      className={`bg-${culture.color}/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center animate-pulse-glow`}
+                      className={`bg-${culture.color}/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center`}
                     >
                       <culture.icon
                         className={`h-8 w-8 text-${culture.color}`}
@@ -506,36 +516,6 @@ export default function TeamPage() {
           </div>
         </section>
       </ParallaxSection>
-
-      {/* Join Us CTA */}
-      <ScrollAnimation animation="fade-up" delay={100}>
-        <section className="section-padding bg-gradient-to-r from-primary/10 via-blue-500/10 to-emerald-500/10 relative z-10">
-          <div className="container-custom text-center py-10">
-            <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6 ">
-              Want to Join Our Team?
-            </h2>
-            <ScrollAnimation animation="fade-up" delay={120}>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                We're always looking for passionate individuals who share our
-                vision for technology that makes a difference.
-              </p>
-            </ScrollAnimation>
-            <ScrollAnimation animation="scale-up" delay={140}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="mailto:careers@lextech.dev"
-                  className="btn-primary text-lg animate-bounce-in"
-                >
-                  View Open Positions
-                </a>
-                <a href="/contact" className="btn-outline text-lg">
-                  Get In Touch
-                </a>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </section>
-      </ScrollAnimation>
     </div>
   );
 }

@@ -1,124 +1,82 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { useTheme } from "next-themes"
-import { usePathname } from "next/navigation"
-import { Menu, X, Sun, Moon, Code2 } from "lucide-react"
-import Image from "next/image"
+import { useState } from "react"
+import { Menu, X, Code2 } from "lucide-react"
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const pathname = usePathname()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/team", label: "Team" },
-    { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: "HOME" },
+    { href: "/about", label: "ABOUT" },
+    { href: "/team", label: "TEAM" },
+    { href: "/projects", label: "PROJECTS" },
+    { href: "/contact", label: "CONTACT" },
   ]
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "glass-effect shadow-lg" : "bg-transparent"
-      }`}
-    >
-      <div className="container-custom">
-        <div className="flex justify-between items-center py-4">
+    <nav className="fixed w-full z-50 bg-black/95 backdrop-blur-lg shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="rounded-lg bg-white p-1 group-hover:scale-110 transition-transform duration-300">
-              <Image src="/Lex.svg" className="bg-contain" height={20} width={20} alt="Logo"/>
+          <div className="flex items-center space-x-3 group cursor-pointer">
+            <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200 shadow-md">
+              <Code2 className="w-5 h-5 text-black" />
             </div>
-            <span className="text-2xl font-bold font-space-grotesk">Echo Solutions</span>
-          </Link>
+            <span className="text-xl font-bold text-white tracking-tight">Echo Solutions</span>
+          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
+          {/* Desktop Navigation - Center */}
+          <div className="hidden md:flex items-center space-x-1 absolute left-1/2 transform -translate-x-1/2">
+            {navLinks.map((link, index) => (
+              <a
                 key={link.href}
                 href={link.href}
-                className={`font-medium transition-colors duration-300 relative group ${
-                  pathname === link.href ? "text-primary" : "text-foreground/80 hover:text-primary"
-                }`}
+                className="text-white/80 hover:text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 relative group"
               >
                 {link.label}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                    pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                ></span>
-              </Link>
+                <span className="absolute inset-x-4 -bottom-px h-px bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
+              </a>
             ))}
+          </div>
 
-            {/* Theme Toggle */}
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg hover:bg-accent transition-colors duration-300"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          {/* Contact Button - Right */}
+          <div className="hidden md:block">
+            <button className="bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm hover:shadow-md">
+              GET IN TOUCH
             </button>
-
-            <Link href="/contact" className="btn-primary">
-              Get In Touch
-            </Link>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg hover:bg-accent transition-colors duration-300"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg hover:bg-accent transition-colors duration-300"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors duration-200"
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden glass-effect border-t border-border animate-fade-in">
-            <div className="py-4 space-y-2">
+        {isMenuOpen && (
+          <div className="md:hidden bg-black/95 backdrop-blur-lg">
+            <div className="py-3 space-y-1">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
-                  className={`block px-4 py-2 transition-colors duration-300 rounded-lg ${
-                    pathname === link.href
-                      ? "text-primary bg-primary/10"
-                      : "text-foreground/80 hover:text-primary hover:bg-accent/50"
-                  }`}
-                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors duration-200"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
-              <div className="px-4 pt-2">
-                <Link href="/contact" className="btn-primary w-full text-center block">
-                  Get In Touch
-                </Link>
+              <div className="px-4 py-3 mt-2">
+                <button 
+                  className="w-full bg-white text-black py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  GET IN TOUCH
+                </button>
               </div>
             </div>
           </div>
@@ -127,3 +85,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default Navbar
