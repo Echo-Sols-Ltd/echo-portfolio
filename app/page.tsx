@@ -476,7 +476,7 @@ export default function Home() {
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Our <span className="text-blue-400 font-sans italic">Impact</span> in Numbers
+                  Our <span className="font-sans font-light italic">Impact</span> in Numbers
                 </h2>
                 <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                   Every project we build is designed to create meaningful change
@@ -558,7 +558,7 @@ export default function Home() {
                     PORTFOLIO SHOWCASE
                   </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-10">
-                Featured <span className="text-blue-400 font-sans italic">Projects</span>
+                Featured <span className="font-light font-sans italic">Projects</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 We're working on exciting projects that will showcase our
@@ -740,7 +740,7 @@ export default function Home() {
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Meet Our <span className="text-blue-400 font-sans italic">Team</span>
+                  Meet Our <span className="font-light font-sans italic">Team</span>
                 </h2>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
                   25+ passionate individuals with diverse skills and a shared
@@ -818,8 +818,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-white"></div>
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
             <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
-              Ready to <span className="font-sans italic text-blue-400">Build</span> Something{" "}
-              <span className="font-sans italic text-blue-400">Amazing</span>?
+              Ready to <span className="font-sans italic font-light">Build</span> Something{" "}
+              <span className="font-sans italic font-light">Amazing?</span>
             </h2>
             <ScrollAnimation animation="fade-up" delay={120}>
               <p className="text-lg text-black/90 mb-8 max-w-2xl mx-auto">

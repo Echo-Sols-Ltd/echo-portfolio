@@ -20,8 +20,8 @@ import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 
 export default function TeamPage() {
-  const [coreMembersShown, setCoreMembersShown] = useState<number>(30);
-  const [devTeamShown, setDevTeamShown] = useState<number>(10);
+  const [coreMembersShown, setCoreMembersShown] = useState<number>(10);
+  const [devTeamShown, setDevTeamShown] = useState<number>(30);
   
   // Star field refs
   const firstStarRef = useRef<HTMLDivElement>(null);
@@ -245,7 +245,7 @@ export default function TeamPage() {
           <ScrollAnimation animation="fade-up" delay={150}>
             <div className="flex items-center justify-center mb-6">
               <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                Our <span className="text-blue-400">Team</span>
+                Our <span className="font-light font-sans italic">Team</span>
               </h1>
             </div>
           </ScrollAnimation>
@@ -269,7 +269,7 @@ export default function TeamPage() {
                   suffix: "+",
                   label: "Team Members",
                   icon: Users,
-                  color: "primary",
+                  color: "purple-500",
                   delay: 120,
                 },
                 {
@@ -292,7 +292,7 @@ export default function TeamPage() {
                   suffix: "%",
                   label: "Passion Driven",
                   icon: Heart,
-                  color: "purple-500",
+                  color: "orange-500",
                   delay: 180,
                 },
               ].map((stat, index) => (
@@ -310,7 +310,7 @@ export default function TeamPage() {
                     <CounterAnimation
                       end={stat.end}
                       suffix={stat.suffix || ""}
-                      className="text-4xl font-bold gradient-text mb-2"
+                      className="text-4xl font-semibold text-black mb-2"
                     />
                     <div className="text-muted-foreground">{stat.label}</div>
                   </div>
@@ -328,11 +328,11 @@ export default function TeamPage() {
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
                 Our{" "}
-                <span className="text-blue-400 font-sans italic">
+                <span className="font-light font-sans italic">
                   Expertise
                 </span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Each team member brings unique skills and perspectives to create
                 comprehensive technology solutions.
               </p>
@@ -389,7 +389,7 @@ export default function TeamPage() {
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                Our <span className="text-blue-400 font-sans italic">Team</span>
+                Our <span className="font-light font-sans italic">Team</span>
               </h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">
                 Meet the talented individuals who make Echo Solutions's vision a
@@ -460,7 +460,7 @@ export default function TeamPage() {
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
                   Our{" "}
-                  <span className="text-blue-400 font-sans italic">
+                  <span className="font-light font-sans italic">
                     Culture
                   </span>
                 </h2>

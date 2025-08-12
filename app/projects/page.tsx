@@ -237,7 +237,7 @@ const ProjectsPage = () => {
           <ScrollAnimation animation="fade-up" delay={150}>
             <div className="flex items-center justify-center mb-6">
               <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                Our <span className="text-blue-400">Projects</span>
+                Our <span className="font-sans font-light italic">Projects</span>
               </h1>
             </div>
           </ScrollAnimation>
@@ -293,7 +293,7 @@ const ProjectsPage = () => {
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                Projects in Development
+                <span className="font-sans font-light italic">Projects</span> in Development
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Our most exciting upcoming projects that will showcase our
@@ -403,9 +403,9 @@ const ProjectsPage = () => {
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                  Our Roadmap
+                  Our <span className="font-sans font-light italic"></span>Roadmap
                 </h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Explore our complete project pipeline and see what we're
                   building across different domains.
                 </p>
@@ -541,7 +541,7 @@ const ProjectsPage = () => {
           <div className="container-custom text-center py-6">
             <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
               Have a{" "}
-              <span className="text-blue-400 font-sans italic">Project</span> in
+              <span className="font-light font-sans italic">Project</span> in
               Mind?
             </h2>
             <ScrollAnimation animation="fade-up" delay={120}>

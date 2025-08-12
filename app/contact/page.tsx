@@ -297,7 +297,7 @@ export default function ContactPage() {
           <ScrollAnimation animation="fade-up" delay={150}>
             <div className="flex items-center justify-center mb-6">
               <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                Let's <span className="text-blue-400">Connect</span>
+                Let's <span className="font-sans font-light italic">Connect</span>
               </h1>
             </div>
           </ScrollAnimation>

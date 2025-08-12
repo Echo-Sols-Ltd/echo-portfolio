@@ -310,7 +310,7 @@ export default function AboutPage() {
           <ScrollAnimation animation="fade-up" delay={150}>
             <div className="flex items-center justify-center mb-6">
               <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                About <span className="text-blue-400">Echo Solutions</span>
+                About <span className="font-sans font-light italic">Echo Solutions</span>
               </h1>
             </div>
           </ScrollAnimation>
@@ -332,7 +332,7 @@ export default function AboutPage() {
               <div className="space-y-8">
                 <h2 className="text-5xl md:text-6xl font-bold font-space-grotesk text-black leading-tight">
                   Our{" "}
-                  <span className="text-blue-400 font-sans italic">Origin</span>{" "}
+                  <span className="font-light font-sans italic">Origin</span>{" "}
                   Story
                 </h2>
                 <div className="space-y-8 text-xl text-gray-700 leading-relaxed">
@@ -367,7 +367,7 @@ export default function AboutPage() {
               <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-3xl shadow-xl border border-gray-200">
                 <h3 className="text-3xl font-bold mb-8 text-black">
                   Our{" "}
-                  <span className="text-blue-400 font-sans italic">
+                  <span className="font-light font-sans italic">
                     Journey
                   </span>
                 </h3>
@@ -456,7 +456,7 @@ export default function AboutPage() {
               <div className="text-center mb-20">
                 <h2 className="text-5xl md:text-6xl font-bold mb-8 text-white leading-tight">
                   Our{" "}
-                  <span className="text-blue-400 font-sans italic">
+                  <span className="font-light font-sans italic">
                     Foundation
                   </span>
                 </h2>
@@ -536,9 +536,9 @@ export default function AboutPage() {
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
               Ready to{" "}
-              <span className="text-blue-400 font-sans italic">Build</span>{" "}
+              <span className="font-light font-sans italic">Build</span>{" "}
               Something{" "}
-              <span className="text-blue-400 font-sans italic">Amazing</span>?
+              <span className="font-light font-sans italic">Amazing?</span>
             </h2>
             <ScrollAnimation animation="fade-up" delay={150}>
               <p className="text-lg text-black/90 mb-8 max-w-2xl mx-auto">
