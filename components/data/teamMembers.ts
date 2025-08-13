@@ -148,6 +148,11 @@ export const devTeam = [
     role: "Software Developer",
     image: "/dianah.jpeg",
   },
+    {
+    name: "Iradukunda Hope",
+    role: "Software Developer",
+    image: "/avatargirl.jpeg",
+  },
   {
     name: "Iradukunda Joyeuese",
     role: "Software Developer",
