@@ -94,7 +94,19 @@ export const coreMembers = [
       ig: "https://instagram.com/landry_sb",
       website: "https://Landry.neurolab.cc"
     }
-  }
+  },
+  {
+    name: "Rukundo Bahati Samuel",
+    role: "Cybersecurity Lead",
+    image: "/bahati.jpg",
+    social: {
+      email: "rukundorca@gmail.com ",
+      github: "https://github.com/Rukundo-Bahati",
+      twitter: "https://x.com/BahatiBaba",
+      ig: "https://www.instagram.com/ruku_nd0",
+    }
+  },
+
 ];
 
 export const devTeam = [
@@ -110,13 +122,18 @@ export const devTeam = [
   },
   {
     name: "Amani Patrick",
-    role: "Cyber Security Expert",
+    role: "Cybersecurity Expert",
     image: "/amani.jpeg",
   },
   {
     name: "Bagabo Bonny",
     role: "Software Developer",
     image: "/avatarboy.jpeg",
+  },
+  {
+    name: "Bugiri Wilson Goal",
+    role: "Cybersecurity Expert",
+    image: "/wigo.jpeg"
   },
   {
     name: "Byukusenge Andrew",
@@ -207,11 +224,6 @@ export const devTeam = [
     name: "Nziza Prince",
     role: "Software Developer",
     image: "/nziza.png",
-  },
-  {
-    name: "Rukundo Bahati Samuel",
-    role: "CyberSec Expert",
-    image: "/bahati.jpg"
   },
   {
     name: "Rwaburindi Jean Calvin",
