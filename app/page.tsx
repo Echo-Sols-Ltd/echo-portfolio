@@ -782,7 +782,7 @@ export default function Home() {
                   delay={member.delay}
                 >
                   <div className="text-center group">
-                    <div className="w-48 h-48 rounded-full overflow-hidden mb-4 mx-auto transition-transform duration-300 ring-4">
+                    <div className="w-36 h-36 rounded-full overflow-hidden mb-4 mx-auto duration-300 ring-4 group-hover:ring-blue-400 group-hover:ring-2 transition-all">
                       <img
                         src={member.avatar || "/placeholder.svg"}
                         alt={`${member.name} - ${member.role}`}
@@ -816,6 +816,7 @@ export default function Home() {
       <ScrollAnimation animation="fade-up" delay={100}>
         <section className="py-20 bg-white relative overflow-hidden">
           <div className="absolute inset-0 bg-white"></div>
+          <video src="/haptic.mp4"></video>
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
             <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
               Ready to <span className="font-sans italic font-light">Build</span> Something{" "}
