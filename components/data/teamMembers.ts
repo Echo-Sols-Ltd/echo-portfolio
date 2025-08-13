@@ -1,3 +1,4 @@
+import { ro } from "date-fns/locale";
 import { Linkedin } from "lucide-react";
 export const coreMembers = [
   {
@@ -87,7 +88,7 @@ export const coreMembers = [
   {
     name: "Asiimwe Landry Chretien Euclide",
     role: "Chief Strategy Officer",
-    image: "/honore.jpeg",
+    image: "/avatarboy.jpeg",
     social: {
       github: "https://GitHub.com/asimwe1",
       ig: "https://instagram.com/landry_sb",
@@ -113,14 +114,19 @@ export const devTeam = [
     image: "/amani.jpeg",
   },
   {
+    name: "Bagabo Bonny",
+    role: "Software Developer",
+    image: "/avatarboy.jpeg",
+  },
+  {
     name: "Chance Regine",
     role: "UI/UX Designer",
     image: "/chance.jpeg",
   },
   {
-    name: "Dushimire Aine",
-    role: "3D Designer",
-    image: "/aine.jpeg",
+    name: "Dufitimana Theoneste",
+    role: "Software Developer",
+    image: "/theo.jpg",
   },
   {
     name: "Forgiveness Peace Love",
@@ -133,14 +139,14 @@ export const devTeam = [
     image: "/hatuma.png",
   },
   {
+    name: "Ihimbazwe Niyikora Kevine",
+    role: "UI/UX Designer",
+    image: "/niyikora.jpg",
+  },
+  {
     name: "Irakoze Dianah",
     role: "Software Developer",
     image: "/dianah.jpeg",
-  },
-  {
-    name: "Irere Emmanuel",
-    role: "Software Developer",
-    image: "/irere.jpeg",
   },
   {
     name: "Iradukunda Joyeuese",
@@ -148,7 +154,12 @@ export const devTeam = [
     image: "/joyeuse.png",
   },
   {
-    name: "Jolie Princess",
+    name: "Ishimwe Benitha",
+    role: "UI/UX Designer",
+    image: "/avatargirl.jpeg",
+  },
+  {
+    name: "Jolie Princesse",
     role: "Software Developer",
     image: "/princess.jpeg",
   },
@@ -163,24 +174,19 @@ export const devTeam = [
     image: "/manene.jpeg",
   },
   {
+    name: "Mugabe Ineza Promesse",
+    role: "Software Developer",
+    image: "/mugabe.jpg",
+  },
+  {
     name: "Mugisha Prosper",
     role: "Machine Learning and AI Specialist",
     image: "/polo.jpeg",
   },
   {
-    name: "Muhumure Bonhuer Christian",
-    role: "Software  Developer",
-    image: "/bonheur.jpeg",
-  },
-  {
     name: "Niyitanga Honore",
     role: "Cyber Security Specialist",
     image: "/honore.jpeg",
-  },
-  {
-    name: "Nshimiyimana Ihirwe Patrick",
-    role: "UI/UX Designer",
-    image: "/pazzo.jpeg",
   },
   {
     name: "Ntwali Gloria",
@@ -193,7 +199,12 @@ export const devTeam = [
     image: "/nziza.png",
   },
   {
-    name: "Rwaburindi Jean Claude",
+    name: "Rukundo Bahati Samuel",
+    role: "CyberSec Expert",
+    image: "/bahati.jpg"
+  },
+  {
+    name: "Rwaburindi Jean Calvin",
     role: "UI/UX Designer",
     image: "/calvin.jpeg",
   },
