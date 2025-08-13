@@ -43,7 +43,7 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex space-x-4">
               {[
-                { href: "https://github.com/VersaTech-Solutions", icon: Github, label: "GitHub" },
+                { href: "https://github.com/EchoSols", icon: Github, label: "GitHub" },
                 { href: "https://www.linkedin.com/company/echho-solutions", icon: Linkedin, label: "LinkedIn" },
                 { href: "https://www.instagram.com/echo_sols/", icon: Instagram, label: "Instagram" }
               ].map((social) => (
@@ -65,7 +65,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="text-xl font-semibold text-white relative pb-3">
               Quick Links
-              <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+              <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-blue-400"></div>
             </h3>
             <ul className="space-y-4">
               {[
@@ -91,7 +91,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="text-xl font-semibold text-white relative pb-3">
               Resources
-              <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+              <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-blue-400"></div>
             </h3>
             <ul className="space-y-4">
               {[
@@ -115,7 +115,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="text-xl font-semibold text-white relative pb-3">
               Contact Us
-              <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+              <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-blue-400"></div>
             </h3>
 
             <div className="space-y-5">
@@ -164,7 +164,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-white/20">
         <div className="container mx-auto px-6 lg:px-12 xl:px-16 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-base">

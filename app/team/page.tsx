@@ -301,7 +301,7 @@ export default function TeamPage() {
                   animation="scale-up"
                   delay={stat.delay}
                 >
-                  <div className="p-6 glass-effect rounded-xl card-hover">
+                  <div className="p-6 border border-gray-200 rounded-xl card-hover">
                     <div
                       className={`bg-${stat.color}/20 p-3 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center animate-pulse-glow`}
                     >
