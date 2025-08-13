@@ -119,6 +119,11 @@ export const devTeam = [
     image: "/avatarboy.jpeg",
   },
   {
+    name: "Byukusenge Andrew",
+    role: "Software Developer",
+    image: "/andre.jpg"
+  },
+  {
     name: "Chance Regine",
     role: "UI/UX Designer",
     image: "/chance.jpeg",
@@ -147,6 +152,11 @@ export const devTeam = [
     name: "Irakoze Dianah",
     role: "Software Developer",
     image: "/dianah.jpeg",
+  },
+    {
+    name: "Iradukunda Hope",
+    role: "Software Developer",
+    image: "/avatargirl.jpeg",
   },
   {
     name: "Iradukunda Joyeuese",

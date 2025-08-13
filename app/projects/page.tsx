@@ -272,7 +272,7 @@ const ProjectsPage = () => {
                   animation="scale-up"
                   delay={stat.delay}
                 >
-                  <div className="p-6 glass-effect rounded-xl card-hover">
+                  <div className="p-6 border border-gray-200 rounded-xl card-hover">
                     <CounterAnimation
                       end={stat.end}
                       suffix={stat.suffix || ""}
