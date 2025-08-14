@@ -310,7 +310,7 @@ export default function Home() {
                     <span className="w-2 h-2 bg-black rounded-full mr-2"></span>
                     WHO WE ARE
                   </div>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-base text-gray-600 leading-relaxed">
                     We're a collective of young, passionate technologists who believe in using our skills to create
                     meaningful impact. From AI-powered solutions to secure web applications, we build technology that
                     matters.
@@ -373,7 +373,7 @@ export default function Home() {
                       <Code className="h-5 w-5 text-black" />
                     </div>
                     <h3 className="font-semibold text-black mb-2">Development</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Web & Mobile Development solutions</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">Web & Mobile Development Solutions</p>
                   </div>
                   {/* AI/ML */}
                   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
@@ -381,7 +381,7 @@ export default function Home() {
                       <Brain className="h-5 w-5 text-blue-600" />
                     </div>
                     <h3 className="font-semibold text-black mb-2">AI/ML</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Intelligent solutions & automation</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">Intelligent Solutions & Automation</p>
                   </div>
                   {/* 3D Modelling */}
                   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
@@ -389,7 +389,7 @@ export default function Home() {
                       <Box className="h-5 w-5 text-purple-600" />
                     </div>
                     <h3 className="font-semibold text-black mb-2">3D Modelling</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">3D design & visualization</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">3D Design & Visualization</p>
                   </div>
                 </div>
                 <div className="space-y-4 mt-8">
@@ -399,7 +399,7 @@ export default function Home() {
                       <Palette className="h-5 w-5 text-green-600" />
                     </div>
                     <h3 className="font-semibold text-black mb-2">Design</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">UI/UX & brand experiences</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">UI/UX & Brand Experiences</p>
                   </div>
                   {/* Security */}
                   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
@@ -407,7 +407,7 @@ export default function Home() {
                       <Shield className="h-5 w-5 text-red-600" />
                     </div>
                     <h3 className="font-semibold text-black mb-2">Security</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Cybersecurity & data protection</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">Cybersecurity & Data Protection</p>
                   </div>
                 </div>
               </div>
@@ -474,6 +474,7 @@ export default function Home() {
           </div>
         </section>
       </ParallaxSection>
+           
       {/* Featured Projects Section */}
       <section className="py-20 bg-white relative z-10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
