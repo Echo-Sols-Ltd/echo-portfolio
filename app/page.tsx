@@ -1,15 +1,13 @@
 "use client"
 import Hero from "@/components/Hero"
 import type React from "react"
-
 import ScrollAnimation from "@/components/ScrollAnimation"
 import ParallaxSection from "@/components/ParallaxSection"
 import CounterAnimation from "@/components/CounterAnimation"
 import Link from "next/link"
-import { ArrowRight, Code, Palette, Shield, Brain, Users, Rocket, Heart, Globe, Star, Play, X } from "lucide-react"
+import { ArrowRight, Code, Palette, Shield, Brain, Users, Rocket, Heart, Globe, Star, Play, X, Box } from "lucide-react"
 import { useState, useEffect, useRef, useCallback } from "react"
 import * as THREE from "three"
-
 export default function Home() {
   // State and refs for Stats section star field
   const statsStarRef = useRef<HTMLDivElement>(null)
@@ -39,17 +37,14 @@ export default function Home() {
   } | null>(null)
   const animationIdRef = useRef<number | null>(null)
   const isVisibleRef = useRef(true)
-
   // State for video modal
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
   const modalVideoRef = useRef<HTMLVideoElement>(null)
-
   // Video modal handlers
   const openVideoModal = () => {
     setIsVideoModalOpen(true)
     document.body.style.overflow = "hidden" // Prevent background scroll
   }
-
   const closeVideoModal = () => {
     setIsVideoModalOpen(false)
     document.body.style.overflow = "unset"
@@ -59,7 +54,6 @@ export default function Home() {
       modalVideoRef.current.currentTime = 0 // Reset video to beginning
     }
   }
-
   // Create star texture for Three.js
   const createStarTexture = () => {
     const canvas = document.createElement("canvas")
@@ -77,7 +71,6 @@ export default function Home() {
     context.fill()
     return new THREE.CanvasTexture(canvas)
   }
-
   // Create star field function
   const createStarField = (mountRef: React.RefObject<HTMLDivElement | null>) => {
     if (!mountRef.current) return null
@@ -174,7 +167,6 @@ export default function Home() {
       brightStarMaterial,
     }
   }
-
   // Handle window resize for Three.js renderer
   const handleResize = useCallback(
     (
@@ -192,19 +184,16 @@ export default function Home() {
       mountRef: React.RefObject<HTMLDivElement | null>,
     ) => {
       if (!sceneRef.current || !mountRef.current) return
-
       const { camera, renderer } = sceneRef.current
       const container = mountRef.current
       const width = container.clientWidth
       const height = container.clientHeight
-
       camera.aspect = width / height
       camera.updateProjectionMatrix()
       renderer.setSize(width, height)
     },
     [],
   )
-
   // Initialize Three.js scenes
   useEffect(() => {
     // Stats section star field
@@ -289,7 +278,6 @@ export default function Home() {
       }
     }
   }, [handleResize])
-
   // Video modal escape key handler
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
@@ -297,23 +285,19 @@ export default function Home() {
         closeVideoModal()
       }
     }
-
     if (isVideoModalOpen) {
       document.addEventListener("keydown", handleEscapeKey)
       if (modalVideoRef.current) {
         modalVideoRef.current.play()
       }
     }
-
     return () => {
       document.removeEventListener("keydown", handleEscapeKey)
     }
   }, [isVideoModalOpen])
-
   return (
     <>
       <Hero />
-
       {/* About Preview Section */}
       <section className="pt-16 pb-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -332,7 +316,6 @@ export default function Home() {
                     matters.
                   </p>
                 </div>
-
                 {/* Key Points */}
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
@@ -369,7 +352,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
                 <div className="pt-4">
                   <Link
                     href="/about"
@@ -381,7 +363,6 @@ export default function Home() {
                 </div>
               </div>
             </ScrollAnimation>
-
             {/* Services Grid */}
             <ScrollAnimation animation="fade-up" delay={200}>
               <div className="grid grid-cols-2 gap-4">
@@ -392,9 +373,8 @@ export default function Home() {
                       <Code className="h-5 w-5 text-black" />
                     </div>
                     <h3 className="font-semibold text-black mb-2">Development</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">Full-stack web & mobile applications</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">Web & Mobile Development solutions</p>
                   </div>
-
                   {/* AI/ML */}
                   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
                     <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
@@ -403,8 +383,15 @@ export default function Home() {
                     <h3 className="font-semibold text-black mb-2">AI/ML</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">Intelligent solutions & automation</p>
                   </div>
+                  {/* 3D Modelling */}
+                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
+                      <Box className="h-5 w-5 text-purple-600" />
+                    </div>
+                    <h3 className="font-semibold text-black mb-2">3D Modelling</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">3D design & visualization</p>
+                  </div>
                 </div>
-
                 <div className="space-y-4 mt-8">
                   {/* Design */}
                   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
@@ -414,7 +401,6 @@ export default function Home() {
                     <h3 className="font-semibold text-black mb-2">Design</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">UI/UX & brand experiences</p>
                   </div>
-
                   {/* Security */}
                   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
                     <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
@@ -436,7 +422,6 @@ export default function Home() {
           <div ref={statsStarRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} />
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
-
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
@@ -448,7 +433,6 @@ export default function Home() {
                 </p>
               </div>
             </ScrollAnimation>
-
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <ScrollAnimation animation="scale-up" delay={120}>
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
@@ -459,7 +443,6 @@ export default function Home() {
                   <div className="text-gray-300 font-medium">Team Members</div>
                 </div>
               </ScrollAnimation>
-
               <ScrollAnimation animation="scale-up" delay={140}>
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
                   <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
@@ -469,7 +452,6 @@ export default function Home() {
                   <div className="text-gray-300 font-medium">Projects</div>
                 </div>
               </ScrollAnimation>
-
               <ScrollAnimation animation="scale-up" delay={160}>
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
                   <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
@@ -479,7 +461,6 @@ export default function Home() {
                   <div className="text-gray-300 font-medium">Technologies</div>
                 </div>
               </ScrollAnimation>
-
               <ScrollAnimation animation="scale-up" delay={180}>
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
                   <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
@@ -511,7 +492,6 @@ export default function Home() {
               </p>
             </div>
           </ScrollAnimation>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Charity Platform */}
             <ScrollAnimation animation="fade-up" delay={120}>
@@ -616,7 +596,6 @@ export default function Home() {
               </div>
             </ScrollAnimation>
           </div>
-
           <ScrollAnimation animation="scale-up" delay={100}>
             <div className="text-center mt-12">
               <div className="bg-gray-50 border border-gray-200 p-8 rounded-xl max-w-2xl mx-auto">
@@ -644,7 +623,6 @@ export default function Home() {
           <div ref={teamStarRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} />
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
-
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
@@ -657,7 +635,6 @@ export default function Home() {
                 </p>
               </div>
             </ScrollAnimation>
-
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 {
@@ -700,7 +677,6 @@ export default function Home() {
                 </ScrollAnimation>
               ))}
             </div>
-
             <ScrollAnimation animation="fade-up" delay={120}>
               <div className="text-center mt-12">
                 <Link
@@ -715,12 +691,10 @@ export default function Home() {
           </div>
         </section>
       </ParallaxSection>
-
       {/* CTA Section - Ready to Build Something */}
       <ScrollAnimation animation="fade-up" delay={100}>
         <section className="py-20 bg-white relative overflow-hidden">
           <div className="absolute inset-0 bg-white"></div>
-
           {/* Video Preview Container */}
           <div className="flex justify-center mb-20">
             <div className="relative w-full max-w-4xl h-96 overflow-hidden rounded-2xl mx-6 lg:mx-8">
@@ -729,7 +703,6 @@ export default function Home() {
                 <source src="/haptic.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-
               {/* Play Button Overlay */}
               <div
                 className="absolute inset-0 bg-black/30 flex items-center justify-center group cursor-pointer transition-all duration-300 hover:bg-black/40"
@@ -743,7 +716,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
             <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
               Ready to <span className="font-sans italic font-light">Build</span> Something{" "}
@@ -774,7 +746,6 @@ export default function Home() {
           </div>
         </section>
       </ScrollAnimation>
-
       {/* Video Modal */}
       {isVideoModalOpen && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -786,7 +757,6 @@ export default function Home() {
           >
             <X className="h-6 w-6" />
           </button>
-
           {/* Modal Content */}
           <div className="relative w-full max-w-5xl aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
             <video
@@ -802,7 +772,6 @@ export default function Home() {
               Your browser does not support the video tag.
             </video>
           </div>
-
           {/* Click outside to close */}
           <div className="absolute inset-0 -z-10" onClick={closeVideoModal}></div>
         </div>
