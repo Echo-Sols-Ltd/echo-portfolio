@@ -251,7 +251,7 @@ export default function TeamPage() {
           </ScrollAnimation>
           <ScrollAnimation animation="fade-up" delay={180}>
             <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
-              25+ passionate individuals with diverse skills and a shared vision
+              30+ passionate individuals with diverse skills and a shared vision
               for technology that makes a meaningful difference in the world.
             </p>
           </ScrollAnimation>
@@ -265,7 +265,7 @@ export default function TeamPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
                 {
-                  end: 25,
+                  end: 30,
                   suffix: "+",
                   label: "Team Members",
                   icon: Users,
@@ -280,7 +280,7 @@ export default function TeamPage() {
                   delay: 140,
                 },
                 {
-                  end: 50,
+                  end: 25,
                   suffix: "+",
                   label: "Technologies",
                   icon: Code,

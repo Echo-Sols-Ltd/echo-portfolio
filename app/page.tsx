@@ -455,7 +455,7 @@ export default function Home() {
                   <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
                     <Users className="h-8 w-8 text-blue-400" />
                   </div>
-                  <CounterAnimation end={25} className="text-4xl font-bold text-white mb-2" />
+                  <CounterAnimation end={40} className="text-4xl font-bold text-white mb-2" />
                   <div className="text-gray-300 font-medium">Team Members</div>
                 </div>
               </ScrollAnimation>
@@ -652,7 +652,7 @@ export default function Home() {
                   Meet Our <span className="font-light font-sans italic">Team</span>
                 </h2>
                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  25+ passionate individuals with diverse skills and a shared vision for technology that makes a
+                  30+ passionate individuals with diverse skills and a shared vision for technology that makes a
                   difference.
                 </p>
               </div>

@@ -338,7 +338,7 @@ export default function AboutPage() {
                 <div className="space-y-8 text-xl text-gray-700 leading-relaxed">
                   <ScrollAnimation animation="fade-up" delay={120}>
                     <p className="text-lg">
-                      It all started in a small co-working space in 2023, where
+                      It all started in a small co-working space in 2025, where
                       13 passionate developers came together with a shared
                       vision of creating technology that makes a real difference
                       in people's lives.
@@ -379,7 +379,7 @@ export default function AboutPage() {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-base text-black mb-1">
-                          2023 - The Idea
+                          2025 - The Idea
                         </h4>
                         <p className="text-gray-600 text-base">
                           13 friends decide to change the world through code
@@ -394,7 +394,7 @@ export default function AboutPage() {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-base text-black mb-1">
-                          2023 - First Project
+                          2025 - First Project
                         </h4>
                         <p className="text-gray-600 text-base">
                           Built our first social impact platform
@@ -409,7 +409,7 @@ export default function AboutPage() {
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-base text-black mb-1">
-                          2024 - Growth
+                          2025 - Growth
                         </h4>
                         <p className="text-gray-600 text-base">
                           Expanded to serve clients worldwide
