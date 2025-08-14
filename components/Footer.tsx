@@ -119,7 +119,7 @@ export default function Footer() {
             </h3>
 
             <div className="space-y-5">
-              <div className="flex items-start space-x-4 group">
+              <div className="flex items-center space-x-4 group">
                 <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
                   <MapPin className="h-5 w-5 text-blue-400" />
                 </div>
@@ -129,32 +129,32 @@ export default function Footer() {
                 </div>
               </div>
               
-              <div className="flex items-start space-x-4 group">
+              <div className="flex items-center space-x-4 group">
                 <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
                   <Phone className="h-5 w-5 text-blue-400" />
                 </div>
                 <div>
                   <p className="text-gray-300 text-base font-medium">Phone</p>
                   <a 
-                    href="tel:+250785588324"
+                    href="https://wa.me/+250780837136"
                     className="text-gray-400 hover:text-blue-400 text-sm transition-colors"
                   >
-                    +250 785 588 324
+                    +250 780 837 136
                   </a>
                 </div>
               </div>
               
-              <div className="flex items-start space-x-4 group">
+              <div className="flex items-center space-x-4 group">
                 <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-gray-700 transition-colors">
                   <Mail className="h-5 w-5 text-blue-400" />
                 </div>
                 <div>
                   <p className="text-gray-300 text-base font-medium">Email</p>
                   <a
-                    href="mailto:echosolutions@yahoo.com"
+                    href="mailto:echhosolutions@yahoo.com "
                     className="text-gray-400 hover:text-blue-400 text-sm transition-colors break-all"
                   >
-                    echosolutions@yahoo.com
+                    echhosolutions@yahoo.com 
                   </a>
                 </div>
               </div>
