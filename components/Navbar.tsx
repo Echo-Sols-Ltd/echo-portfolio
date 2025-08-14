@@ -42,12 +42,9 @@ const Navbar = () => {
 
           {/* Contact Button - Right */}
           <div className="hidden md:block">
-            <a 
-              href="/contact"
-              className="bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm hover:shadow-md inline-block"
-            >
+            <button className="bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm hover:shadow-md">
               GET IN TOUCH
-            </a>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -74,13 +71,12 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="px-4 py-3 mt-2">
-                <a 
-                  href="/contact"
-                  className="block w-full bg-white text-black py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm text-center"
+                <button 
+                  className="w-full bg-white text-black py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   GET IN TOUCH
-                </a>
+                </button>
               </div>
             </div>
           </div>

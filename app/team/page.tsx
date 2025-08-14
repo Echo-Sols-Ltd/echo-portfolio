@@ -339,28 +339,24 @@ export default function TeamPage() {
           </ScrollAnimation>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-6 mb-16">
             {[
-              { icon: Code, 
-                label: "Full-Stack", 
-                color: "primary", 
-                delay: 120 
-              },
+              { icon: Code, label: "Full-Stack", color: "primary", delay: 120 },
               {
                 icon: Brain,
                 label: "AI/ML",
                 color: "purple-500",
-                delay: 140
+                delay: 140,
               },
               {
                 icon: Shield,
                 label: "Security",
                 color: "red-500",
-                delay: 160
+                delay: 160,
               },
               {
                 icon: Palette,
                 label: "Design",
                 color: "blue-500",
-                delay: 180
+                delay: 180,
               },
               {
                 icon: Database,

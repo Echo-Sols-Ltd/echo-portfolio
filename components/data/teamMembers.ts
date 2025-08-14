@@ -54,7 +54,7 @@ export const coreMembers = [
   {
     name: "Niyubahwe Uwacu Annick",
     role: "Chief Operations Officer",
-    image: "/annick.jpeg",
+    image: "/annicke.jpeg",
     social: {
       email: "niyubahwe.annick975@gmail.com",
       github: "https://github.com/annick975",
