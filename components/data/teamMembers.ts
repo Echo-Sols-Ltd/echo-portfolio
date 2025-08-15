@@ -18,6 +18,7 @@ export const coreMembers = [
     social: {
       linkedin: "https://www.linkedin.com/in/nyumbayire-laurent-b11251299/",
       email: "laulanyumbayire@gmail.com",
+      ig: "https://www.instagram.com/nyumbayire_/"
     },
   },
   {
@@ -25,7 +26,11 @@ export const coreMembers = [
     role: "Software Developer",
     image: "/dianah.jpeg",
     social:{
-      ig: "https://www.instagram.com/iranzi_dianah/",
+      ig: "https://www.instagram.com/ira_dian4h/",
+      twitter: "https://x.com/GITEGOLUNAR",
+      email: "iradianah5@gmail.com",
+      github: "https://github.com/IRANZI ",
+      facebook: " https://www.facebook.com/share/15K7Tbe3Do/"
     }
   },
   {
@@ -51,7 +56,6 @@ export const coreMembers = [
     role: "Chief Product Officer",
     image: "/dios.jpeg",
     social: {
-      github: "https://github.com/Uhirwe",
       ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
       twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
       linkedin:
@@ -68,6 +72,7 @@ export const coreMembers = [
       github: "https://github.com/annick975",
       ig: "https://www.instagram.com/@n_tannick975/",
       linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/",
+      website: "https://annick-niyubahwe.vercel.app/"
     },
   },
   {
@@ -91,6 +96,7 @@ export const coreMembers = [
       ig: "https://www.instagram.com/_corey_ne/",
       linkedin:
         "https://www.linkedin.com/in/gasore-corene-turinumugisha-275332326/",
+      website: "https://gasorecorene.vercel.app/"
     },
   },
   {
