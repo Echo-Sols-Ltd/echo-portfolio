@@ -21,6 +21,14 @@ export const coreMembers = [
     },
   },
   {
+    name: "Iranzi Dianah",
+    role: "Software Developer",
+    image: "/dianah.jpeg",
+    social:{
+      ig: "https://www.instagram.com/iranzi_dianah/",
+    }
+  },
+  {
     name: "Ntwali Isimbi Vieira",
     role: "Chief Technology Officer",
     image: "/viera.jpeg",
@@ -54,7 +62,7 @@ export const coreMembers = [
   {
     name: "Niyubahwe Uwacu Annick",
     role: "Chief Operations Officer",
-    image: "/annicke.jpeg",
+    image: "/annick.jpg",
     social: {
       email: "niyubahwe.annick975@gmail.com",
       github: "https://github.com/annick975",
@@ -166,11 +174,6 @@ export const devTeam = [
     image: "/niyikora.jpg",
   },
   {
-    name: "Irakoze Dianah",
-    role: "Software Developer",
-    image: "/dianah.jpeg",
-  },
-    {
     name: "Iradukunda Hope",
     role: "UI/UX Designer",
     image: "/hopeira.jpg",
@@ -179,6 +182,11 @@ export const devTeam = [
     name: "Iradukunda Joyeuese",
     role: "Software Developer",
     image: "/joyeuse.png",
+  },
+  {
+    name: "Irasubiza Saly Nelson",
+    role: "Software Developer",
+    image: "/avatarboy.jpeg",
   },
   {
     name: "Ishimwe Benitha",
@@ -255,5 +263,10 @@ export const devTeam = [
     role: "Software  Developer",
     image: "/pascaline.jpeg",
   },
+  {
+    name: "Uwera Sylvie",
+    role: "Software Developer",
+    image: "/avatargirl.jpeg",
+  }
 ];
 

@@ -21,8 +21,8 @@ import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 
 export default function TeamPage() {
-  const [coreMembersShown, setCoreMembersShown] = useState<number>(10);
-  const [devTeamShown, setDevTeamShown] = useState<number>(30);
+  const [coreMembersShown, setCoreMembersShown] = useState<number>(15);
+  const [devTeamShown, setDevTeamShown] = useState<number>(35);
 
   // Star field refs
   const firstStarRef = useRef<HTMLDivElement>(null);
