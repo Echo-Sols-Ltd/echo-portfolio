@@ -206,11 +206,6 @@ export const devTeam = [
     image: "/babou.jpg",
   },
   {
-    name: "Mugabe Ineza Promesse",
-    role: "Software Developer",
-    image: "/mugabe.jpg",
-  },
-  {
     name: "Mugisha Prosper",
     role: "Machine Learning and AI Specialist",
     image: "/polo.jpeg",
