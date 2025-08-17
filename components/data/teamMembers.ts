@@ -230,6 +230,11 @@ export const devTeam = [
     image: "/babou.jpg",
   },
   {
+    name: "Mugisha Pascal",
+    role: "Software Developer",
+    image: "/pascal.jpg",
+  },
+  {
     name: "Mugisha Prosper",
     role: "Machine Learning and AI Specialist",
     image: "/polo.jpeg",
