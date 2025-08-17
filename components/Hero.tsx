@@ -308,7 +308,10 @@ const Hero = () => {
             <div className="relative">
               <div className="flex items-center justify-center">
                 <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                  We <span className="font-sans italic font-light">{slides[currentWord].word}</span>
+                  We{" "}
+                  <span className="font-sans italic font-light">
+                    {slides[currentWord].word}
+                  </span>
                 </h1>
               </div>
             </div>

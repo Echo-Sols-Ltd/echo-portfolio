@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     "tech startup, AI, machine learning, cybersecurity, web development, social impact, technology consulting",
   authors: [{ name: "Echo Solutions Team" }],
   icons: {
-    icon: "/Lex.svg",
-    shortcut: "/Lex.svg",
-    apple: "/Lex.svg",
+    icon: "/white.svg",
+    shortcut: "/white.svg",
+    apple: "/white.svg",
   },
   openGraph: {
     title: "Echo Solutions - Tech for Impact",
