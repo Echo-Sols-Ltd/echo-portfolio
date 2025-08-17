@@ -175,6 +175,11 @@ export const devTeam = [
     image: "/hatuma.png",
   },
   {
+    name: "Hirwa Emma Reponse",
+    role: "Software Developer",
+    image: "/reponse.jpg",
+  },
+  {
     name: "Ihimbazwe Niyikora Kevine",
     role: "UI/UX Designer",
     image: "/niyikora.jpg",
@@ -203,6 +208,11 @@ export const devTeam = [
     name: "Jolie Princesse",
     role: "Software Developer",
     image: "/princess.jpeg",
+  },
+  {
+    name: "Kwizera Olivier",
+    role: "Software Developer",
+    image: "/olivier.jpg",
   },
   {
     name: "Mahinga Rodin",
@@ -240,6 +250,11 @@ export const devTeam = [
     image: "/honore.jpeg",
   },
   {
+    name: "Niyodushima Belyse",
+    role: "Software Developer",
+    image: "/belyse.jpg",
+  },
+  {
     name: "Ntwali Gloria",
     role: "Software Developer",
     image: "/gloria.jpeg",
@@ -258,6 +273,11 @@ export const devTeam = [
     name: "Senga Gloire",
     role: "Software Developer",
     image: "/gloire.jpeg",
+  },
+  {
+    name: "Tuyishime Christian",
+    role: "Software Developer",
+    image: "/avatarboy.jpeg",
   },
   {
     name: "Tuyubahe Ashrafu",
