@@ -237,7 +237,8 @@ const ProjectsPage = () => {
           <ScrollAnimation animation="fade-up" delay={150}>
             <div className="flex items-center justify-center mb-6">
               <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                Our <span className="font-sans font-light italic">Projects</span>
+                Our{" "}
+                <span className="font-sans font-light italic">Projects</span>
               </h1>
             </div>
           </ScrollAnimation>
@@ -293,7 +294,8 @@ const ProjectsPage = () => {
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                <span className="font-sans font-light italic">Projects</span> in Development
+                <span className="font-sans font-light italic">Projects</span> in
+                Development
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Our most exciting upcoming projects that will showcase our
@@ -403,7 +405,8 @@ const ProjectsPage = () => {
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                  Our <span className="font-sans font-light italic"></span>Roadmap
+                  Our <span className="font-sans font-light italic"></span>
+                  Roadmap
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Explore our complete project pipeline and see what we're

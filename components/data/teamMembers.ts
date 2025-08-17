@@ -197,7 +197,7 @@ export const devTeam = [
   {
     name: "Irasubiza Saly Nelson",
     role: "Software Developer",
-    image: "/avatarboy.jpeg",
+    image: "/saly.png",
   },
   {
     name: "Ishimwe Benitha",
