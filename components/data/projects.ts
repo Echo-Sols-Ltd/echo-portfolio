@@ -1,4 +1,4 @@
-export const categories = ["All", "Security", "Agriculture"];
+export const categories = ["All", "Agriculture", "Health", "Management"];
 
 export const projects = [
   {
@@ -6,17 +6,17 @@ export const projects = [
     title: "Health Link",
     description: "Secure data management and analytics platform for enterprises with advanced encryption and compliance features.",
     image: "/projects/healthlink.png",
-    category: "Security",
-    status: "Planning",
+    category: "Health",
+    status: "In Development",
     featured: true,
     link: "",
   },
   {
     id: 2,
-    title: "Move It",
+    title: "MoveIt",
     description: "Precision agriculture IoT solution using embedded systems to monitor crop health and optimize farming practices.",
     image: "/projects/moveit.png",
-    category: "Agriculture",
+    category: "Management",
     status: "In Development",
     featured: true,
     link: "ada",

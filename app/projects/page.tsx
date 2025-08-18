@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Calendar, Users, Code } from "lucide-react";
+import { Calendar, Users, Code, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
@@ -313,49 +313,40 @@ const ProjectsPage = () => {
                   animation="scale-up"
                   delay={80 + index * 100}
                 >
-                  <div className="glass-effect rounded-xl overflow-hidden card-hover group">
-                    <div
-                      className={`h-48 bg-gradient-to-br bg-blue-400 relative overflow-hidden`}
-                    >
-                      <div className="absolute top-4 left-4">
-                        <span className="text-xs px-3 py-1 rounded-full bg-white/20 text-white font-medium">
-                          {project.category}
-                        </span>
-                      </div>
-                      <div className="absolute top-4 right-4">
-                        <span
-                          className={`text-xs px-3 py-1 rounded-full ${
-                            project.status === "In Development"
-                              ? "bg-green-500/20 text-green-300 animate-pulse"
-                              : "bg-yellow-500/20 text-yellow-300"
-                          }`}
-                        >
-                          {project.status}
-                        </span>
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-3">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted-foreground mb-4 line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      <div className="text-center">
-                        <span
-                          className={`text-sm font-medium px-3 py-1 rounded-full ${
-                            project.status === "In Development"
-                              ? "bg-yellow-500/20 text-yellow-600 dark:text-yellow-400"
-                              : project.status === "Planning"
-                              ? "bg-blue-500/20 text-blue-600 dark:text-blue-400"
-                              : "bg-gray-500/20 text-gray-600 dark:text-gray-400"
-                          }`}
-                        >
-                          {project.status}
-                        </span>
+                  <div className="relative rounded-xl overflow-hidden group h-60 md:h-72 lg:h-[60vh] border-2 border-gray-200">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Base gradient */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    {/* Hover black scrim */}
+                    <div className="pointer-events-none absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Overlay content */}
+                    <div className="absolute inset-0 flex items-end p-5 md:p-6 lg:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="text-white max-w-2xl">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold">
+                          {project.title}
+                        </h3>
+                        <p className="mt-2 text-sm lg:text-base text-gray-200 line-clamp-3">
+                          {project.description}
+                        </p>
+                        <div className="mt-4">
+                          {project.link ? (
+                            <Link
+                              href={project.link}
+                              className="inline-flex items-center px-5 py-3 bg-white/20 backdrop-blur-sm text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-colors"
+                            >
+                              Visit Website
+                              <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                          ) : (
+                            <span className="inline-flex items-center px-5 py-3 bg-white/10 text-white/80 text-sm rounded-lg border border-white/20">
+                              Coming Soon
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -409,49 +400,40 @@ const ProjectsPage = () => {
                   animation="fade-up"
                   delay={120 + index * 50}
                 >
-                  <div className="glass-effect rounded-xl overflow-hidden card-hover group">
-                    <div
-                      className={`h-40 bg-gradient-to-br bg-blue-400 relative overflow-hidden`}
-                    >
-                      <div className="absolute top-3 left-3">
-                        <span className="text-xs px-2 py-1 rounded-full bg-white/20 text-white font-medium">
-                          {project.category}
-                        </span>
-                      </div>
-                      <div className="absolute top-3 right-3">
-                        <span
-                          className={`text-xs px-2 py-1 rounded-full ${
-                            project.status === "In Development"
-                              ? "bg-green-500/20 text-green-300"
-                              : "bg-yellow-500/20 text-yellow-300"
-                          }`}
-                        >
-                          {project.status}
-                        </span>
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold mb-2">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                        {project.description}
-                      </p>
-
-                      <div className="text-center">
-                        <span
-                          className={`text-sm font-medium px-3 py-1 rounded-full ${
-                            project.status === "In Development"
-                              ? "bg-yellow-500/20 text-yellow-600 dark:text-yellow-400"
-                              : project.status === "Planning"
-                              ? "bg-blue-500/20 text-blue-600 dark:text-blue-400"
-                              : "bg-gray-500/20 text-gray-600 dark:text-gray-400"
-                          }`}
-                        >
-                          {project.status} 
-                        </span>
+                  <div className="relative rounded-xl overflow-hidden group h-56 md:h-64 lg:h-[45vh] border-2 border-gray-200">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Base gradient */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    {/* Hover black scrim */}
+                    <div className="pointer-events-none absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Overlay content */}
+                    <div className="absolute inset-0 flex items-end p-5 md:p-6 lg:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="text-white max-w-2xl">
+                        <h3 className="text-lg md:text-xl lg:text-2xl font-semibold">
+                          {project.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-gray-200 line-clamp-2 md:line-clamp-3">
+                          {project.description}
+                        </p>
+                        <div className="mt-4">
+                          {project.link ? (
+                            <Link
+                              href={project.link}
+                              className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-colors"
+                            >
+                              Visit Website
+                              <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                          ) : (
+                            <span className="inline-flex items-center px-4 py-2 bg-white/10 text-white/80 text-sm rounded-lg border border-white/20">
+                              Coming Soon
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
