@@ -322,7 +322,7 @@ const ProjectsPage = () => {
                     {/* Base gradient */}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                     {/* Hover black scrim */}
-                    <div className="pointer-events-none absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     {/* Overlay content */}
                     <div className="absolute inset-0 flex items-end p-5 md:p-6 lg:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="text-white max-w-2xl">
@@ -409,7 +409,7 @@ const ProjectsPage = () => {
                     {/* Base gradient */}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                     {/* Hover black scrim */}
-                    <div className="pointer-events-none absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     {/* Overlay content */}
                     <div className="absolute inset-0 flex items-end p-5 md:p-6 lg:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="text-white max-w-2xl">

@@ -663,7 +663,7 @@ export default function Home() {
                         {/* Base gradient */}
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                         {/* Black scrim for readability */}
-                        <div className="pointer-events-none absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         {/* Hover overlay */}
                         <div className="absolute inset-0 flex items-end p-6 lg:p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="text-white max-w-2xl">
