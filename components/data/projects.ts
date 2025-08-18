@@ -13,9 +13,9 @@ export const projects = [
   },
   {
     id: 2,
-    title: "AI Task Manager",
+    title: "MoveIt",
     description: "AI-driven tool that automates task assignment, tracks progress, and boosts team productivity.",
-    image: "/projects/aitaskmanager.png",
+    image: "/projects/moveit.png",
     category: "Management",
     status: "In Development",
     featured: true,
