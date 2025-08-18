@@ -4,7 +4,7 @@ export const projects = [
   {
     id: 1,
     title: "Health Link",
-    description: "Secure data management and analytics platform for enterprises with advanced encryption and compliance features.",
+    description: "Smart healthcare system for secure patient records and data-driven hospital management.",
     image: "/projects/healthlink.png",
     category: "Health",
     status: "In Development",
@@ -13,9 +13,9 @@ export const projects = [
   },
   {
     id: 2,
-    title: "MoveIt",
-    description: "Precision agriculture IoT solution using embedded systems to monitor crop health and optimize farming practices.",
-    image: "/projects/moveit.png",
+    title: "AI Task Manager",
+    description: "AI-driven tool that automates task assignment, tracks progress, and boosts team productivity.",
+    image: "/projects/aitaskmanager.png",
     category: "Management",
     status: "In Development",
     featured: true,
@@ -24,7 +24,7 @@ export const projects = [
   {
     id: 3,
     title: "Umuhinzi Link",
-    description: "AI-powered crop monitoring system that provides real-time insights for optimizing agricultural yields.",
+    description: "Digital farming platform connecting farmers, buyers, and suppliers with AI and SMS support.",
     image: "/projects/umuhinzilink.png",
     category: "Agriculture",
     status: "In Development",
