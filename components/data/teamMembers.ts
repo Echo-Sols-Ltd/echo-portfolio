@@ -1,5 +1,5 @@
 import { ro } from "date-fns/locale";
-import { Linkedin } from "lucide-react";
+import { Linkedin, RollerCoaster } from "lucide-react";
 export const coreMembers = [
   {
     name: "Izere Shema Leandre",
@@ -205,9 +205,19 @@ export const devTeam = [
     image: "/avatargirl.jpeg",
   },
   {
+    name: "Izabayo Nadine",
+    role: "UI/UX Designer",
+    image: "/nadine.jpeg"
+  },
+  {
     name: "Jolie Princesse",
     role: "Software Developer",
     image: "/princess.jpeg",
+  },
+  {
+    name: "Kirezi Livia",
+    role: "Software Developer",
+    image: "avatargirl.jpeg"
   },
   {
     name: "Kwizera Olivier",

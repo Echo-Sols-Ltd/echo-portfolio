@@ -22,7 +22,7 @@ import * as THREE from "three";
 
 export default function TeamPage() {
   const [coreMembersShown, setCoreMembersShown] = useState<number>(15);
-  const [devTeamShown, setDevTeamShown] = useState<number>(35);
+  const [devTeamShown, setDevTeamShown] = useState<number>(45);
 
   // Star field refs
   const firstStarRef = useRef<HTMLDivElement>(null);
