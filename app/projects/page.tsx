@@ -315,11 +315,8 @@ const ProjectsPage = () => {
                 >
                   <div className="glass-effect rounded-xl overflow-hidden card-hover group">
                     <div
-                      className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}
+                      className={`h-48 bg-gradient-to-br bg-blue-400 relative overflow-hidden`}
                     >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <project.icon className="h-16 w-16 text-white/80 group-hover:scale-110 transition-transform duration-300" />
-                      </div>
                       <div className="absolute top-4 left-4">
                         <span className="text-xs px-3 py-1 rounded-full bg-white/20 text-white font-medium">
                           {project.category}
@@ -347,36 +344,6 @@ const ProjectsPage = () => {
                         {project.description}
                       </p>
 
-                      <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-4">
-                        <div className="flex items-center space-x-1">
-                          <Users className="h-4 w-4" />
-                          <span>{project.teamSize} members</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="h-4 w-4" />
-                          <span>{project.timeline}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.technologies
-                          .slice(0, 3)
-                          .map((tech, techIndex) => (
-                            <span
-                              key={techIndex}
-                              className="text-xs bg-muted px-2 py-1 rounded animate-bounce-in"
-                              style={{ animationDelay: `${techIndex * 50}ms` }}
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        {project.technologies.length > 3 && (
-                          <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded">
-                            +{project.technologies.length - 3} more
-                          </span>
-                        )}
-                      </div>
-
                       <div className="text-center">
                         <span
                           className={`text-sm font-medium px-3 py-1 rounded-full ${
@@ -387,7 +354,7 @@ const ProjectsPage = () => {
                               : "bg-gray-500/20 text-gray-600 dark:text-gray-400"
                           }`}
                         >
-                          {project.status} • {project.timeline}
+                          {project.status}
                         </span>
                       </div>
                     </div>
@@ -444,11 +411,8 @@ const ProjectsPage = () => {
                 >
                   <div className="glass-effect rounded-xl overflow-hidden card-hover group">
                     <div
-                      className={`h-40 bg-gradient-to-br ${project.color} relative overflow-hidden`}
+                      className={`h-40 bg-gradient-to-br bg-blue-400 relative overflow-hidden`}
                     >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <project.icon className="h-12 w-12 text-white/80 group-hover:scale-110 transition-transform duration-300" />
-                      </div>
                       <div className="absolute top-3 left-3">
                         <span className="text-xs px-2 py-1 rounded-full bg-white/20 text-white font-medium">
                           {project.category}
@@ -476,30 +440,6 @@ const ProjectsPage = () => {
                         {project.description}
                       </p>
 
-                      <div className="flex items-center space-x-3 text-xs text-muted-foreground mb-4">
-                        <div className="flex items-center space-x-1">
-                          <Users className="h-3 w-3" />
-                          <span>{project.teamSize}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="h-3 w-3" />
-                          <span>{project.timeline}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap gap-1 mb-4">
-                        {project.technologies
-                          .slice(0, 4)
-                          .map((tech, techIndex) => (
-                            <span
-                              key={techIndex}
-                              className="text-xs bg-muted px-2 py-1 rounded"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                      </div>
-
                       <div className="text-center">
                         <span
                           className={`text-sm font-medium px-3 py-1 rounded-full ${
@@ -510,7 +450,7 @@ const ProjectsPage = () => {
                               : "bg-gray-500/20 text-gray-600 dark:text-gray-400"
                           }`}
                         >
-                          {project.status} • {project.timeline}
+                          {project.status} 
                         </span>
                       </div>
                     </div>
