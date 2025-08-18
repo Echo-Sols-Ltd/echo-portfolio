@@ -17,7 +17,7 @@ import {
   Target,
   Box,
 } from "lucide-react";
-import { coreMembers, devTeam } from "../../components/data/teamMembers";
+import { coreMembers, devTeam } from "@/components/data/teamMembers";
 import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 
