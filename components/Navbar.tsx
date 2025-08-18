@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Menu, X, Code2 } from "lucide-react"
+import { useState } from "react";
+import { Menu, X, Code2 } from "lucide-react";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
     { href: "/", label: "HOME" },
@@ -12,7 +12,7 @@ const Navbar = () => {
     { href: "/team", label: "TEAM" },
     { href: "/projects", label: "PROJECTS" },
     { href: "/contact", label: "CONTACT" },
-  ]
+  ];
 
   return (
     <nav className="fixed w-full z-50 bg-black/95 backdrop-blur-lg shadow-lg">
@@ -23,7 +23,9 @@ const Navbar = () => {
             <div className="w-9 h-9 bg-white rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200 shadow-md">
               <img src="/white.svg" alt="Echo SOLUTIONS LOGO" />
             </div>
-            <span className="text-xl font-bold text-white tracking-tight">Echo Solutions</span>
+            <span className="text-xl font-bold text-white tracking-tight">
+              Echo Solutions
+            </span>
           </div>
 
           {/* Desktop Navigation - Center */}
@@ -41,18 +43,24 @@ const Navbar = () => {
           </div>
 
           {/* Contact Button - Right */}
-          <div className="hidden md:block">
-            <button className="bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm hover:shadow-md">
-              GET IN TOUCH
-            </button>
-          </div>
+          <a href="/contact">
+            <div className="hidden md:block">
+              <button className="bg-white text-black px-6 py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm hover:shadow-md">
+                GET IN TOUCH
+              </button>
+            </div>
+          </a>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors duration-200"
           >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </div>
 
@@ -70,20 +78,22 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <div className="px-4 py-3 mt-2">
-                <button 
-                  className="w-full bg-white text-black py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  GET IN TOUCH
-                </button>
-              </div>
+              <a href="/contact">
+                <div className="px-4 py-3 mt-2">
+                  <button
+                    className="w-full bg-white text-black py-3 rounded-lg text-sm font-semibold transition-colors duration-200 shadow-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    GET IN TOUCH
+                  </button>
+                </div>
+              </a>
             </div>
           </div>
         )}
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

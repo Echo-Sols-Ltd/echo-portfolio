@@ -19,7 +19,7 @@ export const projects = [
     category: "Management",
     status: "In Development",
     featured: true,
-    link: "ada",
+    link: "",
   },
   {
     id: 3,

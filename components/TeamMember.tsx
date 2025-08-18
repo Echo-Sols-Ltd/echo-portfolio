@@ -15,7 +15,7 @@ interface BaseTeamMember {
   name: string;
   role: string;
   image: string;
-  social: {
+  social?: {
     github?: string;
     linkedin?: string;
     twitter?: string;
@@ -116,9 +116,9 @@ export default function TeamMember(props: TeamMemberProps) {
 
           {/* Social Links */}
           <div className="flex items-center gap-3 mb-2">
-            {props.social.github && (
+            {props.social?.github && (
               <a
-                href={props.social.github}
+                href={props.social?.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-gray-700 transition-colors duration-200"
@@ -127,9 +127,9 @@ export default function TeamMember(props: TeamMemberProps) {
                 <Github className="h-4 w-4" />
               </a>
             )}
-            {props.social.linkedin && (
+            {props.social?.linkedin && (
               <a
-                href={props.social.linkedin}
+                href={props.social?.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-blue-600 transition-colors duration-200"
@@ -138,9 +138,9 @@ export default function TeamMember(props: TeamMemberProps) {
                 <Linkedin className="h-4 w-4" />
               </a>
             )}
-            {props.social.twitter && (
+            {props.social?.twitter && (
               <a
-                href={props.social.twitter}
+                href={props.social?.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-blue-400 transition-colors duration-200"
@@ -149,18 +149,18 @@ export default function TeamMember(props: TeamMemberProps) {
                 <Twitter className="h-4 w-4" />
               </a>
             )}
-            {props.social.email && (
+            {props.social?.email && (
               <a
-                href={`mailto:${props.social.email}`}
+                href={`mailto:${props.social?.email}`}
                 className="text-gray-500 hover:text-red-500 transition-colors duration-200"
                 title="Email"
               >
                 <Mail className="h-4 w-4" />
               </a>
             )}
-            {props.social.ig && (
+            {props.social?.ig && (
               <a
-                href={props.social.ig}
+                href={props.social?.ig}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-pink-500 transition-colors duration-200"
@@ -169,9 +169,9 @@ export default function TeamMember(props: TeamMemberProps) {
                 <Instagram className="h-4 w-4" />
               </a>
             )}
-            {props.social.facebook && (
+            {props.social?.facebook && (
               <a
-                href={props.social.facebook}
+                href={props.social?.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-blue-600 transition-colors duration-200"
@@ -180,9 +180,9 @@ export default function TeamMember(props: TeamMemberProps) {
                 <Facebook className="h-4 w-4" />
               </a>
             )}
-            {props.social.website && (
+            {props.social?.website && (
               <a
-                href={props.social.website}
+                href={props.social?.website}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-green-600 transition-colors duration-200"

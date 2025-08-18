@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import TeamMember from "@/components/TeamMember";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
@@ -306,7 +307,9 @@ export default function TeamPage() {
                     <div
                       className={`bg-${stat.color}/20 p-3 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center animate-pulse-glow`}
                     >
-                      <stat.icon className={`h-6 w-6 text-${stat.color}`} />
+                      {React.createElement(stat.icon, {
+                        className: `h-6 w-6 text-${stat.color}`,
+                      })}
                     </div>
                     <CounterAnimation
                       end={stat.end}
@@ -398,7 +401,9 @@ export default function TeamPage() {
                   <div
                     className={`bg-${spec.color}/20 p-3 rounded-lg w-12 h-12 mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <spec.icon className={`h-6 w-6 text-${spec.color}`} />
+                    {React.createElement(spec.icon, {
+                      className: `h-6 w-6 text-${spec.color}`,
+                    })}
                   </div>
                   <div className="text-sm font-medium">{spec.label}</div>
                 </div>
@@ -456,22 +461,15 @@ export default function TeamPage() {
 
           {/* Dev Team Grid - Same layout as core team */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
-            {devTeam.slice(0, devTeamShown).map((member, index) => {
-              // Create a version of the member without social links
-              const memberWithoutSocial = {
-                ...member,
-                social: {}, // Empty social object
-              };
-              return (
-                <div
-                  key={member.name}
-                  className="animate-fade-in"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <TeamMember {...memberWithoutSocial} />
-                </div>
-              );
-            })}
+            {devTeam.slice(0, devTeamShown).map((member, index) => (
+              <div
+                key={member.name}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <TeamMember {...member} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -525,9 +523,9 @@ export default function TeamPage() {
                     <div
                       className={`bg-${culture.color}/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center`}
                     >
-                      <culture.icon
-                        className={`h-8 w-8 text-${culture.color}`}
-                      />
+                      {React.createElement(culture.icon, {
+                        className: `h-8 w-8 text-${culture.color}`,
+                      })}
                     </div>
                     <h3 className="text-xl font-bold mb-4">{culture.title}</h3>
                     <p className="text-muted-foreground">{culture.desc}</p>

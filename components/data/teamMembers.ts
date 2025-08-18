@@ -23,7 +23,7 @@ export const coreMembers = [
   },
   {
     name: "Iranzi Dianah",
-    role: "Software Developer",
+    role: "CO-Founder",
     image: "/dianah.jpeg",
     social:{
       ig: "https://www.instagram.com/ira_dian4h/",
@@ -118,6 +118,26 @@ export const coreMembers = [
       github: "https://github.com/Rukundo-Bahati",
       twitter: "https://x.com/BahatiBaba",
       ig: "https://www.instagram.com/ruku_nd0",
+    }
+  },
+  {
+    name: "Tuyubahe Ashrafu",
+    role: "Tech Lead",
+    image: "/achraf.jpeg",
+    social:{
+      linkedin: "https://www.linkedin.com/in/tuyubahe-ashrafu-2073482a4/",
+      github: "https://github.com/ashrafutuyubahe",
+      twitter: "https://x.com/AshrafTuyubahe"
+    }
+  },
+  {
+    name: "Uwonkunda Mahinga Rodin",
+    role: "Tech Lead",
+    image: "/rodin.jpeg",
+    social:{
+      linkedin: "https://www.linkedin.com/in/m-rodin-1b21a9375/",
+      github: "https://github.com/mahingaRodin",
+      twitter: "https://x.com/rodin9878"
     }
   },
 
@@ -225,11 +245,6 @@ export const devTeam = [
     image: "/olivier.jpg",
   },
   {
-    name: "Mahinga Rodin",
-    role: "Software Developer",
-    image: "/rodin.jpeg",
-  },
-  {
     name: "Manene Junior",
     role: "Software Developer",
     image: "/manene.jpeg",
@@ -293,11 +308,6 @@ export const devTeam = [
     name: "Tuyishime Christian",
     role: "Software Developer",
     image: "/avatarboy.jpeg",
-  },
-  {
-    name: "Tuyubahe Ashrafu",
-    role: "Software Developer",
-    image: "/achraf.jpeg",
   },
   {
     name: "Uwayo Pascaline",
