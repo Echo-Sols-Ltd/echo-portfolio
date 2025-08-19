@@ -313,14 +313,14 @@ const ProjectsPage = () => {
                   animation="scale-up"
                   delay={80 + index * 100}
                 >
-                  <div className="relative rounded-xl overflow-hidden group h-60 md:h-72 lg:h-[60vh] border-2 border-gray-200">
+                  <div className="relative rounded-xl overflow-hidden group h-60 md:h-72 lg:h-[60vh] border-2 border-gray-200 flex items-center justify-center">
                     <img
-                      src={project.image}
+                      src={project.logo}
                       alt={project.title}
-                      className="w-full h-full object-cover"
+                      className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain"
                     />
                     {/* Base gradient */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                     {/* Hover black scrim */}
                     <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     {/* Overlay content */}
@@ -400,14 +400,14 @@ const ProjectsPage = () => {
                   animation="fade-up"
                   delay={120 + index * 50}
                 >
-                  <div className="relative rounded-xl overflow-hidden group h-56 md:h-64 lg:h-[45vh] border-2 border-gray-200">
+                  <div className="relative rounded-xl overflow-hidden group h-56 md:h-64 lg:h-[45vh] border-2 border-gray-200 flex items-center justify-center">
                     <img
-                      src={project.image}
+                      src={project.logo}
                       alt={project.title}
-                      className="w-full h-full object-cover"
+                      className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 object-contain"
                     />
                     {/* Base gradient */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                     {/* Hover black scrim */}
                     <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     {/* Overlay content */}
