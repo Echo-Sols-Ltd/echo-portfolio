@@ -313,7 +313,7 @@ const ProjectsPage = () => {
                   animation="scale-up"
                   delay={80 + index * 100}
                 >
-                  <div className="relative rounded-xl overflow-hidden group h-60 md:h-72 lg:h-[60vh] border-2 border-gray-200 flex items-center justify-center">
+                  <div className="relative rounded-xl overflow-hidden group h-60 md:h-72 lg:h-[60vh] border-2 border-blue-100 flex items-center justify-center">
                     <img
                       src={project.logo}
                       alt={project.title}
@@ -400,7 +400,7 @@ const ProjectsPage = () => {
                   animation="fade-up"
                   delay={120 + index * 50}
                 >
-                  <div className="relative rounded-xl overflow-hidden group h-56 md:h-64 lg:h-[45vh] border-2 border-gray-200 flex items-center justify-center">
+                  <div className="relative rounded-xl overflow-hidden group h-56 md:h-64 lg:h-[45vh] border-2 border-blue-100 flex items-center justify-center">
                     <img
                       src={project.logo}
                       alt={project.title}
