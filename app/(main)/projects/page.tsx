@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Calendar, Users, Code, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
 import CounterAnimation from "@/components/CounterAnimation";
@@ -256,11 +257,11 @@ const ProjectsPage = () => {
       <ParallaxSection speed={0.3}>
         <section className="section-padding bg-card/50">
           <div className="container-custom">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               {[
                 { end: projects.length, label: "Projects Planned", delay: 120 },
                 { end: categories.length - 1, label: "Categories", delay: 140 },
-                { end: 0, label: "Users (Coming Soon!)", delay: 160 },
+                // { end: 0, label: "Users (Coming Soon!)", delay: 160 },
                 {
                   end: 25,
                   suffix: "+",
@@ -342,9 +343,12 @@ const ProjectsPage = () => {
                               <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                           ) : (
-                            <span className="inline-flex items-center px-5 py-3 bg-white/10 text-white/80 text-sm rounded-lg border border-white/20">
-                              Coming Soon
-                            </span>
+                            <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
+                              <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                              <span className="text-slate-200 text-sm font-medium tracking-wide">
+                                In Development
+                              </span>
+                            </div>
                           )}
                         </div>
                       </div>
@@ -429,9 +433,12 @@ const ProjectsPage = () => {
                               <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                           ) : (
-                            <span className="inline-flex items-center px-4 py-2 bg-white/10 text-white/80 text-sm rounded-lg border border-white/20">
-                              Coming Soon
-                            </span>
+                            <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
+                              <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+                              <span className="text-slate-200 text-sm font-medium tracking-wide">
+                                In Development
+                              </span>
+                            </div>
                           )}
                         </div>
                       </div>

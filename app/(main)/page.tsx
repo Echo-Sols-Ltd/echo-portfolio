@@ -5,6 +5,7 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
 import CounterAnimation from "@/components/CounterAnimation";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
   Code,
@@ -663,9 +664,12 @@ export default function Home() {
                                   <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                               ) : (
-                                <span className="inline-flex items-center px-5 py-3 bg-white/10 text-white/80 text-sm rounded-lg border border-white/20">
-                                  Coming Soon
-                                </span>
+                                <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
+                                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                  <span className="text-slate-200 text-sm font-medium tracking-wide">
+                                    In Development
+                                  </span>
+                                </div>
                               )}
                             </div>
                           </div>
@@ -694,10 +698,8 @@ export default function Home() {
               </div>
             )}
           </div>
-
         </div>
       </section>
-
 
       {/* CTA Section - Ready to Build Something */}
       <ScrollAnimation animation="fade-up" delay={100}>
