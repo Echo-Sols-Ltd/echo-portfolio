@@ -452,7 +452,7 @@ export default function ContactPage() {
             </ScrollAnimation>
 
             <ScrollAnimation animation="fade-left" delay={120}>
-              <div className="glass-effect p-8 rounded-2xl animate-pulse-glow">
+              <div className="glass-effect p-8 rounded-2xl">
                 {isSubmitted ? (
                   <ScrollAnimation animation="scale-up" delay={100}>
                     <div className="text-center py-12">
