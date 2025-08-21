@@ -347,7 +347,7 @@ export default function ContactPage() {
                     href="tel:+250780837136"
                     className="text-primary hover:text-primary/80 font-medium"
                   >
-                    +250 (780) 837-136
+                    +250 780 837 136
                   </a>
                 </div>
               </ScrollAnimation>
@@ -360,9 +360,7 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold mb-4">Visit Us</h3>
                   <p className="text-muted-foreground mb-4">Our workspace</p>
                   <address className="text-primary not-italic">
-                    Kigali-Rwanda
-                    <br />
-                    Kicukiro, Rwanda
+                    Kicukiro, Kigali, Rwanda
                   </address>
                 </div>
               </ScrollAnimation>
@@ -679,7 +677,7 @@ export default function ContactPage() {
                   </p>
                   <div className="flex space-x-6">
                     <a
-                      href="https://github.com/Lex-Tech-company"
+                      href="https://github.com/EchoSols"
                       className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                       aria-label="GitHub"
                     >
