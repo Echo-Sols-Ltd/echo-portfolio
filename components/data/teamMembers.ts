@@ -34,6 +34,18 @@ export const coreMembers = [
     }
   },
   {
+    name: "Muneza Jean Dieudonne",
+    role: "Chief Product Officer",
+    image: "/dios.jpeg",
+    social: {
+      ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
+      twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
+      linkedin:
+        "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      website: "https://dieudonne.vercel.app/",
+    },
+  },
+  {
     name: "Ntwali Isimbi Vieira",
     role: "Chief Technology Officer",
     image: "/viera.jpeg",
@@ -49,18 +61,6 @@ export const coreMembers = [
     social: {
       github: "https://github.com/Uhirwe",
       ig: "https://www.instagram.com/esther_hope_/",
-    },
-  },
-  {
-    name: "Muneza Jean Dieudonne",
-    role: "Chief Product Officer",
-    image: "/dios.jpeg",
-    social: {
-      ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
-      twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
-      linkedin:
-        "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      website: "https://dieudonne.vercel.app/",
     },
   },
   {

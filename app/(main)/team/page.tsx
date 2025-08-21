@@ -22,8 +22,8 @@ import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 
 export default function TeamPage() {
-  const [coreMembersShown, setCoreMembersShown] = useState<number>(15);
-  const [devTeamShown, setDevTeamShown] = useState<number>(45);
+  const [coreMembersShown, setCoreMembersShown] = useState<number>(4);
+  // const [devTeamShown, setDevTeamShown] = useState<number>(45);
 
   // Star field refs
   const firstStarRef = useRef<HTMLDivElement>(null);
@@ -216,13 +216,13 @@ export default function TeamPage() {
     setCoreMembersShown(8);
   };
 
-  const showMoreDevTeam = () => {
-    setDevTeamShown((prev) => Math.min(prev + 8, devTeam.length));
-  };
+  // const showMoreDevTeam = () => {
+  //   setDevTeamShown((prev) => Math.min(prev + 8, devTeam.length));
+  // };
 
-  const showLessDevTeam = () => {
-    setDevTeamShown(8);
-  };
+  // const showLessDevTeam = () => {
+  //   setDevTeamShown(8);
+  // };
 
   return (
     <div className="pt-16">
@@ -264,7 +264,7 @@ export default function TeamPage() {
       <ParallaxSection speed={0.3}>
         <section className="section-padding bg-card/50">
           <div className="container-custom">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               {[
                 {
                   end: 30,
@@ -289,14 +289,14 @@ export default function TeamPage() {
                   color: "emerald-500",
                   delay: 160,
                 },
-                {
-                  end: 100,
-                  suffix: "%",
-                  label: "Passion Driven",
-                  icon: Heart,
-                  color: "orange-500",
-                  delay: 180,
-                },
+                // {
+                //   end: 100,
+                //   suffix: "%",
+                //   label: "Passion Driven",
+                //   icon: Heart,
+                //   color: "orange-500",
+                //   delay: 180,
+                // },
               ].map((stat, index) => (
                 <ScrollAnimation
                   key={index}
@@ -448,7 +448,7 @@ export default function TeamPage() {
           </div>
 
           {/* Dev Team Section */}
-          <ScrollAnimation animation="fade-up" delay={100}>
+          {/* <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
                 <Users className="w-5 h-5 text-blue-400" />
@@ -457,10 +457,10 @@ export default function TeamPage() {
                 </span>
               </div>
             </div>
-          </ScrollAnimation>
+          </ScrollAnimation> */}
 
-          {/* Dev Team Grid - Same layout as core team */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
+          {/* Dev Team Grid */}
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
             {devTeam.slice(0, devTeamShown).map((member, index) => (
               <div
                 key={member.name}
@@ -470,7 +470,7 @@ export default function TeamPage() {
                 <TeamMember {...member} />
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 

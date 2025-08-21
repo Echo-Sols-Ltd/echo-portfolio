@@ -545,14 +545,15 @@ export default function Home() {
                 </p>
               </div>
             </ScrollAnimation>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <ScrollAnimation animation="scale-up" delay={120}>
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
                   <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
                     <Users className="h-8 w-8 text-blue-400" />
                   </div>
                   <CounterAnimation
-                    end={40}
+                    end={30}
+                    suffix="+"
                     className="text-4xl font-bold text-white mb-2"
                   />
                   <div className="text-gray-300 font-medium">Team Members</div>
@@ -564,7 +565,7 @@ export default function Home() {
                     <Code className="h-8 w-8 text-blue-400" />
                   </div>
                   <CounterAnimation
-                    end={50}
+                    end={5}
                     suffix="+"
                     className="text-4xl font-bold text-white mb-2"
                   />
@@ -582,21 +583,6 @@ export default function Home() {
                     className="text-4xl font-bold text-white mb-2"
                   />
                   <div className="text-gray-300 font-medium">Technologies</div>
-                </div>
-              </ScrollAnimation>
-              <ScrollAnimation animation="scale-up" delay={180}>
-                <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
-                  <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                    <Star className="h-8 w-8 text-blue-400" />
-                  </div>
-                  <CounterAnimation
-                    end={100}
-                    suffix="%"
-                    className="text-4xl font-bold text-white mb-2"
-                  />
-                  <div className="text-gray-300 font-medium">
-                    Passion Driven
-                  </div>
                 </div>
               </ScrollAnimation>
             </div>
@@ -709,115 +695,10 @@ export default function Home() {
             )}
           </div>
 
-          {/* Call to Action */}
-          <ScrollAnimation animation="scale-up" delay={100}>
-            <div className="text-center mt-16">
-              <div className="bg-gray-50 border border-gray-200 p-8 rounded-xl max-w-2xl mx-auto">
-                <h3 className="text-2xl font-bold text-black mb-4">
-                  Want to Work With Us?
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  We're ready to take on client projects and bring your ideas to
-                  life with cutting-edge technology solutions.
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-black hover:bg-black/90 text-white font-medium rounded-lg transition-colors duration-200"
-                >
-                  <span>Start Your Project</span>
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </ScrollAnimation>
         </div>
       </section>
-      {/* Team Preview Section with Star Field */}
-      <ParallaxSection speed={0.2}>
-        <section className="py-20 bg-black relative overflow-hidden">
-          {/* Star Field Canvas */}
-          <div
-            ref={teamStarRef}
-            className="absolute inset-0 w-full h-full"
-            style={{ zIndex: 1 }}
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
-            <ScrollAnimation animation="fade-up" delay={100}>
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Meet Our{" "}
-                  <span className="font-light font-sans italic">Team</span>
-                </h2>
-                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  30+ passionate individuals with diverse skills and a shared
-                  vision for technology that makes a difference.
-                </p>
-              </div>
-            </ScrollAnimation>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Izere Shema Leandre",
-                  role: "CEO & Founder",
-                  avatar: "/flicky.jpeg",
-                  delay: 120,
-                },
-                {
-                  name: "Nyumbayire Laurent",
-                  role: "Co-Founder",
-                  avatar: "/laurent.jpeg",
-                  delay: 140,
-                },
-                {
-                  name: "Muneza Jean Dieudonne",
-                  role: "CPO",
-                  avatar: "/dios.jpeg",
-                  delay: 160,
-                },
-                {
-                  name: "Uhirwe Esther Hope",
-                  role: "CMO",
-                  avatar: "/hope.jpeg",
-                  delay: 180,
-                },
-              ].map((member, index) => (
-                <ScrollAnimation
-                  key={index}
-                  animation="scale-up"
-                  delay={member.delay}
-                >
-                  <div className="text-center group">
-                    <div className="w-36 h-36 rounded-full overflow-hidden mb-4 mx-auto duration-300 ring-4 group-hover:ring-blue-400 group-hover:ring-2 transition-all">
-                      <img
-                        src={member.avatar || "/placeholder.svg"}
-                        alt={`${member.name} - ${member.role}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <h3 className="font-semibold text-white">{member.name}</h3>
-                    <p className="text-sm italic text-gray-400">
-                      {member.role}
-                    </p>
-                  </div>
-                </ScrollAnimation>
-              ))}
-            </div>
-            <ScrollAnimation animation="fade-up" delay={120}>
-              <div className="text-center mt-12">
-                <Link
-                  href="/team"
-                  className="inline-flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors duration-200 backdrop-blur-sm border border-white/20"
-                >
-                  <span>Meet Everyone</span>
-                  <Users className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </section>
-      </ParallaxSection>
+
+
       {/* CTA Section - Ready to Build Something */}
       <ScrollAnimation animation="fade-up" delay={100}>
         <section className="py-20 bg-white relative overflow-hidden">
@@ -849,7 +730,27 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
+          <ScrollAnimation animation="scale-up" delay={100}>
+            <div className="text-center mt-16">
+              <div className="bg-gray-50 border border-gray-200 p-8 rounded-xl max-w-2xl mx-auto">
+                <h3 className="text-2xl font-bold text-black mb-4">
+                  Want to Work With Us?
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  We're ready to take on client projects and bring your ideas to
+                  life with cutting-edge technology solutions.
+                </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center px-6 py-3 bg-black hover:bg-black/90 text-white font-medium rounded-lg transition-colors duration-200"
+                >
+                  <span>Start Your Project</span>
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </ScrollAnimation>
+          {/* <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
             <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
               Ready to{" "}
               <span className="font-sans italic font-light">Build</span>{" "}
@@ -879,7 +780,7 @@ export default function Home() {
                 </Link>
               </div>
             </ScrollAnimation>
-          </div>
+          </div> */}
         </section>
       </ScrollAnimation>
       {/* Video Modal */}
