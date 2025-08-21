@@ -18,7 +18,6 @@ import {
   Globe,
   Star,
   Play,
-  X,
   Box,
   ChevronRight,
   ChevronLeft,
@@ -56,23 +55,9 @@ export default function Home() {
   } | null>(null);
   const animationIdRef = useRef<number | null>(null);
   const isVisibleRef = useRef(true);
-  // State for video modal
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const modalVideoRef = useRef<HTMLVideoElement>(null);
-  // Video modal handlers
-  const openVideoModal = () => {
-    setIsVideoModalOpen(true);
-    document.body.style.overflow = "hidden"; // Prevent background scroll
-  };
-  const closeVideoModal = () => {
-    setIsVideoModalOpen(false);
-    document.body.style.overflow = "unset";
-    // Pause video when modal closes
-    if (modalVideoRef.current) {
-      modalVideoRef.current.pause();
-      modalVideoRef.current.currentTime = 0; // Reset video to beginning
-    }
-  };
+  // Removed modal state; render video inline with controls
+  const inlineVideoRef = useRef<HTMLVideoElement>(null);
+  const [showVideoOverlay, setShowVideoOverlay] = useState(true);
   // Create star texture for Three.js
   const createStarTexture = () => {
     const canvas = document.createElement("canvas");
@@ -343,23 +328,7 @@ export default function Home() {
       }
     };
   }, [handleResize]);
-  // Video modal escape key handler
-  useEffect(() => {
-    const handleEscapeKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isVideoModalOpen) {
-        closeVideoModal();
-      }
-    };
-    if (isVideoModalOpen) {
-      document.addEventListener("keydown", handleEscapeKey);
-      if (modalVideoRef.current) {
-        modalVideoRef.current.play();
-      }
-    }
-    return () => {
-      document.removeEventListener("keydown", handleEscapeKey);
-    };
-  }, [isVideoModalOpen]);
+  // Removed modal escape key handler; not needed for inline video
 
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
@@ -708,28 +677,42 @@ export default function Home() {
           {/* Video Preview Container */}
           <div className="flex justify-center mb-20">
             <div className="relative w-full max-w-4xl h-96 overflow-hidden rounded-2xl mx-6 lg:mx-8">
-              {/* Video Element (muted for preview) */}
+              {/* Inline Video with thumbnail and overlay play button */}
               <video
+                ref={inlineVideoRef}
                 className="w-full h-full object-cover"
-                muted
-                loop
+                controls={!showVideoOverlay}
                 playsInline
                 poster="/thumbnail.png"
+                onPlay={() => setShowVideoOverlay(false)}
+                onPause={() => {
+                  // Show overlay when paused at the beginning
+                  if (
+                    inlineVideoRef.current &&
+                    inlineVideoRef.current.currentTime === 0
+                  ) {
+                    setShowVideoOverlay(true);
+                  }
+                }}
+                onEnded={() => setShowVideoOverlay(true)}
               >
                 <source src="/haptic.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              {/* Play Button Overlay */}
-              <div
-                className="absolute inset-0 bg-black/30 flex items-center justify-center group cursor-pointer transition-all duration-300 hover:bg-black/40"
-                onClick={openVideoModal}
-              >
-                <div className="bg-white/20 backdrop-blur-sm rounded-full p-6 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
-                  <div className="bg-white rounded-full p-4 shadow-2xl">
-                    <Play className="h-8 w-8 text-black ml-1" />
-                  </div>
-                </div>
-              </div>
+              {showVideoOverlay && (
+                <button
+                  aria-label="Play video"
+                  className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors"
+                  onClick={() => {
+                    setShowVideoOverlay(false);
+                    inlineVideoRef.current?.play();
+                  }}
+                >
+                  <span className="bg-white rounded-full p-6 shadow-2xl">
+                    <Play className="h-10 w-10 text-black ml-1" />
+                  </span>
+                </button>
+              )}
             </div>
           </div>
           <ScrollAnimation animation="scale-up" delay={100}>
@@ -785,39 +768,7 @@ export default function Home() {
           </div> */}
         </section>
       </ScrollAnimation>
-      {/* Video Modal */}
-      {isVideoModalOpen && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          {/* Close button */}
-          <button
-            onClick={closeVideoModal}
-            className="absolute top-6 right-6 z-60 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 text-white transition-all duration-200 hover:scale-110"
-            aria-label="Close video"
-          >
-            <X className="h-6 w-6" />
-          </button>
-          {/* Modal Content */}
-          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
-            <video
-              ref={modalVideoRef}
-              className="w-full h-full object-contain"
-              controls
-              controlsList="nodownload"
-              onEnded={() => {
-                closeVideoModal();
-              }}
-            >
-              <source src="/haptic.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          {/* Click outside to close */}
-          <div
-            className="absolute inset-0 -z-10"
-            onClick={closeVideoModal}
-          ></div>
-        </div>
-      )}
+      {/* Removed modal; video now plays inline */}
     </>
   );
 }
