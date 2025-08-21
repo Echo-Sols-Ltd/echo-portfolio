@@ -27,7 +27,7 @@ export const projects = [
     id: 3,
     title: "Umuhinzi Link",
     description: "Digital farming platform connecting farmers, buyers, and suppliers with AI and SMS support.",
-    image: "/projects/umuhinzilink.png",
+    image: "/projects/umuhinzilink.jpg",
     logo: "/projects/umuhinzilinklogo.png",
     category: "Agriculture",
     status: "In Development",
