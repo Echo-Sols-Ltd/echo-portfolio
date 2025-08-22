@@ -19,7 +19,7 @@ export function generateMetadata({
   title = "Echo Solutions - We Build, Design, Secure, and Optimize Tech for Impact",
   description = "A dynamic team of 20+ young tech enthusiasts specializing in AI/ML, cybersecurity, full-stack development, and social impact technology solutions.",
   keywords = "tech startup, AI, machine learning, cybersecurity, web development, social impact, technology consulting, Rwanda, Africa",
-  image = "/thumbnail.png",
+  image = "/white.svg",
   url,
   type = "website",
   publishedTime,
