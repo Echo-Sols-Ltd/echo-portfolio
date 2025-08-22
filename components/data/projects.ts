@@ -1,24 +1,24 @@
-export const categories = ["All", "Agriculture", "Health", "Management"];
+export const categories = ["All", "Agriculture", "Health", "Management", "Charity"];
 
 export const projects = [
   {
     id: 1,
-    title: "Health Link",
-    description: "Smart healthcare system for secure patient records and data-driven hospital management.",
-    image: "/projects/healthlink.png",
-    logo: "/projects/healthlinklogo.png",
-    category: "Health",
+    title: "Urukundo Foundation",
+    description: "Digital charity platform connecting donors, beneficiaries, and NGOs with AI and SMS support.",
+    image: "/projects/urukundofoundation.jpg",
+    logo: "/projects/urukundofoundationlogo.png",
+    category: "Charity",
     status: "In Development",
     featured: true,
     link: "",
   },
   {
     id: 2,
-    title: "MoveIt",
-    description: "AI-driven tool that automates task assignment, tracks progress, and boosts team productivity.",
-    image: "/projects/moveit.png",
-    logo: "/projects/moveitlogo.png",
-    category: "Management",
+    title: "Health Link",
+    description: "Smart healthcare system for secure patient records and data-driven hospital management.",
+    image: "/projects/healthlink.jpg",
+    logo: "/projects/healthlinklogo.png",
+    category: "Health",
     status: "In Development",
     featured: true,
     link: "",
@@ -34,4 +34,26 @@ export const projects = [
     featured: true,
     link: "",
   },
+  {
+    id: 4,
+    title: "MoveIt",
+    description: "AI-driven tool that automates task assignment, tracks progress, and boosts team productivity.",
+    image: "/projects/moveit.jpg",
+    logo: "/projects/moveitlogo.png",
+    category: "Management",
+    status: "In Development",
+    featured: true,
+    link: "",
+  },
+  {
+    id: 5,
+    title: "HR Pro",
+    description: "HR management system for efficient employee management and payroll processing.",
+    image: "/projects/hrpro.jpg",
+    logo: "/projects/hrprologo.png",
+    category: "Management",
+    status: "In Development",
+    featured: true,
+    link: "",
+  }
 ];
