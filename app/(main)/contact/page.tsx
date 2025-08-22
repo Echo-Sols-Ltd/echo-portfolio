@@ -15,6 +15,28 @@ import {
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
 import * as THREE from "three";
+import { Metadata } from "next";
+import { generateMetadata } from "@/components/SEO";
+import { ContactPageStructuredData } from "@/components/StructuredData";
+
+export const metadata: Metadata = generateMetadata({
+  title: "Contact Us - Echo Solutions",
+  description:
+    "Get in touch with Echo Solutions for your technology needs. We're ready to discuss your project and bring your ideas to life.",
+  keywords:
+    "contact Echo Solutions, tech consulting Rwanda, project inquiry, technology services, AI development, cybersecurity consulting",
+  image: "/thumbnail.png",
+  url: "https://echosolutions.rw/contact",
+  type: "website",
+  author: "Echo Solutions Team",
+  tags: [
+    "contact",
+    "inquiry",
+    "project discussion",
+    "technology consulting",
+    "Rwanda",
+  ],
+});
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -274,6 +296,7 @@ export default function ContactPage() {
 
   return (
     <div className="pt-16">
+      <ContactPageStructuredData />
       {/* Hero Section - Black with Stars */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
         {/* Star Field Canvas */}
@@ -297,7 +320,8 @@ export default function ContactPage() {
           <ScrollAnimation animation="fade-up" delay={150}>
             <div className="flex items-center justify-center mb-6">
               <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                Let's <span className="font-sans font-light italic">Connect</span>
+                Let's{" "}
+                <span className="font-sans font-light italic">Connect</span>
               </h1>
             </div>
           </ScrollAnimation>

@@ -25,6 +25,22 @@ import {
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
 import { projects } from "@/components/data/projects";
+import { ProjectStructuredData } from "@/components/StructuredData";
+import { Metadata } from "next";
+import { generateMetadata } from "@/components/SEO";
+
+export const metadata: Metadata = generateMetadata({
+  title: "Echo Solutions - Innovative Technology Solutions for Social Impact",
+  description:
+    "Echo Solutions is a team of young technologists from Rwanda creating cutting-edge technology solutions including AI, cybersecurity, web development, and 3D modeling for meaningful social impact.",
+  keywords:
+    "Echo Solutions, technology solutions, AI development, cybersecurity, web development, 3D modeling, Rwanda tech, social impact technology",
+  image: "/thumbnail.png",
+  url: "https://echosolutions.rw",
+  type: "website",
+  author: "Echo Solutions Team",
+  tags: ["technology", "AI", "cybersecurity", "web development", "3D modeling", "Rwanda", "social impact"],
+});
 
 export default function Home() {
   // State and refs for Stats section star field
@@ -348,6 +364,7 @@ export default function Home() {
 
   return (
     <>
+      <ProjectStructuredData projects={projects} />
       <Hero />
       {/* About Preview Section */}
       <section className="pt-16 pb-16 bg-white">
@@ -735,40 +752,8 @@ export default function Home() {
               </div>
             </div>
           </ScrollAnimation>
-          {/* <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
-              Ready to{" "}
-              <span className="font-sans italic font-light">Build</span>{" "}
-              Something{" "}
-              <span className="font-sans italic font-light">Amazing?</span>
-            </h2>
-            <ScrollAnimation animation="fade-up" delay={120}>
-              <p className="text-lg text-black/90 mb-8 max-w-2xl mx-auto">
-                Whether you have a project in mind or just want to chat about
-                technology, we'd love to hear from you.
-              </p>
-            </ScrollAnimation>
-            <ScrollAnimation animation="scale-up" delay={140}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-black text-white font-medium rounded-lg hover:bg-black/80 transition-colors duration-200 text-lg"
-                >
-                  Start a Project
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center px-8 py-4 border-2 border-black text-black bg-white hover:bg-gray-50 font-medium rounded-lg transition-colors duration-200 text-lg"
-                >
-                  Learn More
-                </Link>
-              </div>
-            </ScrollAnimation>
-          </div> */}
         </section>
       </ScrollAnimation>
-      {/* Removed modal; video now plays inline */}
     </>
   );
 }

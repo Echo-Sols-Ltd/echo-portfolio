@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-
+import { Metadata } from "next";
 import { Rocket, Heart, Code, Users, Globe, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import ScrollAnimation from "@/components/ScrollAnimation";
@@ -9,6 +9,21 @@ import ParallaxSection from "@/components/ParallaxSection";
 import CounterAnimation from "@/components/CounterAnimation";
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
+import { generateMetadata } from "@/components/SEO";
+import { AboutPageStructuredData } from "@/components/StructuredData";
+
+export const metadata: Metadata = generateMetadata({
+  title: "About Echo Solutions - Our Story, Mission & Team",
+  description:
+    "Discover the story behind Echo Solutions, a team of young tech enthusiasts from Rwanda creating innovative technology solutions for social impact.",
+  keywords:
+    "about Echo Solutions, tech team Rwanda, young technologists, AI developers, cybersecurity experts, web developers Africa",
+  image: "/thumbnail.png",
+  url: "https://echosolutions.rw/about",
+  type: "website",
+  author: "Echo Solutions Team",
+  tags: ["about us", "team", "mission", "Rwanda", "technology", "innovation"],
+});
 
 export default function AboutPage() {
   const firstStarRef = useRef<HTMLDivElement>(null);
@@ -288,6 +303,7 @@ export default function AboutPage() {
 
   return (
     <div className="pt-16">
+      <AboutPageStructuredData />
       {/* First Section - Black with Stars */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
         {/* Star Field Canvas */}
@@ -300,17 +316,20 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-1" />
 
         <div className="relative z-20 max-w-6xl mx-auto px-6 text-center text-white space-y-15 mb-28">
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent backdrop-blur-md border border-white/30 rounded-full shadow-lg">
-              <Rocket className="w-5 h-5 text-blue-400" />
-              <span className="text-sm font-semibold tracking-wide text-white">
-                Excellence in Digital Innovation
-              </span>
-            </div>
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent backdrop-blur-md border border-white/30 rounded-full shadow-lg">
+            <Rocket className="w-5 h-5 text-blue-400" />
+            <span className="text-sm font-semibold tracking-wide text-white">
+              Excellence in Digital Innovation
+            </span>
+          </div>
 
           <ScrollAnimation animation="fade-up" delay={150}>
             <div className="flex items-center justify-center mb-6">
               <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                About <span className="font-sans font-light italic">Echo Solutions</span>
+                About{" "}
+                <span className="font-sans font-light italic">
+                  Echo Solutions
+                </span>
               </h1>
             </div>
           </ScrollAnimation>
@@ -367,9 +386,7 @@ export default function AboutPage() {
               <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-3xl shadow-xl border border-gray-200">
                 <h3 className="text-3xl font-bold mb-8 text-black">
                   Our{" "}
-                  <span className="font-light font-sans italic">
-                    Journey
-                  </span>
+                  <span className="font-light font-sans italic">Journey</span>
                 </h3>
                 <div className="space-y-6">
                   <ScrollAnimation animation="scale-up" delay={120}>

@@ -20,6 +20,29 @@ import {
 import { coreMembers, devTeam } from "@/components/data/teamMembers";
 import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
+import { Metadata } from "next";
+import { generateMetadata } from "@/components/SEO";
+import { TeamMemberStructuredData } from "@/components/StructuredData";
+
+export const metadata: Metadata = generateMetadata({
+  title: "Our Team - Echo Solutions",
+  description:
+    "Meet the talented team behind Echo Solutions - young tech enthusiasts specializing in AI/ML, cybersecurity, full-stack development, and social impact technology.",
+  keywords:
+    "Echo Solutions team, tech team Rwanda, AI developers, cybersecurity experts, web developers, young technologists Africa",
+  image: "/thumbnail.png",
+  url: "https://echosolutions.rw/team",
+  type: "website",
+  author: "Echo Solutions Team",
+  tags: [
+    "team",
+    "developers",
+    "AI experts",
+    "cybersecurity",
+    "web development",
+    "Rwanda",
+  ],
+});
 
 export default function TeamPage() {
   const [coreMembersShown, setCoreMembersShown] = useState<number>(4);
@@ -226,6 +249,7 @@ export default function TeamPage() {
 
   return (
     <div className="pt-16">
+      <TeamMemberStructuredData teamMembers={coreMembers} />
       {/* Hero Section - Black with Stars */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
         {/* Star Field Canvas */}

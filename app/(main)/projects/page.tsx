@@ -9,6 +9,30 @@ import ParallaxSection from "@/components/ParallaxSection";
 import CounterAnimation from "@/components/CounterAnimation";
 import { projects, categories } from "@/components/data/projects";
 import * as THREE from "three";
+import { Metadata } from "next";
+import { generateMetadata } from "@/components/SEO";
+import { ProjectStructuredData } from "@/components/StructuredData";
+
+export const metadata: Metadata = generateMetadata({
+  title: "Our Projects - Echo Solutions Portfolio",
+  description:
+    "Explore our diverse portfolio of technology projects including AI solutions, healthcare systems, agricultural platforms, and management tools.",
+  keywords:
+    "Echo Solutions projects, AI projects, healthcare technology, agricultural technology, management systems, Rwanda tech projects",
+  image: "/thumbnail.png",
+  url: "https://echosolutions.rw/projects",
+  type: "website",
+  author: "Echo Solutions Team",
+  tags: [
+    "projects",
+    "portfolio",
+    "AI",
+    "healthcare",
+    "agriculture",
+    "management",
+    "technology",
+  ],
+});
 
 const ProjectsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -215,6 +239,7 @@ const ProjectsPage = () => {
 
   return (
     <div className="pt-16">
+      <ProjectStructuredData projects={projects} />
       {/* Hero Section - Black with Stars */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
         {/* Star Field Canvas */}
