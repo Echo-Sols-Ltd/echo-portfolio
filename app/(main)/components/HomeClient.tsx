@@ -5,6 +5,7 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
 import CounterAnimation from "@/components/CounterAnimation";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
   Code,
@@ -17,12 +18,16 @@ import {
   Globe,
   Star,
   Play,
-  X,
   Box,
+  ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
-export default function Home() {
+import { projects } from "@/components/data/projects";
+import { ProjectStructuredData } from "@/components/StructuredData";
+
+export default function HomeClient(): React.JSX.Element {
   // State and refs for Stats section star field
   const statsStarRef = useRef<HTMLDivElement>(null);
   const statsSceneRef = useRef<{
@@ -51,23 +56,9 @@ export default function Home() {
   } | null>(null);
   const animationIdRef = useRef<number | null>(null);
   const isVisibleRef = useRef(true);
-  // State for video modal
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const modalVideoRef = useRef<HTMLVideoElement>(null);
-  // Video modal handlers
-  const openVideoModal = () => {
-    setIsVideoModalOpen(true);
-    document.body.style.overflow = "hidden"; // Prevent background scroll
-  };
-  const closeVideoModal = () => {
-    setIsVideoModalOpen(false);
-    document.body.style.overflow = "unset";
-    // Pause video when modal closes
-    if (modalVideoRef.current) {
-      modalVideoRef.current.pause();
-      modalVideoRef.current.currentTime = 0; // Reset video to beginning
-    }
-  };
+  // Removed modal state; render video inline with controls
+  const inlineVideoRef = useRef<HTMLVideoElement>(null);
+  const [showVideoOverlay, setShowVideoOverlay] = useState(true);
   // Create star texture for Three.js
   const createStarTexture = () => {
     const canvas = document.createElement("canvas");
@@ -338,25 +329,27 @@ export default function Home() {
       }
     };
   }, [handleResize]);
-  // Video modal escape key handler
-  useEffect(() => {
-    const handleEscapeKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && isVideoModalOpen) {
-        closeVideoModal();
-      }
-    };
-    if (isVideoModalOpen) {
-      document.addEventListener("keydown", handleEscapeKey);
-      if (modalVideoRef.current) {
-        modalVideoRef.current.play();
-      }
-    }
-    return () => {
-      document.removeEventListener("keydown", handleEscapeKey);
-    };
-  }, [isVideoModalOpen]);
+  // Removed modal escape key handler; not needed for inline video
+
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+
+  const filteredProjects = projects.filter((project) => project.featured);
+
+  const nextProject = () => {
+    setCurrentProjectIndex((prev) =>
+      prev === filteredProjects.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevProject = () => {
+    setCurrentProjectIndex((prev) =>
+      prev === 0 ? filteredProjects.length - 1 : prev - 1
+    );
+  };
+
   return (
     <>
+      <ProjectStructuredData projects={projects} />
       <Hero />
       {/* About Preview Section */}
       <section className="pt-16 pb-16 bg-white">
@@ -524,14 +517,15 @@ export default function Home() {
                 </p>
               </div>
             </ScrollAnimation>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <ScrollAnimation animation="scale-up" delay={120}>
                 <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
                   <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
                     <Users className="h-8 w-8 text-blue-400" />
                   </div>
                   <CounterAnimation
-                    end={40}
+                    end={30}
+                    suffix="+"
                     className="text-4xl font-bold text-white mb-2"
                   />
                   <div className="text-gray-300 font-medium">Team Members</div>
@@ -543,7 +537,7 @@ export default function Home() {
                     <Code className="h-8 w-8 text-blue-400" />
                   </div>
                   <CounterAnimation
-                    end={50}
+                    end={5}
                     suffix="+"
                     className="text-4xl font-bold text-white mb-2"
                   />
@@ -561,21 +555,6 @@ export default function Home() {
                     className="text-4xl font-bold text-white mb-2"
                   />
                   <div className="text-gray-300 font-medium">Technologies</div>
-                </div>
-              </ScrollAnimation>
-              <ScrollAnimation animation="scale-up" delay={180}>
-                <div className="text-center p-8 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 relative">
-                  <div className="bg-white/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center">
-                    <Star className="h-8 w-8 text-blue-400" />
-                  </div>
-                  <CounterAnimation
-                    end={100}
-                    suffix="%"
-                    className="text-4xl font-bold text-white mb-2"
-                  />
-                  <div className="text-gray-300 font-medium">
-                    Passion Driven
-                  </div>
                 </div>
               </ScrollAnimation>
             </div>
@@ -596,155 +575,157 @@ export default function Home() {
                 Featured{" "}
                 <span className="font-light font-sans italic">Projects</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                We're working on exciting projects that will showcase our
-                diverse capabilities across AI, security, and social impact.
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                Explore our diverse portfolio of projects spanning AI, security,
+                agriculture, and social impact solutions.
               </p>
             </div>
           </ScrollAnimation>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Charity Platform */}
-            <ScrollAnimation animation="fade-up" delay={120}>
-              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-                <div className="h-48 bg-gradient-to-br from-emerald-500 to-blue-500 relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Heart className="h-16 w-16 text-white/80 group-hover:scale-110 transition-transform duration-300" />
+
+          {/* Carousel Container */}
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevProject}
+              disabled={filteredProjects.length <= 1}
+              className="absolute -left-7 top-1/2 -translate-y-1/2 z-10 bg-white/90 rounded-full p-3 transition-all duration-200 border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft className="h-6 w-6 text-gray-700" />
+            </button>
+
+            <button
+              onClick={nextProject}
+              disabled={filteredProjects.length <= 1}
+              className="absolute -right-7 top-1/2 -translate-y-1/2 z-10 bg-white/90 rounded-full p-3 transition-all duration-200 border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ChevronRight className="h-6 w-6 text-gray-700" />
+            </button>
+
+            {/* Carousel Content */}
+            <div className="overflow-hidden rounded-2xl">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{
+                  transform: `translateX(-${currentProjectIndex * 100}%)`,
+                }}
+              >
+                {filteredProjects.map((project) => (
+                  <div key={project.id} className="w-full flex-shrink-0">
+                    <ScrollAnimation animation="fade-up" delay={120}>
+                      <div className="relative rounded-xl overflow-hidden group mx-2 h-[25vh] md:h-[35vh] lg:h-[78vh] border-2 border-gray-200">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-500"
+                        />
+                        {/* Base gradient */}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                        {/* Black scrim for readability */}
+                        <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 flex items-end p-6 lg:p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="text-white max-w-2xl">
+                            <div className="mt-4">
+                              {project.link ? (
+                                <Link
+                                  href={project.link}
+                                  className="inline-flex items-center px-5 py-3 bg-white/20 backdrop-blur-sm text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-colors"
+                                >
+                                  Visit Website
+                                  <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                              ) : (
+                                <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
+                                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                                  <span className="text-slate-200 text-sm font-medium tracking-wide">
+                                    In Development
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ScrollAnimation>
                   </div>
-                  <div className="absolute top-4 left-4">
-                    <span className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full font-medium animate-pulse">
-                      In Development
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-black">
-                      Charity Connect
-                    </h3>
-                    <span className="text-xs bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded-full">
-                      Social Impact
-                    </span>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    A transparent donation platform connecting donors with
-                    verified charities using blockchain technology.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      React
-                    </span>
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      Node.js
-                    </span>
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      Blockchain
-                    </span>
-                  </div>
-                  <div className="text-gray-600 text-sm">
-                    <span>🚀 Coming Q2 2025</span>
-                  </div>
-                </div>
+                ))}
               </div>
-            </ScrollAnimation>
-            {/* AI Project */}
-            <ScrollAnimation animation="fade-up" delay={140}>
-              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-                <div className="h-48 bg-gradient-to-br from-purple-500 to-pink-500 relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Brain className="h-16 w-16 text-white/80 group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <div className="absolute top-4 left-4">
-                    <span className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full font-medium">
-                      Planning
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-black">
-                      SmartAnalytics
-                    </h3>
-                    <span className="text-xs bg-purple-500/20 text-purple-500 px-2 py-1 rounded-full">
-                      AI/ML
-                    </span>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Machine learning platform for predictive analytics and
-                    automated business insights.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      Python
-                    </span>
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      TensorFlow
-                    </span>
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      FastAPI
-                    </span>
-                  </div>
-                  <div className="text-gray-600 text-sm">
-                    <span>🔬 Coming Q3 2025</span>
-                  </div>
-                </div>
+            </div>
+
+            {/* Carousel Indicators */}
+            {filteredProjects.length > 1 && (
+              <div className="flex justify-center mt-8 space-x-2">
+                {filteredProjects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentProjectIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                      currentProjectIndex === index
+                        ? "bg-black"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                  />
+                ))}
               </div>
-            </ScrollAnimation>
-            {/* Security Project */}
-            <ScrollAnimation animation="fade-up" delay={160}>
-              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
-                <div className="h-48 bg-gradient-to-br from-red-500 to-orange-500 relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Shield className="h-16 w-16 text-white/80 group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <div className="absolute top-4 left-4">
-                    <span className="text-xs bg-green-500/20 text-green-300 px-3 py-1 rounded-full font-medium">
-                      Concept
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-black">
-                      SecureVault
-                    </h3>
-                    <span className="text-xs bg-red-500/20 text-red-500 px-2 py-1 rounded-full">
-                      Security
-                    </span>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Enterprise-grade password manager with zero-knowledge
-                    encryption and biometric authentication.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      Rust
-                    </span>
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      WebAssembly
-                    </span>
-                    <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
-                      Encryption
-                    </span>
-                  </div>
-                  <div className="text-gray-600 text-sm">
-                    <span>💡 Coming Q4 2025</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollAnimation>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Ready to Build Something */}
+      <ScrollAnimation animation="fade-up" delay={100}>
+        <section className="py-20 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-white"></div>
+          {/* Video Preview Container */}
+          <div className="flex justify-center mb-20">
+            <div className="relative w-full max-w-4xl h-96 overflow-hidden rounded-2xl mx-6 lg:mx-8">
+              {/* Inline Video with thumbnail and overlay play button */}
+              <video
+                ref={inlineVideoRef}
+                className="w-full h-full object-cover"
+                controls={!showVideoOverlay}
+                playsInline
+                poster="/thumbnail.png"
+                onPlay={() => setShowVideoOverlay(false)}
+                onPause={() => {
+                  // Show overlay when paused at the beginning
+                  if (
+                    inlineVideoRef.current &&
+                    inlineVideoRef.current.currentTime === 0
+                  ) {
+                    setShowVideoOverlay(true);
+                  }
+                }}
+                onEnded={() => setShowVideoOverlay(true)}
+              >
+                <source src="/haptic.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              {showVideoOverlay && (
+                <button
+                  aria-label="Play video"
+                  className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors"
+                  onClick={() => {
+                    setShowVideoOverlay(false);
+                    inlineVideoRef.current?.play();
+                  }}
+                >
+                  <span className="bg-white rounded-full p-6 shadow-2xl">
+                    <Play className="h-10 w-10 text-black ml-1" />
+                  </span>
+                </button>
+              )}
+            </div>
           </div>
           <ScrollAnimation animation="scale-up" delay={100}>
-            <div className="text-center mt-12">
+            <div className="text-center mt-16">
               <div className="bg-gray-50 border border-gray-200 p-8 rounded-xl max-w-2xl mx-auto">
                 <h3 className="text-2xl font-bold text-black mb-4">
                   Want to Work With Us?
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  While we're building our portfolio, we're ready to take on
-                  client projects and bring your ideas to life.
+                  We're ready to take on client projects and bring your ideas to
+                  life with cutting-edge technology solutions.
                 </p>
                 <Link
                   href="/contact"
@@ -756,191 +737,8 @@ export default function Home() {
               </div>
             </div>
           </ScrollAnimation>
-        </div>
-      </section>
-      {/* Team Preview Section with Star Field */}
-      <ParallaxSection speed={0.2}>
-        <section className="py-20 bg-black relative overflow-hidden">
-          {/* Star Field Canvas */}
-          <div
-            ref={teamStarRef}
-            className="absolute inset-0 w-full h-full"
-            style={{ zIndex: 1 }}
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
-            <ScrollAnimation animation="fade-up" delay={100}>
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Meet Our{" "}
-                  <span className="font-light font-sans italic">Team</span>
-                </h2>
-                <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                  30+ passionate individuals with diverse skills and a shared
-                  vision for technology that makes a difference.
-                </p>
-              </div>
-            </ScrollAnimation>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Izere Shema Leandre",
-                  role: "CEO & Founder",
-                  avatar: "/flicky.jpeg",
-                  delay: 120,
-                },
-                {
-                  name: "Nyumbayire Laurent",
-                  role: "Co-Founder",
-                  avatar: "/laurent.jpeg",
-                  delay: 140,
-                },
-                {
-                  name: "Muneza Jean Dieudonne",
-                  role: "CPO",
-                  avatar: "/dios.jpeg",
-                  delay: 160,
-                },
-                {
-                  name: "Uhirwe Esther Hope",
-                  role: "CMO",
-                  avatar: "/hope.jpeg",
-                  delay: 180,
-                },
-              ].map((member, index) => (
-                <ScrollAnimation
-                  key={index}
-                  animation="scale-up"
-                  delay={member.delay}
-                >
-                  <div className="text-center group">
-                    <div className="w-36 h-36 rounded-full overflow-hidden mb-4 mx-auto duration-300 ring-4 group-hover:ring-blue-400 group-hover:ring-2 transition-all">
-                      <img
-                        src={member.avatar || "/placeholder.svg"}
-                        alt={`${member.name} - ${member.role}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <h3 className="font-semibold text-white">{member.name}</h3>
-                    <p className="text-sm italic text-gray-400">
-                      {member.role}
-                    </p>
-                  </div>
-                </ScrollAnimation>
-              ))}
-            </div>
-            <ScrollAnimation animation="fade-up" delay={120}>
-              <div className="text-center mt-12">
-                <Link
-                  href="/team"
-                  className="inline-flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors duration-200 backdrop-blur-sm border border-white/20"
-                >
-                  <span>Meet Everyone</span>
-                  <Users className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </section>
-      </ParallaxSection>
-      {/* CTA Section - Ready to Build Something */}
-      <ScrollAnimation animation="fade-up" delay={100}>
-        <section className="py-20 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-white"></div>
-          {/* Video Preview Container */}
-          <div className="flex justify-center mb-20">
-            <div className="relative w-full max-w-4xl h-96 overflow-hidden rounded-2xl mx-6 lg:mx-8">
-              {/* Video Element (muted for preview) */}
-              <video
-                className="w-full h-full object-cover"
-                muted
-                loop
-                playsInline
-                poster="/thumbnail.png"
-              >
-                <source src="/haptic.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              {/* Play Button Overlay */}
-              <div
-                className="absolute inset-0 bg-black/30 flex items-center justify-center group cursor-pointer transition-all duration-300 hover:bg-black/40"
-                onClick={openVideoModal}
-              >
-                <div className="bg-white/20 backdrop-blur-sm rounded-full p-6 group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
-                  <div className="bg-white rounded-full p-4 shadow-2xl">
-                    <Play className="h-8 w-8 text-black ml-1" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold text-black mb-6">
-              Ready to{" "}
-              <span className="font-sans italic font-light">Build</span>{" "}
-              Something{" "}
-              <span className="font-sans italic font-light">Amazing?</span>
-            </h2>
-            <ScrollAnimation animation="fade-up" delay={120}>
-              <p className="text-lg text-black/90 mb-8 max-w-2xl mx-auto">
-                Whether you have a project in mind or just want to chat about
-                technology, we'd love to hear from you.
-              </p>
-            </ScrollAnimation>
-            <ScrollAnimation animation="scale-up" delay={140}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-black text-white font-medium rounded-lg hover:bg-black/80 transition-colors duration-200 text-lg"
-                >
-                  Start a Project
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-                <Link
-                  href="/about"
-                  className="inline-flex items-center px-8 py-4 border-2 border-black text-black bg-white hover:bg-gray-50 font-medium rounded-lg transition-colors duration-200 text-lg"
-                >
-                  Learn More
-                </Link>
-              </div>
-            </ScrollAnimation>
-          </div>
         </section>
       </ScrollAnimation>
-      {/* Video Modal */}
-      {isVideoModalOpen && (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          {/* Close button */}
-          <button
-            onClick={closeVideoModal}
-            className="absolute top-6 right-6 z-60 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full p-3 text-white transition-all duration-200 hover:scale-110"
-            aria-label="Close video"
-          >
-            <X className="h-6 w-6" />
-          </button>
-          {/* Modal Content */}
-          <div className="relative w-full max-w-5xl aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
-            <video
-              ref={modalVideoRef}
-              className="w-full h-full object-contain"
-              controls
-              controlsList="nodownload"
-              onEnded={() => {
-                closeVideoModal();
-              }}
-            >
-              <source src="/haptic.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          {/* Click outside to close */}
-          <div
-            className="absolute inset-0 -z-10"
-            onClick={closeVideoModal}
-          ></div>
-        </div>
-      )}
     </>
   );
 }

@@ -2,9 +2,8 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Roboto, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import { generateMetadata, generateStructuredData } from "@/components/SEO";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -20,43 +19,51 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateMetadata({
   title:
     "Echo Solutions - We Build, Design, Secure, and Optimize Tech for Impact",
   description:
-    "A dynamic team of 8 young tech enthusiasts specializing in AI/ML, cybersecurity, full-stack development, and social impact technology solutions.",
+    "A dynamic team of 25+ young tech enthusiasts specializing in AI/ML, cybersecurity, full-stack development, and social impact technology solutions.",
   keywords:
-    "tech startup, AI, machine learning, cybersecurity, web development, social impact, technology consulting",
-  authors: [{ name: "Echo Solutions Team" }],
-  icons: {
-    icon: "/Lex.svg",
-    shortcut: "/Lex.svg",
-    apple: "/Lex.svg",
-  },
-  openGraph: {
-    title: "Echo Solutions - Tech for Impact",
-    description:
-      "Building innovative technology solutions with a focus on AI, security, and social impact.",
-    type: "website",
-  },
-};
+    "tech startup, AI, machine learning, cybersecurity, web development, social impact, technology consulting, Rwanda, Africa",
+  image: "/thumbnail.png",
+  url: "https://echosolutions.rw",
+  type: "website",
+  author: "Echo Solutions Team",
+  tags: [
+    "Technology",
+    "AI",
+    "cybersecurity",
+    "web development",
+    "Rwanda",
+    "Africa",
+    "Global",
+  ],
+});
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = generateStructuredData();
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/white.svg" type="image/svg+xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+      </head>
       <body
         className={`${roboto.variable} ${instrumentSerif.variable} antialiased`}
       >
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-          <Analytics />
-        </main>
-        <Footer />
+        {children}
+        <Analytics />
       </body>
     </html>
   );

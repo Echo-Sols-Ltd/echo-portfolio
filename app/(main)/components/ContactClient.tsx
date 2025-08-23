@@ -15,8 +15,10 @@ import {
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
 import * as THREE from "three";
+import { ContactPageStructuredData } from "@/components/StructuredData";
 
-export default function ContactPage() {
+
+export default function ContactClient() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -274,6 +276,7 @@ export default function ContactPage() {
 
   return (
     <div className="pt-16">
+      <ContactPageStructuredData />
       {/* Hero Section - Black with Stars */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
         {/* Star Field Canvas */}
@@ -297,7 +300,8 @@ export default function ContactPage() {
           <ScrollAnimation animation="fade-up" delay={150}>
             <div className="flex items-center justify-center mb-6">
               <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                Let's <span className="font-sans font-light italic">Connect</span>
+                Let's{" "}
+                <span className="font-sans font-light italic">Connect</span>
               </h1>
             </div>
           </ScrollAnimation>
@@ -347,7 +351,7 @@ export default function ContactPage() {
                     href="tel:+250780837136"
                     className="text-primary hover:text-primary/80 font-medium"
                   >
-                    +250 (780) 837-136
+                    +250 780 837 136
                   </a>
                 </div>
               </ScrollAnimation>
@@ -360,9 +364,7 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold mb-4">Visit Us</h3>
                   <p className="text-muted-foreground mb-4">Our workspace</p>
                   <address className="text-primary not-italic">
-                    Kigali-Rwanda
-                    <br />
-                    Kicukiro, Rwanda
+                    Kicukiro, Kigali, Rwanda
                   </address>
                 </div>
               </ScrollAnimation>
@@ -452,7 +454,7 @@ export default function ContactPage() {
             </ScrollAnimation>
 
             <ScrollAnimation animation="fade-left" delay={120}>
-              <div className="glass-effect p-8 rounded-2xl animate-pulse-glow">
+              <div className="glass-effect p-8 rounded-2xl">
                 {isSubmitted ? (
                   <ScrollAnimation animation="scale-up" delay={100}>
                     <div className="text-center py-12">
@@ -679,7 +681,7 @@ export default function ContactPage() {
                   </p>
                   <div className="flex space-x-6">
                     <a
-                      href="https://github.com/Lex-Tech-company"
+                      href="https://github.com/EchoSols"
                       className="bg-muted p-4 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
                       aria-label="GitHub"
                     >

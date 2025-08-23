@@ -1,5 +1,5 @@
 import { ro } from "date-fns/locale";
-import { Linkedin } from "lucide-react";
+import { Linkedin, RollerCoaster } from "lucide-react";
 export const coreMembers = [
   {
     name: "Izere Shema Leandre",
@@ -23,7 +23,7 @@ export const coreMembers = [
   },
   {
     name: "Iranzi Dianah",
-    role: "Software Developer",
+    role: "CO-Founder",
     image: "/dianah.jpeg",
     social:{
       ig: "https://www.instagram.com/ira_dian4h/",
@@ -32,6 +32,18 @@ export const coreMembers = [
       github: "https://github.com/IRANZI ",
       facebook: " https://www.facebook.com/share/15K7Tbe3Do/"
     }
+  },
+  {
+    name: "Muneza Jean Dieudonne",
+    role: "Chief Product Officer",
+    image: "/dios.jpeg",
+    social: {
+      ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
+      twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
+      linkedin:
+        "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      website: "https://dieudonne.vercel.app/",
+    },
   },
   {
     name: "Ntwali Isimbi Vieira",
@@ -49,18 +61,6 @@ export const coreMembers = [
     social: {
       github: "https://github.com/Uhirwe",
       ig: "https://www.instagram.com/esther_hope_/",
-    },
-  },
-  {
-    name: "Muneza Jean Dieudonne",
-    role: "Chief Product Officer",
-    image: "/dios.jpeg",
-    social: {
-      ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
-      twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
-      linkedin:
-        "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      website: "https://dieudonne.vercel.app/",
     },
   },
   {
@@ -120,6 +120,26 @@ export const coreMembers = [
       ig: "https://www.instagram.com/ruku_nd0",
     }
   },
+  {
+    name: "Tuyubahe Ashrafu",
+    role: "Tech Lead",
+    image: "/achraf.jpeg",
+    social:{
+      linkedin: "https://www.linkedin.com/in/tuyubahe-ashrafu-2073482a4/",
+      github: "https://github.com/ashrafutuyubahe",
+      twitter: "https://x.com/AshrafTuyubahe"
+    }
+  },
+  {
+    name: "Uwonkunda Mahinga Rodin",
+    role: "Tech Lead",
+    image: "/rodin.jpeg",
+    social:{
+      linkedin: "https://www.linkedin.com/in/m-rodin-1b21a9375/",
+      github: "https://github.com/mahingaRodin",
+      twitter: "https://x.com/rodin9878"
+    }
+  },
 
 ];
 
@@ -175,6 +195,11 @@ export const devTeam = [
     image: "/hatuma.png",
   },
   {
+    name: "Hirwa Emma Reponse",
+    role: "Software Developer",
+    image: "/reponse.jpg",
+  },
+  {
     name: "Ihimbazwe Niyikora Kevine",
     role: "UI/UX Designer",
     image: "/niyikora.jpg",
@@ -192,7 +217,7 @@ export const devTeam = [
   {
     name: "Irasubiza Saly Nelson",
     role: "Software Developer",
-    image: "/avatarboy.jpeg",
+    image: "/saly.png",
   },
   {
     name: "Ishimwe Benitha",
@@ -200,14 +225,24 @@ export const devTeam = [
     image: "/avatargirl.jpeg",
   },
   {
+    name: "Izabayo Nadine",
+    role: "UI/UX Designer",
+    image: "/nadine.jpeg"
+  },
+  {
     name: "Jolie Princesse",
     role: "Software Developer",
     image: "/princess.jpeg",
   },
   {
-    name: "Mahinga Rodin",
+    name: "Kirezi Livia",
     role: "Software Developer",
-    image: "/rodin.jpeg",
+    image: "avatargirl.jpeg"
+  },
+  {
+    name: "Kwizera Olivier",
+    role: "Software Developer",
+    image: "/olivier.jpg",
   },
   {
     name: "Manene Junior",
@@ -218,6 +253,11 @@ export const devTeam = [
     name: "Manzi Prince Babou",
     role: "Cyber Security Expert",
     image: "/babou.jpg",
+  },
+  {
+    name: "Mugisha Pascal",
+    role: "Software Developer",
+    image: "/pascal.jpg",
   },
   {
     name: "Mugisha Prosper",
@@ -240,6 +280,11 @@ export const devTeam = [
     image: "/honore.jpeg",
   },
   {
+    name: "Niyodushima Belyse",
+    role: "Software Developer",
+    image: "/belyse.jpg",
+  },
+  {
     name: "Ntwali Gloria",
     role: "Software Developer",
     image: "/gloria.jpeg",
@@ -260,9 +305,9 @@ export const devTeam = [
     image: "/gloire.jpeg",
   },
   {
-    name: "Tuyubahe Ashrafu",
+    name: "Tuyishime Christian",
     role: "Software Developer",
-    image: "/achraf.jpeg",
+    image: "/avatarboy.jpeg",
   },
   {
     name: "Uwayo Pascaline",

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import TeamMember from "@/components/TeamMember";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
@@ -16,13 +17,14 @@ import {
   Target,
   Box,
 } from "lucide-react";
-import { coreMembers, devTeam } from "../../components/data/teamMembers";
+import { coreMembers, devTeam } from "@/components/data/teamMembers";
 import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
+import { TeamMemberStructuredData } from "@/components/StructuredData";
 
-export default function TeamPage() {
-  const [coreMembersShown, setCoreMembersShown] = useState<number>(15);
-  const [devTeamShown, setDevTeamShown] = useState<number>(35);
+export default function TeamClient() {
+  const [coreMembersShown, setCoreMembersShown] = useState<number>(4);
+  // const [devTeamShown, setDevTeamShown] = useState<number>(45);
 
   // Star field refs
   const firstStarRef = useRef<HTMLDivElement>(null);
@@ -215,16 +217,17 @@ export default function TeamPage() {
     setCoreMembersShown(8);
   };
 
-  const showMoreDevTeam = () => {
-    setDevTeamShown((prev) => Math.min(prev + 8, devTeam.length));
-  };
+  // const showMoreDevTeam = () => {
+  //   setDevTeamShown((prev) => Math.min(prev + 8, devTeam.length));
+  // };
 
-  const showLessDevTeam = () => {
-    setDevTeamShown(8);
-  };
+  // const showLessDevTeam = () => {
+  //   setDevTeamShown(8);
+  // };
 
   return (
     <div className="pt-16">
+      <TeamMemberStructuredData teamMembers={coreMembers} />
       {/* Hero Section - Black with Stars */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
         {/* Star Field Canvas */}
@@ -263,7 +266,7 @@ export default function TeamPage() {
       <ParallaxSection speed={0.3}>
         <section className="section-padding bg-card/50">
           <div className="container-custom">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               {[
                 {
                   end: 30,
@@ -288,14 +291,14 @@ export default function TeamPage() {
                   color: "emerald-500",
                   delay: 160,
                 },
-                {
-                  end: 100,
-                  suffix: "%",
-                  label: "Passion Driven",
-                  icon: Heart,
-                  color: "orange-500",
-                  delay: 180,
-                },
+                // {
+                //   end: 100,
+                //   suffix: "%",
+                //   label: "Passion Driven",
+                //   icon: Heart,
+                //   color: "orange-500",
+                //   delay: 180,
+                // },
               ].map((stat, index) => (
                 <ScrollAnimation
                   key={index}
@@ -306,7 +309,9 @@ export default function TeamPage() {
                     <div
                       className={`bg-${stat.color}/20 p-3 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center animate-pulse-glow`}
                     >
-                      <stat.icon className={`h-6 w-6 text-${stat.color}`} />
+                      {React.createElement(stat.icon, {
+                        className: `h-6 w-6 text-${stat.color}`,
+                      })}
                     </div>
                     <CounterAnimation
                       end={stat.end}
@@ -398,7 +403,9 @@ export default function TeamPage() {
                   <div
                     className={`bg-${spec.color}/20 p-3 rounded-lg w-12 h-12 mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <spec.icon className={`h-6 w-6 text-${spec.color}`} />
+                    {React.createElement(spec.icon, {
+                      className: `h-6 w-6 text-${spec.color}`,
+                    })}
                   </div>
                   <div className="text-sm font-medium">{spec.label}</div>
                 </div>
@@ -443,7 +450,7 @@ export default function TeamPage() {
           </div>
 
           {/* Dev Team Section */}
-          <ScrollAnimation animation="fade-up" delay={100}>
+          {/* <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
                 <Users className="w-5 h-5 text-blue-400" />
@@ -452,27 +459,20 @@ export default function TeamPage() {
                 </span>
               </div>
             </div>
-          </ScrollAnimation>
+          </ScrollAnimation> */}
 
-          {/* Dev Team Grid - Same layout as core team */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
-            {devTeam.slice(0, devTeamShown).map((member, index) => {
-              // Create a version of the member without social links
-              const memberWithoutSocial = {
-                ...member,
-                social: {}, // Empty social object
-              };
-              return (
-                <div
-                  key={member.name}
-                  className="animate-fade-in"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <TeamMember {...memberWithoutSocial} />
-                </div>
-              );
-            })}
-          </div>
+          {/* Dev Team Grid */}
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
+            {devTeam.slice(0, devTeamShown).map((member, index) => (
+              <div
+                key={member.name}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <TeamMember {...member} />
+              </div>
+            ))}
+          </div> */}
         </div>
       </section>
 
@@ -525,9 +525,9 @@ export default function TeamPage() {
                     <div
                       className={`bg-${culture.color}/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center`}
                     >
-                      <culture.icon
-                        className={`h-8 w-8 text-${culture.color}`}
-                      />
+                      {React.createElement(culture.icon, {
+                        className: `h-8 w-8 text-${culture.color}`,
+                      })}
                     </div>
                     <h3 className="text-xl font-bold mb-4">{culture.title}</h3>
                     <p className="text-muted-foreground">{culture.desc}</p>
