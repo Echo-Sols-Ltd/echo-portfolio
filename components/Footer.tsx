@@ -67,8 +67,8 @@ export default function Footer() {
     {
       icon: Phone,
       label: "Phone",
-      value: "+250 780 837 136",
-      href: "https://wa.me/+250780837136",
+      value: "+250 793 373 953",
+      href: "https://wa.me/+250793373953",
     },
     {
       icon: Mail,
