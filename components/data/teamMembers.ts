@@ -18,7 +18,20 @@ export const coreMembers = [
     social: {
       linkedin: "https://www.linkedin.com/in/nyumbayire-laurent-b11251299/",
       email: "laulanyumbayire@gmail.com",
+      ig: "https://www.instagram.com/nyumbayire_/"
     },
+  },
+  {
+    name: "Iranzi Dianah",
+    role: "Software Developer",
+    image: "/dianah.jpeg",
+    social:{
+      ig: "https://www.instagram.com/ira_dian4h/",
+      twitter: "https://x.com/GITEGOLUNAR",
+      email: "iradianah5@gmail.com",
+      github: "https://github.com/IRANZI ",
+      facebook: " https://www.facebook.com/share/15K7Tbe3Do/"
+    }
   },
   {
     name: "Ntwali Isimbi Vieira",
@@ -43,7 +56,6 @@ export const coreMembers = [
     role: "Chief Product Officer",
     image: "/dios.jpeg",
     social: {
-      github: "https://github.com/Uhirwe",
       ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
       twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
       linkedin:
@@ -54,12 +66,13 @@ export const coreMembers = [
   {
     name: "Niyubahwe Uwacu Annick",
     role: "Chief Operations Officer",
-    image: "/annicke.jpeg",
+    image: "/annick.jpg",
     social: {
       email: "niyubahwe.annick975@gmail.com",
       github: "https://github.com/annick975",
       ig: "https://www.instagram.com/@n_tannick975/",
       linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/",
+      website: "https://annick-niyubahwe.vercel.app/"
     },
   },
   {
@@ -83,6 +96,7 @@ export const coreMembers = [
       ig: "https://www.instagram.com/_corey_ne/",
       linkedin:
         "https://www.linkedin.com/in/gasore-corene-turinumugisha-275332326/",
+      website: "https://gasorecorene.vercel.app/"
     },
   },
   {
@@ -94,7 +108,19 @@ export const coreMembers = [
       ig: "https://instagram.com/landry_sb",
       website: "https://Landry.neurolab.cc"
     }
-  }
+  },
+  {
+    name: "Rukundo Bahati Samuel",
+    role: "Cybersecurity Lead",
+    image: "/bahati.jpg",
+    social: {
+      email: "rukundorca@gmail.com ",
+      github: "https://github.com/Rukundo-Bahati",
+      twitter: "https://x.com/BahatiBaba",
+      ig: "https://www.instagram.com/ruku_nd0",
+    }
+  },
+
 ];
 
 export const devTeam = [
@@ -110,13 +136,18 @@ export const devTeam = [
   },
   {
     name: "Amani Patrick",
-    role: "Cyber Security Expert",
+    role: "Cybersecurity Expert",
     image: "/amani.jpeg",
   },
   {
     name: "Bagabo Bonny",
     role: "Software Developer",
     image: "/avatarboy.jpeg",
+  },
+  {
+    name: "Bugiri Wilson Goal",
+    role: "Cybersecurity Expert",
+    image: "/wigo.jpeg"
   },
   {
     name: "Byukusenge Andrew",
@@ -149,19 +180,19 @@ export const devTeam = [
     image: "/niyikora.jpg",
   },
   {
-    name: "Irakoze Dianah",
-    role: "Software Developer",
-    image: "/dianah.jpeg",
-  },
-    {
     name: "Iradukunda Hope",
-    role: "Software Developer",
-    image: "/avatargirl.jpeg",
+    role: "UI/UX Designer",
+    image: "/hopeira.jpg",
   },
   {
     name: "Iradukunda Joyeuese",
     role: "Software Developer",
     image: "/joyeuse.png",
+  },
+  {
+    name: "Irasubiza Saly Nelson",
+    role: "Software Developer",
+    image: "/avatarboy.jpeg",
   },
   {
     name: "Ishimwe Benitha",
@@ -184,14 +215,24 @@ export const devTeam = [
     image: "/manene.jpeg",
   },
   {
-    name: "Mugabe Ineza Promesse",
-    role: "Software Developer",
-    image: "/mugabe.jpg",
+    name: "Manzi Prince Babou",
+    role: "Cyber Security Expert",
+    image: "/babou.jpg",
   },
   {
     name: "Mugisha Prosper",
     role: "Machine Learning and AI Specialist",
     image: "/polo.jpeg",
+  },
+  {
+    name: "Nibeza Amahoro Nicole",
+    role: "Software Developer",
+    image: "/avatargirl.jpeg",
+  },
+  {
+    name: "Ninsiima Angella",
+    role: "UI/UX Designer",
+    image: "/ninsiima.jpg",
   },
   {
     name: "Niyitanga Honore",
@@ -207,11 +248,6 @@ export const devTeam = [
     name: "Nziza Prince",
     role: "Software Developer",
     image: "/nziza.png",
-  },
-  {
-    name: "Rukundo Bahati Samuel",
-    role: "CyberSec Expert",
-    image: "/bahati.jpg"
   },
   {
     name: "Rwaburindi Jean Calvin",
@@ -233,5 +269,10 @@ export const devTeam = [
     role: "Software  Developer",
     image: "/pascaline.jpeg",
   },
+  {
+    name: "Uwera Sylvie",
+    role: "Software Developer",
+    image: "/avatargirl.jpeg",
+  }
 ];
 

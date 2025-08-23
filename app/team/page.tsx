@@ -14,15 +14,16 @@ import {
   Globe,
   Heart,
   Target,
+  Box,
 } from "lucide-react";
 import { coreMembers, devTeam } from "../../components/data/teamMembers";
 import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 
 export default function TeamPage() {
-  const [coreMembersShown, setCoreMembersShown] = useState<number>(10);
-  const [devTeamShown, setDevTeamShown] = useState<number>(30);
-  
+  const [coreMembersShown, setCoreMembersShown] = useState<number>(15);
+  const [devTeamShown, setDevTeamShown] = useState<number>(35);
+
   // Star field refs
   const firstStarRef = useRef<HTMLDivElement>(null);
   const firstSceneRef = useRef<any>(null);
@@ -251,7 +252,7 @@ export default function TeamPage() {
           </ScrollAnimation>
           <ScrollAnimation animation="fade-up" delay={180}>
             <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
-              25+ passionate individuals with diverse skills and a shared vision
+              30+ passionate individuals with diverse skills and a shared vision
               for technology that makes a meaningful difference in the world.
             </p>
           </ScrollAnimation>
@@ -265,7 +266,7 @@ export default function TeamPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {[
                 {
-                  end: 25,
+                  end: 30,
                   suffix: "+",
                   label: "Team Members",
                   icon: Users,
@@ -273,14 +274,14 @@ export default function TeamPage() {
                   delay: 120,
                 },
                 {
-                  end: 8,
+                  end: 9,
                   label: "Specializations",
                   icon: Target,
                   color: "blue-500",
                   delay: 140,
                 },
                 {
-                  end: 50,
+                  end: 25,
                   suffix: "+",
                   label: "Technologies",
                   icon: Code,
@@ -328,9 +329,7 @@ export default function TeamPage() {
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
                 Our{" "}
-                <span className="font-light font-sans italic">
-                  Expertise
-                </span>
+                <span className="font-light font-sans italic">Expertise</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Each team member brings unique skills and perspectives to create
@@ -338,12 +337,27 @@ export default function TeamPage() {
               </p>
             </div>
           </ScrollAnimation>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-6 mb-16">
             {[
               { icon: Code, label: "Full-Stack", color: "primary", delay: 120 },
-              { icon: Brain, label: "AI/ML", color: "purple-500", delay: 140 },
-              { icon: Shield, label: "Security", color: "red-500", delay: 160 },
-              { icon: Palette, label: "Design", color: "blue-500", delay: 180 },
+              {
+                icon: Brain,
+                label: "AI/ML",
+                color: "purple-500",
+                delay: 140,
+              },
+              {
+                icon: Shield,
+                label: "Security",
+                color: "red-500",
+                delay: 160,
+              },
+              {
+                icon: Palette,
+                label: "Design",
+                color: "blue-500",
+                delay: 180,
+              },
               {
                 icon: Database,
                 label: "Backend",
@@ -353,16 +367,27 @@ export default function TeamPage() {
               {
                 icon: Globe,
                 label: "Frontend",
-                color: "orange-500",
+                color: "primary",
                 delay: 140,
               },
               {
                 icon: Smartphone,
                 label: "Mobile",
-                color: "pink-500",
+                color: "purple-500",
                 delay: 160,
               },
-              { icon: Users, label: "DevOps", color: "cyan-500", delay: 180 },
+              {
+                icon: Box,
+                label: "3D",
+                color: "red-500",
+                delay: 180,
+              },
+              {
+                icon: Users,
+                label: "DevOps",
+                color: "blue-500",
+                delay: 180,
+              },
             ].map((spec, index) => (
               <ScrollAnimation
                 key={index}
@@ -417,7 +442,6 @@ export default function TeamPage() {
             ))}
           </div>
 
-
           {/* Dev Team Section */}
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
@@ -436,7 +460,7 @@ export default function TeamPage() {
               // Create a version of the member without social links
               const memberWithoutSocial = {
                 ...member,
-                social: {} // Empty social object
+                social: {}, // Empty social object
               };
               return (
                 <div
@@ -460,9 +484,7 @@ export default function TeamPage() {
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
                   Our{" "}
-                  <span className="font-light font-sans italic">
-                    Culture
-                  </span>
+                  <span className="font-light font-sans italic">Culture</span>
                 </h2>
                 <p className="text-base text-muted-foreground max-w-2xl mx-auto">
                   We've built a culture that celebrates diversity, encourages
