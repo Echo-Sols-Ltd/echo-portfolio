@@ -23,30 +23,27 @@ const Hero = () => {
 
   const slides = [
     {
-      word: "Build",
-      title: "Transformative Solutions",
+      title: "Engineering Industry-Ready Solutions",
       description:
-        "Developing advanced, high-impact applications that address real-world challenges with precision and excellence.",
+        "Robust, production-grade applications engineered to meet modern industry standards and client demands.",
     },
     {
-      word: "Design",
-      title: "Captivating Experiences",
+      title: "Designing Product-Centered Innovation",
       description:
-        "Creating seamless, human-centered interfaces that delight users and inspire engagement every day.",
+        "Scalable digital products designed with seamless user experiences that drive measurable business impact.",
     },
     {
-      word: "Secure",
-      title: "Fortified Systems",
+      title: "Securing Systems with Trusted Expertise",
       description:
-        "Deploying State-of-the-art security protocols to safeguard data and ensure complete business protection.",
+        "Skilled technical expertise applied to deliver fortified systems that ensure compliance, resilience, and data protection.",
     },
     {
-      word: "Optimize",
-      title: "Unmatched Performance",
+      title: "Optimizing for Operational Excellence",
       description:
-        "Refining systems for exceptional efficiency, lightning speed, and a flawless user experience.",
+        "High-performance systems enhanced through precision engineering, efficient architectures, and future-proof scalability.",
     },
   ];
+  
 
   const createStarTexture = () => {
     const canvas = document.createElement("canvas");
@@ -307,11 +304,8 @@ const Hero = () => {
           <div className="space-y-6">
             <div className="relative">
               <div className="flex items-center justify-center">
-                <h1 className="text-7xl md:text-8xl font-semibold tracking-normal text-white">
-                  We{" "}
-                  <span className="font-sans italic font-light">
-                    {slides[currentWord].word}
-                  </span>
+                <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+                  {slides[currentWord].title}
                 </h1>
               </div>
             </div>
@@ -338,7 +332,7 @@ const Hero = () => {
               }`}
               role="tab"
               aria-selected={index === currentWord}
-              aria-label={`Show ${slide.word} slide`}
+              aria-label={`Show ${slide.title} slide`}
             />
           ))}
         </div>
