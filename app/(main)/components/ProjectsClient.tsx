@@ -233,7 +233,7 @@ export default function ProjectsClient() {
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent backdrop-blur-md border border-white/30 rounded-full shadow-lg">
             <Code className="w-5 h-5 text-blue-400" />
             <span className="text-sm font-semibold tracking-wide text-white">
-              Our Upcoming Projects
+              Our Completed Projects
             </span>
           </div>
 
@@ -248,7 +248,7 @@ export default function ProjectsClient() {
 
           <ScrollAnimation animation="fade-up" delay={180}>
             <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
-              Exciting projects in development spanning AI, security, social
+              Exciting completed projects spanning AI, security, social
               impact, and cutting-edge web experiences.
             </p>
           </ScrollAnimation>
@@ -261,7 +261,7 @@ export default function ProjectsClient() {
           <div className="container-custom">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               {[
-                { end: projects.length, label: "Projects Planned", delay: 120 },
+                { end: projects.length, label: "Projects Completed", delay: 120 },
                 { end: categories.length - 1, label: "Categories", delay: 140 },
                 // { end: 0, label: "Users (Coming Soon!)", delay: 160 },
                 {
@@ -297,11 +297,11 @@ export default function ProjectsClient() {
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                <span className="font-sans font-light italic">Projects</span> in
-                Development
+                <span className="font-sans font-light italic">Completed</span>{" "}
+                Projects
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Our most exciting upcoming projects that will showcase our
+                Our most exciting completed projects that showcase our
                 diverse capabilities and innovative approach.
               </p>
             </div>
@@ -346,9 +346,9 @@ export default function ProjectsClient() {
                             </Link>
                           ) : (
                             <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
-                              <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                               <span className="text-slate-200 text-sm font-medium tracking-wide">
-                                In Development
+                                Completed
                               </span>
                             </div>
                           )}
@@ -370,11 +370,11 @@ export default function ProjectsClient() {
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
                   Our <span className="font-sans font-light italic"></span>
-                  Roadmap
+                  Portfolio
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Explore our complete project pipeline and see what we're
-                  building across different domains.
+                  Explore our complete project portfolio and see what we've
+                  built across different domains.
                 </p>
               </div>
             </ScrollAnimation>
@@ -436,9 +436,9 @@ export default function ProjectsClient() {
                             </Link>
                           ) : (
                             <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
-                              <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+                              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                               <span className="text-slate-200 text-sm font-medium tracking-wide">
-                                In Development
+                                Completed
                               </span>
                             </div>
                           )}
