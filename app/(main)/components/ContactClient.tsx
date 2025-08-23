@@ -348,10 +348,10 @@ export default function ContactClient() {
                     Mon-Fri 9AM-6PM PST
                   </p>
                   <a
-                    href="tel:+250780837136"
+                    href="tel:+250793373953"
                     className="text-primary hover:text-primary/80 font-medium"
                   >
-                    +250 780 837 136
+                    +250 793 373 953
                   </a>
                 </div>
               </ScrollAnimation>
