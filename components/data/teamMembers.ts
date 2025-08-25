@@ -9,7 +9,7 @@ export const coreMembers = [
       github: "https://github.com/leandre000",
       twitter: "https://x.com/shema_Leandre",
       email: "iamshemaleandre@gmail.com",
-      ig:"https://www.instagram.com/_shemaleandre_/"
+      ig: "https://www.instagram.com/_shemaleandre_/"
     },
   },
   {
@@ -22,23 +22,23 @@ export const coreMembers = [
       ig: "https://www.instagram.com/nyumbayire_/"
     },
   },
-    {
+  {
     name: "Irasubiza Saly Nelson",
     role: "Director of Projects and Research Coordination ",
-    image: "/saly.png",
+    image: "/saly.jpeg",
     social: {
       linkedin: "https://www.linkedin.com/in/irasubiza-saly-nelson-173747311/",
       email: "irasubizasalynelson@gmail.com",
       ig: "https://www.instagram.com/irasubiza_saly_nelson/",
-      twitter:"https://x.com/NelsonSaly66407",
-      github:"https://github.com/IRASUBIZA-SALY-NELSON"
+      twitter: "https://x.com/NelsonSaly66407",
+      github: "https://github.com/IRASUBIZA-SALY-NELSON"
     },
   },
   {
     name: "Iranzi Dianah",
     role: "CO-Founder",
     image: "/dianah.jpeg",
-    social:{
+    social: {
       ig: "https://www.instagram.com/ira_dian4h/",
       twitter: "https://x.com/GITEGOLUNAR",
       email: "iradianah5@gmail.com",
@@ -46,7 +46,7 @@ export const coreMembers = [
       facebook: " https://www.facebook.com/share/15K7Tbe3Do/"
     }
   },
-    {
+  {
     name: "Muneza Jean Dieudonne",
     role: "Chief Product Officer",
     image: "/dios.jpeg",
@@ -57,9 +57,9 @@ export const coreMembers = [
         "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       website: "https://dieudonne.vercel.app/",
     },
-    
+
   },
-    {
+  {
     name: "Uhirwe Esther Hope",
     role: "Chief Marketing Officer",
     image: "/hope.jpeg",
@@ -68,7 +68,7 @@ export const coreMembers = [
       ig: "https://www.instagram.com/esther_hope_/",
     },
   },
-    {
+  {
     name: "Niyubahwe Uwacu Annick",
     role: "Chief Operations Officer",
     image: "/annick.jpg",
@@ -80,7 +80,7 @@ export const coreMembers = [
       website: "https://annick-niyubahwe.vercel.app/"
     },
   },
-    {
+  {
     name: "Turinumugisha Gasore Corene",
     role: "Chief Training & Development Officer",
     image: "/corene.jpeg",
@@ -98,15 +98,74 @@ export const coreMembers = [
 
 export const devTeam = [
   {
-    name: "Abayo Hirwa Jovin",
+    name: "Muhammad Burhan Chughtai",
+    role: "Senior Software Developer",
+    image: "/indian.jpeg",
+  },
+
+  {
+    name: "Nziza Prince",
     role: "Software Developer",
-    image: "/jvn.jpeg",
+    image: "/nziza.png",
+  },
+
+  {
+    name: "Bahati Samuel",
+    role: "Cyber Security Expert",
+    image: "/bahati.jpg",
+  },
+
+  {
+    name: "Forgiveness Peace Love",
+    role: "Embedded Systems Engineer",
+    image: "/peace.jpeg",
+  },
+  {
+    name: "Tuyubahe Achraf",
+    role: "Software Developer",
+    image: "/achraf.jpeg",
   },
   {
     name: "Agahire Nikita",
     role: "UI/UX Designer",
     image: "/nikita.jpeg",
   },
+  {
+    name: "Mahinga Rodin",
+    role: "Software Developer",
+    image: "/rodin.jpeg"
+  },
+  {
+    name: "Mugisha Prosper",
+    role: "Machine Learning and AI Specialist",
+    image: "/polo.jpeg",
+  },
+  {
+    name: "Bugiri Wilson Goal",
+    role: "Networking Expert",
+    image: "/wigo.jpeg"
+  },
+  {
+    name: "Byukusenge Andrew",
+    role: "Software Developer",
+    image: "/andre.jpg",
+  },
+  {
+    name: "Amani Patrick",
+    role: "Penetration Testing",
+    image: "/amani.jpeg"
+  },
+  {
+    name: "Dufitimana Theoneste",
+    role: "Devops Engineer",
+    image: "/theo.jpg",
+  },
+  {
+    name: "Abayo Hirwa Jovin",
+    role: "Software Developer",
+    image: "/jvn.jpeg",
+  },
+
 
   {
     name: "Iradukunda Joyeuese",
@@ -120,89 +179,40 @@ export const devTeam = [
     image: "/olivier.jpg",
   },
 
-  {
-    name: "Mugisha Prosper",
-    role: "Machine Learning and AI Specialist",
-    image: "/polo.jpeg",
-  },
 
   {
-    name: "Nziza Prince",
-    role: "Software Developer",
-    image: "/nziza.png",
-  },
-    {
-    name: "Ishimwe Landry",
+    name: "Asimwe Landry",
     role: "Software Developer",
     image: "/avatarboy.jpeg",
   },
-    {
-    name: "Bahati Samuel",
-    role: "Cyber Security Expert",
-    image: "/bahati.jpg",
-  },
-  {
-    name: "Bugiri Wilson Goal",
-    role: "Networking Expert",
-    image: "/wigo.jpeg"
-  },
-    {
-    name: "Amani Patrick",
-    role: "Penetration Testing",
-    image: "/amani.jpeg"
-  },
 
-      {
+
+  {
     name: "Mugisha Pascal",
     role: "Software Developer",
     image: "/pascal.jpg",
   },
-      {
+  {
     name: "Uwayo Pascaline",
     role: "Software Developer",
     image: "/pascaline.jpeg",
   },
-    {
+  {
     name: "Ishimwe Benitha",
     role: "UI/UX Designer",
     image: "/avatargirl.jpeg",
   },
-      {
-    name: "Byukusenge Andrew",
-    role: "Software Developer",
-    image: "/andre.jpg",
-  },
-      {
+
+  {
     name: "Ishimwe Liana",
     role: "Software Developer",
     image: "/liana.jpeg",
   },
-      {
+  {
     name: "Nihimbazwe Kevine",
     role: "UI/UX Designee",
     image: "/avatargirl.jpeg",
   },
-      {
-    name: "Tuyubahe Achraf",
-    role: "Software Developer",
-    image: "/achraf.jpeg",
-  },
-  {
-    name: "Muhammad Burhan Chughtai",
-    role: "Senior Software Developer",
-    image: "/indian.jpeg",
-  },
-    {
-    name: "Dufitimana Theoneste",
-    role: "Devops Engineer",
-    image: "/theo.jpg",
-  },
-    {
-    name: "Forgiveness Peace Love",
-    role: "Embedded Systems Engineer",
-    image: "/peace.jpeg",
-  },
 
-  
 ];
 
