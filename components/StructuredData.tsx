@@ -6,6 +6,7 @@ interface ProjectStructuredDataProps {
     image: string;
     category: string;
     status: string;
+
   }>;
 }
 
@@ -42,7 +43,7 @@ export function ProjectStructuredData({
         "@type": "CreativeWork",
         name: project.title,
         description: project.description,
-        image: `https://echosolutions.rw${project.image}`,
+        image: `https://echo-portifolio.vercel.app${project.image}`,
         category: project.category,
         status: project.status,
         creator: {
@@ -72,13 +73,13 @@ export function TeamMemberStructuredData({
     name: "Echo Solutions",
     description:
       "A dynamic team of young tech enthusiasts specializing in AI/ML, cybersecurity, full-stack development, and social impact technology solutions.",
-    url: "https://echosolutions.rw",
-    logo: "https://echosolutions.rw/white.svg",
+    url: "https://echo-portifolio.vercel.app",
+    logo: "https://echo-portifolio.vercel.app/white.svg",
     employee: teamMembers.map((member) => ({
       "@type": "Person",
       name: member.name,
       jobTitle: member.role,
-      image: `https://echosolutions.rw${member.image}`,
+      image: `https://echo-portifolio.vercel.app${member.image}`,
       description: `${member.name} - ${member.role} at Echo Solutions`,
       worksFor: {
         "@type": "Organization",
@@ -106,14 +107,14 @@ export function ContactPageStructuredData() {
     "@type": "ContactPage",
     name: "Contact Echo Solutions",
     description: "Get in touch with Echo Solutions for your technology needs",
-    url: "https://echosolutions.rw/contact",
+    url: "https://echo-portifolio.vercel.app/contact",
     mainEntity: {
       "@type": "Organization",
       name: "Echo Solutions",
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer service",
-        email: "info@echosolutions.rw",
+        email: "info@echo-portifolio.vercel.app",
         availableLanguage: "English",
       },
     },
@@ -136,7 +137,7 @@ export function AboutPageStructuredData() {
     name: "About Echo Solutions",
     description:
       "Learn about Echo Solutions, a team of young tech enthusiasts creating innovative technology solutions",
-    url: "https://echosolutions.rw/about",
+    url: "https://echo-portifolio.vercel.app/about",
     mainEntity: {
       "@type": "Organization",
       name: "Echo Solutions",
