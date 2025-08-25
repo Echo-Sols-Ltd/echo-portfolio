@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import TeamMember from "@/components/TeamMember";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
@@ -13,26 +13,19 @@ import {
   Database,
   Smartphone,
   Globe,
-  Heart,
   Target,
   Box,
 } from "lucide-react";
 import { coreMembers, devTeam } from "@/components/data/teamMembers";
-import { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 import { TeamMemberStructuredData } from "@/components/StructuredData";
 
 export default function TeamClient() {
-  const [coreMembersShown, setCoreMembersShown] = useState<number>(4);
-  // const [devTeamShown, setDevTeamShown] = useState<number>(45);
-
   // Star field refs
   const firstStarRef = useRef<HTMLDivElement>(null);
   const firstSceneRef = useRef<any>(null);
-  const animationIdRef = useRef<number | null>(null);
-  const isVisibleRef = useRef(true);
 
-  // Create star texture for Three.js
+  // Create star texture
   const createStarTexture = () => {
     const canvas = document.createElement("canvas");
     canvas.width = 32;
@@ -50,10 +43,8 @@ export default function TeamClient() {
     return new THREE.CanvasTexture(canvas);
   };
 
-  // Create star field function
-  const createStarField = (
-    mountRef: React.RefObject<HTMLDivElement | null>
-  ) => {
+  // Create star field
+  const createStarField = (mountRef: React.RefObject<HTMLDivElement | null>) => {
     if (!mountRef.current) return null;
     const container = mountRef.current;
     const scene = new THREE.Scene();
@@ -71,105 +62,43 @@ export default function TeamClient() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setClearColor(0x000000, 0);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    if (renderer.domElement) {
-      try {
-        container.appendChild(renderer.domElement);
-      } catch (error) {
-        console.error("Failed to append Three.js canvas:", error);
-        return null;
-      }
-    }
-    // Regular stars
+    container.appendChild(renderer.domElement);
+
+    // Stars
     const starGeometry = new THREE.BufferGeometry();
     const starCount = 1000;
     const positions = new Float32Array(starCount * 3);
     const colors = new Float32Array(starCount * 3);
-    const sizes = new Float32Array(starCount);
     for (let i = 0; i < starCount; i++) {
       positions[i * 3] = (Math.random() - 0.5) * 2000;
       positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
       const intensity = Math.random() * 0.5 + 0.5;
-      colors[i * 3] = intensity * (0.8 + Math.random() * 0.2);
-      colors[i * 3 + 1] = intensity * (0.9 + Math.random() * 0.1);
+      colors[i * 3] = intensity;
+      colors[i * 3 + 1] = intensity;
       colors[i * 3 + 2] = intensity;
-      sizes[i] = Math.random() * 3;
     }
-    starGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(positions, 3)
-    );
+    starGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     starGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-    starGeometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
-    const starTexture = createStarTexture();
+
     const starMaterial = new THREE.PointsMaterial({
-      size: 5.25,
+      size: 5,
       sizeAttenuation: true,
       vertexColors: true,
       transparent: true,
       opacity: 0.8,
       blending: THREE.AdditiveBlending,
-      map: starTexture,
+      map: createStarTexture(),
     });
+
     const stars = new THREE.Points(starGeometry, starMaterial);
     scene.add(stars);
-    // Bright stars
-    const brightStarGeometry = new THREE.BufferGeometry();
-    const brightStarCount = 40;
-    const brightPositions = new Float32Array(brightStarCount * 3);
-    const brightColors = new Float32Array(brightStarCount * 3);
-    const brightSizes = new Float32Array(brightStarCount);
-    for (let i = 0; i < brightStarCount; i++) {
-      brightPositions[i * 3] = (Math.random() - 0.5) * 1500;
-      brightPositions[i * 3 + 1] = (Math.random() - 0.5) * 1500;
-      brightPositions[i * 3 + 2] = (Math.random() - 0.5) * 1500;
-      brightColors[i * 3] = 0.9 + Math.random() * 0.1;
-      brightColors[i * 3 + 1] = 0.95 + Math.random() * 0.05;
-      brightColors[i * 3 + 2] = 1.0;
-      brightSizes[i] = Math.random() * 4 + 2;
-    }
-    brightStarGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(brightPositions, 3)
-    );
-    brightStarGeometry.setAttribute(
-      "color",
-      new THREE.BufferAttribute(brightColors, 3)
-    );
-    brightStarGeometry.setAttribute(
-      "size",
-      new THREE.BufferAttribute(brightSizes, 1)
-    );
-    const brightStarTexture = createStarTexture();
-    const brightStarMaterial = new THREE.PointsMaterial({
-      size: 9.45,
-      sizeAttenuation: true,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.9,
-      blending: THREE.AdditiveBlending,
-      map: brightStarTexture,
-    });
-    const brightStars = new THREE.Points(
-      brightStarGeometry,
-      brightStarMaterial
-    );
-    scene.add(brightStars);
+
     camera.position.z = 5;
-    return {
-      scene,
-      camera,
-      renderer,
-      stars,
-      brightStars,
-      starGeometry,
-      brightStarGeometry,
-      starMaterial,
-      brightStarMaterial,
-    };
+    return { scene, camera, renderer, starGeometry, starMaterial };
   };
 
-  // Initialize star field
+  // Init star field
   useEffect(() => {
     const firstScene = createStarField(firstStarRef);
     if (firstScene) {
@@ -177,69 +106,25 @@ export default function TeamClient() {
       firstScene.renderer.render(firstScene.scene, firstScene.camera);
     }
     return () => {
-      if (firstSceneRef.current && firstStarRef.current) {
-        const {
-          scene,
-          renderer,
-          starGeometry,
-          brightStarGeometry,
-          starMaterial,
-          brightStarMaterial,
-        } = firstSceneRef.current;
+      if (firstSceneRef.current) {
+        const { scene, renderer, starGeometry, starMaterial } = firstSceneRef.current;
         starGeometry.dispose();
-        brightStarGeometry.dispose();
         starMaterial.dispose();
-        brightStarMaterial.dispose();
-        while (scene.children.length > 0) {
-          scene.remove(scene.children[0]);
-        }
-        if (
-          renderer.domElement &&
-          firstStarRef.current.contains(renderer.domElement)
-        ) {
-          try {
-            firstStarRef.current.removeChild(renderer.domElement);
-          } catch (error) {
-            console.warn("Canvas already removed:", error);
-          }
-        }
+        scene.clear();
         renderer.dispose();
         firstSceneRef.current = null;
       }
     };
   }, []);
 
-  const showMoreCoreMembers = () => {
-    setCoreMembersShown((prev) => Math.min(prev + 8, coreMembers.length));
-  };
-
-  const showLessCoreMembers = () => {
-    setCoreMembersShown(8);
-  };
-
-  // const showMoreDevTeam = () => {
-  //   setDevTeamShown((prev) => Math.min(prev + 8, devTeam.length));
-  // };
-
-  // const showLessDevTeam = () => {
-  //   setDevTeamShown(8);
-  // };
-
   return (
     <div className="pt-16">
       <TeamMemberStructuredData teamMembers={coreMembers} />
       {/* Hero Section - Black with Stars */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
-        {/* Star Field Canvas */}
-        <div
-          ref={firstStarRef}
-          className="absolute inset-0 w-full h-full"
-          style={{ zIndex: 1 }}
-        />
-        {/* Gradient Overlay */}
+        <div ref={firstStarRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
         <div className="relative z-20 max-w-6xl mx-auto px-6 text-center text-white space-y-15 mb-28">
-          {/* Badge positioned at the top center */}
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent backdrop-blur-md border border-white/30 rounded-full shadow-lg">
             <Users className="w-5 h-5 text-blue-400" />
             <span className="text-sm font-semibold tracking-wide text-white">
@@ -291,20 +176,8 @@ export default function TeamClient() {
                   color: "emerald-500",
                   delay: 160,
                 },
-                // {
-                //   end: 100,
-                //   suffix: "%",
-                //   label: "Passion Driven",
-                //   icon: Heart,
-                //   color: "orange-500",
-                //   delay: 180,
-                // },
               ].map((stat, index) => (
-                <ScrollAnimation
-                  key={index}
-                  animation="scale-up"
-                  delay={stat.delay}
-                >
+                <ScrollAnimation key={index} animation="scale-up" delay={stat.delay}>
                   <div className="p-6 border border-gray-200 rounded-xl card-hover">
                     <div
                       className={`bg-${stat.color}/20 p-3 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center animate-pulse-glow`}
@@ -333,8 +206,7 @@ export default function TeamClient() {
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                Our{" "}
-                <span className="font-light font-sans italic">Expertise</span>
+                Our <span className="font-light font-sans italic">Expertise</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Each team member brings unique skills and perspectives to create
@@ -345,63 +217,19 @@ export default function TeamClient() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-6 mb-16">
             {[
               { icon: Code, label: "Full-Stack", color: "primary", delay: 120 },
-              {
-                icon: Brain,
-                label: "AI/ML",
-                color: "purple-500",
-                delay: 140,
-              },
-              {
-                icon: Shield,
-                label: "Security",
-                color: "red-500",
-                delay: 160,
-              },
-              {
-                icon: Palette,
-                label: "Design",
-                color: "blue-500",
-                delay: 180,
-              },
-              {
-                icon: Database,
-                label: "Backend",
-                color: "emerald-500",
-                delay: 120,
-              },
-              {
-                icon: Globe,
-                label: "Frontend",
-                color: "primary",
-                delay: 140,
-              },
-              {
-                icon: Smartphone,
-                label: "Mobile",
-                color: "purple-500",
-                delay: 160,
-              },
-              {
-                icon: Box,
-                label: "3D",
-                color: "red-500",
-                delay: 180,
-              },
-              {
-                icon: Users,
-                label: "DevOps",
-                color: "blue-500",
-                delay: 180,
-              },
+              { icon: Brain, label: "AI/ML", color: "purple-500", delay: 140 },
+              { icon: Shield, label: "Security", color: "red-500", delay: 160 },
+              { icon: Palette, label: "Design", color: "blue-500", delay: 180 },
+              { icon: Database, label: "Backend", color: "emerald-500", delay: 120 },
+              { icon: Globe, label: "Frontend", color: "primary", delay: 140 },
+              { icon: Smartphone, label: "Mobile", color: "purple-500", delay: 160 },
+              { icon: Box, label: "3D", color: "red-500", delay: 180 },
+              { icon: Users, label: "DevOps", color: "blue-500", delay: 180 },
             ].map((spec, index) => (
-              <ScrollAnimation
-                key={index}
-                animation="scale-up"
-                delay={spec.delay}
-              >
+              <ScrollAnimation key={index} animation="scale-up" delay={spec.delay}>
                 <div className="text-center p-4 card-hover">
                   <div
-                    className={`bg-${spec.color}/20 p-3 rounded-lg w-12 h-12 mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                    className={`bg-${spec.color}/20 p-3 rounded-lg w-12 h-12 mx-auto mb-3 flex items-center justify-center`}
                   >
                     {React.createElement(spec.icon, {
                       className: `h-6 w-6 text-${spec.color}`,
@@ -424,8 +252,7 @@ export default function TeamClient() {
                 Our <span className="font-light font-sans italic">Team</span>
               </h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                Meet the talented individuals who make Echo Solutions's vision a
-                reality.
+                Meet the talented individuals who make Echo Solutions's vision a reality.
               </p>
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
                 <Users className="w-5 h-5 text-blue-400" />
@@ -436,9 +263,9 @@ export default function TeamClient() {
             </div>
           </ScrollAnimation>
 
-          {/* Core Team */}
+          {/* Core Team - ALL MEMBERS */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
-            {coreMembers.slice(0, coreMembersShown).map((member, index) => (
+            {coreMembers.map((member, index) => (
               <div
                 key={member.name}
                 className="animate-fade-in"
@@ -449,8 +276,8 @@ export default function TeamClient() {
             ))}
           </div>
 
-          {/* Dev Team Section */}
-          {/* <ScrollAnimation animation="fade-up" delay={100}>
+          {/* Dev Team */}
+          <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
                 <Users className="w-5 h-5 text-blue-400" />
@@ -459,11 +286,11 @@ export default function TeamClient() {
                 </span>
               </div>
             </div>
-          </ScrollAnimation> */}
+          </ScrollAnimation>
 
-          {/* Dev Team Grid */}
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
-            {devTeam.slice(0, devTeamShown).map((member, index) => (
+          {/* Dev Team - ALL MEMBERS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
+            {devTeam.map((member, index) => (
               <div
                 key={member.name}
                 className="animate-fade-in"
@@ -472,7 +299,7 @@ export default function TeamClient() {
                 <TeamMember {...member} />
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </section>
 
@@ -483,12 +310,10 @@ export default function TeamClient() {
             <ScrollAnimation animation="fade-up" delay={100}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                  Our{" "}
-                  <span className="font-light font-sans italic">Culture</span>
+                  Our <span className="font-light font-sans italic">Culture</span>
                 </h2>
                 <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                  We've built a culture that celebrates diversity, encourages
-                  innovation, and supports continuous learning.
+                  We've built a culture that celebrates diversity, encourages innovation, and supports continuous learning.
                 </p>
               </div>
             </ScrollAnimation>
@@ -516,11 +341,7 @@ export default function TeamClient() {
                   delay: 160,
                 },
               ].map((culture, index) => (
-                <ScrollAnimation
-                  key={index}
-                  animation="scale-up"
-                  delay={culture.delay}
-                >
+                <ScrollAnimation key={index} animation="scale-up" delay={culture.delay}>
                   <div className="glass-effect p-8 rounded-xl text-center">
                     <div
                       className={`bg-${culture.color}/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center`}
