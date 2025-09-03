@@ -73,7 +73,6 @@ export const devTeam = [
    role: "UI/UX Designer",
    image: "/nikita.jpeg",
  },
- 
    {
     name: "Muneza Jean Dios",
     role: "UI/UX Designer",
