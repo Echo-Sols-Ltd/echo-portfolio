@@ -4,7 +4,7 @@ export const coreMembers = [
   {
     name: "Izere Shema Leandre",
     role: "CEO & Founder",
-    image: "/flicky.jpeg",
+    image: "/leandre.jpeg",
     social: {
       github: "https://github.com/leandre000",
       twitter: "https://x.com/shema_Leandre",
@@ -22,7 +22,7 @@ export const coreMembers = [
       ig: "https://www.instagram.com/nyumbayire_/"
     },
   },
-  {
+    {
     name: "Irasubiza Saly Nelson",
     role: "Director of Projects and Research Coordination ",
     image: "/saly.jpeg",
@@ -57,7 +57,15 @@ export const coreMembers = [
         "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       website: "https://dieudonne.vercel.app/",
     },
-
+  },
+  {
+    name: "Ntwali Isimbi Vieira",
+    role: "Chief Technology Officer",
+    image: "/viera.jpeg",
+    social: {
+      github: "https://github.com/vieira-klgwn/",
+      linkedin: "https://www.linkedin.com/in/ntwali-isimbi-vieira-2b1213302/",
+    },
   },
   {
     name: "Uhirwe Esther Hope",
@@ -92,6 +100,47 @@ export const coreMembers = [
         "https://www.linkedin.com/in/gasore-corene-turinumugisha-275332326/",
       website: "https://gasorecorene.vercel.app/"
     },
+  },
+  {
+    name: "Asiimwe Landry Chretien Euclide",
+    role: "Chief Strategy Officer",
+    image: "/avatarboy.jpeg",
+    social: {
+      github: "https://GitHub.com/asimwe1",
+      ig: "https://instagram.com/landry_sb",
+      website: "https://Landry.neurolab.cc"
+    }
+  },
+  {
+    name: "Rukundo Bahati Samuel",
+    role: "Cybersecurity Lead",
+    image: "/bahati.jpg",
+    social: {
+      email: "rukundorca@gmail.com ",
+      github: "https://github.com/Rukundo-Bahati",
+      twitter: "https://x.com/BahatiBaba",
+      ig: "https://www.instagram.com/ruku_nd0",
+    }
+  },
+  {
+    name: "Tuyubahe Ashrafu",
+    role: "Tech Lead",
+    image: "/achraf.jpeg",
+    social:{
+      linkedin: "https://www.linkedin.com/in/tuyubahe-ashrafu-2073482a4/",
+      github: "https://github.com/ashrafutuyubahe",
+      twitter: "https://x.com/AshrafTuyubahe"
+    }
+  },
+  {
+    name: "Uwonkunda Mahinga Rodin",
+    role: "Tech Lead",
+    image: "/rodin.jpeg",
+    social:{
+      linkedin: "https://www.linkedin.com/in/m-rodin-1b21a9375/",
+      github: "https://github.com/mahingaRodin",
+      twitter: "https://x.com/rodin9878"
+    }
   },
 
 ];
