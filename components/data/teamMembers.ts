@@ -132,9 +132,9 @@ export const devTeam = [
     image: "/hopeira.jpg",
   },  
   {
-    name: "Ishimwe Benitha",
+    name: "Kwizera Olivier",
     role: "Software Developer",
-    image: "/avatargirl.jpeg",
+    image: "/olivier.jpg",
   },
  
 ];
