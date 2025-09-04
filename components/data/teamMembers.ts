@@ -114,10 +114,27 @@ export const devTeam = [
     image: "/achraf.jpeg",
 
   },
-  {
+    {
     name: "Uwonkunda Mahinga Rodin",
     role: "Software Developer",
     image: "/rodin.jpeg",
+
+  },
+
+  {
+    name: "Mugisha Pascal",
+    role: "Software Developer",
+    image: "/pascal.jpg",
+  },
+    {
+    name: "Iradukunda Hope",
+    role: "Software Developer",
+    image: "/hopeira.jpg",
+  },  
+  {
+    name: "Ishimwe Benitha",
+    role: "Software Developer",
+    image: "/avatargirl.jpeg",
   },
  
 ];
