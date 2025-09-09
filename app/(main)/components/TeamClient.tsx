@@ -44,7 +44,9 @@ export default function TeamClient() {
   };
 
   // Create star field
-  const createStarField = (mountRef: React.RefObject<HTMLDivElement | null>) => {
+  const createStarField = (
+    mountRef: React.RefObject<HTMLDivElement | null>
+  ) => {
     if (!mountRef.current) return null;
     const container = mountRef.current;
     const scene = new THREE.Scene();
@@ -78,7 +80,10 @@ export default function TeamClient() {
       colors[i * 3 + 1] = intensity;
       colors[i * 3 + 2] = intensity;
     }
-    starGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    starGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
     starGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const starMaterial = new THREE.PointsMaterial({
@@ -107,7 +112,8 @@ export default function TeamClient() {
     }
     return () => {
       if (firstSceneRef.current) {
-        const { scene, renderer, starGeometry, starMaterial } = firstSceneRef.current;
+        const { scene, renderer, starGeometry, starMaterial } =
+          firstSceneRef.current;
         starGeometry.dispose();
         starMaterial.dispose();
         scene.clear();
@@ -122,7 +128,11 @@ export default function TeamClient() {
       <TeamMemberStructuredData teamMembers={coreMembers} />
       {/* Hero Section - Black with Stars */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
-        <div ref={firstStarRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} />
+        <div
+          ref={firstStarRef}
+          className="absolute inset-0 w-full h-full"
+          style={{ zIndex: 1 }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/20 z-10" />
         <div className="relative z-20 max-w-6xl mx-auto px-6 text-center text-white space-y-15 mb-28">
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent backdrop-blur-md border border-white/30 rounded-full shadow-lg">
@@ -177,7 +187,11 @@ export default function TeamClient() {
                   delay: 160,
                 },
               ].map((stat, index) => (
-                <ScrollAnimation key={index} animation="scale-up" delay={stat.delay}>
+                <ScrollAnimation
+                  key={index}
+                  animation="scale-up"
+                  delay={stat.delay}
+                >
                   <div className="p-6 border border-gray-200 rounded-xl card-hover">
                     <div
                       className={`bg-${stat.color}/20 p-3 rounded-full w-12 h-12 mx-auto mb-3 flex items-center justify-center animate-pulse-glow`}
@@ -206,7 +220,8 @@ export default function TeamClient() {
           <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                Our <span className="font-light font-sans italic">Expertise</span>
+                Our{" "}
+                <span className="font-light font-sans italic">Expertise</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Each team member brings unique skills and perspectives to create
@@ -220,13 +235,27 @@ export default function TeamClient() {
               { icon: Brain, label: "AI/ML", color: "purple-500", delay: 140 },
               { icon: Shield, label: "Security", color: "red-500", delay: 160 },
               { icon: Palette, label: "Design", color: "blue-500", delay: 180 },
-              { icon: Database, label: "Backend", color: "emerald-500", delay: 120 },
+              {
+                icon: Database,
+                label: "Backend",
+                color: "emerald-500",
+                delay: 120,
+              },
               { icon: Globe, label: "Frontend", color: "primary", delay: 140 },
-              { icon: Smartphone, label: "Mobile", color: "purple-500", delay: 160 },
+              {
+                icon: Smartphone,
+                label: "Mobile",
+                color: "purple-500",
+                delay: 160,
+              },
               { icon: Box, label: "3D", color: "red-500", delay: 180 },
               { icon: Users, label: "DevOps", color: "blue-500", delay: 180 },
             ].map((spec, index) => (
-              <ScrollAnimation key={index} animation="scale-up" delay={spec.delay}>
+              <ScrollAnimation
+                key={index}
+                animation="scale-up"
+                delay={spec.delay}
+              >
                 <div className="text-center p-4 card-hover">
                   <div
                     className={`bg-${spec.color}/20 p-3 rounded-lg w-12 h-12 mx-auto mb-3 flex items-center justify-center`}
@@ -252,7 +281,8 @@ export default function TeamClient() {
                 Our <span className="font-light font-sans italic">Team</span>
               </h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                Meet the talented individuals who make Echo Solutions's vision a reality.
+                Meet the talented individuals who make Echo Solutions's vision a
+                reality.
               </p>
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
                 <Users className="w-5 h-5 text-blue-400" />
@@ -277,7 +307,7 @@ export default function TeamClient() {
           </div>
 
           {/* Dev Team */}
-          <ScrollAnimation animation="fade-up" delay={100}>
+          {/* <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
                 <Users className="w-5 h-5 text-blue-400" />
@@ -286,10 +316,10 @@ export default function TeamClient() {
                 </span>
               </div>
             </div>
-          </ScrollAnimation>
+          </ScrollAnimation> */}
 
           {/* Dev Team - ALL MEMBERS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
             {devTeam.map((member, index) => (
               <div
                 key={member.name}
@@ -299,24 +329,16 @@ export default function TeamClient() {
                 <TeamMember {...member} />
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* Team Culture */}
       <ParallaxSection speed={0.2}>
-        <section className="section-padding">
+        <section className="pt-12 pb-20">
+          {" "}
+          {/* reduced spacing */}
           <div className="container-custom">
-            <ScrollAnimation animation="fade-up" delay={100}>
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                  Our <span className="font-light font-sans italic">Culture</span>
-                </h2>
-                <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                  We've built a culture that celebrates diversity, encourages innovation, and supports continuous learning.
-                </p>
-              </div>
-            </ScrollAnimation>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
@@ -341,7 +363,11 @@ export default function TeamClient() {
                   delay: 160,
                 },
               ].map((culture, index) => (
-                <ScrollAnimation key={index} animation="scale-up" delay={culture.delay}>
+                <ScrollAnimation
+                  key={index}
+                  animation="scale-up"
+                  delay={culture.delay}
+                >
                   <div className="glass-effect p-8 rounded-xl text-center">
                     <div
                       className={`bg-${culture.color}/20 p-4 rounded-full w-16 h-16 mx-auto mb-6 flex items-center justify-center`}

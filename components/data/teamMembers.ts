@@ -37,15 +37,15 @@ export const coreMembers = [
   },
 
     {
-    name: "Irasubiza Saly Nelson",
-    role: "Director of Projects and Research Coordination ",
-    image: "/saly.jpeg",
+    name: "Nziza Prince",
+    role: "Senior Software Developer and Research Coordination",
+    image: "/nziza.png",
     social: {
-      linkedin: "https://www.linkedin.com/in/irasubiza-saly-nelson-173747311/",
-      email: "irasubizasalynelson@gmail.com",
+      linkedin: "https://www.linkedin.com/in/nziza-prince-a45b74296/",
+      email: "nzizaprince7@gmail.com",
       ig: "https://www.instagram.com/irasubiza_saly_nelson/",
-      twitter: "https://x.com/NelsonSaly66407",
-      github: "https://github.com/IRASUBIZA-SALY-NELSON"
+      github: "https://github.com/Nziza-Prince",
+      website:"https://nziza-prince.vercel.app/"
     },
   },
 

@@ -683,24 +683,16 @@ export default function HomeClient(): React.JSX.Element {
               <video
                 ref={inlineVideoRef}
                 className="w-full h-full object-cover"
-                controls={!showVideoOverlay}
+                autoPlay
+                muted
+                loop
                 playsInline
                 poster="/thumbnail.png"
-                onPlay={() => setShowVideoOverlay(false)}
-                onPause={() => {
-                  // Show overlay when paused at the beginning
-                  if (
-                    inlineVideoRef.current &&
-                    inlineVideoRef.current.currentTime === 0
-                  ) {
-                    setShowVideoOverlay(true);
-                  }
-                }}
-                onEnded={() => setShowVideoOverlay(true)}
               >
                 <source src="/haptic.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+{/* 
               {showVideoOverlay && (
                 <button
                   aria-label="Play video"
@@ -714,7 +706,7 @@ export default function HomeClient(): React.JSX.Element {
                     <Play className="h-10 w-10 text-black ml-1" />
                   </span>
                 </button>
-              )}
+              )} */}
             </div>
           </div>
           <ScrollAnimation animation="scale-up" delay={100}>

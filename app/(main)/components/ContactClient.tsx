@@ -364,7 +364,7 @@ export default function ContactClient() {
                   <h3 className="text-xl font-bold mb-4">Visit Us</h3>
                   <p className="text-muted-foreground mb-4">Our workspace</p>
                   <address className="text-primary not-italic">
-                    Kicukiro, Kigali, Rwanda
+                    Nyarugenge, Kigali, Rwanda
                   </address>
                 </div>
               </ScrollAnimation>
