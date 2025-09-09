@@ -38,7 +38,7 @@ export const coreMembers = [
 
     {
     name: "Nziza Prince",
-    role: "Senior Software Developer and Research Coordination",
+    role: "Research Coordination",
     image: "/nziza.png",
     social: {
       linkedin: "https://www.linkedin.com/in/nziza-prince-a45b74296/",
