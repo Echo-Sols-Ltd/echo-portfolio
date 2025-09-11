@@ -48,7 +48,90 @@ export const coreMembers = [
       website:"https://nziza-prince.vercel.app/"
     },
   },
+  {
+      name: "Gasore Corene",
+      role: "Chief Technical Officer",
+      image: "/corene.jpeg",
+      social: {
+        email: "corenegasore@gmail.com",
+        github: "https://github.com/Corenegasore123",
+        ig: "https://www.instagram.com/_corey_ne/",
+        linkedin: "https://www.linkedin.com/in/gasore-corene-turinumugisha-275332326/"
+      },
 
+    },
+
+
+  {
+    name: "Niyubahwe Anicke",
+    role: "Head Cyber Security Technician",
+    image: "/annicke.jpeg",
+    social: {
+      email: "niyubahwe.annick975@gmail.com",
+      github: "https://github.com/annick975",
+      ig: "https://www.instagram.com/@n_tannick975/",
+      linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/"
+    },
+  },
+
+    {
+    name: "Ishimwe Liana",
+    role: "Chief Financial Officer",
+    image: "/liana.jpeg",
+    social: {
+      email: "tetaliana287@gmail.com",
+      ig: "https://www.instagram.com/____lianaah/",
+      github: "https://github.com/TETA-Liana",
+      twitter: "https://x.com/teta2044",
+    },
+  },
+
+      {
+    name: "Irasubiza Saly Nelson",
+    role: "Director of Projects",
+    image: "/saly.jpeg",
+    social: {
+      linkedin: "https://www.linkedin.com/in/irasubiza-saly-nelson-173747311/",
+      email: "irasubizasalynelson@gmail.com",
+      ig: "https://www.instagram.com/irasubiza_saly_nelson/",
+      twitter: "https://x.com/NelsonSaly66407",
+      github: "https://github.com/IRASUBIZA-SALY-NELSON"
+    },
+  },
+
+{
+    name: "Agahire Nikita",
+    role: "UI/UX head",
+    image: "/nikita.jpeg",
+    social: {
+      github: "https://github.com/Nik-ta07",
+      linkedin: "https://www.linkedin.com/in/nikita-agahire-494a7a332/",
+      ig: "https://www.instagram.com/nik.ta.aa/",
+    },
+  },
+
+    {
+    name: "Uhirwe Esther Hope",
+    role: "Chief Marketing Officer",
+    image: "/hope.jpeg",
+    social: {
+      github: "https://github.com/Uhirwe",
+      ig: "https://www.instagram.com/esther_hope_/",
+    },
+  },
+    {
+    name: "Muneza Jean Dios",
+    role: "Chief Product Officer",
+    image: "/dios.jpeg",
+    social: {
+      github: "https://github.com/Uhirwe",
+      ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
+      twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
+      linkedin: "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      website: "https://dieudonne.vercel.app/"
+    },
+  },
+  
 ];
 
 export const devTeam = [
