@@ -131,7 +131,57 @@ export const coreMembers = [
       website: "https://dieudonne.vercel.app/"
     },
   },
+    {
+    name: "Mahinga Rodin",
+    role: "Backend Developer",
+    image: "/rodin.jpeg",
+    social: {
+      github: "https://github.com/mahingaRodin",
+      ig: " https://www.instagram.com/__mahinga",
+      linkedin: " https://www.linkedin.com/in/m-rodin-1b21a9375/"
+    },
+  },
+
+    {
+    name: "Tuyubahe Ashrafu",
+    role: "Tech Lead",
+    image: "/achraf.jpeg",
+    social: {
+      email: "ashaftuyubahe001@gmail.com",
+      linkedin: "https://www.linkedin.com/in/tuyubahe-ashrafu-2073482a4/",
+      ig: "https://www.instagram.com/tuyubaheashrafu/"
+    },
+  },
+
+    {
+    name: "Dufitimana Theoneste",
+    role: "Devops engineer",
+    image: "/theo.jpg",
+    social:{
+      github:"https://github.com/Theoneste-dev-dotcom"
+    }
+  },
+
+  {
+    name: "Iradukunda Joyeuese",
+    role: "Tech Lead",
+    image: "/joyeuse.png",
+    social: {
+      email: "iradukundajoyeuse34@gmail.com",
+      github: "https://github.com/Joy-Euse",
+      linkedin: "https://www.linkedin.com/in/joyeuse-iradukunda-3447b1322/"
+    },
   
+  },
+    {
+    name: "Mugisha Prosper",
+    role: "Machine Learning and AI Specialist",
+    image: "/polo.jpeg",
+    social: {
+      email: "nelsonprox92@gmail.com"
+    },
+  },
+
 ];
 
 export const devTeam = [
