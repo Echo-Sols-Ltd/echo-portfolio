@@ -294,176 +294,136 @@ export default function ProjectsClient() {
       {/* Featured Projects */}
       <section className="section-padding relative z-10">
         <div className="container-custom">
-          <ScrollAnimation animation="fade-up" delay={100}>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                <span className="font-sans font-light italic">Completed</span>{" "}
-                Projects
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Our most exciting completed projects that showcase our
-                diverse capabilities and innovative approach.
-              </p>
-            </div>
-          </ScrollAnimation>
-
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="font-light italic">Completed</span> Projects
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Our most exciting completed projects that showcase our diverse capabilities and innovative approach.
+            </p>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {projects
-              .filter((project) => project.featured)
-              .map((project, index) => (
-                <ScrollAnimation
-                  key={project.id}
-                  animation="scale-up"
-                  delay={80 + index * 100}
-                >
-                  <div className="relative rounded-xl overflow-hidden group h-60 md:h-72 lg:h-[60vh] border-2 border-blue-100 flex items-center justify-center">
-                    <img
-                      src={project.logo}
-                      alt={project.title}
-                      className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain"
-                    />
-                    {/* Base gradient */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                    {/* Hover black scrim */}
-                    <div className="pointer-events-none absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    {/* Overlay content */}
-                    <div className="absolute inset-0 flex items-end p-5 md:p-6 lg:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="text-white max-w-2xl">
-                        <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold">
-                          {project.title}
-                        </h3>
-                        <p className="mt-2 text-sm lg:text-base text-gray-200 line-clamp-3">
-                          {project.description}
-                        </p>
-                        <div className="mt-4">
-                          {project.link ? (
-                            <Link
-                              href={project.link}
-                              className="inline-flex items-center px-5 py-3 bg-white/20 backdrop-blur-sm text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-colors"
-                            >
-                              Visit Website
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          ) : (
-                            <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
-                              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                              <span className="text-slate-200 text-sm font-medium tracking-wide">
-                                Completed
-                              </span>
-                            </div>
-                          )}
-                        </div>
+            {projects.filter((p) => p.featured).map((project) => (
+              <div
+                key={project.id}
+                className="relative rounded-xl overflow-hidden group h-60 md:h-72 lg:h-[60vh] border-2 border-blue-100 flex items-center justify-center"
+              >
+                <img src={project.logo} alt={project.title} className="w-32 h-32 object-contain" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="text-white max-w-2xl">
+                    <h3 className="text-2xl font-semibold">{project.title}</h3>
+                    <p className="mt-2 text-sm text-gray-200 line-clamp-3">{project.description}</p>
+                    {(project.link || project.github) && (
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        {project.link && (
+                          <Link
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-5 py-3 bg-white/20 text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition"
+                          >
+                            Live Site <ArrowRight className="ml-2 h-4 w-4" />
+                          </Link>
+                        )}
+                        {project.github && (
+                          <Link
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-5 py-3 bg-gray-800/70 text-white text-sm rounded-lg border border-gray-700 hover:bg-gray-700/80 transition"
+                          >
+                            GitHub <Code className="ml-2 h-4 w-4" />
+                          </Link>
+                        )}
                       </div>
-                    </div>
+                    )}
                   </div>
-                </ScrollAnimation>
-              ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* All Projects */}
-      <ParallaxSection speed={0.2}>
+<ParallaxSection speed={0.2}>
         <section className="section-padding bg-card/50">
           <div className="container-custom">
-            <ScrollAnimation animation="fade-up" delay={100}>
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-6">
-                  Our <span className="font-sans font-light italic"></span>
-                  Portfolio
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Explore our complete project portfolio and see what we've
-                  built across different domains.
-                </p>
-              </div>
-            </ScrollAnimation>
-
-            {/* Category Filter */}
-            <ScrollAnimation animation="fade-up" delay={120}>
-              <div className="flex flex-wrap justify-center gap-4 mb-12">
-                {categories.map((category, index) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 ${
-                      selectedCategory === category
-                        ? "bg-primary text-primary-foreground shadow-lg"
-                        : "bg-muted hover:bg-primary hover:text-primary-foreground"
-                    }`}
-                    style={{ animationDelay: `${index * 30}ms` }}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
-            </ScrollAnimation>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <ScrollAnimation
-                  key={project.id}
-                  animation="fade-up"
-                  delay={120 + index * 50}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Portfolio</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Explore our complete project portfolio and see what we've built across different domains.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2 rounded-lg transition ${
+                    selectedCategory === cat
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted hover:bg-primary hover:text-primary-foreground"
+                  }`}
                 >
-                  <div className="relative rounded-xl overflow-hidden group h-56 md:h-64 lg:h-[45vh] border-2 border-blue-100 flex items-center justify-center">
-                    <img
-                      src={project.logo}
-                      alt={project.title}
-                      className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 object-contain"
-                    />
-                    {/* Base gradient */}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                    {/* Hover black scrim */}
-                    <div className="pointer-events-none absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    {/* Overlay content */}
-                    <div className="absolute inset-0 flex items-end p-5 md:p-6 lg:p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="text-white max-w-2xl">
-                        <h3 className="text-lg md:text-xl lg:text-2xl font-semibold">
-                          {project.title}
-                        </h3>
-                        <p className="mt-2 text-sm text-gray-200 line-clamp-2 md:line-clamp-3">
-                          {project.description}
-                        </p>
-                        <div className="mt-4">
-                          {project.link ? (
-                            <Link
-                              href={project.link}
-                              className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-colors"
-                            >
-                              Visit Website
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          ) : (
-                            <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
-                              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                              <span className="text-slate-200 text-sm font-medium tracking-wide">
-                                Completed
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollAnimation>
+                  {cat}
+                </button>
               ))}
             </div>
-
-            {filteredProjects.length === 0 && (
-              <ScrollAnimation animation="fade-up" delay={120}>
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground text-lg">
-                    No projects found in this category.
-                  </p>
-                  <button
-                    onClick={() => setSelectedCategory("All")}
-                    className="mt-4 text-primary hover:text-primary/80 font-medium"
-                  >
-                    View All Projects
-                  </button>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project) => (
+                <div
+                  key={project.id}
+                  className="relative rounded-xl overflow-hidden group h-56 md:h-64 lg:h-[45vh] border-2 border-blue-100 flex items-center justify-center"
+                >
+                  <img src={project.logo} alt={project.title} className="w-24 h-24 object-contain" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="text-white max-w-2xl">
+                      <h3 className="text-xl font-semibold">{project.title}</h3>
+                      <p className="mt-2 text-sm text-gray-200 line-clamp-2">{project.description}</p>
+                      {(project.link || project.github) && (
+                        <div className="mt-4 flex flex-wrap gap-3">
+                          {project.link && (
+                            <Link
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center px-4 py-2 bg-white/20 text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition"
+                            >
+                              Live Site <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                          )}
+                          {project.github && (
+                            <Link
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center px-4 py-2 bg-gray-800/70 text-white text-sm rounded-lg border border-gray-700 hover:bg-gray-700/80 transition"
+                            >
+                              GitHub <Code className="ml-2 h-4 w-4" />
+                            </Link>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </ScrollAnimation>
+              ))}
+            </div>
+            {filteredProjects.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground text-lg">No projects found in this category.</p>
+                <button
+                  onClick={() => setSelectedCategory("All")}
+                  className="mt-4 text-primary hover:text-primary/80 font-medium"
+                >
+                  View All Projects
+                </button>
+              </div>
             )}
           </div>
         </section>
