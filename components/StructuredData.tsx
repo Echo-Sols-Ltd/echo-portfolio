@@ -6,6 +6,8 @@ interface ProjectStructuredDataProps {
     image: string;
     category: string;
     status: string;
+    link?:string;
+    github?:string
 
   }>;
 }

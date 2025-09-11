@@ -11,6 +11,7 @@ export const projects = [
     status: "Completed",
     featured: true,
     link: "",
+    github:""
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ export const projects = [
     status: "Completed",
     featured: true,
     link: "",
+    github:""
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ export const projects = [
     status: "Completed",
     featured: true,
     link: "",
+    github:""
   },
   {
     id: 4,
@@ -44,6 +47,7 @@ export const projects = [
     status: "Completed",
     featured: true,
     link: "",
+    github:""
   },
   {
     id: 5,
@@ -55,5 +59,6 @@ export const projects = [
     status: "Completed",
     featured: true,
     link: "",
+    github:""
   }
 ];
