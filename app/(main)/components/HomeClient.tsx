@@ -426,69 +426,6 @@ export default function HomeClient(): React.JSX.Element {
                 </div>
               </div>
             </ScrollAnimation>
-            {/* Services Grid */}
-            <ScrollAnimation animation="fade-up" delay={200}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-4">
-                  {/* Development */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                      <Code className="h-5 w-5 text-black" />
-                    </div>
-                    <h3 className="font-semibold text-black mb-2">
-                      Development
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Web & Mobile Development Solutions
-                    </p>
-                  </div>
-                  {/* AI/ML */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                      <Brain className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <h3 className="font-semibold text-black mb-2">AI/ML</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Intelligent Solutions & Automation
-                    </p>
-                  </div>
-                  {/* 3D Modelling */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                      <Box className="h-5 w-5 text-purple-600" />
-                    </div>
-                    <h3 className="font-semibold text-black mb-2">
-                      3D Modelling
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      3D Design & Visualization
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-4 mt-16">
-                  {/* Design */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                      <Palette className="h-5 w-5 text-green-600" />
-                    </div>
-                    <h3 className="font-semibold text-black mb-2">Design</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      UI/UX & Brand Experiences
-                    </p>
-                  </div>
-                  {/* Security */}
-                  <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-                    <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
-                      <Shield className="h-5 w-5 text-red-600" />
-                    </div>
-                    <h3 className="font-semibold text-black mb-2">Security</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Cybersecurity & Data Protection
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -625,22 +562,28 @@ export default function HomeClient(): React.JSX.Element {
                         {/* Hover overlay */}
                         <div className="absolute inset-0 flex items-end p-6 lg:p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="text-white max-w-2xl">
-                            <div className="mt-4">
-                              {project.link ? (
+                            <div className="mt-4 flex flex-wrap gap-3">
+                              {project.link && (
                                 <Link
                                   href={project.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                   className="inline-flex items-center px-5 py-3 bg-white/20 backdrop-blur-sm text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-colors"
                                 >
-                                  Visit Website
+                                  Live Site
                                   <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
-                              ) : (
-                                <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-600/50 rounded-full shadow-xl">
-                                  <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                                  <span className="text-slate-200 text-sm font-medium tracking-wide">
-                                    In Development
-                                  </span>
-                                </div>
+                              )}
+                              {project.github && (
+                                <Link
+                                  href={project.github}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center px-5 py-3 bg-gray-800/70 text-white text-sm rounded-lg border border-gray-700 hover:bg-gray-700/80 transition"
+                                >
+                                  GitHub
+                                  <Code className="ml-2 h-4 w-4" />
+                                </Link>
                               )}
                             </div>
                           </div>
@@ -692,7 +635,7 @@ export default function HomeClient(): React.JSX.Element {
                 <source src="/haptic.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-{/* 
+              {/* 
               {showVideoOverlay && (
                 <button
                   aria-label="Play video"
