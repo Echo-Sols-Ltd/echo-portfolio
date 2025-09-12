@@ -35,6 +35,88 @@ export const coreMembers = [
       facebook: " https://www.facebook.com/share/15K7Tbe3Do/"
     }
   },
+  {
+    name: "Niyubahwe Anicke",
+    role: "Chief Technical Officer",
+    image: "/annicke.jpeg",
+    social: {
+      email: "niyubahwe.annick975@gmail.com",
+      github: "https://github.com/annick975",
+      ig: "https://www.instagram.com/@n_tannick975/",
+      linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/"
+    },
+  },
+   {
+    name: "Asimwe Landry Chretien",
+    role: "Chief Strategy Officer",
+    image: "/avatarboy.jpeg",
+    social: {
+      email: "iradukundajoyeuse34@gmail.com",
+      github: "https://github.com/Joy-Euse",
+      linkedin: "https://www.linkedin.com/in/joyeuse-iradukunda-3447b1322/"
+    },
+  
+  },
+
+   {
+    name: "Muneza Jean Dios",
+    role: "Chief Product Officer",
+    image: "/dios.jpeg",
+    social: {
+      github: "https://github.com/Uhirwe",
+      ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
+      twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
+      linkedin: "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      website: "https://dieudonne.vercel.app/"
+    },
+  },
+  {
+    name: "Uhirwe Esther Hope",
+    role: "Chief Marketing Officer",
+    image: "/hope.jpeg",
+    social: {
+      github: "https://github.com/Uhirwe",
+      ig: "https://www.instagram.com/esther_hope_/",
+    },
+  },
+
+  {
+    name: "Ishimwe Liana",
+    role: "Chief Financial Officer",
+    image: "/liana.jpeg",
+    social: {
+      email: "tetaliana287@gmail.com",
+      ig: "https://www.instagram.com/____lianaah/",
+      github: "https://github.com/TETA-Liana",
+      twitter: "https://x.com/teta2044",
+    },
+  },
+
+   {
+      name: "Gasore Corene",
+      role: "Chief Training& Development Officer",
+      image: "/corene.jpeg",
+      social: {
+        email: "corenegasore@gmail.com",
+        github: "https://github.com/Corenegasore123",
+        ig: "https://www.instagram.com/_corey_ne/",
+        linkedin: "https://www.linkedin.com/in/gasore-corene-turinumugisha-275332326/"
+      },
+
+    },
+
+    {
+    name: "Irasubiza Saly Nelson",
+    role: "Director of Projects",
+    image: "/saly.jpeg",
+    social: {
+      linkedin: "https://www.linkedin.com/in/irasubiza-saly-nelson-173747311/",
+      email: "irasubizasalynelson@gmail.com",
+      ig: "https://www.instagram.com/irasubiza_saly_nelson/",
+      twitter: "https://x.com/NelsonSaly66407",
+      github: "https://github.com/IRASUBIZA-SALY-NELSON"
+    },
+  },
 
     {
     name: "Nziza Prince",
@@ -48,57 +130,8 @@ export const coreMembers = [
       website:"https://nziza-prince.vercel.app/"
     },
   },
-  {
-      name: "Gasore Corene",
-      role: "Chief Technical Officer",
-      image: "/corene.jpeg",
-      social: {
-        email: "corenegasore@gmail.com",
-        github: "https://github.com/Corenegasore123",
-        ig: "https://www.instagram.com/_corey_ne/",
-        linkedin: "https://www.linkedin.com/in/gasore-corene-turinumugisha-275332326/"
-      },
 
-    },
-
-
-  {
-    name: "Niyubahwe Anicke",
-    role: "Head Cyber Security Technician",
-    image: "/annicke.jpeg",
-    social: {
-      email: "niyubahwe.annick975@gmail.com",
-      github: "https://github.com/annick975",
-      ig: "https://www.instagram.com/@n_tannick975/",
-      linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/"
-    },
-  },
-
-    {
-    name: "Ishimwe Liana",
-    role: "Chief Financial Officer",
-    image: "/liana.jpeg",
-    social: {
-      email: "tetaliana287@gmail.com",
-      ig: "https://www.instagram.com/____lianaah/",
-      github: "https://github.com/TETA-Liana",
-      twitter: "https://x.com/teta2044",
-    },
-  },
-
-      {
-    name: "Irasubiza Saly Nelson",
-    role: "Director of Projects",
-    image: "/saly.jpeg",
-    social: {
-      linkedin: "https://www.linkedin.com/in/irasubiza-saly-nelson-173747311/",
-      email: "irasubizasalynelson@gmail.com",
-      ig: "https://www.instagram.com/irasubiza_saly_nelson/",
-      twitter: "https://x.com/NelsonSaly66407",
-      github: "https://github.com/IRASUBIZA-SALY-NELSON"
-    },
-  },
-
+      
 {
     name: "Agahire Nikita",
     role: "UI/UX head",
@@ -111,29 +144,26 @@ export const coreMembers = [
   },
 
     {
-    name: "Uhirwe Esther Hope",
-    role: "Chief Marketing Officer",
-    image: "/hope.jpeg",
+    name: "Rukundo Bahati Samuel",
+    role: "Cyber Secuity Head",
+    image: "/bahati.jpg",
+    social:{
+      github:"https://github.com/Theoneste-dev-dotcom"
+    }
+  },
+   {
+    name: "Mugisha Prosper",
+    role: "Machine Learning and AI Specialist",
+    image: "/polo.jpeg",
     social: {
-      github: "https://github.com/Uhirwe",
-      ig: "https://www.instagram.com/esther_hope_/",
+      email: "nelsonprox92@gmail.com"
     },
   },
-    {
-    name: "Muneza Jean Dios",
-    role: "Chief Product Officer",
-    image: "/dios.jpeg",
-    social: {
-      github: "https://github.com/Uhirwe",
-      ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
-      twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
-      linkedin: "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      website: "https://dieudonne.vercel.app/"
-    },
-  },
+    
+   
     {
     name: "Mahinga Rodin",
-    role: "Backend Developer",
+    role: "Tech Lead",
     image: "/rodin.jpeg",
     social: {
       github: "https://github.com/mahingaRodin",
@@ -153,34 +183,10 @@ export const coreMembers = [
     },
   },
 
-    {
-    name: "Dufitimana Theoneste",
-    role: "Devops engineer",
-    image: "/theo.jpg",
-    social:{
-      github:"https://github.com/Theoneste-dev-dotcom"
-    }
-  },
-
-  {
-    name: "Iradukunda Joyeuese",
-    role: "Tech Lead",
-    image: "/joyeuse.png",
-    social: {
-      email: "iradukundajoyeuse34@gmail.com",
-      github: "https://github.com/Joy-Euse",
-      linkedin: "https://www.linkedin.com/in/joyeuse-iradukunda-3447b1322/"
-    },
   
-  },
-    {
-    name: "Mugisha Prosper",
-    role: "Machine Learning and AI Specialist",
-    image: "/polo.jpeg",
-    social: {
-      email: "nelsonprox92@gmail.com"
-    },
-  },
+
+ 
+   
 
 ];
 
