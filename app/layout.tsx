@@ -4,6 +4,7 @@ import { Roboto, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { generateMetadata, generateStructuredData } from "@/components/SEO";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export const metadata: Metadata = generateMetadata({
   keywords:
     "tech startup, AI, machine learning, cybersecurity, web development, social impact, technology consulting, Rwanda, Africa",
   image: "/thumbnail.png",
-  url: "https://echo-portifolio.vercel.app",
+  url: "https://www.echo-solution.com/",
   type: "website",
   author: "Echo Solutions Team",
   tags: [
@@ -63,6 +64,7 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${instrumentSerif.variable} antialiased`}
       >
+        <GoogleAnalytics measurementId="G-VZPMNMVT6F" />
         {children}
         <Analytics />
       </body>
