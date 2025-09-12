@@ -49,7 +49,7 @@ export const coreMembers = [
    {
     name: "Asimwe Landry Chretien",
     role: "Chief Strategy Officer",
-    image: "/avatarboy.jpeg",
+    image: "/landry.jpg",
     social: {
       email: "iradukundajoyeuse34@gmail.com",
       github: "https://github.com/Joy-Euse",
