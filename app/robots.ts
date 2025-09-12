@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/", "/_next/"],
     },
-    sitemap: "https://echo-portifolio.vercel.app/sitemap.xml",
-    host: "https://echo-portifolio.vercel.app",
+    sitemap: "https://www.echo-solution.com/sitemap.xml",
+    host: "https://www.echo-solution.com",
   };
 }

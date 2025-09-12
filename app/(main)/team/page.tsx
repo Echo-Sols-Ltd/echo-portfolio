@@ -9,7 +9,7 @@ export const metadata: Metadata = generateMetadata({
   keywords:
     "Echo Solutions team, tech team Rwanda, AI developers, cybersecurity experts, web developers, young technologists Africa",
   image: "/white.svg",
-  url: "https://echo-portifolio.vercel.app/team",
+  url: "https://www.echo-solution.com/team",
   type: "website",
   author: "Echo Solutions Team",
   tags: [

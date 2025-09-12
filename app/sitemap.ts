@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { projects } from "@/components/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://echo-portifolio.vercel.app";
+  const baseUrl = "https://www.echo-solution.com";
 
   // Static pages
   const staticPages = [
