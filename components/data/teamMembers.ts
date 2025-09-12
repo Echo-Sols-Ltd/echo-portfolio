@@ -159,8 +159,31 @@ export const coreMembers = [
       email: "nelsonprox92@gmail.com"
     },
   },
+   {
+    name: "Iradukunda Joyeuse",
+    role: "Machine Learning and AI Specialist",
+    image: "/joyeuse.png",
+    social: {
+      email: "iradukundajoyeuse34@gmail.com"
+    },
+  },
     
-   
+  {
+    name: "Dufitimana Theoneste",
+    role: "Devops Engineer",
+    image: "/theo.jpg",
+    social: {
+      email: "nelsonprox92@gmail.com"
+    },
+  },
+  {
+    name: "Abayo Hirwa Jovin",
+    role: "Devops Engineer",
+    image: "/jvn.jpeg",
+    social: {
+      email: "abayohirwajovin@gmail.com"
+    },
+  },
     {
     name: "Mahinga Rodin",
     role: "Tech Lead",
@@ -182,11 +205,15 @@ export const coreMembers = [
       ig: "https://www.instagram.com/tuyubaheashrafu/"
     },
   },
-
-  
-
- 
-   
+  {
+    name: "Rwaburindi Jean Calvin",
+    role: "Tech Lead",
+    image: "/calvin.jpeg",
+    social: {
+      email: "jeancalvin027@gmail.com",
+     
+    },
+  }
 
 ];
 
