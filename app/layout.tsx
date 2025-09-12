@@ -51,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="HS9nxSznCu2Lh4uI0wVFFUJeTm4IZdyM3jjPNvqStOY" />
         <link rel="icon" href="/white.svg" type="image/svg+xml" />
         <script
           type="application/ld+json"
