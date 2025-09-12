@@ -15,7 +15,7 @@ export const coreMembers = [
   {
     name: "Nyumbayire Laurent",
     role: "CO-Founder",
-    image: "/laurent.jpeg",
+    image: "/laurent.png",
     social: {
       linkedin: "https://www.linkedin.com/in/nyumbayire-laurent-b11251299/",
       email: "laulanyumbayire@gmail.com",
@@ -26,7 +26,7 @@ export const coreMembers = [
   {
     name: "Iranzi Dianah",
     role: "CO-Founder",
-    image: "/dianah.jpeg",
+    image: "/dianah.png",
     social: {
       ig: "https://www.instagram.com/ira_dian4h/",
       twitter: "https://x.com/GITEGOLUNAR",
@@ -108,40 +108,12 @@ export const coreMembers = [
     {
     name: "Irasubiza Saly Nelson",
     role: "Director of Projects",
-    image: "/saly.jpeg",
-    social: {
-      linkedin: "https://www.linkedin.com/in/irasubiza-saly-nelson-173747311/",
-      email: "irasubizasalynelson@gmail.com",
-      ig: "https://www.instagram.com/irasubiza_saly_nelson/",
-      twitter: "https://x.com/NelsonSaly66407",
-      github: "https://github.com/IRASUBIZA-SALY-NELSON"
-    },
-  },
 
-    {
-    name: "Nziza Prince",
-    role: "Research Coordination",
-    image: "/nziza.png",
-    social: {
-      linkedin: "https://www.linkedin.com/in/nziza-prince-a45b74296/",
-      email: "nzizaprince7@gmail.com",
-      ig: "https://www.instagram.com/irasubiza_saly_nelson/",
-      github: "https://github.com/Nziza-Prince",
-      website:"https://nziza-prince.vercel.app/"
-    },
-  },
-
-      
-{
-    name: "Agahire Nikita",
-    role: "UI/UX head",
-    image: "/nikita.jpeg",
-    social: {
       github: "https://github.com/Nik-ta07",
       linkedin: "https://www.linkedin.com/in/nikita-agahire-494a7a332/",
       ig: "https://www.instagram.com/nik.ta.aa/",
+      
     },
-  },
 
     {
     name: "Rukundo Bahati Samuel",
