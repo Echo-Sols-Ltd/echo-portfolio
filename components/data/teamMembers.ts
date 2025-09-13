@@ -36,8 +36,8 @@ export const coreMembers = [
     }
   },
   {
-    name: "Niyubahwe Anicke",
-    role: "Chief Technical Officer",
+    name: "Niyubahwe Uwacu Annick",
+    role: "Chief Operations Officer",
     image: "/annicke.jpeg",
     social: {
       email: "niyubahwe.annick975@gmail.com",
