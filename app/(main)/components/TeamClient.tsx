@@ -307,7 +307,7 @@ export default function TeamClient() {
           </div>
 
           {/* Dev Team */}
-          {/* <ScrollAnimation animation="fade-up" delay={100}>
+          <ScrollAnimation animation="fade-up" delay={100}>
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-transparent border border-black/40 rounded-full shadow-lg mt-7">
                 <Users className="w-5 h-5 text-blue-400" />
@@ -316,10 +316,10 @@ export default function TeamClient() {
                 </span>
               </div>
             </div>
-          </ScrollAnimation> */}
+          </ScrollAnimation>
 
           {/* Dev Team - ALL MEMBERS */}
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
             {devTeam.map((member, index) => (
               <div
                 key={member.name}
@@ -329,7 +329,7 @@ export default function TeamClient() {
                 <TeamMember {...member} />
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </section>
 

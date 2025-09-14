@@ -1,7 +1,7 @@
 import { ro } from "date-fns/locale";
 import { Linkedin, RollerCoaster } from "lucide-react";
 export const coreMembers = [
-   {
+  {
     name: "Izere Shema Leandre",
     role: "CEO & Founder",
     image: "/leandre.jpeg",
@@ -9,7 +9,8 @@ export const coreMembers = [
       github: "https://github.com/leandre000",
       twitter: "https://x.com/shema_Leandre",
       email: "iamshemaleandre@gmail.com",
-      ig: "https://www.instagram.com/_shemaleandre_/"
+      ig: "https://www.instagram.com/_shemaleandre_/",
+      facebook:"https://www.facebook.com/leandre000",
     },
   },
   {
@@ -17,23 +18,21 @@ export const coreMembers = [
     role: "CO-Founder",
     image: "/laurent.png",
     social: {
+      github:"https://github.com/NyLaurent",
       linkedin: "https://www.linkedin.com/in/nyumbayire-laurent-b11251299/",
-      email: "laulanyumbayire@gmail.com",
-      ig: "https://www.instagram.com/nyumbayire_/"
     },
   },
-  
+
   {
     name: "Iranzi Dianah",
     role: "CO-Founder",
     image: "/dianah.png",
     social: {
       ig: "https://www.instagram.com/ira_dian4h/",
-      twitter: "https://x.com/GITEGOLUNAR",
       email: "iradianah5@gmail.com",
       github: "https://github.com/IRANZI ",
-      facebook: " https://www.facebook.com/share/15K7Tbe3Do/"
-    }
+      
+    },
   },
   {
     name: "Niyubahwe Anicke",
@@ -43,237 +42,361 @@ export const coreMembers = [
       email: "niyubahwe.annick975@gmail.com",
       github: "https://github.com/annick975",
       ig: "https://www.instagram.com/@n_tannick975/",
-      linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/"
+      linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/",
     },
   },
-   {
+  {
     name: "Asimwe Landry Chretien",
     role: "Chief Strategy Officer",
     image: "/landry.jpg",
     social: {
-      email: "iradukundajoyeuse34@gmail.com",
-      github: "https://github.com/Joy-Euse",
-      linkedin: "https://www.linkedin.com/in/joyeuse-iradukunda-3447b1322/"
+      email: "landryasimwe@gmail.com",
     },
-  
   },
 
-   {
+  {
     name: "Muneza Jean Dios",
     role: "Chief Product Officer",
     image: "/dios.jpeg",
     social: {
-      github: "https://github.com/Uhirwe",
-      ig: "https://www.instagram.com/m_di.os?igsh=MTR1MWpvN2FjNjlqOQ==",
-      twitter: "https://x.com/DieudonneM47638?t=N3WTzWQOeUX3oN2vM76jFQ&s=08",
-      linkedin: "https://www.linkedin.com/in/dieudonne-m-j-b37bb8377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      website: "https://dieudonne.vercel.app/"
+      github:"https://github.com/Dieudonne000",
+      email: "jeandieudonne2025@gmail.com",
     },
   },
   {
+    name: "Agahire Nikita",
+    role: "UI/UX LEAD",
+    image: "/nikita.jpeg",
+    social: {
+      email: "aganikita07@gmail.com",
+	},
+	  
+  },
+  {
+    name: "Rwaburindi Jean Calvin",
+    role: "UI/UX Lead",
+    image: "/calvin.jpeg",
+    social: {
+      email: "jeancalvin027@gmail.com",
+  },
+},
+{
     name: "Uhirwe Esther Hope",
     role: "Chief Marketing Officer",
     image: "/hope.jpeg",
     social: {
-      github: "https://github.com/Uhirwe",
-      ig: "https://www.instagram.com/esther_hope_/",
+      email: "uhirweestherhope@gmail.com",
+    },
+
+  },
+  {
+    name: "Ntwari Isimbi Vieira",
+    role: "Community Engagement Officer",
+    image: "/viera.jpeg",
+    social: {
+      email: "ntwaliisimbivieira@gmail.com",
     },
   },
-
   {
     name: "Ishimwe Liana",
     role: "Chief Financial Officer",
     image: "/liana.jpeg",
     social: {
       email: "tetaliana287@gmail.com",
-      ig: "https://www.instagram.com/____lianaah/",
-      github: "https://github.com/TETA-Liana",
-      twitter: "https://x.com/teta2044",
     },
   },
 
-   {
-      name: "Gasore Corene",
-      role: "Chief Training& Development Officer",
-      image: "/corene.jpeg",
-      social: {
-        email: "corenegasore@gmail.com",
-        github: "https://github.com/Corenegasore123",
-        ig: "https://www.instagram.com/_corey_ne/",
-        linkedin: "https://www.linkedin.com/in/gasore-corene-turinumugisha-275332326/"
-      },
-
+  {
+    name: "Gasore Corene",
+    role: "Chief Training& Development Officer",
+    image: "/corene.jpeg",
+    social: {
+      email: "corenegasore@gmail.com",
     },
+  },
 
-    {
+  {
     name: "Irasubiza Saly Nelson",
     role: "Director of Projects",
-
-      github: "https://github.com/Nik-ta07",
-      linkedin: "https://www.linkedin.com/in/nikita-agahire-494a7a332/",
-      ig: "https://www.instagram.com/nik.ta.aa/",
-      
+    image: "/saly.jpeg",
+    social: {
+      email: "irasubizasalynelson@gmail.com",
     },
+  },
 
-    {
+  {
     name: "Rukundo Bahati Samuel",
     role: "Cyber Secuity Head",
     image: "/bahati.jpg",
-    social:{
-      github:"https://github.com/Theoneste-dev-dotcom"
-    }
+    social: {
+      email: "rukundorca@gmail.com",
+	},},
+ {
+    name: "Mahinga Rodin",
+    role: "Tech Lead",
+    image: "/rodin.jpeg",
+    social: {
+      email: "mahingarodin@gmail.com",
+  },},
+ {
+    name: "Tuyubahe Ashrafu",
+    role: "Tech Lead",
+    image: "/achraf.jpeg",
+    social: {
+      email: "ashraftuyubahe001@gmail.com",
+	},
+
   },
-   {
+];
+
+export const devTeam = [
+    {
+    name: "Nziza Prince",
+    role: "Software and Devops Engineer",
+    image: "/nziza.png",
+  },
+  {
+    name: "Ihimbazwe Niyikora Kevine",
+    role: "UI/UX",
+    image: "/avatargirl.jpeg",
+  },
+  {
+    name: "Iradukunda Hope",
+    role: "UI/UX",
+    image: "/hopeira.jpg",
+  },
+ {
+    name: "Ishimwe Benitha",
+    role: "UI/UX",
+    image: "/avatargirl.jpeg",
+  },
+  {
+    name: "ABARUREMA HIRWA Emma Reponse",
+    role: "UI/UX",
+    image: "/reponse.jpg",
+  },
+  {
+    name: " KIRENGA Kenny",
+    role: "UI/UX",
+    image: "/avatarboy.jpeg",
+  },
+
+  {
     name: "Mugisha Prosper",
     role: "Machine Learning and AI Specialist",
     image: "/polo.jpeg",
-    social: {
-      email: "nelsonprox92@gmail.com"
-    },
   },
-   {
+ {
     name: "Iradukunda Joyeuse",
     role: "Machine Learning and AI Specialist",
     image: "/joyeuse.png",
-    social: {
-      email: "iradukundajoyeuse34@gmail.com"
-    },
   },
-    
+  {
+    name: "Niyobyose Paulin",
+    role: "Machine Learning and AI Specialist",
+    image: "/avatarboy.jpeg",
+  },
+  {
+    name: " NTARE KAYITARE Prince",
+    role: "Machine Learning and AI Specialist",
+    image: "/avatarboy.jpeg",
+  },
+
+  {
+    name: "Forgiveness Peace Love",
+    role: "Embedded Systems Engineer",
+    image: "/peace.jpeg",
+  },
+
+  {
+    name: "Ishimwe Jolie Princesse",
+    role: "Embedded Systems Engineer",
+    image: "/princess.jpeg",
+  },
+
+  {
+    name: "MUHIRWA Reine Kheira",
+    role: "3D Engineer",
+    image: "/avatargirl.jpeg",
+  },
+
   {
     name: "Dufitimana Theoneste",
-    role: "Devops Engineer",
+    role: "Devops Engineer ",
     image: "/theo.jpg",
-    social: {
-      email: "nelsonprox92@gmail.com"
-    },
+  },
+  {
+    name: " MANZI Prince Babou",
+    role: "Security Researcher ",
+    image: "/babou.jpg",
+  },
+
+  {
+    name: "Irakoze Nezerwa Princess",
+    role: "Security Researcher ",
+    image: "/avatargirl.jpeg",
+  },
+  {
+    name: "Amani Patrick",
+    role: "Security Researcher",
+    image: "/amani.jpeg",
+  },
+  {
+    name: "GANZA Chael",
+    role: "Security Researcher ",
+    image: "/avatarboy.jpeg",
+  },
+
+  {
+    name: "Humura Elvin",
+    role: "Security Researcher ",
+    image: "/avatarboy.jpeg",
   },
   {
     name: "Abayo Hirwa Jovin",
     role: "Devops Engineer",
     image: "/jvn.jpeg",
-    social: {
-      email: "abayohirwajovin@gmail.com"
-    },
-  },
-    {
-    name: "Mahinga Rodin",
-    role: "Tech Lead",
-    image: "/rodin.jpeg",
-    social: {
-      github: "https://github.com/mahingaRodin",
-      ig: " https://www.instagram.com/__mahinga",
-      linkedin: " https://www.linkedin.com/in/m-rodin-1b21a9375/"
-    },
   },
 
-    {
-    name: "Tuyubahe Ashrafu",
-    role: "Tech Lead",
-    image: "/achraf.jpeg",
-    social: {
-      email: "ashaftuyubahe001@gmail.com",
-      linkedin: "https://www.linkedin.com/in/tuyubahe-ashrafu-2073482a4/",
-      ig: "https://www.instagram.com/tuyubaheashrafu/"
-    },
+  {
+    name: "TUYISHIME Christian",
+    role: "Devops Engineer",
+    image: "/avatarboy.jpeg",
   },
-  {
-    name: "Rwaburindi Jean Calvin",
-    role: "Tech Lead",
-    image: "/calvin.jpeg",
-    social: {
-      email: "jeancalvin027@gmail.com",
-     
-    },
-  }
-
-];
-
-export const devTeam = [
-  {
-   name: "Muhammad Burhan Chughtai",
-   role: "Senior Software Developer",
-   image: "/indian.jpeg",
- },
- {
-  name: "Nziza Prince",
-  role: "Software Developer",
-  image: "/nziza.png",
-},
- {
-   name: "Byukusenge Andrew",
-   role: "Software Developer",
-   image: "/andre.jpg",
- },
 
   {
-   name: "Agahire Nikita",
-   role: "UI/UX Designer",
-   image: "/nikita.jpeg",
- },
-   {
-    name: "Muneza Jean Dios",
-    role: "UI/UX Designer",
-    image: "/dios.jpeg",
+    name: "Muhammad Burhan Chughtai",
+    role: "Software Engineer",
+    image: "/indian.jpeg",
   },
   {
-    name: "Ntwali Isimbi Vieira",
-    role: "Software Developer",
-    image: "/viera.jpeg",
+    name: "IRASUBIZA NTWARI Gloria",
+    role: "Software Engineer",
+    image: "/gloria.jpeg",
   },
   {
-    name: "Uhirwe Esther Hope",
-    role: "UI/UX Designer",
-    image: "/hope.jpeg",
+    name: "Senga Gloire Marguerite Marie",
+    role: "Software Engineer",
+    image: "/gloire.jpeg",
   },
   {
-    name: "Niyubahwe Uwacu Annick",
-    role: "Software Developer",
-    image: "/annick.jpg",
+    name: "Byukusenge Andrew",
+    role: "Software Engineer",
+    image: "/andre.jpg",
   },
   {
-    name: "Turinumugisha Gasore Corene",
-    role: "Software Developer",
-    image: "/corene.jpeg",
+    name: " UWAYO Pascaline",
+    role: "Software Engineer",
+    image: "/pascaline.jpeg",
+  },
+
+  {
+    name: "Bugiri Wilson Goal",
+    role: "Software Engineer",
+    image: "/wigo.jpeg",
   },
   {
-    name: "Asiimwe Landry Chretien Euclide",
-    role: "Software Developer",
+    name: "NKUNDABAGENZI Jeremie",
+    role: "Software Engineer",
     image: "/avatarboy.jpeg",
   },
   {
-    name: "Rukundo Bahati Samuel",
-    role: "Cybersecurity Expert",
-    image: "/bahati.jpg",
-  },
-  {
-    name: "Tuyubahe Ashrafu",
-    role: "Software Developer",
-    image: "/achraf.jpeg",
-
-  },
-    {
-    name: "Uwonkunda Mahinga Rodin",
-    role: "Software Developer",
-    image: "/rodin.jpeg",
-
-  },
-
-  {
     name: "Mugisha Pascal",
-    role: "Software Developer",
+    role: "Software Engineer",
     image: "/pascal.jpg",
   },
-    {
-    name: "Iradukunda Hope",
-    role: "Software Developer",
-    image: "/hopeira.jpg",
-  },  
+
   {
     name: "Kwizera Olivier",
-    role: "Software Developer",
+    role: "Software Engineer",
     image: "/olivier.jpg",
   },
- 
-];
+  {
+    name: "Abijuru chance regine",
+    role: "Software Engineer",
+    image: "/chance.jpeg",
+  },
+  {
+    name: "Sheja Manene Junior",
+    role: "Software Engineer",
+    image: "/manene.jpeg",
+  },
+  {
+    name: "NIBEZA AMAHORO Nicole",
+    role: "Software Engineer",
+    image: "/avatargirl.jpeg",
+  },
 
+  {
+    name: "Niyitanga Honore",
+    role: "Software Engineer",
+    image: "/honore.jpeg",
+  },
+  {
+    name: "Ngabo Oreste",
+    role: "Software Engineer",
+    image: "/avatarboy.jpeg",
+  },
+  {
+    name: " Gisa Fred",
+    role: "Software Engineer",
+    image: "/avatarboy.jpeg",
+  },
+
+  {
+    name: "NIYODUSHIMA Belyse",
+    role: "Software Engineer",
+    image: "/avatargirl.jpeg",
+  },
+
+  {
+    name: "BAGABO Bonny",
+    role: "Software Engineer",
+    image: "/avatarboy.jpeg",
+  },
+
+  {
+    name: "IGIRANEZA AKAYO Keren",
+    role: "Software Engineer",
+    image: "/avatargirl.jpeg",
+  },
+
+  {
+    name: "IZABAYO Nadine",
+    role: "Software Engineer",
+    image: "/nadine.jpeg",
+  },
+
+  {
+    name: "Raphael NIBISHAKA",
+    role: "Software Engineer",
+    image: "/avatarboy.jpeg",
+  },
+  {
+    name: "GANZA DANNY MIKE",
+    role: "Software Engineer",
+    image: "/avatarboy.jpeg",
+  },
+  {
+    name: "MAZIMPAKA Miguel",
+    role: "Software Engineer",
+    image: "/avatarboy.jpeg",
+  },
+
+  {
+    name: "NKILIYE Rubuto Yvan",
+    role: "Software Engineer",
+    image: "/avatarboy.jpeg",
+  },
+  {
+    name: "NISHIMWE Umutoniwase Divine",
+    role: "Software Engineer",
+    image: "/avatargirl.jpeg",
+  },
+
+  {
+    name: "SHAMI HIMBAZA Paradie Emmanuella",
+    role: "Software Engineer",
+    image: "/avatargirl.jpeg",
+  },
+];
