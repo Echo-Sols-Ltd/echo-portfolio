@@ -10,7 +10,7 @@ export const coreMembers = [
       twitter: "https://x.com/shema_Leandre",
       email: "iamshemaleandre@gmail.com",
       ig: "https://www.instagram.com/_shemaleandre_/",
-      facebook:"https://www.facebook.com/leandre000",
+      facebook: "https://www.facebook.com/leandre000",
     },
   },
   {
@@ -18,7 +18,7 @@ export const coreMembers = [
     role: "CO-Founder",
     image: "/laurent.png",
     social: {
-      github:"https://github.com/NyLaurent",
+      github: "https://github.com/NyLaurent",
       linkedin: "https://www.linkedin.com/in/nyumbayire-laurent-b11251299/",
     },
   },
@@ -31,7 +31,6 @@ export const coreMembers = [
       ig: "https://www.instagram.com/ira_dian4h/",
       email: "iradianah5@gmail.com",
       github: "https://github.com/IRANZI ",
-      
     },
   },
   {
@@ -59,39 +58,21 @@ export const coreMembers = [
     role: "Chief Product Officer",
     image: "/dios.jpeg",
     social: {
-      github:"https://github.com/Dieudonne000",
+      github: "https://github.com/Dieudonne000",
       email: "jeandieudonne2025@gmail.com",
     },
   },
   {
-    name: "Agahire Nikita",
-    role: "UI/UX LEAD",
-    image: "/nikita.jpeg",
-    social: {
-      email: "aganikita07@gmail.com",
-	},
-	  
-  },
-  {
-    name: "Rwaburindi Jean Calvin",
-    role: "UI/UX Lead",
-    image: "/calvin.jpeg",
-    social: {
-      email: "jeancalvin027@gmail.com",
-  },
-},
-{
     name: "Uhirwe Esther Hope",
     role: "Chief Marketing Officer",
     image: "/hope.jpeg",
     social: {
       email: "uhirweestherhope@gmail.com",
     },
-
   },
   {
     name: "Ntwari Isimbi Vieira",
-    role: "Community Engagement Officer",
+    role: "Chief Community Officer",
     image: "/viera.jpeg",
     social: {
       email: "ntwaliisimbivieira@gmail.com",
@@ -130,55 +111,77 @@ export const coreMembers = [
     image: "/bahati.jpg",
     social: {
       email: "rukundorca@gmail.com",
-	},},
- {
-    name: "Mahinga Rodin",
+    },
+  },
+  {
+    name: "Agahire Nikita",
+    role: "UI UX Head",
+    image: "/nikita.jpeg",
+    social: {
+      email: "aganikita07@gmail.com",
+    },
+  },
+  {
+    name: "Rwaburindi Jean Calvin",
+    role: "UI UX Head",
+    image: "/calvin.jpeg",
+    social: {
+      email: "jeancalvin027@gmail.com",
+    },
+  },
+  {
+    name: "Uwonkunda Mahinga Rodin",
     role: "Tech Lead",
     image: "/rodin.jpeg",
     social: {
       email: "mahingarodin@gmail.com",
-  },},
- {
+    },
+  },
+  {
     name: "Tuyubahe Ashrafu",
     role: "Tech Lead",
     image: "/achraf.jpeg",
     social: {
       email: "ashraftuyubahe001@gmail.com",
-	},
-
+    },
   },
 ];
 
 export const devTeam = [
-    {
+  {
     name: "Nziza Prince",
-    role: "Software and Devops Engineer",
+    role: "Devops Engineer",
     image: "/nziza.png",
   },
   {
     name: "Ihimbazwe Niyikora Kevine",
     role: "UI/UX",
-    image: "/avatargirl.jpeg",
+    image: "/niyikora.jpg",
   },
   {
     name: "Iradukunda Hope",
     role: "UI/UX",
     image: "/hopeira.jpg",
   },
- {
-    name: "Ishimwe Benitha",
-    role: "UI/UX",
-    image: "/avatargirl.jpeg",
-  },
   {
     name: "ABARUREMA HIRWA Emma Reponse",
     role: "UI/UX",
-    image: "/reponse.jpg",
+    image: "reponse.jpg",
   },
   {
     name: " KIRENGA Kenny",
     role: "UI/UX",
     image: "/avatarboy.jpeg",
+  },
+  {
+    name: " Rubuto Yvan",
+    role: "UI/UX",
+    image: "/avatarboy.jpeg",
+  },
+  {
+    name: "Tesi Tracy",
+    role: "UI/UX",
+    image: "/avatargirl.jpeg",
   },
 
   {
@@ -186,7 +189,7 @@ export const devTeam = [
     role: "Machine Learning and AI Specialist",
     image: "/polo.jpeg",
   },
- {
+  {
     name: "Iradukunda Joyeuse",
     role: "Machine Learning and AI Specialist",
     image: "/joyeuse.png",
@@ -197,33 +200,43 @@ export const devTeam = [
     image: "/avatarboy.jpeg",
   },
   {
-    name: " NTARE KAYITARE Prince",
+    name: " Ishimwe Jolie Princesse ",
     role: "Machine Learning and AI Specialist",
+    image: "/princess.jpeg",
+  },
+  {
+    name: "Forgiveness Peace Love",
+    role: "Embedded Systems Engineer",
+    image: "/joyeuse.png",
+  },
+
+  {
+    name: "NTARE KAYITARE Prince",
+    role: "Embedded Systems Engineer",
     image: "/avatarboy.jpeg",
   },
 
   {
-    name: "Forgiveness Peace Love",
-    role: "Embedded Systems Engineer",
-    image: "/peace.jpeg",
-  },
-
-  {
-    name: "Ishimwe Jolie Princesse",
-    role: "Embedded Systems Engineer",
-    image: "/princess.jpeg",
-  },
-
-  {
     name: "MUHIRWA Reine Kheira",
-    role: "3D Engineer",
-    image: "/avatargirl.jpeg",
+    role: "3D Specialist",
+    image: "/avatarboy.jpeg",
   },
 
   {
     name: "Dufitimana Theoneste",
     role: "Devops Engineer ",
     image: "/theo.jpg",
+  },
+  {
+    name: "Abayo Hirwa Jovin",
+    role: "Devops Engineer",
+    image: "/jvn.jpeg",
+  },
+
+  {
+    name: "  TUYISHIME Christian",
+    role: "Devops Engineer",
+    image: "/avatarboy.jpeg",
   },
   {
     name: " MANZI Prince Babou",
@@ -252,19 +265,7 @@ export const devTeam = [
     role: "Security Researcher ",
     image: "/avatarboy.jpeg",
   },
-  {
-    name: "Abayo Hirwa Jovin",
-    role: "Devops Engineer",
-    image: "/jvn.jpeg",
-  },
-
-  {
-    name: "TUYISHIME Christian",
-    role: "Devops Engineer",
-    image: "/avatarboy.jpeg",
-  },
-
-  {
+{
     name: "Muhammad Burhan Chughtai",
     role: "Software Engineer",
     image: "/indian.jpeg",
@@ -326,17 +327,18 @@ export const devTeam = [
     role: "Software Engineer",
     image: "/avatargirl.jpeg",
   },
+  {
+    name: "Ishimwe Beni Samuel",
+    role: "Software Engineer",
+    image: "/avatargirl.jpeg",
+  },
 
   {
     name: "Niyitanga Honore",
-    role: "Software Engineer",
+    role: "Software Developer",
     image: "/honore.jpeg",
   },
-  {
-    name: "Ngabo Oreste",
-    role: "Software Engineer",
-    image: "/avatarboy.jpeg",
-  },
+
   {
     name: " Gisa Fred",
     role: "Software Engineer",
@@ -358,7 +360,7 @@ export const devTeam = [
   {
     name: "IGIRANEZA AKAYO Keren",
     role: "Software Engineer",
-    image: "/avatargirl.jpeg",
+    image: "/avatarboy.jpeg",
   },
 
   {
