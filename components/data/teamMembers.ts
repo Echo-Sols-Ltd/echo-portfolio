@@ -149,11 +149,6 @@ export const coreMembers = [
 
 export const devTeam = [
   {
-    name: "Nziza Prince",
-    role: "Devops Engineer",
-    image: "/nziza.png",
-  },
-  {
     name: "Ihimbazwe Niyikora Kevine",
     role: "UI/UX",
     image: "/niyikora.jpg",
@@ -226,6 +221,11 @@ export const devTeam = [
     name: "Dufitimana Theoneste",
     role: "Devops Engineer ",
     image: "/theo.jpg",
+  },
+    {
+    name: "Nziza Prince",
+    role: "Devops Engineer",
+    image: "/nziza.png",
   },
   {
     name: "Abayo Hirwa Jovin",
@@ -335,7 +335,7 @@ export const devTeam = [
 
   {
     name: "Niyitanga Honore",
-    role: "Software Developer",
+    role: "Software Engineer",
     image: "/honore.jpeg",
   },
 
