@@ -395,6 +395,11 @@ export const devTeam = [
     role: "Software Engineer",
     image: "/avatargirl.jpeg",
   },
+  {
+    name: "Byiringiro Emmanuel",
+    role: "Software Engineer",
+    image: "/avatarboy.jpeg",
+  },
 
   {
     name: "SHAMI HIMBAZA Paradie Emmanuella",
