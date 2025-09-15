@@ -33,7 +33,7 @@ const mailOptions = {
 
       <hr style="margin-top: 30px; margin-bottom: 10px;" />
       <p style="font-size: 12px; color: #6b7280;">
-        This message was sent from your portfolio contact form on <strong>echo-portifolio.vercel.app/</strong> or similar domain.
+        This message was sent from your portfolio contact form on <strong>echo-solution.com/</strong> or similar domain.
       </p>
     </div>
   `,

@@ -31,7 +31,7 @@ export function generateMetadata({
 }: SEOProps): Metadata {
   const fullImageUrl = image.startsWith("http")
     ? image
-    : `https://echo-portifolio.vercel.app${image}`;
+    : `https://www.echo-solution.com${image}`;
 
   const metadata: Metadata = {
     title,
@@ -52,7 +52,7 @@ export function generateMetadata({
     openGraph: {
       title,
       description,
-      url: url || "https://echo-portifolio.vercel.app",
+      url: url || "https://www.echo-solution.com",
       siteName: "Echo Solutions",
       images: [
         {
@@ -74,7 +74,7 @@ export function generateMetadata({
       site: "@echosolutions",
     },
     alternates: {
-      canonical: url || "https://echo-portifolio.vercel.app",
+      canonical: url || "https://www.echo-solution.com",
     },
   };
 
@@ -114,8 +114,8 @@ export function generateStructuredData(data?: object) {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Echo Solutions",
-    url: "https://echo-portifolio.vercel.app",
-    logo: "https://echo-portifolio.vercel.app/white.svg",
+    url: "https://www.echo-solution.com",
+    logo: "https://www.echo-solution.com/white.svg",
     description: "We Build, Design, Secure, and Optimize Tech for Impact",
     address: {
       "@type": "PostalAddress",
@@ -125,7 +125,7 @@ export function generateStructuredData(data?: object) {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
-      email: "info@echo-portifolio.vercel.app",
+      email: "info@echo-solution.com",
     },
     sameAs: [
       "https://linkedin.com/company/echhosolutions",

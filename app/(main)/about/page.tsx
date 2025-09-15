@@ -10,7 +10,7 @@ export const metadata: Metadata = generateMetadata({
   keywords:
     "about Echo Solutions, tech team Rwanda, young technologists, AI developers, cybersecurity experts, web developers Africa",
   image: "/white.svg",
-  url: "https://echo-portifolio.vercel.app/about",
+  url: "https://www.echo-solution.com/about",
   type: "website",
   author: "Echo Solutions Team",
   tags: ["about us", "team", "mission", "Rwanda", "technology", "innovation"],
@@ -19,7 +19,7 @@ export const metadata: Metadata = generateMetadata({
 export default function AboutPage() {
   return (
     <>
-      <AboutClient />
+      <AboutClient /> 
     </>
   );
 }
