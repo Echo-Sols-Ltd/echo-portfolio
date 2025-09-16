@@ -259,12 +259,6 @@ export const devTeam = [
     role: "Security Researcher ",
     image: "/avatarboy.jpeg",
   },
-
-  {
-    name: "Humura Elvin",
-    role: "Security Researcher ",
-    image: "/avatarboy.jpeg",
-  },
 {
     name: "Muhammad Burhan Chughtai",
     role: "Software Engineer",
