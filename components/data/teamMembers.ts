@@ -214,7 +214,7 @@ export const devTeam = [
   {
     name: "MUHIRWA Reine Kheira",
     role: "3D Specialist",
-    image: "/avatarboy.jpeg",
+    image: "/reine.png",
   },
 
   {
