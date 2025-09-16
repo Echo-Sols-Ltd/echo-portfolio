@@ -202,7 +202,7 @@ export const devTeam = [
   {
     name: "Forgiveness Peace Love",
     role: "Embedded Systems Engineer",
-    image: "/joyeuse.png",
+    image: "/peace.jpeg",
   },
 
   {
