@@ -1,10 +1,9 @@
 import { MetadataRoute } from "next";
-import { projects } from "@/components/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap { 
   const baseUrl = "https://www.echo-solution.com";
 
-  // Static pages
+  // Static pages only
   const staticPages = [
     {
       url: baseUrl,
@@ -38,13 +37,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic project pages
-  const projectPages = projects.map((project) => ({
-    url: `${baseUrl}/projects/${project.id}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-
-  return [...staticPages, ...projectPages];
+  return staticPages;
 }

@@ -4,7 +4,7 @@ import { AboutPageStructuredData } from "@/components/StructuredData";
 import AboutClient from "../components/AboutClient";
 
 export const metadata: Metadata = generateMetadata({
-  title: "About Echo Solutions - Our Story, Mission & Team",
+  title: "About | Echo Solutions",
   description:
     "Discover the story behind Echo Solutions, a team of young tech enthusiasts from Rwanda creating innovative technology solutions for social impact.",
   keywords:

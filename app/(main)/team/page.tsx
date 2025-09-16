@@ -3,7 +3,7 @@ import { generateMetadata } from "@/components/SEO";
 import TeamClient from "../components/TeamClient";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Our Team - Echo Solutions",
+  title: "Team | Echo Solutions",
   description:
     "Meet the talented team behind Echo Solutions - young tech enthusiasts specializing in AI/ML, cybersecurity, full-stack development, and social impact technology.",
   keywords:

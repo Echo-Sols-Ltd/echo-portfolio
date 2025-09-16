@@ -34,7 +34,7 @@ export const coreMembers = [
     },
   },
   {
-    name: "Niyubahwe Anicke",
+    name: "Niyubahwe Annick",
     role: "Chief Technical Officer",
     image: "/annicke.jpeg",
     social: {

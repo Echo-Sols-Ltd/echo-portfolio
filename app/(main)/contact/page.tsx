@@ -3,7 +3,7 @@ import { generateMetadata } from "@/components/SEO";
 import ContactClient from "../components/ContactClient";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Contact Us - Echo Solutions",
+  title: "Contact | Echo Solutions",
   description:
     "Get in touch with Echo Solutions for your technology needs. We're ready to discuss your project and bring your ideas to life.",
   keywords:
