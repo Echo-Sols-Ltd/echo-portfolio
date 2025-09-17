@@ -5,12 +5,9 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import ParallaxSection from "@/components/ParallaxSection";
 import CounterAnimation from "@/components/CounterAnimation";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
   Code,
-  Palette,
-  Shield,
   Brain,
   Users,
   Rocket,
@@ -620,9 +617,9 @@ export default function HomeClient(): React.JSX.Element {
         <section className="py-20 bg-white relative overflow-hidden">
           <div className="absolute inset-0 bg-white"></div>
           {/* Video Preview Container */}
-          <div className="flex justify-center mb-20">
+          <div className="flex justify-center mb-20" itemScope itemType="https://schema.org/VideoObject">
             <div className="relative w-full max-w-4xl h-96 overflow-hidden rounded-2xl mx-6 lg:mx-8">
-              {/* Inline Video with thumbnail and overlay play button */}
+              {/* Video with proper schema.org markup */}
               <video
                 ref={inlineVideoRef}
                 className="w-full h-full object-cover"
@@ -631,10 +628,22 @@ export default function HomeClient(): React.JSX.Element {
                 loop
                 playsInline
                 poster="/thumbnail.png"
+                itemProp="contentUrl"
+                src="/haptic.mp4"
               >
                 <source src="/haptic.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+              {/* Schema.org metadata for video */}
+              <meta itemProp="name" content="Echo Solutions - Our Work in Action" />
+              <meta itemProp="description" content="Watch how Echo Solutions creates innovative technology solutions" />
+              <meta itemProp="thumbnailUrl" content="https://www.echo-solution.com/thumbnail.png" />
+              <meta itemProp="uploadDate" content="2024-01-01T00:00:00+02:00" />
+              <meta itemProp="duration" content="PT1M30S" />
+              <meta itemProp="embedUrl" content="https://www.echo-solution.com/haptic.mp4" />
+              <meta itemProp="contentSize" content="50 MB" />
+              <meta itemProp="width" content="1280" />
+              <meta itemProp="height" content="720" />
               {/* 
               {showVideoOverlay && (
                 <button
