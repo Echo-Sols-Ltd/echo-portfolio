@@ -88,7 +88,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <meta name="google-site-verification" content="HS9nxSznCu2Lh4uI0wVFFUJeTm4IZdyM3jjPNvqStOY" />
         <link rel="icon" href="/white.svg" type="image/svg+xml" />
         <link rel="canonical" href="https://www.echo-solution.com" />
         <meta name="robots" content="index, follow, max-image-preview:large" />
