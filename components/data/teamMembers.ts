@@ -4,7 +4,7 @@ export const coreMembers = [
   {
     name: "Izere Shema Leandre",
     role: "CEO & Founder",
-    image: "/leandre.jpeg",
+    image: "/leandre.png",
     social: {
       github: "https://github.com/leandre000",
       twitter: "https://x.com/shema_Leandre",
