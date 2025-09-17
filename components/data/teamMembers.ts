@@ -41,7 +41,7 @@ export const coreMembers = [
       email: "niyubahwe.annick975@gmail.com",
       github: "https://github.com/annick975",
       ig: "https://www.instagram.com/@n_tannick975/",
-      linkedin: "linkedin.com/in/annick-niyubahwe-04898932a/",
+      linkedin: "https://www.linkedin.com/in/annick-niyubahwe-04898932a/",
     },
   },
   {
