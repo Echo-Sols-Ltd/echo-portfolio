@@ -47,19 +47,65 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const structuredData = generateStructuredData();
+  const initialStructuredData = generateStructuredData();
+
+  // Generate organization schema for better search results
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Echo Solutions",
+    "url": "https://www.echo-solution.com",
+    "logo": "https://www.echo-solution.com/white.svg",
+    "sameAs": [
+      "https://www.linkedin.com/company/echho-solutions",
+      "https://x.com/echhosolutions",
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+250791234567",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Kinyarwanda", "French"]
+      }
+    ]
+  };
+
+  // Generate website schema
+  const websiteSchema = {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    "name": "Echo Solutions",
+    "url": "https://www.echo-solution.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.echo-solution.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const enhancedStructuredData = [...(Array.isArray(initialStructuredData) ? initialStructuredData : [initialStructuredData]), organizationSchema, websiteSchema];
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="HS9nxSznCu2Lh4uI0wVFFUJeTm4IZdyM3jjPNvqStOY" />
         <link rel="icon" href="/white.svg" type="image/svg+xml" />
+        <link rel="canonical" href="https://www.echo-solution.com" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
+            __html: JSON.stringify(enhancedStructuredData),
           }}
         />
+        
+        {/* Preconnect to important domains */}
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body
         className={`${roboto.variable} ${instrumentSerif.variable} antialiased`}
