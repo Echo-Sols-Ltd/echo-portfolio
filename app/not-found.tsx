@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <div className="text-center max-w-lg mx-auto">
         {/* Error Code */}
-        <div className="text-8xl font-bold text-gray-200 mb-4">404</div>
+        <div className="text-8xl font-bold text-black mb-4">404</div>
         
         {/* Error Message */}
         <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
@@ -43,16 +43,16 @@ export default function NotFound() {
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-sm text-gray-500 mb-4">You might be looking for:</p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <Link href="/projects" className="text-blue-600 hover:underline">
+            <Link href="/projects" className="text-black hover:text-black/70">
               Our Projects
             </Link>
-            <Link href="/about" className="text-blue-600 hover:underline">
+            <Link href="/about" className="text-black hover:text-black/70">
               About Us
             </Link>
-            <Link href="/team" className="text-blue-600 hover:underline">
+            <Link href="/team" className="text-black hover:text-black/70">
               Our Team
             </Link>
-            <Link href="/contact" className="text-blue-600 hover:underline">
+            <Link href="/contact" className="text-black hover:text-black/70">
               Contact
             </Link>
           </div>
