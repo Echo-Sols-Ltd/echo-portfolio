@@ -1,39 +1,48 @@
 import { MetadataRoute } from "next";
 
+type ChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
+
 export default function sitemap(): MetadataRoute.Sitemap { 
   const baseUrl = "https://www.echo-solution.com";
+  const currentDate = new Date();
 
-  // Static pages only
+  // Static pages with more detailed metadata
   const staticPages = [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 1,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as ChangeFrequency,
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/projects`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/team`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as ChangeFrequency,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as ChangeFrequency,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/sitemap`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as ChangeFrequency,
+      priority: 0.5,
     },
   ];
 
