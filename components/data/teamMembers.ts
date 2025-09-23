@@ -164,11 +164,6 @@ export const devTeam = [
     image: "reponse.jpg",
   },
   {
-name:"Ninsima Angella",
-role:"UI/UX",
-image:"/ninsiima.jpg"
-  },
-  {
     name: " KIRENGA Kenny",
     role: "UI/UX",
     image: "/kenny.png",
