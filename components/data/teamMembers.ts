@@ -65,7 +65,7 @@ export const coreMembers = [
   {
     name: "Uhirwe Esther Hope",
     role: "Chief Marketing Officer",
-    image: "/hope.jpeg",
+    image: "/hope.jpg",
     social: {
       email: "uhirweestherhope@gmail.com",
     },
@@ -164,9 +164,14 @@ export const devTeam = [
     image: "reponse.jpg",
   },
   {
+name:"Ninsima Angella",
+role:"UI/UX",
+image:"/ninsiima.jpg"
+  },
+  {
     name: " KIRENGA Kenny",
     role: "UI/UX",
-    image: "/avatarboy.jpeg",
+    image: "/kenny.png",
   },
   {
     name: " Rubuto Yvan",
@@ -222,7 +227,7 @@ export const devTeam = [
     role: "Devops Engineer ",
     image: "/theo.jpg",
   },
-    {
+  {
     name: "Nziza Prince",
     role: "Devops Engineer",
     image: "/nziza.png",
@@ -259,7 +264,7 @@ export const devTeam = [
     role: "Security Researcher ",
     image: "/avatarboy.jpeg",
   },
-{
+  {
     name: "Muhammad Burhan Chughtai",
     role: "Software Engineer",
     image: "/indian.jpeg",
@@ -293,14 +298,18 @@ export const devTeam = [
   {
     name: "NKUNDABAGENZI Jeremie",
     role: "Software Engineer",
-    image: "/avatarboy.jpeg",
+    image: "/jeremy.png",
   },
   {
     name: "Mugisha Pascal",
     role: "Software Engineer",
     image: "/pascal.jpg",
   },
-
+{
+name:"Ntwali Oreste",
+role:"Software Engineer",
+image:"/oreste.png"
+},
   {
     name: "Kwizera Olivier",
     role: "Software Engineer",
@@ -342,13 +351,19 @@ export const devTeam = [
   {
     name: "NIYODUSHIMA Belyse",
     role: "Software Engineer",
-    image: "/avatargirl.jpeg",
+    image: "/belyse.png",
   },
 
   {
     name: "BAGABO Bonny",
     role: "Software Engineer",
     image: "/avatarboy.jpeg",
+  },
+
+  {
+    name: "Ninsiima Angella",
+    role: "Software Engineer",
+    image: "/ninsiima.jpg"
   },
 
   {
@@ -392,7 +407,7 @@ export const devTeam = [
   {
     name: "Byiringiro Emmanuel",
     role: "Software Engineer",
-    image: "/avatarboy.jpeg",
+    image: "/manuell.jpg",
   },
 
   {
