@@ -156,7 +156,7 @@ export const devTeam = [
   {
     name: "Iradukunda Hope",
     role: "UI/UX",
-    image: "/hopeira.jpg",
+    image: "/hopira.jpg",
   },
   {
     name: "ABARUREMA HIRWA Emma Reponse",
@@ -168,16 +168,16 @@ export const devTeam = [
     role: "UI/UX",
     image: "/kenny.png",
   },
-  {
-    name: " Rubuto Yvan",
-    role: "UI/UX",
-    image: "/avatarboy.jpeg",
-  },
-  {
-    name: "Tesi Tracy",
-    role: "UI/UX",
-    image: "/avatargirl.jpeg",
-  },
+  // {
+  //   name: " Rubuto Yvan",
+  //   role: "UI/UX",
+  //   image: "/avatarboy.jpeg",
+  // },
+  // {
+  //   name: "Tesi Tracy",
+  //   role: "UI/UX",
+  //   image: "/avatargirl.jpeg",
+  // },
 
   {
     name: "Mugisha Prosper",
@@ -189,11 +189,11 @@ export const devTeam = [
     role: "Machine Learning and AI Specialist",
     image: "/joyeuse.png",
   },
-  {
-    name: "Niyobyose Paulin",
-    role: "Machine Learning and AI Specialist",
-    image: "/avatarboy.jpeg",
-  },
+  // {
+  //   name: "Niyobyose Paulin",
+  //   role: "Machine Learning and AI Specialist",
+  //   image: "/avatarboy.jpeg",
+  // },
   {
     name: " Ishimwe Jolie Princesse ",
     role: "Machine Learning and AI Specialist",
@@ -205,11 +205,11 @@ export const devTeam = [
     image: "/peace.jpeg",
   },
 
-  {
-    name: "NTARE KAYITARE Prince",
-    role: "Embedded Systems Engineer",
-    image: "/avatarboy.jpeg",
-  },
+  // {
+  //   name: "NTARE KAYITARE Prince",
+  //   role: "Embedded Systems Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
 
   {
     name: "MUHIRWA Reine Kheira",
@@ -233,32 +233,32 @@ export const devTeam = [
     image: "/jvn.jpeg",
   },
 
-  {
-    name: "  TUYISHIME Christian",
-    role: "Devops Engineer",
-    image: "/avatarboy.jpeg",
-  },
+  // {
+  //   name: "  TUYISHIME Christian",
+  //   role: "Devops Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
   {
     name: " MANZI Prince Babou",
     role: "Security Researcher ",
     image: "/babou.jpg",
   },
 
-  {
-    name: "Irakoze Nezerwa Princess",
-    role: "Security Researcher ",
-    image: "/avatargirl.jpeg",
-  },
+  // {
+  //   name: "Irakoze Nezerwa Princess",
+  //   role: "Security Researcher ",
+  //   image: "/avatargirl.jpeg",
+  // },
   {
     name: "Amani Patrick",
     role: "Security Researcher",
     image: "/amani.jpeg",
   },
-  {
-    name: "GANZA Chael",
-    role: "Security Researcher ",
-    image: "/avatarboy.jpeg",
-  },
+  // {
+  //   name: "GANZA Chael",
+  //   role: "Security Researcher ",
+  //   image: "/avatarboy.jpeg",
+  // },
   {
     name: "Muhammad Burhan Chughtai",
     role: "Software Engineer",
@@ -320,16 +320,16 @@ image:"/oreste.png"
     role: "Software Engineer",
     image: "/manene.jpeg",
   },
-  {
-    name: "NIBEZA AMAHORO Nicole",
-    role: "Software Engineer",
-    image: "/avatargirl.jpeg",
-  },
-  {
-    name: "Ishimwe Beni Samuel",
-    role: "Software Engineer",
-    image: "/avatargirl.jpeg",
-  },
+  // {
+  //   name: "NIBEZA AMAHORO Nicole",
+  //   role: "Software Engineer",
+  //   image: "/avatargirl.jpeg",
+  // },
+  // {
+  //   name: "Ishimwe Beni Samuel",
+  //   role: "Software Engineer",
+  //   image: "/avatargirl.jpeg",
+  // },
 
   {
     name: "Niyitanga Honore",
@@ -337,11 +337,11 @@ image:"/oreste.png"
     image: "/honore.jpeg",
   },
 
-  {
-    name: " Gisa Fred",
-    role: "Software Engineer",
-    image: "/avatarboy.jpeg",
-  },
+  // {
+  //   name: " Gisa Fred",
+  //   role: "Software Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
 
   {
     name: "NIYODUSHIMA Belyse",
@@ -349,11 +349,11 @@ image:"/oreste.png"
     image: "/belyse.png",
   },
 
-  {
-    name: "BAGABO Bonny",
-    role: "Software Engineer",
-    image: "/avatarboy.jpeg",
-  },
+  // {
+  //   name: "BAGABO Bonny",
+  //   role: "Software Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
 
   {
     name: "Ninsiima Angella",
@@ -361,11 +361,11 @@ image:"/oreste.png"
     image: "/ninsiima.jpg"
   },
 
-  {
-    name: "IGIRANEZA AKAYO Keren",
-    role: "Software Engineer",
-    image: "/avatarboy.jpeg",
-  },
+  // {
+  //   name: "IGIRANEZA AKAYO Keren",
+  //   role: "Software Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
 
   {
     name: "IZABAYO Nadine",
@@ -373,41 +373,41 @@ image:"/oreste.png"
     image: "/nadine.jpeg",
   },
 
-  {
-    name: "Raphael NIBISHAKA",
-    role: "Software Engineer",
-    image: "/avatarboy.jpeg",
-  },
-  {
-    name: "GANZA DANNY MIKE",
-    role: "Software Engineer",
-    image: "/avatarboy.jpeg",
-  },
-  {
-    name: "MAZIMPAKA Miguel",
-    role: "Software Engineer",
-    image: "/avatarboy.jpeg",
-  },
+  // {
+  //   name: "Raphael NIBISHAKA",
+  //   role: "Software Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
+  // {
+  //   name: "GANZA DANNY MIKE",
+  //   role: "Software Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
+  // {
+  //   name: "MAZIMPAKA Miguel",
+  //   role: "Software Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
 
-  {
-    name: "NKILIYE Rubuto Yvan",
-    role: "Software Engineer",
-    image: "/avatarboy.jpeg",
-  },
-  {
-    name: "NISHIMWE Umutoniwase Divine",
-    role: "Software Engineer",
-    image: "/avatargirl.jpeg",
-  },
+  // {
+  //   name: "NKILIYE Rubuto Yvan",
+  //   role: "Software Engineer",
+  //   image: "/avatarboy.jpeg",
+  // },
+  // {
+  //   name: "NISHIMWE Umutoniwase Divine",
+  //   role: "Software Engineer",
+  //   image: "/avatargirl.jpeg",
+  // },
   {
     name: "Byiringiro Emmanuel",
     role: "Software Engineer",
     image: "/manuell.jpg",
   },
 
-  {
-    name: "SHAMI HIMBAZA Paradie Emmanuella",
-    role: "Software Engineer",
-    image: "/avatargirl.jpeg",
-  },
+  // {
+  //   name: "SHAMI HIMBAZA Paradie Emmanuella",
+  //   role: "Software Engineer",
+  //   image: "/avatargirl.jpeg",
+  // },
 ];
