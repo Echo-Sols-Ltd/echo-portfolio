@@ -251,7 +251,7 @@ export const devTeam = [
   // },
   {
     name: "Amani Patrick",
-    role: "Security Researcher",
+    role: "Network Engineer",
     image: "/amani.jpeg",
   },
   // {
@@ -287,7 +287,7 @@ export const devTeam = [
 
   {
     name: "Bugiri Wilson Goal",
-    role: "Software Engineer",
+    role: "Network Engineer",
     image: "/wigo.jpeg",
   },
   {
