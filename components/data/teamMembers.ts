@@ -156,7 +156,7 @@ export const devTeam = [
   {
     name: "Iradukunda Hope",
     role: "UI/UX",
-    image: "/hopira.jpg",
+    image: "/hopeira.jpg",
   },
   {
     name: "ABARUREMA HIRWA Emma Reponse",
