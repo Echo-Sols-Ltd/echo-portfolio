@@ -9,7 +9,7 @@ export const coreMembers = [
       github: "https://github.com/leandre000",
       twitter: "https://x.com/shema_Leandre",
       email: "iamshemaleandre@gmail.com",
-      ig: "https://www.instagram.com/_shemaleandre_/",
+      ig: "https://www.instagram.com/_fliicky_/",
       facebook: "https://www.facebook.com/leandre000",
     },
   },

@@ -73,8 +73,8 @@ export default function Footer() {
     {
       icon: Mail,
       label: "Email",
-      value: "echhosolutions@yahoo.com",
-      href: "mailto:echhosolutions@yahoo.com",
+      value: "Iamshemaleandre@gmail.com",
+      href: "mailto:Iamshemaleandre@gmail.com",
     },
   ];
 
