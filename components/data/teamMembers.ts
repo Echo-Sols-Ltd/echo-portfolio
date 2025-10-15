@@ -1,5 +1,6 @@
 import { ro } from "date-fns/locale";
 import { Linkedin, RollerCoaster } from "lucide-react";
+import { Noto_Sans_Phoenician } from "next/font/google";
 export const coreMembers = [
   {
     name: "Izere Shema Leandre",
@@ -23,22 +24,14 @@ export const coreMembers = [
     },
   },
 
-  {
-    name: "Uwonkunda Mahinga Rodin",
-    role: "Tech Lead",
-    image: "/rodin.jpeg",
-    social: {
-      email: "mahingarodin@gmail.com",
-    },
-  },
-  {
-    name: "Tuyubahe Ashrafu",
-    role: "Tech Lead",
-    image: "/achraf.jpeg",
-    social: {
-      email: "ashraftuyubahe001@gmail.com",
-    },
-  },
+  // {
+  //   name: "Uwonkunda Mahinga Rodin",
+  //   role: "Tech Lead",
+  //   image: "/rodin.jpeg",
+  //   social: {
+  //     email: "mahingarodin@gmail.com",
+  //   },
+  // },
   {
     name: "Iranzi Dianah",
     role: "CO-Founder",
@@ -49,6 +42,24 @@ export const coreMembers = [
       github: "https://github.com/IRANZI ",
     },
   },
+
+   {
+    name: "Forgiveness Peace Love",
+    role: "Embedded Systems Engineer",
+    image: "/peace.jpeg",
+    socials:{
+      email:"forgivenesspeacelove@gmail.com"
+   }
+       
+  },
+  // {
+  //   name: "Tuyubahe Ashrafu",
+  //   role: "Tech Lead",
+  //   image: "/achraf.jpeg",
+  //   social: {
+  //     email: "ashraftuyubahe001@gmail.com",
+  //   },
+  // },
 ]
 //   {
 //     name: "Niyubahwe Annick",
