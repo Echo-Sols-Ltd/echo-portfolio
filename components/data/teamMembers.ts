@@ -48,7 +48,7 @@ export const coreMembers = [
     role: "Embedded Systems Engineer",
     image: "/peace.jpeg",
     socials:{
-      email:"forgivenesspeacelove@gmail.com"
+      email: "forgiveness@gmail.com",
    }
        
   },

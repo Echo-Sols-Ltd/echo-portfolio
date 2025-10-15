@@ -324,7 +324,7 @@ export default function TeamClient() {
 
                 {/* Pagination dots */}
                 <div className="flex items-center justify-center lg:justify-start gap-4 mt-8">
-                  <span className="text-sm text-gray-500 font-medium">Navigate:</span>
+                  {/* <span className="text-sm text-gray-500 font-medium">Navigate:</span> */}
                   <div className="flex gap-3">
                     {coreMembers.map((_, index) => (
                       <button
