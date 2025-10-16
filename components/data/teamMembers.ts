@@ -43,14 +43,22 @@ export const coreMembers = [
     },
   },
 
-   {
-    name: "Forgiveness Peace Love",
-    role: "Embedded Systems Engineer",
-    image: "/peace.jpeg",
-    socials:{
-      email: "forgiveness@gmail.com",
-   }
+  //  {
+  //   name: "Forgiveness Peace Love",
+  //   role: "Embedded Systems Engineer",
+  //   image: "/peace.jpeg",
+  //   socials:{
+  //     email: "forgiveness@gmail.com",
+  //  }
        
+  // },
+    {
+    name: "Mugisha Prosper",
+    role: "CTO",
+    image: "/polo.jpeg",
+    social:{
+      email:"prospermugisha001@gmail.com"
+    }
   },
   // {
   //   name: "Tuyubahe Ashrafu",

@@ -344,20 +344,27 @@ export default function TeamClient() {
 
               <div className="flex-1 max-w-md">
                 <div className="relative group">
-                  <div className="relative w-full h-[400px] rounded-2xl overflow-hidden bg-white">
+                  <div className="relative w-full h-[400px] rounded-2xl overflow-hidden bg-white shadow-lg border border-gray-200">
                     {getImageSrc(currentMemberData) ? (
-                      <Image
-                        key={currentMember}
-                        src={getImageSrc(currentMemberData)}
-                        alt={`${currentMemberData.name} - ${currentMemberData.role}`}
-                        width={400}
-                        height={400}
-                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 animate-fade-in"
-                      />
+                      <div className="relative w-full h-full">
+                        <Image
+                          key={currentMember}
+                          src={getImageSrc(currentMemberData)}
+                          alt={`${currentMemberData.name} - ${currentMemberData.role}` }
+                          fill
+                          sizes="(max-width: 768px) 100vw, 400px"
+                          className="object-cover transition-all duration-1000 group-hover:scale-105 animate-fade-in rounded-2xl"
+                          style={{
+                            objectPosition: 'center top'
+                          }}
+                        />
+                        {/* Subtle overlay for better text contrast if needed */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+                      </div>
                     ) : (
-                      <div key={currentMember} className="w-full h-full bg-gray-100 flex items-center justify-center animate-fade-in">
+                      <div key={currentMember} className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center animate-fade-in rounded-2xl">
                         <div className="text-center">
-                          <div className="w-24 h-24 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                          <div className="w-24 h-24 bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                             <span className="text-3xl font-bold text-white">
                               {String(currentMemberData.name || "")
                                 .split(" ")
@@ -366,7 +373,7 @@ export default function TeamClient() {
                                 .join("") || "?"}
                             </span>
                           </div>
-                          <p className="text-gray-500 text-sm">Profile Photo</p>
+                          <p className="text-gray-500 text-sm font-medium">Profile Photo</p>
                         </div>
                       </div>
                     )}
