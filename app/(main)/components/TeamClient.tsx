@@ -228,22 +228,22 @@ export default function TeamClient() {
           </div>
 
           <div
-            className="bg-white rounded-3xl shadow-2xl p-8 lg:p-12 backdrop-blur-sm border border-white/20"
+            className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 backdrop-blur-sm border border-white/20"
             onMouseEnter={() => setIsAutoScrolling(false)}
             onMouseLeave={() => setIsAutoScrolling(true)}
           >
-            <div className="flex flex-col lg:flex-row items-center gap-12">
-              <div className="flex-1">
-                <div className="text-black text-7xl font-bold mb-8 opacity-20">&quot;</div>
-                <h3 className="font-sans text-2xl lg:text-3xl font-bold text-black mb-8">
+            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+              <div className="flex-1 order-2 lg:order-1">
+                <div className="text-black text-5xl sm:text-7xl font-bold mb-6 lg:mb-8 opacity-20">&quot;</div>
+                <h3 className="font-sans text-xl sm:text-2xl lg:text-3xl font-bold text-black mb-6 lg:mb-8">
                   Discover the talent behind our success
                 </h3>
                 
-                <div className="mb-8">
-                  <div className="font-sans font-bold text-black text-3xl mb-3">
+                <div className="mb-6 lg:mb-8">
+                  <div className="font-sans font-bold text-black text-2xl sm:text-3xl mb-3">
                     {currentMemberData.name}
                   </div>
-                  <div className="font-medium text-gray-600 text-lg mb-6 uppercase tracking-wide">
+                  <div className="font-medium text-gray-600 text-base sm:text-lg mb-6 uppercase tracking-wide">
                     {currentMemberData.role}
                   </div>
                 
@@ -342,30 +342,27 @@ export default function TeamClient() {
                 </div>
               </div>
 
-              <div className="flex-1 max-w-md">
+              <div className="flex-1 w-full max-w-sm mx-auto lg:max-w-md order-1 lg:order-2">
                 <div className="relative group">
-                  <div className="relative w-full h-[400px] rounded-2xl overflow-hidden bg-white shadow-lg border border-gray-200">
+                  <div className="relative w-full h-[300px] sm:h-[350px] lg:h-[400px] rounded-2xl overflow-hidden bg-white shadow-lg border border-gray-200">
                     {getImageSrc(currentMemberData) ? (
-                      <div className="relative w-full h-full">
-                        <Image
-                          key={currentMember}
-                          src={getImageSrc(currentMemberData)}
-                          alt={`${currentMemberData.name} - ${currentMemberData.role}` }
-                          fill
-                          sizes="(max-width: 768px) 100vw, 400px"
-                          className="object-cover transition-all duration-1000 group-hover:scale-105 animate-fade-in rounded-2xl"
-                          style={{
-                            objectPosition: 'center top'
-                          }}
-                        />
-                        {/* Subtle overlay for better text contrast if needed */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-                      </div>
+                      <Image
+                        key={currentMember}
+                        src={getImageSrc(currentMemberData)}
+                        alt={`${currentMemberData.name} - ${currentMemberData.role}` }
+                        width={400}
+                        height={400}
+                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 animate-fade-in rounded-2xl"
+                        style={{
+                          objectPosition: 'center top'
+                        }}
+                        priority
+                      />
                     ) : (
                       <div key={currentMember} className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center animate-fade-in rounded-2xl">
                         <div className="text-center">
-                          <div className="w-24 h-24 bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                            <span className="text-3xl font-bold text-white">
+                          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-gray-800 to-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                            <span className="text-2xl sm:text-3xl font-bold text-white">
                               {String(currentMemberData.name || "")
                                 .split(" ")
                                 .map((s: string) => s[0])
@@ -377,6 +374,8 @@ export default function TeamClient() {
                         </div>
                       </div>
                     )}
+                    {/* Subtle overlay for better text contrast if needed */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
                   </div>
                 </div>
               </div>

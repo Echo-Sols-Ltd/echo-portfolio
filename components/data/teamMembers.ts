@@ -52,12 +52,12 @@ export const coreMembers = [
   //  }
        
   // },
-    {
+  {
     name: "Mugisha Prosper",
     role: "CTO",
     image: "/polo.jpeg",
-    social:{
-      email:"prospermugisha001@gmail.com"
+    social: {
+      email: "prospermugisha001@gmail.com"
     }
   },
   // {
