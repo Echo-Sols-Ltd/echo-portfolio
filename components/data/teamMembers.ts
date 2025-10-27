@@ -7,11 +7,11 @@ export const coreMembers = [
     role: "CEO & Founder",
     image: "/leandre.png",
     social: {
-      // github: "https://github.com/leandre000",
-      // twitter: "https://x.com/shema_Leandre",
+      github: "https://github.com/leandre000",
+      twitter: "https://x.com/shema_Leandre",
       email: "iamshemaleandre@gmail.com",
-      // ig: "https://www.instagram.com/_fliicky_/",
-      // facebook: "https://www.facebook.com/leandre000",
+      ig: "https://www.instagram.com/_leandre10_/",
+      facebook: "https://www.facebook.com/leandre000",
     },
   },
   {
@@ -21,7 +21,7 @@ export const coreMembers = [
     social: {
       // github: "https://github.com/NyLaurent",
       // linkedin: "https://www.linkedin.com/in/nyumbayire-laurent-b11251299/",
-      email:"nyumbayirelaurent@gmail.com"
+      // email:"nyumbayirelaurent@gmail.com"
     },
   }, 
   {
@@ -30,7 +30,7 @@ export const coreMembers = [
     image: "/dianah.png",
     social: {
       // ig: "https://www.instagram.com/ira_dian4h/",
-      email: "iradianah5@gmail.com",
+      // email: "iradianah5@gmail.com",
       // github: "https://github.com/IRANZI ",
     },
   },
@@ -41,7 +41,7 @@ export const coreMembers = [
     role: "CTO",
     image: "/polo.jpeg",
     social: {
-      email: "prospermugisha001@gmail.com"
+      // email: "prospermugisha001@gmail.com"
     }
   },
 ]
