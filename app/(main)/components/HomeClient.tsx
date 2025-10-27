@@ -55,7 +55,7 @@ export default function HomeClient(): React.JSX.Element {
   const isVisibleRef = useRef(true);
   // Removed modal state; render video inline with controls
   const inlineVideoRef = useRef<HTMLVideoElement>(null);
-  const [showVideoOverlay, setShowVideoOverlay] = useState(true);
+  const [showVideoOverlay, setShowVideoOverlay] = useState(false);
   // Create star texture for Three.js
   const createStarTexture = () => {
     const canvas = document.createElement("canvas");
@@ -327,6 +327,52 @@ export default function HomeClient(): React.JSX.Element {
     };
   }, [handleResize]);
   // Removed modal escape key handler; not needed for inline video
+
+  // Try to unmute and play the inline video programmatically.
+  // Browsers commonly block autoplay with sound — if that happens we keep
+  // the video muted (so autoplay visuals work) and attach a one-time
+  // pointerdown listener that unmutes and plays when the user interacts.
+  useEffect(() => {
+    const tryUnmuteAndPlay = async () => {
+      const v = inlineVideoRef.current;
+      if (!v) return;
+      try {
+        // Attempt to unmute and play. This will usually fail unless the
+        // browser has granted autoplay-with-sound permission.
+        v.muted = false;
+        v.volume = 0.9;
+        await v.play();
+      } catch (err) {
+        // Autoplay with sound was blocked. Ensure autoplay visual works by
+        // keeping it muted and playing silently, then wait for user gesture.
+        try {
+          v.muted = true;
+          await v.play();
+        } catch (e) {
+          // ignore play errors
+        }
+
+        const onGesture = async () => {
+          const vv = inlineVideoRef.current;
+          if (!vv) return;
+          try {
+            vv.muted = false;
+            vv.volume = 0.9;
+            await vv.play();
+          } catch (e) {
+            console.warn("Unmute on gesture failed:", e);
+          }
+          document.removeEventListener("pointerdown", onGesture);
+        };
+
+        document.addEventListener("pointerdown", onGesture, { once: true });
+      }
+    };
+
+    // Try after a small delay to let the element be available and autoplay kick in.
+    const id = window.setTimeout(tryUnmuteAndPlay, 250);
+    return () => window.clearTimeout(id);
+  }, []);
 
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
@@ -627,6 +673,7 @@ export default function HomeClient(): React.JSX.Element {
                 muted
                 loop
                 playsInline
+                controls
                 poster="/thumbnail.png"
                 itemProp="contentUrl"
                 src="/haptic.mp4"
@@ -634,6 +681,11 @@ export default function HomeClient(): React.JSX.Element {
                 <source src="/haptic.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
+              {/* No overlay play button: attempt to unmute & play programmatically.
+                  Note: browsers often block autoplay with sound. We try to unmute
+                  and play; if blocked we keep the video muted but attach a one-time
+                  pointerdown listener so a single user interaction anywhere will
+                  unmute and play the video. */}
               {/* Schema.org metadata for video */}
               <meta itemProp="name" content="Echo Solutions - Our Work in Action" />
               <meta itemProp="description" content="Watch how Echo Solutions creates innovative technology solutions" />
