@@ -504,7 +504,7 @@ export default function HomeClient(): React.JSX.Element {
                     <Users className="h-8 w-8 text-blue-400" />
                   </div>
                   <CounterAnimation
-                    end={30}
+                    end={8}
                     suffix="+"
                     className="text-4xl font-bold text-white mb-2"
                   />
