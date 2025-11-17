@@ -328,50 +328,27 @@ export default function HomeClient(): React.JSX.Element {
   }, [handleResize]);
   // Removed modal escape key handler; not needed for inline video
 
-  // Try to unmute and play the inline video programmatically.
-  // Browsers commonly block autoplay with sound — if that happens we keep
-  // the video muted (so autoplay visuals work) and attach a one-time
-  // pointerdown listener that unmutes and plays when the user interacts.
+  // Play video only when scrolled into view using IntersectionObserver
   useEffect(() => {
-    const tryUnmuteAndPlay = async () => {
-      const v = inlineVideoRef.current;
-      if (!v) return;
-      try {
-        // Attempt to unmute and play. This will usually fail unless the
-        // browser has granted autoplay-with-sound permission.
-        v.muted = false;
-        v.volume = 0.9;
-        await v.play();
-      } catch (err) {
-        // Autoplay with sound was blocked. Ensure autoplay visual works by
-        // keeping it muted and playing silently, then wait for user gesture.
-        try {
-          v.muted = true;
-          await v.play();
-        } catch (e) {
-          // ignore play errors
+    const v = inlineVideoRef.current;
+    if (!v) return;
+    // Ensure muted to satisfy autoplay policies; we'll just play/pause on visibility
+    v.muted = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          v.play().catch(() => {});
+        } else {
+          v.pause();
         }
-
-        const onGesture = async () => {
-          const vv = inlineVideoRef.current;
-          if (!vv) return;
-          try {
-            vv.muted = false;
-            vv.volume = 0.9;
-            await vv.play();
-          } catch (e) {
-            console.warn("Unmute on gesture failed:", e);
-          }
-          document.removeEventListener("pointerdown", onGesture);
-        };
-
-        document.addEventListener("pointerdown", onGesture, { once: true });
-      }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(v);
+    return () => {
+      observer.disconnect();
+      v.pause();
     };
-
-    // Try after a small delay to let the element be available and autoplay kick in.
-    const id = window.setTimeout(tryUnmuteAndPlay, 250);
-    return () => window.clearTimeout(id);
   }, []);
 
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
@@ -669,7 +646,7 @@ export default function HomeClient(): React.JSX.Element {
               <video
                 ref={inlineVideoRef}
                 className="w-full h-full object-cover"
-                autoPlay
+                preload="none"
                 muted
                 loop
                 playsInline

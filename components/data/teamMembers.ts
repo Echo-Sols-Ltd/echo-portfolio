@@ -1,48 +1,47 @@
-import { ro } from "date-fns/locale";
-import { Linkedin, RollerCoaster } from "lucide-react";
-import { Noto_Sans_Phoenician } from "next/font/google";
-export const coreMembers = [
-  {
-    name: "Izere Shema Leandre",
-    role: "CEO & Founder",
-    image: "/leandre.png",
-    social: {
-      github: "https://github.com/leandre000",
-      twitter: "https://x.com/shema_Leandre",
-      email: "iamshemaleandre@gmail.com",
-      ig: "https://www.instagram.com/_leandre10_/",
-      facebook: "https://www.facebook.com/leandre000",
-    },
-  },
-  {
-    name: "Nyumbayire Laurent",
-    role: "CO-Founder",
-    image: "/laurent.png",
-    social: {
-      // github: "https://github.com/NyLaurent",
-      // linkedin: "https://www.linkedin.com/in/nyumbayire-laurent-b11251299/",
-      // email:"nyumbayirelaurent@gmail.com"
-    },
-  }, 
-  {
-    name: "Iranzi Dianah",
-    role: "CO-Founder",
-    image: "/dianah.png",
-    social: {
-      // ig: "https://www.instagram.com/ira_dian4h/",
-      // email: "iradianah5@gmail.com",
-      // github: "https://github.com/IRANZI ",
-    },
-  },
+export const upperCore = [
+  { name: "Izere Leandre", role: "CEO", image: "/leandre.png", social: {} },
+  { name: "Iranzi Dianah", role: "CTO", image: "/dianah.png", social: {} },
+  { name: "Joly Princesse", role: "COO", image: "/princess.jpeg", social: {} },
+  { name: "Saly Nelson", role: "CHRM", image: "/saly.jpeg", social: {} },
+  { name: "Muneza Dieudonne", role: "CMO", image: "/dios.jpeg", social: {} },
+  { name: "Isimbi Vieira", role: "CCO", image: "/viera.jpeg", social: {} }
+];
 
+export const lowerCore = [
+  { name: "Nyumbayire Laurent", role: "Tech Lead", image: "/laurent.png", social: {} },
+  { name: "Tuyubahe Ashrafu", role: "Tech Lead", image: "/achraf.jpeg", social: {} },
+  { name: "Wilson Goal", role: "Security Manager", image: "/wigo.jpeg", social: {} },
+  { name: "Rukundo Bahati", role: "Cybersecurity Lead", image: "/bahati.jpg", social: {} },
+  { name: "Rwaburindi Jean Calvin", role: "UI/UX Lead", image: "/calvin.jpeg", social: {} }
+];
 
-  {
-    name: "Mugisha Prosper",
-    role: "CTO",
-    image: "/polo.jpeg",
-    social: {
-      // email: "prospermugisha001@gmail.com"
-    }
-  },
-]
-
+export const devTeam = [
+  { name: "Nziza Prince", role: "Software Engineer", image: "/nziza.png", social: {} },
+  { name: "Reine Kheira", role: "Software Engineer", image: "/reine.png", social: {} },
+  { name: "Iradukunda Joyeuse", role: "Software Engineer", image: "/joyeuse.png", social: {} },
+  { name: "Mahinga Rodin", role: "Software Engineer", image: "/rodin.jpeg", social: {} },
+  { name: "Forgiveness Peace", role: "Software Engineer", image: "/peace.jpeg", social: {} },
+  { name: "Mugisha Prosper", role: "Software Engineer", image: "/polo.jpeg", social: {} },
+  { name: "Ndayishima Theoneste", role: "Software Engineer", image: "/theo.jpg", social: {} },
+  { name: "Byukusenge Andrew", role: "Software Engineer", image: "/andre.jpg", social: {} },
+  { name: "Byiringiro Emmanuel", role: "Software Engineer", image: "/manuell.jpg", social: {} },
+  { name: "Hirwa Jovin", role: "Software Engineer", image: "/jvn.jpeg", social: {} },
+  { name: "Nkudabagenzi Jeremy", role: "Software Engineer", image: "/jeremy.png", social: {} },
+  { name: "Amani Patrick", role: "Software Engineer", image: "/amani.jpeg", social: {} },
+  { name: "Manzi Babou", role: "Software Engineer", image: "/babou.jpg", social: {} },
+  { name: "Tuyishime Christian", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
+  { name: "Ganza Chael", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
+  { name: "Kwizera Olivier", role: "Software Engineer", image: "/olivier.jpg", social: {} },
+  { name: "Mugisha Pascal", role: "Software Engineer", image: "/pascal.jpg", social: {} },
+  { name: "Nkiliye Rubuto", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
+  { name: "Izabayo Nadine", role: "Software Engineer", image: "/nadine.jpeg", social: {} },
+  { name: "Iradukunda Hope", role: "Software Engineer", image: "/hopeira.jpg", social: {} },
+  { name: "Niyikora Kevine", role: "Software Engineer", image: "/niyikora.jpg", social: {} },
+  { name: "Tesi Tracy", role: "Software Engineer", image: "/avatargirl.jpeg", social: {} },
+  { name: "Hirwa Reponse", role: "Software Engineer", image: "/reponse.jpg", social: {} },
+  { name: "Mpazimpaka Miguel", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
+  { name: "Kirenga Kenny", role: "Software Engineer", image: "/kenny.png", social: {} },
+  { name: "Jazzy Bruno", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
+  { name: "Manzi Israel", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
+  { name: "Brother", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
+];
