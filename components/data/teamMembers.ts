@@ -12,7 +12,7 @@ export const lowerCore = [
   { name: "Tuyubahe Ashrafu", role: "Tech Lead", image: "/achraf.jpeg", social: {} },
   { name: "Wilson Goal", role: "Security Manager", image: "/wigo.jpeg", social: {} },
   { name: "Rukundo Bahati", role: "Cybersecurity Lead", image: "/bahati.jpg", social: {} },
-  { name: "Rwaburindi Jean Calvin", role: "UI/UX Lead", image: "/calvin.jpeg", social: {} }
+  { name: "Niyikora Kevine", role: "UI/UX Lead", image: "/niyikora.jpg", social: {} }
 ];
 
 export const devTeam = [
@@ -36,12 +36,12 @@ export const devTeam = [
   { name: "Nkiliye Rubuto", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
   { name: "Izabayo Nadine", role: "Software Engineer", image: "/nadine.jpeg", social: {} },
   { name: "Iradukunda Hope", role: "Software Engineer", image: "/hopeira.jpg", social: {} },
-  { name: "Niyikora Kevine", role: "Software Engineer", image: "/niyikora.jpg", social: {} },
+  { name: "Rwaburindi Jean Calvin", role: "UI/UX", image: "/calvin.jpeg", social: {} },
   { name: "Tesi Tracy", role: "Software Engineer", image: "/avatargirl.jpeg", social: {} },
   { name: "Hirwa Reponse", role: "Software Engineer", image: "/reponse.jpg", social: {} },
   { name: "Mpazimpaka Miguel", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
   { name: "Kirenga Kenny", role: "Software Engineer", image: "/kenny.png", social: {} },
   { name: "Jazzy Bruno", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
   { name: "Manzi Israel", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
-  { name: "Brother", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
+  // { name: "Brother", role: "Software Engineer", image: "/avatarboy.jpeg", social: {} },
 ];
