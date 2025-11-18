@@ -16,13 +16,12 @@ import {
   Star,
   Play,
   Box,
-  ChevronRight,
-  ChevronLeft,
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
 import { projects } from "@/components/data/projects";
 import { ProjectStructuredData } from "@/components/StructuredData";
+import ProjectCard from "@/components/ProjectCard";
 
 export default function HomeClient(): React.JSX.Element {
   // State and refs for Stats section star field
@@ -351,21 +350,7 @@ export default function HomeClient(): React.JSX.Element {
     };
   }, []);
 
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-
   const filteredProjects = projects.filter((project) => project.featured);
-
-  const nextProject = () => {
-    setCurrentProjectIndex((prev) =>
-      prev === filteredProjects.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevProject = () => {
-    setCurrentProjectIndex((prev) =>
-      prev === 0 ? filteredProjects.length - 1 : prev - 1
-    );
-  };
 
   return (
     <>
@@ -523,114 +508,34 @@ export default function HomeClient(): React.JSX.Element {
       <section className="py-20 bg-white relative z-10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <ScrollAnimation animation="fade-up" delay={100}>
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-full mb-8">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-full mb-6">
                 <span className="w-2 h-2 bg-black rounded-full mr-2"></span>
                 PORTFOLIO SHOWCASE
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-10">
-                Featured{" "}
-                <span className="font-light font-sans italic">Projects</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Featured <span className="font-light font-sans italic">Projects</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                Explore our diverse portfolio of projects spanning AI, security,
-                agriculture, and social impact solutions.
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Explore our diverse portfolio spanning AI, security, agriculture, and social impact.
               </p>
             </div>
           </ScrollAnimation>
 
-          {/* Carousel Container */}
-          <div className="relative">
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevProject}
-              disabled={filteredProjects.length <= 1}
-              className="absolute -left-7 top-1/2 -translate-y-1/2 z-10 bg-white/90 rounded-full p-3 transition-all duration-200 border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project, idx) => (
+              <ProjectCard key={project.id} project={project} priority={idx < 2} />
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/projects"
+              className="inline-flex items-center px-6 py-3 bg-black hover:bg-black/90 text-white font-medium rounded-lg transition-colors"
             >
-              <ChevronLeft className="h-6 w-6 text-gray-700" />
-            </button>
-
-            <button
-              onClick={nextProject}
-              disabled={filteredProjects.length <= 1}
-              className="absolute -right-7 top-1/2 -translate-y-1/2 z-10 bg-white/90 rounded-full p-3 transition-all duration-200 border border-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronRight className="h-6 w-6 text-gray-700" />
-            </button>
-
-            {/* Carousel Content */}
-            <div className="overflow-hidden rounded-2xl">
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{
-                  transform: `translateX(-${currentProjectIndex * 100}%)`,
-                }}
-              >
-                {filteredProjects.map((project) => (
-                  <div key={project.id} className="w-full flex-shrink-0">
-                    <ScrollAnimation animation="fade-up" delay={120}>
-                      <div className="relative rounded-xl overflow-hidden group mx-2 h-[25vh] md:h-[35vh] lg:h-[78vh] border-2 border-gray-200">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-500"
-                        />
-                        {/* Base gradient */}
-                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                        {/* Black scrim for readability */}
-                        <div className="pointer-events-none absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 flex items-end p-6 lg:p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="text-white max-w-2xl">
-                            <div className="mt-4 flex flex-wrap gap-3">
-                              {project.link && (
-                                <Link
-                                  href={project.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center px-5 py-3 bg-white/20 backdrop-blur-sm text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition-colors"
-                                >
-                                  Live Site
-                                  <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                              )}
-                              {project.github && (
-                                <Link
-                                  href={project.github}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center px-5 py-3 bg-gray-800/70 text-white text-sm rounded-lg border border-gray-700 hover:bg-gray-700/80 transition"
-                                >
-                                  GitHub
-                                  <Code className="ml-2 h-4 w-4" />
-                                </Link>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </ScrollAnimation>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Carousel Indicators */}
-            {filteredProjects.length > 1 && (
-              <div className="flex justify-center mt-8 space-x-2">
-                {filteredProjects.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentProjectIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      currentProjectIndex === index
-                        ? "bg-black"
-                        : "bg-gray-300 hover:bg-gray-400"
-                    }`}
-                  />
-                ))}
-              </div>
-            )}
+              View All Projects
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

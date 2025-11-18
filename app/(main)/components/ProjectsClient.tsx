@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Calendar, Users, Code, ArrowRight } from "lucide-react";
+import { Calendar, Users, Code } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import ScrollAnimation from "@/components/ScrollAnimation";
@@ -10,6 +10,7 @@ import CounterAnimation from "@/components/CounterAnimation";
 import { projects, categories } from "@/components/data/projects";
 import * as THREE from "three";
 import { ProjectStructuredData } from "@/components/StructuredData";
+import ProjectCard from "@/components/ProjectCard";
 
 export default function ProjectsClient() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -303,45 +304,8 @@ export default function ProjectsClient() {
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {projects.filter((p) => p.featured).map((project) => (
-              <div
-                key={project.id}
-                className="relative rounded-xl overflow-hidden group h-60 md:h-72 lg:h-[60vh] border-2 border-blue-100 flex items-center justify-center"
-              >
-                <img src={project.logo} alt={project.title} className="w-32 h-32 object-contain" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="text-white max-w-2xl">
-                    <h3 className="text-2xl font-semibold">{project.title}</h3>
-                    <p className="mt-2 text-sm text-gray-200 line-clamp-3">{project.description}</p>
-                    {(project.link || project.github) && (
-                      <div className="mt-4 flex flex-wrap gap-3">
-                        {project.link && (
-                          <Link
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center px-5 py-3 bg-white/20 text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition"
-                          >
-                            Live Site <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                        )}
-                        {project.github && (
-                          <Link
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center px-5 py-3 bg-gray-800/70 text-white text-sm rounded-lg border border-gray-700 hover:bg-gray-700/80 transition"
-                          >
-                            GitHub <Code className="ml-2 h-4 w-4" />
-                          </Link>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+            {projects.filter((p) => p.featured).map((project, idx) => (
+              <ProjectCard key={project.id} project={project} priority={idx < 2} />
             ))}
           </div>
         </div>
@@ -374,44 +338,7 @@ export default function ProjectsClient() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project) => (
-                <div
-                  key={project.id}
-                  className="relative rounded-xl overflow-hidden group h-56 md:h-64 lg:h-[45vh] border-2 border-blue-100 flex items-center justify-center"
-                >
-                  <img src={project.logo} alt={project.title} className="w-24 h-24 object-contain" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="text-white max-w-2xl">
-                      <h3 className="text-xl font-semibold">{project.title}</h3>
-                      <p className="mt-2 text-sm text-gray-200 line-clamp-2">{project.description}</p>
-                      {(project.link || project.github) && (
-                        <div className="mt-4 flex flex-wrap gap-3">
-                          {project.link && (
-                            <Link
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center px-4 py-2 bg-white/20 text-white text-sm rounded-lg border border-white/30 hover:bg-white/30 transition"
-                            >
-                              Live Site <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                          )}
-                          {project.github && (
-                            <Link
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center px-4 py-2 bg-gray-800/70 text-white text-sm rounded-lg border border-gray-700 hover:bg-gray-700/80 transition"
-                            >
-                              GitHub <Code className="ml-2 h-4 w-4" />
-                            </Link>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                <ProjectCard key={project.id} project={project} />
               ))}
             </div>
             {filteredProjects.length === 0 && (
