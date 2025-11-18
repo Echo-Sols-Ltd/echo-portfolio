@@ -351,6 +351,7 @@ export default function HomeClient(): React.JSX.Element {
   }, []);
 
   const filteredProjects = projects.filter((project) => project.featured);
+  const homeProjects = filteredProjects.slice(0, 3);
 
   return (
     <>
@@ -523,8 +524,8 @@ export default function HomeClient(): React.JSX.Element {
           </ScrollAnimation>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project, idx) => (
-              <ProjectCard key={project.id} project={project} priority={idx < 2} />
+            {homeProjects.map((project, idx) => (
+              <ProjectCard key={project.id} project={project} priority={idx < 3} />
             ))}
           </div>
 
