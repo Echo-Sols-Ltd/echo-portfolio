@@ -201,7 +201,7 @@ export default function Footer() {
                         {contact.href ? (
                           <a
                             href={contact.href}
-                            className="text-gray-400 hover:text-blue-400 text-sm transition-colors break-words"
+                            className="text-gray-400 hover:text-blue-400 text-xs transition-colors break-words"
                           >
                             {contact.value}
                           </a>
