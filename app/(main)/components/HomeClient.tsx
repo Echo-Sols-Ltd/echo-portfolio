@@ -352,6 +352,14 @@ export default function HomeClient(): React.JSX.Element {
 
   const filteredProjects = projects.filter((project) => project.featured);
   const homeProjects = filteredProjects.slice(0, 3);
+  const aboutIcons = [
+    { Icon: Rocket, label: "Innovation" },
+    { Icon: Users, label: "Collaboration" },
+    { Icon: Brain, label: "AI-first" },
+    { Icon: Star, label: "Quality" },
+    { Icon: Globe, label: "Impact" },
+    { Icon: Code, label: "Engineering" },
+  ];
 
   return (
     <>
@@ -432,6 +440,35 @@ export default function HomeClient(): React.JSX.Element {
                 </div>
               </div>
             </ScrollAnimation>
+            {/* Visual Icon Panel Column (no images) */}
+            <div className="hidden lg:block">
+              <ScrollAnimation animation="fade-up" delay={120}>
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-gradient-to-tr from-gray-100 to-white rounded-3xl -z-10" />
+                  <div className="grid grid-cols-2 gap-4">
+                    {aboutIcons.map(({ Icon, label }, idx) => (
+                      <div
+                        key={label}
+                        className={`rounded-2xl border border-gray-200 bg-white shadow-sm p-6 flex items-center gap-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                          idx % 3 === 0 ? "" : ""
+                        }`}
+                      >
+                        <div className="relative">
+                          <div className="absolute inset-0 rounded-full bg-gray-100 animate-pulse" />
+                          <div className="relative w-14 h-14 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200">
+                            <Icon className="h-7 w-7 text-gray-800" />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-base font-semibold text-gray-900">{label}</div>
+                          <div className="text-sm text-gray-500">We live this value</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollAnimation>
+            </div>
           </div>
         </div>
       </section>
