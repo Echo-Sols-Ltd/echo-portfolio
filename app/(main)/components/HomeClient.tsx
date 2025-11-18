@@ -353,12 +353,12 @@ export default function HomeClient(): React.JSX.Element {
   const filteredProjects = projects.filter((project) => project.featured);
   const homeProjects = filteredProjects.slice(0, 3);
   const aboutIcons = [
-    { Icon: Rocket, label: "Innovation" },
-    { Icon: Users, label: "Collaboration" },
-    { Icon: Brain, label: "AI-first" },
-    { Icon: Star, label: "Quality" },
-    { Icon: Globe, label: "Impact" },
-    { Icon: Code, label: "Engineering" },
+    { Icon: Rocket, label: "Innovation", desc: "Turning bold ideas into real-world products." },
+    { Icon: Users, label: "Collaboration", desc: "We build together, ship together, win together." },
+    { Icon: Brain, label: "AI-first", desc: "Intelligence woven into every experience." },
+    { Icon: Star, label: "Quality", desc: "Pixel-perfect, test-backed, production-ready." },
+    { Icon: Globe, label: "Impact", desc: "Solutions that matter for people and planet." },
+    { Icon: Code, label: "Engineering", desc: "Pragmatic code, modern stacks, clean architecture." },
   ];
 
   return (
@@ -446,7 +446,7 @@ export default function HomeClient(): React.JSX.Element {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-gradient-to-tr from-gray-100 to-white rounded-3xl -z-10" />
                   <div className="grid grid-cols-2 gap-4">
-                    {aboutIcons.map(({ Icon, label }, idx) => (
+                    {aboutIcons.map(({ Icon, label, desc }, idx) => (
                       <div
                         key={label}
                         className={`rounded-2xl border border-gray-200 bg-white shadow-sm p-6 flex items-center gap-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg ${
@@ -461,7 +461,7 @@ export default function HomeClient(): React.JSX.Element {
                         </div>
                         <div>
                           <div className="text-base font-semibold text-gray-900">{label}</div>
-                          <div className="text-sm text-gray-500">We live this value</div>
+                          <div className="text-sm text-gray-500">{desc}</div>
                         </div>
                       </div>
                     ))}
