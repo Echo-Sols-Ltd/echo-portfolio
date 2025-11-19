@@ -590,10 +590,10 @@ export default function HomeClient(): React.JSX.Element {
                 ref={inlineVideoRef}
                 className="w-full h-full object-cover"
                 preload="none"
-                muted
+                muted  
                 loop
                 playsInline
-                controls
+                controls      
                 poster="/thumbnail.png"
                 itemProp="contentUrl"
                 src="/haptic.mp4"
