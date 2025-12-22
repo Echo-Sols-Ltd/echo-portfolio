@@ -3,12 +3,12 @@ export const upperCore = [
   { name: "Iranzi Dianah", role: "CTO", image: "/dianah.png", social: {} },
   { name: "Joly Princesse", role: "COO", image: "/princess.jpeg", social: {} },
   { name: "Irasubiza Saly Nelson", role: "CHRM", image: "/saly.jpeg", social: {} },
-  { name: "Muneza Jean Dieudonne", role: "CMO", image: "/dios.jpeg", social: {} },
   { name: "Ntwali Isimbi Vieira", role: "CCO", image: "/viera.jpeg", social: {} },
   { name: "Bugiri Wilson Goal", role: "CISO", image: "/wigo.jpeg", social: {} },
 ];
 
 export const lowerCore = [
+  { name: "Muneza Jean Dieudonne", role: "Marketing Lead ", image: "/dios.jpeg", social: {} },
   { name: "Nyumbayire Laurent", role: "Tech Lead", image: "/laurent.png", social: {} },
   { name: "Tuyubahe Ashrafu", role: "Tech Lead", image: "/achraf.jpeg", social: {} },
   { name: "Mahinga Rodin", role: "Tech Lead", image: "/rodin.jpeg", social: {} },
