@@ -37,7 +37,7 @@ export const devTeam = [
   { name: "Izabayo Nadine", role: "Software Engineer", image: "/nadine.jpeg", social: {} },
   { name: "Iradukunda Hope", role: "UI/UX", image: "/hopeira.jpg", social: {} },
   { name: "Rwaburindi Jean Calvin", role: "UI/UX", image: "/calvin.jpeg", social: {} },
-  { name: "Tesi Tracy", role: "UI/UX", image: "/avatargirl.jpeg", social: {} },
+  { name: "Iyoneza Larissa Prisca", role: "UI/UX", image: "/avatargirl.jpeg", social: {} },
   { name: "Hirwa Emma Reponse", role: "UI/UX", image: "/reponse.jpg", social: {} },
   { name: "Mpazimpaka Miguel", role: "UI/UX", image: "/avatarboy.jpeg", social: {} },
   { name: "Kirenga Kenny", role: "UI/UX", image: "/kenny.png", social: {} },
