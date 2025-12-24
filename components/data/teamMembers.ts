@@ -40,7 +40,6 @@ export const devTeam = [
   // Cybersec Engineers
   { name: "Amani Patrick", role: "Cybersec Engineer", image: "/amani.jpeg", social: {} },
   { name: "Ganza Chael", role: "Cybersec Engineer", image: "/avatarboy.jpeg", social: {} },
-  { name: "Manzi Prince Babou", role: "Cybersec Engineer", image: "/babou.jpg", social: {} },
 
   // Quality Assurance
   { name: "Byiringiro Emmanuel", role: "Quality Assurance", image: "/manuell.jpg", social: {} },
@@ -49,6 +48,7 @@ export const devTeam = [
   { name: "Forgiveness Peace Love", role: "Embedded Systems Engineer", image: "/peace.jpeg", social: {} },
 
   // UI/UX
+  { name: "MUGISHA INEZA Nora", role: "UI/UX", image: "/babou.jpg", social: {} },
   { name: "Hirwa Emma Reponse", role: "UI/UX", image: "/reponse.jpg", social: {} },
   { name: "Iradukunda Hope", role: "UI/UX", image: "/hopeira.jpg", social: {} },
   { name: "Kirenga Kenny", role: "UI/UX", image: "/kenny.png", social: {} },
