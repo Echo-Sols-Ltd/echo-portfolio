@@ -1,7 +1,7 @@
 export const upperCore = [
   { name: "Izere Shema Leandre", role: "CEO", image: "/leandre.png", social: {} },
   { name: "Iranzi Dianah", role: "CTO", image: "/dianah.png", social: {} },
-  { name: "Joly Princesse", role: "COO", image: "/princess.jpeg", social: {} },
+  { name: "Nyumbayire Laurent", role: "COO", image: "/laurent.png", social: {} },
   { name: "Ntwali Isimbi Vieira", role: "CCO", image: "/viera.jpeg", social: {} },
   { name: "Bugiri Wilson Goal", role: "CISO", image: "/wigo.jpeg", social: {} },
   { name: "Irasubiza Saly Nelson", role: "CHRM", image: "/saly.jpeg", social: {} },
@@ -9,7 +9,7 @@ export const upperCore = [
 
 export const lowerCore = [
   { name: "Mahinga Rodin", role: "Tech Lead", image: "/rodin.jpeg", social: {} },
-  { name: "Nyumbayire Laurent", role: "Tech Lead", image: "/laurent.png", social: {} },
+  { name: "Joly Princesse", role: "Tech Lead", image: "/princess.jpeg", social: {} },
   { name: "Tuyubahe Ashrafu", role: "Tech Lead", image: "/achraf.jpeg", social: {} },
   { name: "Rukundo Bahati Samuel", role: "Cybersecurity Lead", image: "/bahati.jpg", social: {} },
   { name: "Niyikora Kevine", role: "UI/UX Lead", image: "/niyikora.jpg", social: {} },
