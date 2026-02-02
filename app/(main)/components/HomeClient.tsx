@@ -336,7 +336,7 @@ export default function HomeClient(): React.JSX.Element {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          v.play().catch(() => {});
+          v.play().catch(() => { });
         } else {
           v.pause();
         }
@@ -449,9 +449,8 @@ export default function HomeClient(): React.JSX.Element {
                     {aboutIcons.map(({ Icon, label, desc }, idx) => (
                       <div
                         key={label}
-                        className={`rounded-2xl border border-gray-200 bg-white shadow-sm p-6 flex items-center gap-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg ${
-                          idx % 3 === 0 ? "" : ""
-                        }`}
+                        className={`rounded-2xl border border-gray-200 bg-white shadow-sm p-6 flex items-center gap-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg ${idx % 3 === 0 ? "" : ""
+                          }`}
                       >
                         <div className="relative">
                           <div className="absolute inset-0 rounded-full bg-gray-100 animate-pulse" />
@@ -590,10 +589,10 @@ export default function HomeClient(): React.JSX.Element {
                 ref={inlineVideoRef}
                 className="w-full h-full object-cover"
                 preload="none"
-                muted  
+                muted
                 loop
                 playsInline
-                controls      
+                controls={false} 
                 poster="/thumbnail.png"
                 itemProp="contentUrl"
                 src="/haptic.mp4"
