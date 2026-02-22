@@ -1,0 +1,18 @@
+services:
+  web:
+    image: ghcr.io/echo-sols-ltd/portfolio:latest
+    environment:
+      - NODE_ENV=production
+    network_mode: host
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "require('http').get('http://localhost:7000', (res) => res.statusCode === 200 ? process.exit(0) : process.exit(1)).on('error', () => process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
