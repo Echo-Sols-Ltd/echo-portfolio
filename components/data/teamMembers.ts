@@ -3,7 +3,7 @@ export const upperCore = [
   { name: "Iranzi Dianah", role: "CTO", image: "/dianah.png", social: {} },
   // { name: "Nyumbayire Laurent", role: "COO", image: "/laurent.png", social: {} },
   // { name: "Ntwali Isimbi Vieira", role: "CCO", image: "/viera.jpeg", social: {} },
-  { name: "Bugiri Wilson Goal", role: "CISO", image: "/wigo.jpeg", social: {} },
+  { name: "Bugiri Wilson Goal", role: "CISO", image: "/wigo.jpg", social: {} },
   // { name: "Irasubiza Saly Nelson", role: "CHRM", image: "/saly.jpeg", social: {} },
 ];
 
