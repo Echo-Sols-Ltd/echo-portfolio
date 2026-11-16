@@ -21,7 +21,9 @@ import { upperCore, lowerCore, devTeam } from "@/components/data/teamMembers";
 import { TeamMemberStructuredData } from "@/components/StructuredData";
 
 // Combine all team members for different sections
-const allTeamMembers = [...upperCore, ...lowerCore, ...devTeam];
+const allTeamMembers = [...upperCore
+  // , ...lowerCore, ...devTeam
+];
 
 export default function TeamClient() {
   

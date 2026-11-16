@@ -1,10 +1,10 @@
 export const upperCore = [
   { name: "Izere Shema Leandre", role: "CEO", image: "/leandre.png", social: {} },
   { name: "Iranzi Dianah", role: "CTO", image: "/dianah.png", social: {} },
-  { name: "Nyumbayire Laurent", role: "COO", image: "/laurent.png", social: {} },
-  { name: "Ntwali Isimbi Vieira", role: "CCO", image: "/viera.jpeg", social: {} },
+  // { name: "Nyumbayire Laurent", role: "COO", image: "/laurent.png", social: {} },
+  // { name: "Ntwali Isimbi Vieira", role: "CCO", image: "/viera.jpeg", social: {} },
   { name: "Bugiri Wilson Goal", role: "CISO", image: "/wigo.jpeg", social: {} },
-  { name: "Irasubiza Saly Nelson", role: "CHRM", image: "/saly.jpeg", social: {} },
+  // { name: "Irasubiza Saly Nelson", role: "CHRM", image: "/saly.jpeg", social: {} },
 ];
 
 export const lowerCore = [
