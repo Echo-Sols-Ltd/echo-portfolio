@@ -177,8 +177,8 @@ export default function TeamClient() {
             </div>
           </ScrollAnimation>
 
-          {/* Lower Core Team */}
-          <ScrollAnimation animation="fade-up" delay={140}>
+       {/* 
+       <ScrollAnimation animation="fade-up" delay={140}>
             <div className="mb-16">
               <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">Technical Leadership</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -213,7 +213,6 @@ export default function TeamClient() {
             </div>
           </ScrollAnimation>
 
-          {/* Development Team */}
           <ScrollAnimation animation="fade-up" delay={160}>
             <div className="mb-16">
               <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">Development Team</h3>
@@ -247,7 +246,7 @@ export default function TeamClient() {
                 ))}
               </div>
             </div>
-          </ScrollAnimation>
+          </ScrollAnimation>*/}
         </div>
       </section>
 
